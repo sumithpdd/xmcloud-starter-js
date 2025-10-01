@@ -14,6 +14,7 @@ Here's a quick overview of the major folders and their purpose:
     * kit-nextjs-location-finder: [README](https://github.com/Sitecore/xmcloud-starter-js/blob/main/examples/kit-nextjs-location-finder/README.md)
     * kit-nextjs-product-listing: [README](https://github.com/Sitecore/xmcloud-starter-js/blob/main/examples/kit-nextjs-product-listing/README.md)
     * kit-nextjs-skate-park: [README](https://github.com/Sitecore/xmcloud-starter-js/blob/main/examples/kit-nextjs-skate-park/README.md)
+    * nhsp: [README](https://github.com/Sitecore/xmcloud-starter-js/blob/main/examples/nhsp/README.md) - Custom NHSP project using Sitecore Content SDK
 
   - `/local-containers`:
   Contains Docker-related files for local development environments.
@@ -56,6 +57,51 @@ This Github repository is a template that can be used to create your own reposit
 ### Getting Started Guide
 
 For developers new to XM Cloud you can follow the Getting Started Guide on the [Sitecore Documentation Site](https://doc.sitecore.com/xmc) to get up and running with XM Cloud. This will walk you through the process of creating a new XM Cloud Project, provisioning an Environment, deploying the NextJs Starter Kit, and finally creating your first Component.
+
+### Creating a Custom Project from Scratch
+
+If you want to create a completely new project using the "Start from scratch" approach (like the NHSP example), follow these steps:
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/sumithpdd/xmcloud-starter-js
+   cd xmcloud-starter-js
+   ```
+
+2. **Set Up XM Cloud Project**
+   - Navigate to [Sitecore XM Cloud Portal](https://portal.sitecorecloud.io/)
+   - Select your organization
+   - Go to [Deploy Portal](https://deploy.sitecorecloud.io/projects)
+   - Create a new project
+   - **Important**: Ensure that in Settings > Beta features, the option "Now you can use different repositories for your Authoring environments and Editing hosts" is **turned OFF**
+
+3. **Create Empty Site**
+   - In the XM Cloud Deploy Portal, create an empty site using "Start from scratch"
+   - Set your desired collection name
+   - Note the site details for later configuration
+
+4. **Create Your Application**
+   ```bash
+   # Navigate to examples directory
+   cd examples
+   
+   # Create your project folder
+   mkdir your-project-name
+   cd your-project-name
+   
+   # Create Content SDK application
+   npx create-content-sdk-app@latest your-project-name
+   ```
+
+5. **Configure Build Settings**
+   - Add your project entry to the root `xmcloud.build.json` file
+   - Follow the pattern of existing entries (see NHSP example)
+
+6. **Set Up Environment Variables**
+   - Create a `.env.local` file in your project directory
+   - Add the required environment variables from your XM Cloud project's Developer Settings
+
+For a complete example, see the [NHSP project documentation](examples/nhsp/README.md).
 
 ### Running the Next.js Starter Kit
 

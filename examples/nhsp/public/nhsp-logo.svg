@@ -1,0 +1,14 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- NHS Logo Background -->
+  <rect width="200" height="60" fill="#005EB8"/>
+  
+  <!-- NHS Text -->
+  <text x="10" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">NHS</text>
+  
+  <!-- Professionals Text -->
+  <text x="10" y="45" font-family="Arial, sans-serif" font-size="12" fill="white">Professionals</text>
+  
+  <!-- Decorative Element -->
+  <rect x="150" y="15" width="30" height="30" fill="#41B6E6" rx="5"/>
+  <text x="165" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">NHSP</text>
+</svg>
