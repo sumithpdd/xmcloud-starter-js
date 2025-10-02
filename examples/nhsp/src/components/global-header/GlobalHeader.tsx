@@ -21,7 +21,7 @@ const GlobalHeader: React.FC = () => {
               <a href="#join">Join the Bank</a>
               <a href="#contact">Contact Us</a>
               <a href="#login" className="login-link">Login</a>
-            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@ const GlobalHeader: React.FC = () => {
             {/* Logo */}
             <div className="nhsp-logo">
               <a href="/">
-                <img src="/nhsp-logo.svg" alt="NHS Professionals" className="logo-img" />
+                <img src="https://www.nhsprofessionals.nhs.uk/-/media/tbscg/feature/navigation/header-logo.svg" alt="NHS Professionals" className="logo-img" />
               </a>
             </div>
 

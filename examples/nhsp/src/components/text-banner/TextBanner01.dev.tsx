@@ -80,7 +80,7 @@ export const Default: React.FC<TextBannerProps> = (props) => {
           }),
           {
             'mt-0': excludeTopMargin,
-            [props?.params?.styles]: props?.params?.styles,
+            [props?.params?.styles as string]: props?.params?.styles,
           }
         )}
         style={backgroundImageStyle as React.CSSProperties}

@@ -24,7 +24,7 @@ export const Default: React.FC<TextBannerProps> = (props) => {
           'text-primary-foreground',
           {
             'mt-0': excludeTopMargin,
-            [props?.params?.styles]: props?.params?.styles,
+            [props?.params?.styles as string]: props?.params?.styles,
           }
         )}
         style={inline as React.CSSProperties}

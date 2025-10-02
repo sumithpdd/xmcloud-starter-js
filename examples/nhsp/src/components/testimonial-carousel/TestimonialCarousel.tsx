@@ -106,7 +106,7 @@ export const Default: React.FC<TestimonialCarouselProps> = (props) => {
       <div
         className={cn(
           '@container component testimonial-carousel text-secondary-foreground @md:px-6 @lg:px-0 overflow-hidden rounded-[24px]',
-          { [`${props?.params?.styles}`]: props?.params?.styles }
+          { [props?.params?.styles as string]: props?.params?.styles }
         )}
         ref={carouselRef}
         onMouseMove={handleMouseMove}

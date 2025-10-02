@@ -58,7 +58,7 @@ export const PromoAnimatedImageRight: React.FC<PromoAnimatedProps> = (props) => 
           data-class-change
           className={cn(
             'promo-animated__content-wrapper @md:grid-cols-2 @md:items-center @md:gap-10 @xl:gap-[135px] group grid grid-cols-1',
-            { [props?.params?.styles]: props?.params?.styles }
+            { [props?.params?.styles as string]: props?.params?.styles }
           )}
         >
           <div className="promo-animated__image @md:flex @md:justify-start @md:order-2 w-full">

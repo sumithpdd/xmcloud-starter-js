@@ -16,7 +16,7 @@ export const Default: React.FC<RichTextBlockProps> = (props) => {
   if (fields) {
     return (
       <div
-        className={cn('prose', { [props?.params?.styles]: props?.params?.styles })}
+        className={cn('prose', { [props?.params?.styles as string]: props?.params?.styles })}
         id={id ? id : undefined}
         data-component-name="rich-text-block"
       >
