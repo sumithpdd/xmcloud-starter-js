@@ -140,6 +140,7 @@ import * as communitiesdev from 'src/components/icon/svg/communities.dev';
 import * as arrowuprightdev from 'src/components/icon/svg/arrow-up-right.dev';
 import * as arrowrightdev from 'src/components/icon/svg/arrow-right.dev';
 import * as arrowleftdev from 'src/components/icon/svg/arrow-left.dev';
+import * as HeroST from 'src/components/hero/HeroST';
 import * as Hero from 'src/components/hero/Hero';
 import * as heroprops from 'src/components/hero/hero.props';
 import * as GlobalHeader from 'src/components/global-header/GlobalHeader';
@@ -319,6 +320,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['arrowuprightdev', arrowuprightdev],
   ['arrowrightdev', arrowrightdev],
   ['arrowleftdev', arrowleftdev],
+  ['HeroST', HeroST],
   ['Hero', Hero],
   ['heroprops', heroprops],
   ['GlobalHeader', GlobalHeader],
