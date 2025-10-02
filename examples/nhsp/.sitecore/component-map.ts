@@ -20,7 +20,6 @@ import * as toast from 'src/components/ui/toast';
 import * as textarea from 'src/components/ui/textarea';
 import * as tabs from 'src/components/ui/tabs';
 import * as table from 'src/components/ui/table';
-import * as switchComponent from 'src/components/ui/switch';
 import * as sonner from 'src/components/ui/sonner';
 import * as slider from 'src/components/ui/slider';
 import * as skeleton from 'src/components/ui/skeleton';
@@ -200,7 +199,6 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['textarea', textarea],
   ['tabs', tabs],
   ['table', table],
-  ['switch', switchComponent],
   ['sonner', sonner],
   ['slider', slider],
   ['skeleton', skeleton],
