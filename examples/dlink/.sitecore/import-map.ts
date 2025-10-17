@@ -3,7 +3,7 @@
 import { combineImportEntries, defaultImportEntries } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { useState, useEffect, useRef, useCallback, useId, useContext, createContext, useMemo } from 'react';
+import { useState, useEffect, useRef, useCallback, useId, useContext, createContext, Fragment, useMemo } from 'react';
 import React from 'react';
 import * as React_7214d18997ee864dd178de7b3a8430f6783e8b89 from 'react';
 import YouTube from 'react-youtube';
@@ -12,7 +12,7 @@ import { Default } from '@/components/icon/Icon';
 import { extractVideoId } from '@/utils/video';
 import { FocusTrap } from 'focus-trap-react';
 import { motion, AnimatePresence, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { X, PanelLeft, Check, ChevronDown, ChevronUp, GripVertical, Circle, ChevronLeft, ChevronRight, MoreHorizontal, Dot, Search, ArrowLeft, ArrowRight, Moon, Sun, Play, Pause, Share2, Facebook, Linkedin, Twitter, Link as Link_6b289e2de0a07a8bed65fcf19e83723e986797b2, Mail } from 'lucide-react';
+import { X, PanelLeft, Check, ChevronDown, ChevronUp, GripVertical, Circle, ChevronLeft, ChevronRight, MoreHorizontal, Dot, Search, ArrowLeft, ArrowRight, Moon, Sun, Play, Pause, Menu, Share2, Facebook, Linkedin, Twitter, Link as Link_6b289e2de0a07a8bed65fcf19e83723e986797b2, Mail } from 'lucide-react';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { preventScroll, allowScroll } from '@/utils/bodyClass';
 import { Portal } from '@/components/portal/portal.dev';
@@ -35,6 +35,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from '@/components/ui/toast';
 import * as ToastPrimitives from '@radix-ui/react-toast';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
+import * as SwitchPrimitives from '@radix-ui/react-switch';
 import { useTheme, ThemeProvider } from 'next-themes';
 import { Toaster } from 'sonner';
 import * as SliderPrimitive from '@radix-ui/react-slider';
@@ -42,7 +43,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
-import { Sheet, SheetContent } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
@@ -74,7 +75,6 @@ import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { cn as cn_b4c06b3218abd6b3fb46a1f6d67407cec902c758 } from 'lib/utils';
 import { Meteors } from '@/components/magicui/meteors';
 import { TopicItem } from 'src/components/topic-listing/TopicItem.dev';
 import { ButtonVariants, ButtonType } from '@/enumerations/ButtonStyle.enum';
@@ -113,7 +113,13 @@ import { ImageOptimizationContext } from '@/components/image/image-optimization.
 import placeholderImageLoader from '@/utils/placeholderImageLoader';
 import { IconName } from '@/enumerations/Icon.enum';
 import { sharedAttributes } from 'src/components/icon/Icon';
+import { useContainerOffsets } from '@/hooks/useContainerOffsets';
 import { Default as Default_98f9a884be463e0a12213c7e328a0762b2348f8b } from '@/components/media-section/MediaSection.dev';
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from '@/components/ui/navigation-menu';
+import { Default as Default_baa9f9ad92261321a3b6e2412b7ce62fbe646851 } from '@/components/logo/Logo.dev';
+import { Default as Default_dd8cffb76cbf0b6ccba4ee879226c778aecea76f } from '@/components/footer-navigation-callout/FooterNavigationCallout.dev';
+import { EditableImageButton } from 'components/button-component/ButtonComponent';
+import { cn as cn_b4c06b3218abd6b3fb46a1f6d67407cec902c758 } from 'lib/utils';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useMatchMedia } from '@/hooks/use-match-media';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -147,6 +153,7 @@ const importMap = [
       { name: 'useId', value: useId },
       { name: 'useContext', value: useContext },
       { name: 'createContext', value: createContext },
+      { name: 'Fragment', value: Fragment },
       { name: 'useMemo', value: useMemo },
       { name: 'default', value: React },
       { name: '*', value: React_7214d18997ee864dd178de7b3a8430f6783e8b89 },
@@ -214,6 +221,7 @@ const importMap = [
       { name: 'Sun', value: Sun },
       { name: 'Play', value: Play },
       { name: 'Pause', value: Pause },
+      { name: 'Menu', value: Menu },
       { name: 'Share2', value: Share2 },
       { name: 'Facebook', value: Facebook },
       { name: 'Linkedin', value: Linkedin },
@@ -374,6 +382,12 @@ const importMap = [
     ]
   },
   {
+    module: '@radix-ui/react-switch',
+    exports: [
+      { name: '*', value: SwitchPrimitives },
+    ]
+  },
+  {
     module: 'next-themes',
     exports: [
       { name: 'useTheme', value: useTheme },
@@ -421,6 +435,7 @@ const importMap = [
     exports: [
       { name: 'Sheet', value: Sheet },
       { name: 'SheetContent', value: SheetContent },
+      { name: 'SheetTrigger', value: SheetTrigger },
     ]
   },
   {
@@ -615,12 +630,6 @@ const importMap = [
     module: '@radix-ui/react-accordion',
     exports: [
       { name: '*', value: AccordionPrimitive },
-    ]
-  },
-  {
-    module: 'lib/utils',
-    exports: [
-      { name: 'cn', value: cn_b4c06b3218abd6b3fb46a1f6d67407cec902c758 },
     ]
   },
   {
@@ -868,9 +877,47 @@ const importMap = [
     ]
   },
   {
+    module: '@/hooks/useContainerOffsets',
+    exports: [
+      { name: 'useContainerOffsets', value: useContainerOffsets },
+    ]
+  },
+  {
     module: '@/components/media-section/MediaSection.dev',
     exports: [
       { name: 'Default', value: Default_98f9a884be463e0a12213c7e328a0762b2348f8b },
+    ]
+  },
+  {
+    module: '@/components/ui/navigation-menu',
+    exports: [
+      { name: 'NavigationMenu', value: NavigationMenu },
+      { name: 'NavigationMenuItem', value: NavigationMenuItem },
+      { name: 'NavigationMenuList', value: NavigationMenuList },
+    ]
+  },
+  {
+    module: '@/components/logo/Logo.dev',
+    exports: [
+      { name: 'Default', value: Default_baa9f9ad92261321a3b6e2412b7ce62fbe646851 },
+    ]
+  },
+  {
+    module: '@/components/footer-navigation-callout/FooterNavigationCallout.dev',
+    exports: [
+      { name: 'Default', value: Default_dd8cffb76cbf0b6ccba4ee879226c778aecea76f },
+    ]
+  },
+  {
+    module: 'components/button-component/ButtonComponent',
+    exports: [
+      { name: 'EditableImageButton', value: EditableImageButton },
+    ]
+  },
+  {
+    module: 'lib/utils',
+    exports: [
+      { name: 'cn', value: cn_b4c06b3218abd6b3fb46a1f6d67407cec902c758 },
     ]
   },
   {

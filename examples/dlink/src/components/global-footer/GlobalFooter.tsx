@@ -1,105 +1,78 @@
-import React from 'react';
+import type React from 'react';
+import { Placeholder, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { GlobalFooterProps } from '@/components/global-footer/global-footer.props';
+import { Default as FooterCallout } from '@/components/footer-navigation-callout/FooterNavigationCallout.dev';
+import { Default as Logo } from '@/components/logo/Logo.dev';
+import { NoDataFallback } from '@/utils/NoDataFallback';
+import { EditableImageButton } from 'components/button-component/ButtonComponent';
+import { cn } from 'lib/utils';
 
-const GlobalFooter: React.FC = () => {
-  return (
-    <footer className="nhsp-footer">
-      <div className="container">
-        {/* Main Footer Content */}
-        <div className="nhsp-footer-main">
-          <div className="row">
-            {/* NHSP For You Section */}
-            <div className="col-lg-3 col-md-6 mb-4">
-              <h5 className="footer-title">NHSP For You</h5>
-              <ul className="footer-links">
-                <li><a href="#joining-nhsp">Joining NHSP</a></li>
-                <li><a href="#work-shifts">I work shifts using NHSP</a></li>
-                <li><a href="#manage-shifts">I manage shifts using NHSP</a></li>
-                <li><a href="#partnering-nhsp">Partnering with NHSP</a></li>
-                <li><a href="#apprenticeship">Public Sector Apprenticeship</a></li>
-                <li><a href="#corporate-careers">Corporate Careers at NHSP</a></li>
-              </ul>
-            </div>
+export const Default: React.FC<GlobalFooterProps> = (props) => {
+  const { fields, rendering } = props;
+  const { page } = useSitecore();
+  const isPageEditing = page.mode.isEditing;
 
-            {/* About NHSP Section */}
-            <div className="col-lg-3 col-md-6 mb-4">
-              <h5 className="footer-title">About NHSP</h5>
-              <ul className="footer-links">
-                <li><a href="#carbon-reduction">Carbon Reduction Plan</a></li>
-                <li><a href="#our-values">Our values</a></li>
-                <li><a href="#digital-marketplace">Digital Marketplace Services</a></li>
-                <li><a href="#equality-diversity">Equality, Diversity and Inclusion</a></li>
-                <li><a href="#freedom-information">Freedom of Information Request</a></li>
-                <li><a href="#gender-pay-gap">Gender Pay Gap</a></li>
-                <li><a href="#modern-slavery">Modern Slavery Statement</a></li>
-                <li><a href="#system-status">System Status</a></li>
-                <li><a href="#tax-strategy">Tax strategy statement</a></li>
-              </ul>
-            </div>
+  const {
+    footerCopyright,
+    footerLogo,
+    footerPromoDescription,
+    footerPromoLink,
+    footerPromoTitle,
+    footerSocialLinks,
+  } = fields?.data?.datasource ?? {};
 
-            {/* Contact Information */}
-            <div className="col-lg-3 col-md-6 mb-4">
-              <h5 className="footer-title">Contact Information</h5>
-              <div className="footer-contact">
-                <p className="address">
-                  NHS Professionals Ltd<br />
-                  Breakspear Park<br />
-                  Breakspear Way<br />
-                  Hemel Hempstead<br />
-                  HP2 4TZ
-                </p>
-                <p className="registration">
-                  Registered in England & Wales no. 6704614
-                </p>
-              </div>
-            </div>
-
-            {/* Social Media & Additional Links */}
-            <div className="col-lg-3 col-md-6 mb-4">
-              <h5 className="footer-title">Connect With Us</h5>
-              <div className="social-links">
-                <a href="#" className="social-link facebook" aria-label="Facebook">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" className="social-link instagram" aria-label="Instagram">
-                  <i className="fab fa-instagram"></i>
-                </a>
-                <a href="#" className="social-link linkedin" aria-label="LinkedIn">
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-                <a href="#" className="social-link twitter" aria-label="Twitter">
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a href="#" className="social-link youtube" aria-label="YouTube">
-                  <i className="fab fa-youtube"></i>
-                </a>
-              </div>
+  if (fields) {
+    return (
+      <footer className="@container bg-primary text-white">
+        <div className="@md:grid-cols-2 @lg:grid-cols-12 @lg:gap-8 @xl:px-8 mx-auto grid w-full max-w-screen-xl grid-cols-1 gap-8 px-4  py-12">
+          {/* Logo section */}
+          <div className="@lg:col-span-2">
+            <div className="max-w-[121px]">
+              <Logo logo={footerLogo?.jsonValue} />
             </div>
           </div>
-        </div>
-
-        {/* Footer Bottom */}
-        <div className="nhsp-footer-bottom">
-          <div className="row align-items-center">
-            <div className="col-md-6">
-              <div className="footer-bottom-links">
-                <a href="#accessibility">Accessibility</a>
-                <a href="#cookies-privacy">Cookies and privacy</a>
-                <a href="#press-media">Press and media</a>
-                <a href="#privacy-notice">Privacy Notice</a>
-                <a href="#terms-conditions">Terms and conditions</a>
-              </div>
-            </div>
-            <div className="col-md-6 text-md-end">
-              <p className="copyright">
-                © 2025 NHS Professionals<br />
-                Registered in England & Wales no. 6704614
-              </p>
-            </div>
+          {/* Main footer columns */}
+          <div className="@md:grid-cols-3 @md:col-span-2 @lg:col-span-6 grid grid-cols-1 gap-8">
+            <Placeholder name="container-footer-column" rendering={rendering} />
+          </div>
+          {/* Callout section */}
+          <div className="@md:col-span-2 @lg:col-span-4">
+            <FooterCallout
+              fields={{
+                title: footerPromoTitle?.jsonValue,
+                description: footerPromoDescription?.jsonValue,
+                linkOptional: footerPromoLink?.jsonValue,
+              }}
+            />
           </div>
         </div>
-      </div>
-    </footer>
-  );
+        <div className="border-t border-white/10">
+          <div className="global-footer__bottom @md:flex-row @xl:px-8 mx-auto flex max-w-screen-xl flex-col items-center justify-between gap-4 px-4 py-6">
+            {/* Social links */}
+            <div className="flex space-x-4">
+              {footerSocialLinks?.results?.map((socialLink, index) => (
+                <EditableImageButton
+                  key={socialLink?.link?.jsonValue?.value.href || index}
+                  buttonLink={socialLink?.link?.jsonValue}
+                  className={cn('relative hover:bg-transparent')}
+                  variant="ghost"
+                  size={isPageEditing ? 'default' : 'icon'}
+                  isPageEditing={isPageEditing}
+                  icon={socialLink?.socialIcon?.jsonValue}
+                  asIconLink={true}
+                />
+              ))}
+            </div>
+            {/* Copyright text */}
+            <Text
+              className="text-sm text-white/80"
+              field={footerCopyright?.jsonValue}
+              encode={false}
+            />
+          </div>
+        </div>
+      </footer>
+    );
+  }
+  return <NoDataFallback componentName="Global Footer" />;
 };
-
-export default GlobalFooter;

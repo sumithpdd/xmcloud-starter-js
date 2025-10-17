@@ -1,4 +1,4 @@
-import React, { JSX } from 'react';
+﻿import React, { JSX } from 'react';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import * as Events from '@sitecore-cloudsdk/events/browser';
 import { LayoutServicePageState, SitecoreProviderReactContext } from '@sitecore-content-sdk/nextjs';

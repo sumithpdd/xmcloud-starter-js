@@ -106,13 +106,14 @@ export const Default: React.FC<TestimonialCarouselProps> = (props) => {
       <div
         className={cn(
           '@container component testimonial-carousel text-secondary-foreground @md:px-6 @lg:px-0 overflow-hidden rounded-[24px]',
-          { [props?.params?.styles as string]: props?.params?.styles }
+          { [`${props?.params?.styles}`]: props?.params?.styles }
         )}
         ref={carouselRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onFocus={() => setIsFocused(true)} // Added focus handler
         onBlur={() => setIsFocused(false)} // Added blur handler
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0} // Added tabIndex
       >
         <Carousel

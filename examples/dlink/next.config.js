@@ -27,6 +27,7 @@ const nextConfig = {
   // can be served from the Next.js Image Optimization API
   // see https://nextjs.org/docs/app/api-reference/components/image#remotepatterns
   images: {
+    dangerouslyAllowSVG: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -39,6 +40,33 @@ const nextConfig = {
         port: '',
       },
     ],
+  },
+
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Credentials',
+            value: 'true',
+          },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+          },
+          {
+            key: 'Access-Control-Allow-Headers',
+            value:
+              'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+          },
+        ],
+      },
+    ];
   },
 
   async rewrites() {
@@ -56,7 +84,7 @@ const nextConfig = {
       // sitemap route
       {
         source: '/sitemap:id([\\w-]{0,}).xml',
-        destination: '/api/sitemap'
+        destination: '/api/sitemap',
       },
       // feaas api route
       {
@@ -68,7 +96,7 @@ const nextConfig = {
 
   webpack: (config, options) => {
     if (!options.isServer) {
-      // Add a loader to strip out getComponentServerProps from components in the client bundle
+      // Add a loader to strip out getServerSideProps and getStaticProps from components in the client bundle
       config.module.rules.unshift({
         test: /src\\components\\.*\.tsx$/,
         use: ['@sitecore-content-sdk\\nextjs\\component-props-loader'],
@@ -93,12 +121,12 @@ const nextConfig = {
   // Add sass settings for SXA themes and styles
   sassOptions: {
     importer: new SassAlias({
-      '@globals': path.join(process.cwd(), './src/assets', 'globals'),
+      '@sass': path.join(process.cwd(), './src/assets', 'sass'),
       '@fontawesome': path.join(process.cwd(), './node_modules', 'font-awesome'),
     }).getImporter(),
     // temporary measure until new versions of bootstrap and font-awesome released
     quietDeps: true,    
-    silenceDeprecations: ["import", "legacy-js-api"],
+    silenceDeprecations: ["import", "legacy-js-api"]  
   },
 };
 

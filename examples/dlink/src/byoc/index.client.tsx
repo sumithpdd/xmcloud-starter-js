@@ -15,5 +15,4 @@ const ClientsideComponent = (props: FEAAS.ExternalComponentProps) => FEAAS.Exter
  * - Use clientside react hooks like useEffect.
  * - Be implemented as web components.
  */
-
 export default ClientsideComponent;

@@ -19,7 +19,7 @@ const SIDEBAR_WIDTH_MOBILE = '18rem';
 const SIDEBAR_WIDTH_ICON = '3rem';
 const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
 
-type SidebarContextType = {
+type SidebarContext = {
   state: 'expanded' | 'collapsed';
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -29,7 +29,7 @@ type SidebarContextType = {
   toggleSidebar: () => void;
 };
 
-const SidebarContext = React.createContext<SidebarContextType | null>(null);
+const SidebarContext = React.createContext<SidebarContext | null>(null);
 
 function useSidebar() {
   const context = React.useContext(SidebarContext);
@@ -104,7 +104,7 @@ const SidebarProvider = React.forwardRef<
     // This makes it easier to style the sidebar with Tailwind classes.
     const state = open ? 'expanded' : 'collapsed';
 
-    const contextValue = React.useMemo<SidebarContextType>(
+    const contextValue = React.useMemo<SidebarContext>(
       () => ({
         state,
         open,

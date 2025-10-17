@@ -1,35 +1,38 @@
-import { useEffect, JSX } from 'react';
+import { useEffect, type JSX } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import NotFound from 'src/NotFound';
 import Layout from 'src/Layout';
 import {
+  SitecoreProvider,
+  ComponentPropsContext,
   SitecorePageProps,
-    StaticPath,
-  SiteInfo
-  } from '@sitecore-content-sdk/nextjs';
+  StaticPath,
+  SiteInfo,
+} from '@sitecore-content-sdk/nextjs';
 import { extractPath, handleEditorFastRefresh } from '@sitecore-content-sdk/nextjs/utils';
 import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing';
-import sites from '.sitecore/sites.json';
+import client from 'lib/sitecore-client';
 import components from '.sitecore/component-map';
 import scConfig from 'sitecore.config';
-import client from 'lib/sitecore-client';
-import Providers from 'src/Providers';
+import sites from '.sitecore/sites.json';
 
-const SitecorePage = ({ page, notFound, componentProps }: SitecorePageProps): JSX.Element => {
+const SitecorePage = ({ notFound, componentProps, page }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
     // Since Sitecore Editor does not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
     handleEditorFastRefresh();
   }, []);
 
-  if (notFound || !page) {
+  if (notFound || !page?.layout.sitecore.route) {
     // Shouldn't hit this (as long as 'notFound' is being returned below), but just to be safe
     return <NotFound />;
   }
 
   return (
-    <Providers componentProps={componentProps} page={page}>
-      <Layout page={page} />
-    </Providers>
+    <ComponentPropsContext value={componentProps || {}}>
+      <SitecoreProvider componentMap={components} page={page} api={scConfig.api}>
+        <Layout page={page} />
+      </SitecoreProvider>
+    </ComponentPropsContext>
   );
 };
 
@@ -90,18 +93,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
         locale: page.locale,
       }),
       componentProps: await client.getComponentData(page.layout, context, components),
-    }
+    };
   }
   return {
     props,
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 5 seconds
-          // Next.js will attempt to re-generate the page:
-      // - When a request comes in
-      // - At most once every 5 seconds
-      revalidate: 5, // In seconds
-          notFound: !page,
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 5 seconds
+    revalidate: 5, // In seconds
+    notFound: !page,
   };
 };
 
