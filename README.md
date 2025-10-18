@@ -9,6 +9,7 @@ Here's a quick overview of the major folders and their purpose:
   - `/examples`:
   Contains starter front-end applications. Each subfolder is a working app
     * dlink: [README](https://github.com/Sitecore/xmcloud-starter-js/tree/main/examples/dlink/README.md) - Custom dLink demo project using Sitecore Content SDK
+    * dLinkBusiness: [README](https://github.com/Sitecore/xmcloud-starter-js/tree/main/examples/dLinkBusiness/README.md) - Custom dLink Business demo project using Sitecore Content SDK
     * basic-nextjs: [README](https://github.com/Sitecore/xmcloud-starter-js/tree/main/examples/basic-nextjs/README.md) 
     * basic-spa: [README](https://github.com/Sitecore/xmcloud-starter-js/tree/main/examples/basic-spa/README.md) 
     * kit-nextjs-article-starter: [README](https://github.com/Sitecore/xmcloud-starter-js/tree/main/examples/kit-nextjs-article-starter/README.md)
@@ -109,8 +110,9 @@ For a complete example, see the [NHSP project documentation](examples/nhsp/READM
 >  **Note:** Please refer to the `README.md` of the specific example starter you're working with for detailed setup instructions.
 > The following outlines the general steps to run the app locally:
 
-#### Running the dLink Demo (Recommended)
+#### Running the dLink Demos (Recommended)
 
+**dLink Demo:**
 - Log into the Sitecore XM Cloud Deploy Portal, locate your Environment and select the `Developer Settings` tab.
 - Ensure that the `Preview` toggle is enabled.
 - In the `Local Development` section, click to copy the sample `.env` file contents to your clipboard.
@@ -118,6 +120,19 @@ For a complete example, see the [NHSP project documentation](examples/nhsp/READM
 - Run the following commands in the root of the repository to start the dLink demo:
   ```bash
   cd examples/dlink
+  npm install
+  npm run dev
+  ```
+- You should now be able to access your site on `http://localhost:3000` and see your changes in real-time as you make them.
+
+**dLink Business Demo:**
+- Log into the Sitecore XM Cloud Deploy Portal, locate your Environment and select the `Developer Settings` tab.
+- Ensure that the `Preview` toggle is enabled.
+- In the `Local Development` section, click to copy the sample `.env` file contents to your clipboard.
+- Create a new `.env.local` file in the `./examples/dLinkBusiness` folder of this repository and paste the contents from your clipboard.
+- Run the following commands in the root of the repository to start the dLink Business demo:
+  ```bash
+  cd examples/dLinkBusiness
   npm install
   npm run dev
   ```
