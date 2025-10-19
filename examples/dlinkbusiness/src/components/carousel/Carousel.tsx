@@ -10,7 +10,7 @@ import { useEffect, useMemo, useRef, useState, type JSX } from 'react';
 import { Button } from '@/components/ui/button';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { AnimatePresence, motion } from 'framer-motion';
-import { cn } from 'lib/utils';
+import { cn } from '@/lib/utils';
 
 interface Fields {
   data: {

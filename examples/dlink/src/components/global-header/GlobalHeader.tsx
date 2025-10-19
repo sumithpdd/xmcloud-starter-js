@@ -1,25 +1,16 @@
-import { Fragment, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, ChevronDown } from 'lucide-react';
-import { Link as SitecoreLink, useSitecore, Image } from '@sitecore-content-sdk/nextjs';
+import { useSitecore, Image } from '@sitecore-content-sdk/nextjs';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-} from '@/components/ui/navigation-menu';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Default as Logo } from '@/components/logo/Logo.dev';
 import { GlobalHeaderProps } from './global-header.props';
-import { Button } from '@/components/ui/button';
-import { Url } from 'next/dist/shared/lib/router/router';
 
 export const Default: React.FC<GlobalHeaderProps> = (props) => {
   const { fields } = props ?? {};
-  const { logo, headerContact } = fields?.data?.item ?? {};
-  const links = fields?.data?.item?.children?.results ?? [];
+  const { logo } = fields?.data?.item ?? {};
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const { page } = useSitecore();

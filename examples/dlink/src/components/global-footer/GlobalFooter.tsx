@@ -1,23 +1,19 @@
 import type React from 'react';
-import { Placeholder, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { GlobalFooterProps } from '@/components/global-footer/global-footer.props';
-import { Default as FooterCallout } from '@/components/footer-navigation-callout/FooterNavigationCallout.dev';
 import { Default as Logo } from '@/components/logo/Logo.dev';
 import { NoDataFallback } from '@/utils/NoDataFallback';
-import { EditableImageButton } from 'components/button-component/ButtonComponent';
-import { cn } from 'lib/utils';
+import { EditableImageButton } from '@/components/button-component/ButtonComponent';
+import { cn } from '@/lib/utils';
 
 export const Default: React.FC<GlobalFooterProps> = (props) => {
-  const { fields, rendering } = props;
+  const { fields } = props;
   const { page } = useSitecore();
   const isPageEditing = page.mode.isEditing;
 
   const {
     footerCopyright,
     footerLogo,
-    footerPromoDescription,
-    footerPromoLink,
-    footerPromoTitle,
     footerSocialLinks,
   } = fields?.data?.datasource ?? {};
 

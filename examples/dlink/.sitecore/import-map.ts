@@ -28,7 +28,7 @@ import { isMobile } from '@/utils/isMobile';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { cn, getYouTubeThumbnail } from '@/lib/utils';
 import { Default as Default_86213dc9d44683259b98a62fc55d1fe1127767c5 } from '@/components/image/ImageWrapper.dev';
-import { EditableButton, ButtonBase } from '@/components/button-component/ButtonComponent';
+import { EditableButton, ButtonBase, EditableImageButton } from '@/components/button-component/ButtonComponent';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import * as TogglePrimitive from '@radix-ui/react-toggle';
 import { cva } from 'class-variance-authority';
@@ -120,14 +120,12 @@ import { sharedAttributes } from 'src/components/icon/Icon';
 import { useContainerOffsets } from '@/hooks/useContainerOffsets';
 import { Default as Default_98f9a884be463e0a12213c7e328a0762b2348f8b } from '@/components/media-section/MediaSection.dev';
 import { Default as Default_baa9f9ad92261321a3b6e2412b7ce62fbe646851 } from '@/components/logo/Logo.dev';
-import { EditableImageButton } from 'components/button-component/ButtonComponent';
-import { cn as cn_b4c06b3218abd6b3fb46a1f6d67407cec902c758 } from 'lib/utils';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useMatchMedia } from '@/hooks/use-match-media';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import * as e from '@/lib/enum';
 import { twMerge } from 'tailwind-merge';
-import client from 'lib/sitecore-client';
+import client from '@/lib/sitecore-client';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
 import { pageView } from '@sitecore-cloudsdk/events/browser';
@@ -339,6 +337,7 @@ const importMap = [
     exports: [
       { name: 'EditableButton', value: EditableButton },
       { name: 'ButtonBase', value: ButtonBase },
+      { name: 'EditableImageButton', value: EditableImageButton },
     ]
   },
   {
@@ -919,18 +918,6 @@ const importMap = [
     ]
   },
   {
-    module: 'components/button-component/ButtonComponent',
-    exports: [
-      { name: 'EditableImageButton', value: EditableImageButton },
-    ]
-  },
-  {
-    module: 'lib/utils',
-    exports: [
-      { name: 'cn', value: cn_b4c06b3218abd6b3fb46a1f6d67407cec902c758 },
-    ]
-  },
-  {
     module: '@/components/ui/accordion',
     exports: [
       { name: 'Accordion', value: Accordion },
@@ -968,7 +955,7 @@ const importMap = [
     ]
   },
   {
-    module: 'lib/sitecore-client',
+    module: '@/lib/sitecore-client',
     exports: [
       { name: 'default', value: client },
     ]

@@ -8,11 +8,46 @@ interface NavigationProps {
 
 export const Navigation: React.FC<NavigationProps> = ({ className = '' }) => {
   const navigationItems = [
-    { name: 'For Home', href: '/home', submenu: ['Wi-Fi', '4G/5G', 'Cameras', 'Smart Home', 'Switches', 'Adapters', 'mydlink'] },
-    { name: 'For Business', href: '/business', submenu: ['Switches', 'Wireless', 'Business Routers', 'Nuclias', 'IP Surveillance', 'Accessories'] },
-    { name: 'For Industry', href: '/industry', submenu: ['4G / 5G M2M', 'D-ECS', 'Industry Switches', 'Accessories'] },
-    { name: 'Support', href: '/support', submenu: ['Tech Support', 'Tech Alerts', 'FAQs', 'Services', 'Warranty', 'Contact', 'Support Portal'] },
-    { name: 'Resources', href: '/resources', submenu: ['Brochures and Guides', 'Case Studies', 'Videos', 'Blog', 'Product Selector'] }
+    {
+      name: 'For Home',
+      href: '/home',
+      submenu: ['Wi-Fi', '4G/5G', 'Cameras', 'Smart Home', 'Switches', 'Adapters', 'mydlink'],
+    },
+    {
+      name: 'For Business',
+      href: '/business',
+      submenu: [
+        'Switches',
+        'Wireless',
+        'Business Routers',
+        'Nuclias',
+        'IP Surveillance',
+        'Accessories',
+      ],
+    },
+    {
+      name: 'For Industry',
+      href: '/industry',
+      submenu: ['4G / 5G M2M', 'D-ECS', 'Industry Switches', 'Accessories'],
+    },
+    {
+      name: 'Support',
+      href: '/support',
+      submenu: [
+        'Tech Support',
+        'Tech Alerts',
+        'FAQs',
+        'Services',
+        'Warranty',
+        'Contact',
+        'Support Portal',
+      ],
+    },
+    {
+      name: 'Resources',
+      href: '/resources',
+      submenu: ['Brochures and Guides', 'Case Studies', 'Videos', 'Blog', 'Product Selector'],
+    },
   ];
 
   return (
@@ -37,7 +72,7 @@ export const Navigation: React.FC<NavigationProps> = ({ className = '' }) => {
                   >
                     {item.name}
                   </Link>
-                  
+
                   {/* Dropdown Menu */}
                   <div className="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                     <div className="py-1">
@@ -66,8 +101,20 @@ export const Navigation: React.FC<NavigationProps> = ({ className = '' }) => {
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
-              <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                className="block h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             </button>
           </div>

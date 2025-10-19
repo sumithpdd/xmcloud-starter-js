@@ -35,12 +35,6 @@ export const Default: React.FC<HeroProps> = ({ fields, params }) => {
     linkOptional,
     heroVideoOptional1,
     heroImageOptional1,
-    heroVideoOptional2,
-    heroImageOptional2,
-    heroVideoOptional3,
-    heroImageOptional3,
-    heroVideoOptional4,
-    heroImageOptional4,
   } = fields || {};
 
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);

@@ -1,5 +1,5 @@
 import { RobotsMiddleware } from '@sitecore-content-sdk/nextjs/middleware';
-import scClient from 'lib/sitecore-client';
+import scClient from '@/lib/sitecore-client';
 import sites from '.sitecore/sites.json';
 
 /**

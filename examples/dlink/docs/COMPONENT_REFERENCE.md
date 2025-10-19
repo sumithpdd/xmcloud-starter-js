@@ -409,6 +409,21 @@ Comprehensive icon library with 17+ SVG icons:
 
 ## Sitecore Data Templates
 
+### D-Link Project Data Templates
+| Template Name | Page Design Assigned | Insert Options | Pages Used | Last Modified |
+|---------------|---------------------|----------------|------------|---------------|
+| Article Page | Default | SET | 0 | 17 October 2025 at 23:07 |
+| Audio Product Page | ProductPage | SET | 3 | 17 October 2025 at 23:07 |
+
+### Page Designs
+- **Default**: Standard page layout design
+- **ProductPage**: Specialized layout for product pages
+
+### Partial Designs
+- **Footer**: Site-wide footer component
+- **Header**: Site-wide header component  
+- **ProductContent**: Product-specific content sections
+
 ### Field Types Used
 
 #### Core Field Types

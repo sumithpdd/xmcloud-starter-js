@@ -2,60 +2,66 @@
 
 import type React from 'react';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Link as ContentSdkLink } from '@sitecore-content-sdk/nextjs';
 import { Menu, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-} from '@/components/ui/navigation-menu';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 import type { GlobalHeaderProps } from './global-header.props';
-import { Button } from '@/components/ui/button';
 import { useMatchMedia } from '@/hooks/use-match-media';
 
 export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
   const { fields, isPageEditing } = props ?? {};
-  const { logo, primaryNavigationLinks, headerContact } = fields?.data?.item ?? {};
+  const { logo } = fields?.data?.item ?? {};
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [visible, setVisible] = useState(true);
   const [prevScrollY, setPrevScrollY] = useState(0);
   const isReducedMotion = useMatchMedia('(prefers-reduced-motion: reduce)');
-  const navRef = useRef<HTMLDivElement>(null);
 
   // D-Link navigation structure matching the website
   const dlinkNavigation = [
     {
       name: 'For Home',
       href: '/home',
-      submenu: ['Wi-Fi', '4G/5G', 'Cameras', 'Smart Home', 'Switches', 'Adapters', 'mydlink']
+      submenu: ['Wi-Fi', '4G/5G', 'Cameras', 'Smart Home', 'Switches', 'Adapters', 'mydlink'],
     },
     {
-      name: 'For Business', 
+      name: 'For Business',
       href: '/business',
-      submenu: ['Switches', 'Wireless', 'Business Routers', 'Nuclias', 'IP Surveillance', 'Accessories']
+      submenu: [
+        'Switches',
+        'Wireless',
+        'Business Routers',
+        'Nuclias',
+        'IP Surveillance',
+        'Accessories',
+      ],
     },
     {
       name: 'For Industry',
-      href: '/industry', 
-      submenu: ['4G / 5G M2M', 'D-ECS', 'Industry Switches', 'Accessories']
+      href: '/industry',
+      submenu: ['4G / 5G M2M', 'D-ECS', 'Industry Switches', 'Accessories'],
     },
     {
       name: 'Support',
       href: '/support',
-      submenu: ['Tech Support', 'Tech Alerts', 'FAQs', 'Services', 'Warranty', 'Contact', 'Support Portal']
+      submenu: [
+        'Tech Support',
+        'Tech Alerts',
+        'FAQs',
+        'Services',
+        'Warranty',
+        'Contact',
+        'Support Portal',
+      ],
     },
     {
       name: 'Resources',
       href: '/resources',
-      submenu: ['Brochures and Guides', 'Case Studies', 'Videos', 'Blog', 'Product Selector']
-    }
+      submenu: ['Brochures and Guides', 'Case Studies', 'Videos', 'Blog', 'Product Selector'],
+    },
   ];
 
   useEffect(() => {
@@ -125,12 +131,12 @@ export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
                         {item.name}
                         <ChevronDown className="ml-1 h-4 w-4" />
                       </button>
-                      
+
                       {/* Dropdown Menu */}
-                      <div 
+                      <div
                         className={cn(
-                          "absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible transition-all duration-200 z-50",
-                          activeDropdown === item.name && "opacity-100 visible"
+                          'absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible transition-all duration-200 z-50',
+                          activeDropdown === item.name && 'opacity-100 visible'
                         )}
                         onMouseEnter={() => setActiveDropdown(item.name)}
                         onMouseLeave={() => setActiveDropdown(null)}

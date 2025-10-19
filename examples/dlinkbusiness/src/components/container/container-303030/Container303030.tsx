@@ -5,7 +5,7 @@ import {
   isContainerPlaceholderEmpty,
 } from '@/components/container/container.util';
 import { cn } from '@/lib/utils';
-import { FlexItemProps } from 'components/flex/Flex.dev';
+import { FlexItemProps } from '@/components/flex/Flex.dev';
 
 export const Default: React.FC<Container303030Props> = (props) => {
   const { rendering, left, center, right } = props;

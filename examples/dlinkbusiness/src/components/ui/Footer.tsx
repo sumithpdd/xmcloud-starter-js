@@ -17,8 +17,8 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
         { name: 'Smart Home', href: '/home/smart-home' },
         { name: 'Switches', href: '/home/switches' },
         { name: 'Adapters', href: '/home/adapters' },
-        { name: 'mydlink', href: '/home/mydlink' }
-      ]
+        { name: 'mydlink', href: '/home/mydlink' },
+      ],
     },
     {
       title: 'For Business',
@@ -28,8 +28,8 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
         { name: 'Business Routers', href: '/business/routers' },
         { name: 'Nuclias', href: '/business/nuclias' },
         { name: 'IP Surveillance', href: '/business/surveillance' },
-        { name: 'Accessories', href: '/business/accessories' }
-      ]
+        { name: 'Accessories', href: '/business/accessories' },
+      ],
     },
     {
       title: 'For Industry',
@@ -37,8 +37,8 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
         { name: '4G / 5G M2M', href: '/industry/m2m' },
         { name: 'D-ECS', href: '/industry/decs' },
         { name: 'Industry Switches', href: '/industry/switches' },
-        { name: 'Accessories', href: '/industry/accessories' }
-      ]
+        { name: 'Accessories', href: '/industry/accessories' },
+      ],
     },
     {
       title: 'Support',
@@ -49,8 +49,8 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
         { name: 'Services', href: '/support/services' },
         { name: 'Warranty', href: '/support/warranty' },
         { name: 'Contact', href: '/support/contact' },
-        { name: 'Support Portal', href: '/support/portal' }
-      ]
+        { name: 'Support Portal', href: '/support/portal' },
+      ],
     },
     {
       title: 'Resources',
@@ -59,9 +59,9 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
         { name: 'Case Studies', href: '/resources/case-studies' },
         { name: 'Videos', href: '/resources/videos' },
         { name: 'Blog', href: '/resources/blog' },
-        { name: 'Product Selector', href: '/resources/product-selector' }
-      ]
-    }
+        { name: 'Product Selector', href: '/resources/product-selector' },
+      ],
+    },
   ];
 
   return (
@@ -73,7 +73,8 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
           <div className="lg:col-span-1">
             <Logo size="md" className="mb-4" />
             <p className="text-gray-400 text-sm leading-relaxed">
-              Connecting people and technology with innovative networking solutions for home, business, and industry.
+              Connecting people and technology with innovative networking solutions for home,
+              business, and industry.
             </p>
           </div>
 
@@ -104,21 +105,34 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Copyright */}
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © D-Link Corporation. All rights reserved. No. 289, Xinhu 3rd Road Neihu District, Taipei 11494 Taiwan
+              © D-Link Corporation. All rights reserved. No. 289, Xinhu 3rd Road Neihu District,
+              Taipei 11494 Taiwan
             </div>
 
             {/* Legal Links */}
             <div className="flex space-x-6">
-              <Link href="/privacy" className="text-gray-400 hover:text-accent transition-colors duration-200 text-sm">
+              <Link
+                href="/privacy"
+                className="text-gray-400 hover:text-accent transition-colors duration-200 text-sm"
+              >
                 Privacy
               </Link>
-              <Link href="/terms" className="text-gray-400 hover:text-accent transition-colors duration-200 text-sm">
+              <Link
+                href="/terms"
+                className="text-gray-400 hover:text-accent transition-colors duration-200 text-sm"
+              >
                 Terms of use
               </Link>
-              <Link href="/sitemap" className="text-gray-400 hover:text-accent transition-colors duration-200 text-sm">
+              <Link
+                href="/sitemap"
+                className="text-gray-400 hover:text-accent transition-colors duration-200 text-sm"
+              >
                 Sitemap
               </Link>
-              <Link href="/cookies" className="text-gray-400 hover:text-accent transition-colors duration-200 text-sm">
+              <Link
+                href="/cookies"
+                className="text-gray-400 hover:text-accent transition-colors duration-200 text-sm"
+              >
                 Cookie Declaration
               </Link>
             </div>

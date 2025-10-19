@@ -5,8 +5,8 @@ import {
   isContainerPlaceholderEmpty,
 } from '@/components/container/container.util';
 import { cn } from '@/lib/utils';
-import { FlexItemProps } from 'components/flex/Flex.dev';
-import { PlaceholderProps } from 'types/Placeholder.props';
+import { FlexItemProps } from '@/components/flex/Flex.dev';
+import { PlaceholderProps } from '@/types/Placeholder.props';
 import { ComponentProps } from '@/lib/component-props';
 import type { JSX } from 'react';
 

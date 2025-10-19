@@ -3,7 +3,7 @@ import NotFound from 'src/NotFound';
 import Layout from 'src/Layout';
 import { GetStaticProps } from 'next';
 import scConfig from 'sitecore.config';
-import client from 'lib/sitecore-client';
+import client from '@/lib/sitecore-client';
 import components from '.sitecore/component-map';
 import type { JSX } from 'react';
 

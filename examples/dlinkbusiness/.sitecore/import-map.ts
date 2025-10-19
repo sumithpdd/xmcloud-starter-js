@@ -6,6 +6,7 @@ import { combineImportEntries, defaultImportEntries } from '@sitecore-content-sd
 import { useState, useEffect, useRef, useCallback, useMemo, useId, useContext, createContext } from 'react';
 import React from 'react';
 import * as React_7214d18997ee864dd178de7b3a8430f6783e8b89 from 'react';
+import Link from 'next/link';
 import { Navigation } from 'src/components/ui/Navigation';
 import { Hero } from 'src/components/ui/Hero';
 import { Footer } from 'src/components/ui/Footer';
@@ -58,7 +59,6 @@ import * as ResizablePrimitive from 'react-resizable-panels';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import * as ProgressPrimitive from '@radix-ui/react-progress';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import Link from 'next/link';
 import { Logo } from 'src/components/ui/Logo';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import * as MenubarPrimitive from '@radix-ui/react-menubar';
@@ -101,7 +101,7 @@ import { useI18n } from 'next-localization';
 import { dictionaryKeys } from '@/variables/dictionary';
 import { SubmissionFormDefault } from 'src/components/submission-form/SubmissionFormDefault.dev';
 import { SubmissionFormCentered } from 'src/components/submission-form/SubmissionFormCentered.dev';
-import { VideoBase } from 'components/video/Video';
+import { VideoBase } from '@/components/video/Video';
 import { Carousel as Carousel_ce3eef99455ea7c2afccc224600715d860faabdd, CarouselContent as CarouselContent_ce3eef99455ea7c2afccc224600715d860faabdd, CarouselItem as CarouselItem_ce3eef99455ea7c2afccc224600715d860faabdd, CarouselNext as CarouselNext_ce3eef99455ea7c2afccc224600715d860faabdd, CarouselPrevious as CarouselPrevious_ce3eef99455ea7c2afccc224600715d860faabdd } from 'shadcd/components/ui/carousel';
 import { useToggleWithClickOutside } from '@/hooks/useToggleWithClickOutside';
 import { useContainerOffsets } from '@/hooks/useContainerOffsets';
@@ -200,7 +200,7 @@ import libphonenumber from 'google-libphonenumber';
 import { SuccessCompact } from 'src/components/forms/success/success-compact.dev';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import * as e from '@/lib/enum';
-import client from 'lib/sitecore-client';
+import client from '@/lib/sitecore-client';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
 import { pageView } from '@sitecore-cloudsdk/events/browser';
@@ -215,7 +215,6 @@ import { Input as Input_fd6b4a2bda3e621d8b1bf1f274f2f3eab050bdc8 } from 'shadcd/
 import useVisibility from '@/hooks/useVisibility';
 import ContentSdkRichText from '@/components/content-sdk-rich-text/ContentSdkRichText';
 import { useMediaQuery } from '@/hooks/use-media-query';
-import { cn as cn_b4c06b3218abd6b3fb46a1f6d67407cec902c758 } from 'lib/utils';
 import { useMotionValue as useMotionValue_ba76598305bcde329d554b95d1decf029a87d9f6, motion as motion_ba76598305bcde329d554b95d1decf029a87d9f6, useMotionTemplate } from 'motion/react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { Badge } from '@/components/ui/badge';
@@ -244,6 +243,12 @@ const importMap = [
       { name: 'createContext', value: createContext },
       { name: 'default', value: React },
       { name: '*', value: React_7214d18997ee864dd178de7b3a8430f6783e8b89 },
+    ]
+  },
+  {
+    module: 'next/link',
+    exports: [
+      { name: 'default', value: Link },
     ]
   },
   {
@@ -619,12 +624,6 @@ const importMap = [
     ]
   },
   {
-    module: 'next/link',
-    exports: [
-      { name: 'default', value: Link },
-    ]
-  },
-  {
     module: 'src/components/ui/Logo',
     exports: [
       { name: 'Logo', value: Logo },
@@ -891,7 +890,7 @@ const importMap = [
     ]
   },
   {
-    module: 'components/video/Video',
+    module: '@/components/video/Video',
     exports: [
       { name: 'VideoBase', value: VideoBase },
     ]
@@ -1515,7 +1514,7 @@ const importMap = [
     ]
   },
   {
-    module: 'lib/sitecore-client',
+    module: '@/lib/sitecore-client',
     exports: [
       { name: 'default', value: client },
     ]
@@ -1610,12 +1609,6 @@ const importMap = [
     module: '@/hooks/use-media-query',
     exports: [
       { name: 'useMediaQuery', value: useMediaQuery },
-    ]
-  },
-  {
-    module: 'lib/utils',
-    exports: [
-      { name: 'cn', value: cn_b4c06b3218abd6b3fb46a1f6d67407cec902c758 },
     ]
   },
   {

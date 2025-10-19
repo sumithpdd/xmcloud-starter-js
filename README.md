@@ -32,6 +32,33 @@ Both projects demonstrate modern web development practices with Sitecore's headl
 - **@sitecore-feaas/clientside** - Frontend as a Service
 - **@sitecore/components** - Sitecore component library
 
+### Data Templates
+
+#### D-Link Project Data Templates
+| Template Name | Page Design Assigned | Insert Options | Pages Used | Last Modified |
+|---------------|---------------------|----------------|------------|---------------|
+| Article Page | Default | SET | 0 | 17 October 2025 at 23:07 |
+| Audio Product Page | ProductPage | SET | 3 | 17 October 2025 at 23:07 |
+
+#### D-Link Business Project Data Templates
+| Template Name | Page Design Assigned | Insert Options | Pages Used | Last Modified |
+|---------------|---------------------|----------------|------------|---------------|
+| Detail Page | Default | SET | 0 | 17 October 2025 at 23:07 |
+| Home Page | Default | SET | 1 | 17 October 2025 at 23:06 |
+
+### Page Designs
+
+#### D-Link Business Project Page Designs
+- **Default**: Standard page layout design
+- **ProductPage**: Specialized layout for product pages
+
+### Partial Designs
+
+#### D-Link Business Project Partial Designs
+- **Footer**: Site-wide footer component
+- **Header**: Site-wide header component  
+- **ProductContent**: Product-specific content sections
+
 ## Project Structure
 
 ```

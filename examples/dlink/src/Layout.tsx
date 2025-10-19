@@ -4,8 +4,8 @@
 import React, { type JSX } from 'react';
 import Head from 'next/head';
 import { Placeholder, Page, Field, DesignLibrary, ImageField } from '@sitecore-content-sdk/nextjs';
-import Scripts from 'src/Scripts';
-import SitecoreStyles from 'components/content-sdk/SitecoreStyles';
+import Scripts from '@/Scripts';
+import SitecoreStyles from '@/components/content-sdk/SitecoreStyles';
 import { Figtree } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider/theme-provider.dev';
 import { VideoProvider } from './contexts/VideoContext';

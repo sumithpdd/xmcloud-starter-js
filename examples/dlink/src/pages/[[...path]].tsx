@@ -11,7 +11,7 @@ import {
 } from '@sitecore-content-sdk/nextjs';
 import { extractPath, handleEditorFastRefresh } from '@sitecore-content-sdk/nextjs/utils';
 import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing';
-import client from 'lib/sitecore-client';
+import client from '@/lib/sitecore-client';
 import components from '.sitecore/component-map';
 import scConfig from 'sitecore.config';
 import sites from '.sitecore/sites.json';

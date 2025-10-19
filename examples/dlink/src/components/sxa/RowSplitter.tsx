@@ -1,6 +1,6 @@
 import React, { JSX } from 'react';
 import { ComponentRendering, Placeholder } from '@sitecore-content-sdk/nextjs';
-import { ComponentProps } from 'lib/component-props';
+import { ComponentProps } from '@/lib/component-props';
 
 /**
  * The number of rows that can be inserted into the row splitter component.

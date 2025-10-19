@@ -7,7 +7,7 @@ import {
   Text as ContentSdkText,
 } from '@sitecore-content-sdk/nextjs';
 import { NoDataFallback } from '@/utils/NoDataFallback';
-import { VideoBase } from 'components/video/Video';
+import { VideoBase } from '@/components/video/Video';
 
 interface VideoParams {
   darkPlayIcon?: string;
