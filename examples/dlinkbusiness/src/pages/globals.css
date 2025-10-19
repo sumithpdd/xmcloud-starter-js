@@ -1,17 +1,19 @@
 @import '../assets/styles/globals.css';
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   html {
-    font-family: 'Open Sans', 'Segoe UI', SegueUI, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
     font-size: 1rem;
     line-height: 1.5;
     font-weight: 400;
-    color: var(--color-brand-black);
+    color: #000000;
   }
 
   * {
-    font-family: var(--font-body);
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
   }
 
   h1,
@@ -26,7 +28,7 @@
   .h5,
   h6,
   .h6 {
-    font-family: var(--font-heading);
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
     @apply leading-normal;
 
     span {
@@ -65,7 +67,7 @@
 
   /* BUTTONS */
   .btn {
-    font-family: var(--font-accent);
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
     @apply inline-block text-sm font-medium transition-colors;
 
     &.btn-primary {
