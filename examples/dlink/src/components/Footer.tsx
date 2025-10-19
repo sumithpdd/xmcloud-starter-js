@@ -2,97 +2,85 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="nhsp-footer">
+    <footer className="dlink-footer">
       <div className="container">
         {/* Main Footer Content */}
-        <div className="nhsp-footer-main">
+        <div className="dlink-footer-main">
           <div className="row">
-            {/* NHSP For You Section */}
+            {/* For Home Section */}
             <div className="col-lg-3 col-md-6 mb-4">
-              <h5 className="footer-title">NHSP For You</h5>
+              <h5 className="footer-title">For Home</h5>
               <ul className="footer-links">
-                <li><a href="#joining-nhsp">Joining NHSP</a></li>
-                <li><a href="#work-shifts">I work shifts using NHSP</a></li>
-                <li><a href="#manage-shifts">I manage shifts using NHSP</a></li>
-                <li><a href="#partnering-nhsp">Partnering with NHSP</a></li>
-                <li><a href="#apprenticeship">Public Sector Apprenticeship</a></li>
-                <li><a href="#corporate-careers">Corporate Careers at NHSP</a></li>
+                <li><a href="/home/wifi">Wi-Fi</a></li>
+                <li><a href="/home/4g-5g">4G/5G</a></li>
+                <li><a href="/home/cameras">Cameras</a></li>
+                <li><a href="/home/smart-home">Smart Home</a></li>
+                <li><a href="/home/switches">Switches</a></li>
+                <li><a href="/home/adapters">Adapters</a></li>
+                <li><a href="/home/mydlink">mydlink</a></li>
               </ul>
             </div>
 
-            {/* About NHSP Section */}
+            {/* For Business Section */}
             <div className="col-lg-3 col-md-6 mb-4">
-              <h5 className="footer-title">About NHSP</h5>
+              <h5 className="footer-title">For Business</h5>
               <ul className="footer-links">
-                <li><a href="#carbon-reduction">Carbon Reduction Plan</a></li>
-                <li><a href="#our-values">Our values</a></li>
-                <li><a href="#digital-marketplace">Digital Marketplace Services</a></li>
-                <li><a href="#equality-diversity">Equality, Diversity and Inclusion</a></li>
-                <li><a href="#freedom-information">Freedom of Information Request</a></li>
-                <li><a href="#gender-pay-gap">Gender Pay Gap</a></li>
-                <li><a href="#modern-slavery">Modern Slavery Statement</a></li>
-                <li><a href="#system-status">System Status</a></li>
-                <li><a href="#tax-strategy">Tax strategy statement</a></li>
+                <li><a href="/business/switches">Switches</a></li>
+                <li><a href="/business/wireless">Wireless</a></li>
+                <li><a href="/business/routers">Business Routers</a></li>
+                <li><a href="/business/nuclias">Nuclias</a></li>
+                <li><a href="/business/surveillance">IP Surveillance</a></li>
+                <li><a href="/business/accessories">Accessories</a></li>
               </ul>
             </div>
 
-            {/* Contact Information */}
+            {/* For Industry Section */}
             <div className="col-lg-3 col-md-6 mb-4">
-              <h5 className="footer-title">Contact Information</h5>
-              <div className="footer-contact">
-                <p className="address">
-                  NHS Professionals Ltd<br />
-                  Breakspear Park<br />
-                  Breakspear Way<br />
-                  Hemel Hempstead<br />
-                  HP2 4TZ
-                </p>
-                <p className="registration">
-                  Registered in England & Wales no. 6704614
-                </p>
-              </div>
+              <h5 className="footer-title">For Industry</h5>
+              <ul className="footer-links">
+                <li><a href="/industry/m2m">4G / 5G M2M</a></li>
+                <li><a href="/industry/decs">D-ECS</a></li>
+                <li><a href="/industry/switches">Industry Switches</a></li>
+                <li><a href="/industry/accessories">Accessories</a></li>
+              </ul>
             </div>
 
-            {/* Social Media & Additional Links */}
+            {/* Support & Resources Section */}
             <div className="col-lg-3 col-md-6 mb-4">
-              <h5 className="footer-title">Connect With Us</h5>
-              <div className="social-links">
-                <a href="#" className="social-link facebook" aria-label="Facebook">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" className="social-link instagram" aria-label="Instagram">
-                  <i className="fab fa-instagram"></i>
-                </a>
-                <a href="#" className="social-link linkedin" aria-label="LinkedIn">
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-                <a href="#" className="social-link twitter" aria-label="Twitter">
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a href="#" className="social-link youtube" aria-label="YouTube">
-                  <i className="fab fa-youtube"></i>
-                </a>
-              </div>
+              <h5 className="footer-title">Support & Resources</h5>
+              <ul className="footer-links">
+                <li><a href="/support/tech-support">Tech Support</a></li>
+                <li><a href="/support/tech-alerts">Tech Alerts</a></li>
+                <li><a href="/support/faqs">FAQs</a></li>
+                <li><a href="/support/services">Services</a></li>
+                <li><a href="/support/warranty">Warranty</a></li>
+                <li><a href="/support/contact">Contact</a></li>
+                <li><a href="/support/portal">Support Portal</a></li>
+                <li><a href="/resources/brochures">Brochures and Guides</a></li>
+                <li><a href="/resources/case-studies">Case Studies</a></li>
+                <li><a href="/resources/videos">Videos</a></li>
+                <li><a href="/resources/blog">Blog</a></li>
+                <li><a href="/resources/product-selector">Product Selector</a></li>
+              </ul>
             </div>
           </div>
         </div>
 
         {/* Footer Bottom */}
-        <div className="nhsp-footer-bottom">
+        <div className="dlink-footer-bottom">
           <div className="row align-items-center">
             <div className="col-md-6">
               <div className="footer-bottom-links">
-                <a href="#accessibility">Accessibility</a>
-                <a href="#cookies-privacy">Cookies and privacy</a>
-                <a href="#press-media">Press and media</a>
-                <a href="#privacy-notice">Privacy Notice</a>
-                <a href="#terms-conditions">Terms and conditions</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms of use</a>
+                <a href="/sitemap">Sitemap</a>
+                <a href="/cookies">Cookie Declaration</a>
               </div>
             </div>
             <div className="col-md-6 text-md-end">
               <p className="copyright">
-                © 2025 NHS Professionals<br />
-                Registered in England & Wales no. 6704614
+                © D-Link Corporation. All rights reserved.<br />
+                No. 289, Xinhu 3rd Road Neihu District, Taipei 11494 Taiwan
               </p>
             </div>
           </div>

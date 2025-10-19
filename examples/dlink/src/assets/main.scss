@@ -2,94 +2,52 @@
 // • Bootstrap: foundational grid system, utilities, and core components.
 @import "bootstrap/scss/bootstrap";
 
-// NHSP Color Variables
+// D-Link Color Variables (based on dlink.com)
 :root {
-  --nhsp-blue: #005EB8;
-  --nhsp-dark-blue: #003087;
-  --nhsp-light-blue: #41B6E6;
-  --nhsp-green: #00A499;
-  --nhsp-white: #FFFFFF;
-  --nhsp-light-gray: #F8F9FA;
-  --nhsp-gray: #6C757D;
-  --nhsp-dark-gray: #343A40;
-  --nhsp-red: #DA020E;
-  --nhsp-yellow: #FFB81C;
+  --dlink-primary: #0051ff;
+  --dlink-primary-hover: #003dcc;
+  --dlink-secondary: #f5f5f5;
+  --dlink-accent: #c8ff00;
+  --dlink-white: #ffffff;
+  --dlink-black: #000000;
+  --dlink-gray: #525252;
+  --dlink-light-gray: #f5f5f5;
+  --dlink-dark-gray: #171717;
+  --dlink-border: #d4d4d4;
+  --dlink-muted: #a3a3a3;
 }
 
-// NHSP Header Styles
-.nhsp-header {
-  background: var(--nhsp-white);
+// D-Link Header Styles
+.dlink-header {
+  background: var(--dlink-white);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
 
-  .nhsp-top-bar {
-    background: var(--nhsp-light-gray);
-    padding: 8px 0;
-    font-size: 14px;
-    border-bottom: 1px solid #e9ecef;
-
-    .nhsp-contact {
-      .phone {
-        color: var(--nhsp-blue);
-        font-weight: 600;
-      }
-    }
-
-    .nhsp-top-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-
-      a {
-        color: var(--nhsp-gray);
-        text-decoration: none;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: var(--nhsp-blue);
-        }
-
-        &.login-link {
-          background: var(--nhsp-blue);
-          color: var(--nhsp-white);
-          padding: 6px 12px;
-          border-radius: 4px;
-          font-weight: 500;
-
-          &:hover {
-            background: var(--nhsp-dark-blue);
-            color: var(--nhsp-white);
-          }
-        }
-      }
-    }
-  }
-
-  .nhsp-main-nav {
+  .dlink-main-nav {
     padding: 15px 0;
 
-    .nhsp-logo {
+    .dlink-logo {
       .logo-img {
         height: 50px;
         width: auto;
       }
     }
 
-    .nhsp-nav-menu {
+    .dlink-nav-menu {
       .nav-item {
         position: relative;
 
         .nav-link {
-          color: var(--nhsp-dark-gray);
+          color: var(--dlink-black);
           font-weight: 500;
           padding: 10px 15px;
           text-decoration: none;
           transition: color 0.3s ease;
 
           &:hover {
-            color: var(--nhsp-blue);
+            color: var(--dlink-primary);
           }
 
           &.dropdown-toggle::after {
@@ -98,29 +56,40 @@
         }
 
         .dropdown-menu {
-          background: var(--nhsp-white);
-          border: 1px solid #e9ecef;
-          border-radius: 4px;
+          background: var(--dlink-white);
+          border: 1px solid var(--dlink-border);
+          border-radius: 8px;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           padding: 10px 0;
           min-width: 250px;
 
           .dropdown-item {
-            color: var(--nhsp-dark-gray);
+            color: var(--dlink-black);
             padding: 8px 20px;
             text-decoration: none;
             transition: background-color 0.3s ease;
 
             &:hover {
-              background: var(--nhsp-light-gray);
-              color: var(--nhsp-blue);
+              background: var(--dlink-secondary);
+              color: var(--dlink-primary);
             }
           }
         }
       }
     }
 
-    .nhsp-mobile-toggle {
+    .dlink-language-selector {
+      .language-select {
+        background: var(--dlink-white);
+        border: 1px solid var(--dlink-border);
+        border-radius: 4px;
+        padding: 5px 10px;
+        color: var(--dlink-black);
+        font-size: 14px;
+      }
+    }
+
+    .dlink-mobile-toggle {
       background: none;
       border: none;
       padding: 5px;
@@ -130,28 +99,28 @@
         display: block;
         width: 25px;
         height: 3px;
-        background: var(--nhsp-blue);
+        background: var(--dlink-primary);
         margin: 3px 0;
         transition: 0.3s;
       }
     }
 
-    .nhsp-mobile-menu {
-      background: var(--nhsp-white);
-      border-top: 1px solid #e9ecef;
+    .dlink-mobile-menu {
+      background: var(--dlink-white);
+      border-top: 1px solid var(--dlink-border);
       padding: 20px 0;
 
       .mobile-nav-content {
         .mobile-nav-link {
           display: block;
-          color: var(--nhsp-dark-gray);
+          color: var(--dlink-black);
           text-decoration: none;
           padding: 10px 0;
-          border-bottom: 1px solid #f1f3f4;
+          border-bottom: 1px solid var(--dlink-light-gray);
           transition: color 0.3s ease;
 
           &:hover {
-            color: var(--nhsp-blue);
+            color: var(--dlink-primary);
           }
 
           &:last-child {
@@ -163,21 +132,21 @@
   }
 }
 
-// NHSP Footer Styles
-.nhsp-footer {
-  background: var(--nhsp-dark-gray);
-  color: var(--nhsp-white);
+// D-Link Footer Styles
+.dlink-footer {
+  background: var(--dlink-dark-gray);
+  color: var(--dlink-white);
   padding: 40px 0 20px;
 
-  .nhsp-footer-main {
+  .dlink-footer-main {
     margin-bottom: 30px;
 
     .footer-title {
-      color: var(--nhsp-white);
+      color: var(--dlink-white);
       font-size: 18px;
       font-weight: 600;
       margin-bottom: 20px;
-      border-bottom: 2px solid var(--nhsp-blue);
+      border-bottom: 2px solid var(--dlink-primary);
       padding-bottom: 10px;
     }
 
@@ -190,63 +159,21 @@
         margin-bottom: 8px;
 
         a {
-          color: #b8bcc8;
+          color: var(--dlink-muted);
           text-decoration: none;
           transition: color 0.3s ease;
           font-size: 14px;
 
           &:hover {
-            color: var(--nhsp-light-blue);
+            color: var(--dlink-primary);
           }
-        }
-      }
-    }
-
-    .footer-contact {
-      .address {
-        color: #b8bcc8;
-        font-size: 14px;
-        line-height: 1.6;
-        margin-bottom: 15px;
-      }
-
-      .registration {
-        color: #b8bcc8;
-        font-size: 12px;
-        font-style: italic;
-      }
-    }
-
-    .social-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-
-      .social-link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: var(--nhsp-blue);
-        color: var(--nhsp-white);
-        border-radius: 50%;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-          background: var(--nhsp-light-blue);
-        }
-
-        i {
-          font-size: 16px;
         }
       }
     }
   }
 
-  .nhsp-footer-bottom {
-    border-top: 1px solid #495057;
+  .dlink-footer-bottom {
+    border-top: 1px solid var(--dlink-gray);
     padding-top: 20px;
 
     .footer-bottom-links {
@@ -255,19 +182,19 @@
       gap: 20px;
 
       a {
-        color: #b8bcc8;
+        color: var(--dlink-muted);
         text-decoration: none;
         font-size: 12px;
         transition: color 0.3s ease;
 
         &:hover {
-          color: var(--nhsp-light-blue);
+          color: var(--dlink-primary);
         }
       }
     }
 
     .copyright {
-      color: #b8bcc8;
+      color: var(--dlink-muted);
       font-size: 12px;
       margin: 0;
       line-height: 1.4;
@@ -277,31 +204,23 @@
 
 // Responsive Design
 @media (max-width: 768px) {
-  .nhsp-header {
-    .nhsp-top-bar {
-      .nhsp-top-links {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-      }
-    }
-
-    .nhsp-main-nav {
-      .nhsp-nav-menu {
+  .dlink-header {
+    .dlink-main-nav {
+      .dlink-nav-menu {
         .nav-item {
           .dropdown-menu {
             position: static;
             box-shadow: none;
             border: none;
-            background: var(--nhsp-light-gray);
+            background: var(--dlink-light-gray);
           }
         }
       }
     }
   }
 
-  .nhsp-footer {
-    .nhsp-footer-bottom {
+  .dlink-footer {
+    .dlink-footer-bottom {
       .footer-bottom-links {
         justify-content: center;
         margin-bottom: 15px;
@@ -318,46 +237,46 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: var(--nhsp-dark-gray);
+  color: var(--dlink-black);
 }
 
 // Button Styles
-.btn-nhsp-primary {
-  background-color: var(--nhsp-blue);
-  border-color: var(--nhsp-blue);
-  color: var(--nhsp-white);
+.btn-dlink-primary {
+  background-color: var(--dlink-primary);
+  border-color: var(--dlink-primary);
+  color: var(--dlink-white);
   font-weight: 500;
   padding: 10px 20px;
   border-radius: 4px;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: var(--nhsp-dark-blue);
-    border-color: var(--nhsp-dark-blue);
-    color: var(--nhsp-white);
+    background-color: var(--dlink-primary-hover);
+    border-color: var(--dlink-primary-hover);
+    color: var(--dlink-white);
   }
 }
 
-.btn-nhsp-secondary {
+.btn-dlink-secondary {
   background-color: transparent;
-  border-color: var(--nhsp-blue);
-  color: var(--nhsp-blue);
+  border-color: var(--dlink-primary);
+  color: var(--dlink-primary);
   font-weight: 500;
   padding: 10px 20px;
   border-radius: 4px;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: var(--nhsp-blue);
-    border-color: var(--nhsp-blue);
-    color: var(--nhsp-white);
+    background-color: var(--dlink-primary);
+    border-color: var(--dlink-primary);
+    color: var(--dlink-white);
   }
 }
 
 // Card Styles
-.nhsp-card {
-  background: var(--nhsp-white);
-  border: 1px solid #e9ecef;
+.dlink-card {
+  background: var(--dlink-white);
+  border: 1px solid var(--dlink-border);
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -369,27 +288,28 @@ body {
 }
 
 // Text Colors
-.text-nhsp-blue {
-  color: var(--nhsp-blue) !important;
+.text-dlink-primary {
+  color: var(--dlink-primary) !important;
 }
 
-.text-nhsp-green {
-  color: var(--nhsp-green) !important;
+.text-dlink-accent {
+  color: var(--dlink-accent) !important;
 }
 
-.text-nhsp-red {
-  color: var(--nhsp-red) !important;
+.text-dlink-muted {
+  color: var(--dlink-muted) !important;
 }
 
 // Background Colors
-.bg-nhsp-light {
-  background-color: var(--nhsp-light-gray) !important;
+.bg-dlink-light {
+  background-color: var(--dlink-light-gray) !important;
 }
 
-.bg-nhsp-blue {
-  background-color: var(--nhsp-blue) !important;
+.bg-dlink-primary {
+  background-color: var(--dlink-primary) !important;
 }
 
-.bg-nhsp-green {
-  background-color: var(--nhsp-green) !important;
+.bg-dlink-accent {
+  background-color: var(--dlink-accent) !important;
+}
 }
