@@ -4,8 +4,11 @@ import { combineImportEntries, defaultImportEntries } from '@sitecore-content-sd
 // end of built-in imports
 
 import { useState, useEffect, useRef, useCallback, useMemo, useId, useContext, createContext } from 'react';
-import React_c6c9d5c02e9182eb22f40bc4cf21fc656783d24a from 'react';
-import * as React from 'react';
+import React from 'react';
+import * as React_7214d18997ee864dd178de7b3a8430f6783e8b89 from 'react';
+import { Navigation } from 'src/components/ui/Navigation';
+import { Hero } from 'src/components/ui/Hero';
+import { Footer } from 'src/components/ui/Footer';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -25,7 +28,7 @@ import { Default as Default_e49b8b0315b5c2e1dfc6d29366b41ef250099b77 } from 'src
 import { isMobile } from '@/utils/isMobile';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { cn, getYouTubeThumbnail } from '@/lib/utils';
-import { Text, useSitecore, Link, Placeholder, RichText, NextImage, withDatasourceCheck, Image, getFieldValue, CdpHelper } from '@sitecore-content-sdk/nextjs';
+import { Text, useSitecore, Link as Link_8a80e63291fea86e0744df19113dc44bec187216, Placeholder, RichText, NextImage, withDatasourceCheck, Image, getFieldValue, CdpHelper } from '@sitecore-content-sdk/nextjs';
 import { Default as Default_86213dc9d44683259b98a62fc55d1fe1127767c5 } from '@/components/image/ImageWrapper.dev';
 import { ButtonBase, EditableButton } from '@/components/button-component/ButtonComponent';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
@@ -55,6 +58,8 @@ import * as ResizablePrimitive from 'react-resizable-panels';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import * as ProgressPrimitive from '@radix-ui/react-progress';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
+import Link from 'next/link';
+import { Logo } from 'src/components/ui/Logo';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import * as MenubarPrimitive from '@radix-ui/react-menubar';
 import * as LabelPrimitive from '@radix-ui/react-label';
@@ -90,7 +95,6 @@ import { TextBanner02 } from 'src/components/text-banner/TextBanner02.dev';
 import { debounce } from 'radash';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Default as Default_f14713561e7127543a30e797b8ea6464ba634f1f } from 'src/components/testimonial-carousel/TestimonialCarouselItem';
-import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
 import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '@/components/ui/form';
 import { Default as Default_e9863667c2ea6342779092881240f1114db60866 } from '@/components/forms/submitinfo/SubmitInfoForm.dev';
 import { useI18n } from 'next-localization';
@@ -238,8 +242,26 @@ const importMap = [
       { name: 'useId', value: useId },
       { name: 'useContext', value: useContext },
       { name: 'createContext', value: createContext },
-      { name: 'default', value: React_c6c9d5c02e9182eb22f40bc4cf21fc656783d24a },
-      { name: '*', value: React },
+      { name: 'default', value: React },
+      { name: '*', value: React_7214d18997ee864dd178de7b3a8430f6783e8b89 },
+    ]
+  },
+  {
+    module: 'src/components/ui/Navigation',
+    exports: [
+      { name: 'Navigation', value: Navigation },
+    ]
+  },
+  {
+    module: 'src/components/ui/Hero',
+    exports: [
+      { name: 'Hero', value: Hero },
+    ]
+  },
+  {
+    module: 'src/components/ui/Footer',
+    exports: [
+      { name: 'Footer', value: Footer },
     ]
   },
   {
@@ -400,7 +422,7 @@ const importMap = [
     exports: [
       { name: 'Text', value: Text },
       { name: 'useSitecore', value: useSitecore },
-      { name: 'Link', value: Link },
+      { name: 'Link', value: Link_8a80e63291fea86e0744df19113dc44bec187216 },
       { name: 'Placeholder', value: Placeholder },
       { name: 'RichText', value: RichText },
       { name: 'NextImage', value: NextImage },
@@ -594,6 +616,18 @@ const importMap = [
     module: '@radix-ui/react-popover',
     exports: [
       { name: '*', value: PopoverPrimitive },
+    ]
+  },
+  {
+    module: 'next/link',
+    exports: [
+      { name: 'default', value: Link },
+    ]
+  },
+  {
+    module: 'src/components/ui/Logo',
+    exports: [
+      { name: 'Logo', value: Logo },
     ]
   },
   {
@@ -813,12 +847,6 @@ const importMap = [
     module: 'src/components/testimonial-carousel/TestimonialCarouselItem',
     exports: [
       { name: 'Default', value: Default_f14713561e7127543a30e797b8ea6464ba634f1f },
-    ]
-  },
-  {
-    module: 'next/link',
-    exports: [
-      { name: 'default', value: Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 },
     ]
   },
   {

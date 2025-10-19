@@ -5,7 +5,7 @@ import type React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Link as ContentSdkLink } from '@sitecore-content-sdk/nextjs';
-import { Menu } from 'lucide-react';
+import { Menu, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import {
@@ -18,23 +18,45 @@ import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 import type { GlobalHeaderProps } from './global-header.props';
 import { Button } from '@/components/ui/button';
 import { useMatchMedia } from '@/hooks/use-match-media';
-import { AnimatedHoverNav } from '@/components/ui/animated-hover-nav';
 
 export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
   const { fields, isPageEditing } = props ?? {};
   const { logo, primaryNavigationLinks, headerContact } = fields?.data?.item ?? {};
   const [isOpen, setIsOpen] = useState(false);
-  const [sheetAnimationComplete, setSheetAnimationComplete] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [visible, setVisible] = useState(true);
   const [prevScrollY, setPrevScrollY] = useState(0);
   const isReducedMotion = useMatchMedia('(prefers-reduced-motion: reduce)');
   const navRef = useRef<HTMLDivElement>(null);
-  // Reset sheet animation state when sheet closes
-  useEffect(() => {
-    if (!isOpen) {
-      setSheetAnimationComplete(false);
+
+  // D-Link navigation structure matching the website
+  const dlinkNavigation = [
+    {
+      name: 'For Home',
+      href: '/home',
+      submenu: ['Wi-Fi', '4G/5G', 'Cameras', 'Smart Home', 'Switches', 'Adapters', 'mydlink']
+    },
+    {
+      name: 'For Business', 
+      href: '/business',
+      submenu: ['Switches', 'Wireless', 'Business Routers', 'Nuclias', 'IP Surveillance', 'Accessories']
+    },
+    {
+      name: 'For Industry',
+      href: '/industry', 
+      submenu: ['4G / 5G M2M', 'D-ECS', 'Industry Switches', 'Accessories']
+    },
+    {
+      name: 'Support',
+      href: '/support',
+      submenu: ['Tech Support', 'Tech Alerts', 'FAQs', 'Services', 'Warranty', 'Contact', 'Support Portal']
+    },
+    {
+      name: 'Resources',
+      href: '/resources',
+      submenu: ['Brochures and Guides', 'Case Studies', 'Videos', 'Blog', 'Product Selector']
     }
-  }, [isOpen]);
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,162 +76,134 @@ export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollY]);
 
-  // Sheet animation duration in seconds
-  const sheetAnimationDuration = isReducedMotion ? 0 : 0.3;
-
   return (
     <AnimatePresence mode="wait" data-component="GlobalHeader">
       <motion.header
         initial={{ opacity: 1 }}
         animate={{ opacity: visible ? 1 : 0 }}
+        exit={{ opacity: 0 }}
         transition={{ duration: isReducedMotion ? 0 : 0.2 }}
         className={cn(
-          'bg-background/80 @container sticky top-0 z-50 flex h-[96px] w-full items-center justify-center border-b backdrop-blur-md'
+          'fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm',
+          !visible && 'pointer-events-none'
         )}
       >
-        <div className="@xl:px-8 mx-auto flex h-16 w-full max-w-screen-2xl items-center px-4">
-          <div className="mr-8">
-            <div className="flex w-[112px] items-stretch space-x-2 [&_.image-container]:w-full">
-              {!isPageEditing ? (
-                <Link href="/" className="" prefetch={false}>
+        <nav className="bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              {/* Logo */}
+              <div className="flex-shrink-0">
+                {!isPageEditing ? (
+                  <Link href="/" className="flex items-center" prefetch={false}>
+                    <ImageWrapper
+                      image={logo?.jsonValue}
+                      className="h-8 w-auto object-contain"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      alt="D-Link"
+                    />
+                  </Link>
+                ) : (
                   <ImageWrapper
                     image={logo?.jsonValue}
-                    className="w-full object-contain"
+                    className="h-8 w-auto object-contain"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    alt="Home"
-                  />
-                </Link>
-              ) : (
-                <ImageWrapper
-                  image={logo?.jsonValue}
-                  className="w-full object-contain"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  alt="Home"
-                />
-              )}
-            </div>
-          </div>
-          {/* Desktop Navigation */}
-          <div className="@lg:flex @lg:flex-1 hidden" ref={navRef}>
-            <NavigationMenu className="w-full">
-              <div className="relative w-full">
-                <AnimatedHoverNav
-                  mobileBreakpoint="md"
-                  parentRef={navRef}
-                  indicatorClassName="bg-primary rounded-default absolute inset-0 -z-10 block"
-                >
-                  <NavigationMenuList className="flex w-full justify-between">
-                    {primaryNavigationLinks?.targetItems &&
-                      primaryNavigationLinks.targetItems.length > 0 &&
-                      primaryNavigationLinks?.targetItems.map((item, index) => (
-                        <NavigationMenuItem key={`${item.link?.jsonValue?.value?.text}-${index}`}>
-                          <Button
-                            variant="ghost"
-                            asChild
-                            className="font-body bg-transparent text-base font-medium hover:bg-transparent"
-                          >
-                            <ContentSdkLink field={item.link?.jsonValue} prefetch={false} />
-                          </Button>
-                        </NavigationMenuItem>
-                      ))}
-                  </NavigationMenuList>
-                </AnimatedHoverNav>
-              </div>
-            </NavigationMenu>
-          </div>
-          {/* Desktop CTA */}
-          {headerContact?.jsonValue?.value && (
-            <div className="@lg:flex @lg:items-center @lg:justify-end hidden">
-              <Button asChild className="font-heading text-base font-medium">
-                <ContentSdkLink field={headerContact.jsonValue} prefetch={false} />
-              </Button>
-            </div>
-          )}
-          {/* Mobile Navigation */}
-          <div className="@lg:hidden flex flex-1 justify-end">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <AnimatePresence>
-                {isOpen && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="bg-background/30 fixed inset-0 z-40 backdrop-blur-sm"
-                    onClick={() => setIsOpen(false)}
+                    alt="D-Link"
                   />
                 )}
-              </AnimatePresence>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="hover:bg-transparent [&_svg]:size-8">
-                  <Menu />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="bottom"
-                className="bg-background/60 h-[100dvh] border-t-0 p-0 backdrop-blur-md [&>button_svg]:size-8"
-              >
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                  transition={{
-                    duration: sheetAnimationDuration,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  onAnimationComplete={() => setSheetAnimationComplete(true)}
-                  className="my-12 flex h-full w-full flex-col p-6"
-                >
-                  <AnimatePresence>
-                    {sheetAnimationComplete && (
-                      <motion.nav
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="flex flex-col space-y-4"
+              </div>
+
+              {/* Desktop Navigation */}
+              <div className="hidden md:block">
+                <div className="ml-10 flex items-baseline space-x-8">
+                  {dlinkNavigation.map((item) => (
+                    <div key={item.name} className="relative group">
+                      <button
+                        className="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center"
+                        onMouseEnter={() => setActiveDropdown(item.name)}
+                        onMouseLeave={() => setActiveDropdown(null)}
                       >
-                        {primaryNavigationLinks?.targetItems &&
-                          primaryNavigationLinks.targetItems.length > 0 &&
-                          primaryNavigationLinks?.targetItems.map((item, index) => (
-                            <motion.div
-                              key={`${item.link?.jsonValue?.value?.text}-mobile`}
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{
-                                delay: 0.05 * index,
-                                duration: isReducedMotion ? 0 : 0.3,
-                              }}
-                              className="flex justify-center"
-                            >
-                              <Button variant="ghost" asChild onClick={() => setIsOpen(false)}>
-                                <ContentSdkLink field={item.link?.jsonValue} prefetch={false} />
-                              </Button>
-                            </motion.div>
-                          ))}
-                        {headerContact?.jsonValue?.value && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                              delay: primaryNavigationLinks?.targetItems?.length
-                                ? 0.05 * primaryNavigationLinks.targetItems.length
-                                : 0,
-                              duration: isReducedMotion ? 0 : 0.3,
-                            }}
-                            className="flex justify-center"
-                          >
-                            <Button asChild onClick={() => setIsOpen(false)}>
-                              <ContentSdkLink field={headerContact.jsonValue} prefetch={false} />
-                            </Button>
-                          </motion.div>
+                        {item.name}
+                        <ChevronDown className="ml-1 h-4 w-4" />
+                      </button>
+                      
+                      {/* Dropdown Menu */}
+                      <div 
+                        className={cn(
+                          "absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible transition-all duration-200 z-50",
+                          activeDropdown === item.name && "opacity-100 visible"
                         )}
-                      </motion.nav>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              </SheetContent>
-            </Sheet>
+                        onMouseEnter={() => setActiveDropdown(item.name)}
+                        onMouseLeave={() => setActiveDropdown(null)}
+                      >
+                        <div className="py-1">
+                          {item.submenu.map((subItem) => (
+                            <Link
+                              key={subItem}
+                              href={`${item.href}/${subItem.toLowerCase().replace(/\s+/g, '-')}`}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors duration-200"
+                            >
+                              {subItem}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Language Selector */}
+              <div className="hidden md:flex items-center space-x-2">
+                <span className="text-sm text-gray-500">GB</span>
+                <span className="text-gray-300">|</span>
+                <span className="text-sm text-primary font-medium">EN</span>
+              </div>
+
+              {/* Mobile menu button */}
+              <div className="md:hidden">
+                <button
+                  type="button"
+                  className="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <span className="sr-only">Open main menu</span>
+                  <Menu className="block h-6 w-6" />
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+
+          {/* Mobile menu */}
+          {isOpen && (
+            <div className="md:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50">
+                {dlinkNavigation.map((item) => (
+                  <div key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-gray-700 hover:text-primary block px-3 py-2 text-base font-medium"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                    <div className="pl-4 space-y-1">
+                      {item.submenu.slice(0, 3).map((subItem) => (
+                        <Link
+                          key={subItem}
+                          href={`${item.href}/${subItem.toLowerCase().replace(/\s+/g, '-')}`}
+                          className="text-gray-600 hover:text-primary block px-3 py-1 text-sm"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {subItem}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </nav>
       </motion.header>
     </AnimatePresence>
   );

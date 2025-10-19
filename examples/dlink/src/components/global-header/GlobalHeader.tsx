@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { Menu, ChevronDown } from 'lucide-react';
 import { Link as SitecoreLink, useSitecore, Image } from '@sitecore-content-sdk/nextjs';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -21,11 +21,41 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
   const { logo, headerContact } = fields?.data?.item ?? {};
   const links = fields?.data?.item?.children?.results ?? [];
   const [isOpen, setIsOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const { page } = useSitecore();
   const pageEditing = page.mode.isEditing;
 
   const [visible, setVisible] = useState(true);
   const [prevScrollY, setPrevScrollY] = useState(0);
+
+  // D-Link navigation structure matching the website
+  const dlinkNavigation = [
+    {
+      name: 'For Home',
+      href: '/home',
+      submenu: ['Wi-Fi', '4G/5G', 'Cameras', 'Smart Home', 'Switches', 'Adapters', 'mydlink']
+    },
+    {
+      name: 'For Business', 
+      href: '/business',
+      submenu: ['Switches', 'Wireless', 'Business Routers', 'Nuclias', 'IP Surveillance', 'Accessories']
+    },
+    {
+      name: 'For Industry',
+      href: '/industry', 
+      submenu: ['4G / 5G M2M', 'D-ECS', 'Industry Switches', 'Accessories']
+    },
+    {
+      name: 'Support',
+      href: '/support',
+      submenu: ['Tech Support', 'Tech Alerts', 'FAQs', 'Services', 'Warranty', 'Contact', 'Support Portal']
+    },
+    {
+      name: 'Resources',
+      href: '/resources',
+      submenu: ['Brochures and Guides', 'Case Studies', 'Videos', 'Blog', 'Product Selector']
+    }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,121 +80,121 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
       <motion.header
         initial={{ opacity: 1 }}
         animate={{ opacity: visible ? 1 : 0 }}
+        exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
         className={cn(
-          'bg-background @container sticky top-0 z-50 flex h-[96px] w-full items-center justify-center border-b'
+          'fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm',
+          !visible && 'pointer-events-none'
         )}
       >
-        <div className="@xl:px-8 mx-auto flex h-16 w-full max-w-screen-xl items-center px-4">
-          <div className="mr-8">
-            {pageEditing ? (
-              <Image field={logo?.jsonValue} className="h-10 w-auto" />
-            ) : (
-              logo?.jsonValue?.value && (
-                <Link
-                  href="/"
-                  className="flex w-[164px] items-stretch space-x-2 [&_.image-container]:w-full"
-                >
-                  <Logo logo={logo?.jsonValue} className="w-full" />
-                </Link>
-              )
-            )}
-          </div>
-          {/* Desktop Navigation */}
-          <div className="@lg:flex @lg:flex-1 hidden">
-            <NavigationMenu>
-              <NavigationMenuList>
-                {links &&
-                  links.length > 0 &&
-                  links.map((item, i) => (
-                    <Fragment key={`desktop-nav-menu-list-item-${i}`}>
-                      {pageEditing ? (
-                        <Button variant="ghost" asChild className="font-body text-base font-medium">
-                          <SitecoreLink field={item.link?.jsonValue} />
-                        </Button>
-                      ) : (
-                        item.link?.jsonValue?.value?.href && (
-                          <NavigationMenuItem>
-                            <Button
-                              variant="ghost"
-                              asChild
-                              className="font-body text-base font-medium"
-                            >
-                              <Link href={item.link.jsonValue.value.href as string}>
-                                {item.link.jsonValue.value.text}
-                              </Link>
-                            </Button>
-                          </NavigationMenuItem>
-                        )
-                      )}
-                    </Fragment>
-                  ))}
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
-          {/* Desktop CTA */}
-          {pageEditing ? (
-            <div className="@lg:flex @lg:items-center @lg:justify-end hidden">
-              <Button variant="outline" asChild className="font-heading text-medium rounded-full">
-                <SitecoreLink field={headerContact?.jsonValue} />
-              </Button>
-            </div>
-          ) : (
-            headerContact?.jsonValue?.value?.href && (
-              <div className="@lg:flex @lg:items-center @lg:justify-end hidden">
-                <Button variant="outline" asChild className="font-heading text-medium rounded-full">
-                  <Link href={headerContact.jsonValue.value.href as Url}>
-                    {headerContact.jsonValue.value.text}
-                  </Link>
-                </Button>
+        <nav className="bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              {/* Logo */}
+              <div className="flex-shrink-0">
+                {pageEditing ? (
+                  <Image field={logo?.jsonValue} className="h-8 w-auto" />
+                ) : (
+                  logo?.jsonValue?.value && (
+                    <Link href="/" className="flex items-center">
+                      <Logo logo={logo?.jsonValue} className="h-8 w-auto" />
+                    </Link>
+                  )
+                )}
               </div>
-            )
-          )}
-          {/* Mobile Navigation */}
-          <div className="@lg:hidden flex flex-1 justify-end">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="hover:bg-transparent [&_svg]:size-8">
-                  <Menu />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="[&>button_svg]:size-8">
-                <nav className="mt-[70px] flex flex-col space-y-4">
-                  {links &&
-                    links.length > 0 &&
-                    links.map(
-                      (item) =>
-                        item.link?.jsonValue?.value?.href && (
-                          <Button
-                            key={`${item.link.jsonValue.value.text}-mobile`}
-                            variant="ghost"
-                            asChild
-                            onClick={() => setIsOpen(false)}
-                          >
-                            <Link href={item.link.jsonValue.value.href as string}>
-                              {item.link.jsonValue.value.text}
+
+              {/* Desktop Navigation */}
+              <div className="hidden md:block">
+                <div className="ml-10 flex items-baseline space-x-8">
+                  {dlinkNavigation.map((item) => (
+                    <div key={item.name} className="relative group">
+                      <button
+                        className="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center"
+                        onMouseEnter={() => setActiveDropdown(item.name)}
+                        onMouseLeave={() => setActiveDropdown(null)}
+                      >
+                        {item.name}
+                        <ChevronDown className="ml-1 h-4 w-4" />
+                      </button>
+                      
+                      {/* Dropdown Menu */}
+                      <div 
+                        className={cn(
+                          "absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible transition-all duration-200 z-50",
+                          activeDropdown === item.name && "opacity-100 visible"
+                        )}
+                        onMouseEnter={() => setActiveDropdown(item.name)}
+                        onMouseLeave={() => setActiveDropdown(null)}
+                      >
+                        <div className="py-1">
+                          {item.submenu.map((subItem) => (
+                            <Link
+                              key={subItem}
+                              href={`${item.href}/${subItem.toLowerCase().replace(/\s+/g, '-')}`}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors duration-200"
+                            >
+                              {subItem}
                             </Link>
-                          </Button>
-                        )
-                    )}
-                  {headerContact?.jsonValue?.value?.href && (
-                    <Button
-                      variant="outline"
-                      asChild
-                      className="rounded-full"
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Language Selector */}
+              <div className="hidden md:flex items-center space-x-2">
+                <span className="text-sm text-gray-500">GB</span>
+                <span className="text-gray-300">|</span>
+                <span className="text-sm text-primary font-medium">EN</span>
+              </div>
+
+              {/* Mobile menu button */}
+              <div className="md:hidden">
+                <button
+                  type="button"
+                  className="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <span className="sr-only">Open main menu</span>
+                  <Menu className="block h-6 w-6" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile menu */}
+          {isOpen && (
+            <div className="md:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50">
+                {dlinkNavigation.map((item) => (
+                  <div key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-gray-700 hover:text-primary block px-3 py-2 text-base font-medium"
                       onClick={() => setIsOpen(false)}
                     >
-                      <Link href={headerContact.jsonValue.value.href as Url}>
-                        {headerContact.jsonValue.value.text}
-                      </Link>
-                    </Button>
-                  )}
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </div>
+                      {item.name}
+                    </Link>
+                    <div className="pl-4 space-y-1">
+                      {item.submenu.slice(0, 3).map((subItem) => (
+                        <Link
+                          key={subItem}
+                          href={`${item.href}/${subItem.toLowerCase().replace(/\s+/g, '-')}`}
+                          className="text-gray-600 hover:text-primary block px-3 py-1 text-sm"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {subItem}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </nav>
       </motion.header>
     </AnimatePresence>
   );

@@ -60,89 +60,52 @@ export const Default: React.FC<HeroProps> = ({ fields, params }) => {
   if (fields) {
     return (
       <section className={cn(heroVariants({ colorScheme }), [params?.styles && params.styles])}>
-        <div className="grid gap-20">
-          {/* Hero content */}
-          <div className="mx-auto w-full max-w-screen-xl px-4 xl:px-8">
+        <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background Video/Image */}
+          <div className="absolute inset-0 z-0">
+            <MediaSection
+              video={heroVideoOptional1?.value?.href}
+              image={heroImageOptional1}
+              className="w-full h-full object-cover"
+              pause={!isPlaying}
+              reducedMotion={isPageEditing || prefersReducedMotion}
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          </div>
+
+          {/* Hero Content */}
+          <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
             <AnimatedSection
               direction="up"
-              className="@lg:flex-row @lg:items-center @lg:gap-10 flex flex-col items-stretch gap-3"
+              className="space-y-8"
               isPageEditing={isPageEditing}
             >
               {(titleRequired?.value || isPageEditing) && (
                 <Text
                   tag="h1"
                   field={titleRequired}
-                  className="font-heading @lg:text-8xl @lg:leading-[90px] basis-1/2 text-5xl font-normal leading-[60px]"
+                  className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
                 />
               )}
-              <div className="@lg:gap-10 flex basis-1/2  flex-col gap-8 ">
-                {(descriptionOptional?.value || isPageEditing) && (
-                  <Text
-                    tag="p"
-                    className={cn(
-                      'font-body line-height-[26px] text-medium font-base @md:text-xl text-lg',
-                      {
-                        'text-primary-foreground': colorScheme === 'primary',
-                        'text-secondary-foreground': colorScheme !== 'primary',
-                      }
-                    )}
-                    field={descriptionOptional}
+              
+              {(descriptionOptional?.value || isPageEditing) && (
+                <Text
+                  tag="p"
+                  className="font-body text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto leading-relaxed"
+                  field={descriptionOptional}
+                />
+              )}
+              
+              {linkOptional && (
+                <div className="pt-4">
+                  <EditableButton
+                    buttonLink={linkOptional}
+                    className="bg-primary hover:bg-primary-hover text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors duration-200 inline-block"
+                    isPageEditing={isPageEditing}
                   />
-                )}
-                {linkOptional && (
-                  <div>
-                    <EditableButton
-                      buttonLink={linkOptional}
-                      className={
-                        colorScheme === 'primary' ? 'text-primary bg-white hover:bg-gray-100' : ''
-                      }
-                      isPageEditing={isPageEditing}
-                    />
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
             </AnimatedSection>
-          </div>
-          {/* Hero image/video sections */}
-          <div className="relative flex items-center justify-center overflow-x-hidden">
-            <div className="@lg:gap-8 @lg:min-w-[120%] mx-auto flex min-w-[110%]  items-start gap-4 px-4">
-              <div className="shrink-0 grow-0 basis-1/4">
-                <MediaSection
-                  video={heroVideoOptional1?.value?.href}
-                  image={heroImageOptional1}
-                  className="aspect-280/356 relative"
-                  pause={!isPlaying}
-                  reducedMotion={isPageEditing || prefersReducedMotion}
-                />
-              </div>
-              <div className="shrink-0 grow-0 basis-1/4">
-                <MediaSection
-                  video={heroVideoOptional2?.value?.href}
-                  image={heroImageOptional2}
-                  className="aspect-280/196 relative"
-                  pause={!isPlaying}
-                  reducedMotion={isPageEditing || prefersReducedMotion}
-                />
-              </div>
-              <div className="shrink-0 grow-0 basis-1/4">
-                <MediaSection
-                  video={heroVideoOptional3?.value?.href}
-                  image={heroImageOptional3}
-                  className="aspect-280/356 relative"
-                  pause={!isPlaying}
-                  reducedMotion={isPageEditing || prefersReducedMotion}
-                />
-              </div>
-              <div className="shrink-0 grow-0 basis-1/4">
-                <MediaSection
-                  video={heroVideoOptional4?.value?.href}
-                  image={heroImageOptional4}
-                  className="aspect-280/356 relative"
-                  pause={!isPlaying}
-                  reducedMotion={isPageEditing || prefersReducedMotion}
-                />
-              </div>
-            </div>
           </div>
         </div>
         {/* Play/Pause button - A11y */}

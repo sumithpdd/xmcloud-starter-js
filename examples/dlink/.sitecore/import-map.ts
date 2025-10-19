@@ -3,9 +3,12 @@
 import { combineImportEntries, defaultImportEntries } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { useState, useEffect, useRef, useCallback, useId, useContext, createContext, Fragment, useMemo } from 'react';
+import { useState, useEffect, useRef, useCallback, useId, useContext, createContext, useMemo } from 'react';
 import React from 'react';
 import * as React_7214d18997ee864dd178de7b3a8430f6783e8b89 from 'react';
+import { Navigation } from 'src/components/ui/Navigation';
+import { Hero } from 'src/components/ui/Hero';
+import { Footer } from 'src/components/ui/Footer';
 import YouTube from 'react-youtube';
 import { useVideo } from '@/contexts/VideoContext';
 import { Default } from '@/components/icon/Icon';
@@ -43,7 +46,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
@@ -54,6 +57,8 @@ import * as ResizablePrimitive from 'react-resizable-panels';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import * as ProgressPrimitive from '@radix-ui/react-progress';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
+import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
+import { Logo } from 'src/components/ui/Logo';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import * as MenubarPrimitive from '@radix-ui/react-menubar';
 import * as LabelPrimitive from '@radix-ui/react-label';
@@ -89,7 +94,6 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from '@/component
 import { useI18n } from 'next-localization';
 import { dictionaryKeys } from '@/variables/dictionary';
 import Head from 'next/head';
-import NextLink from 'next/link';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { Orientation } from '@/enumerations/Orientation.enum';
 import { Variation } from '@/enumerations/Variation.enum';
@@ -115,9 +119,7 @@ import { IconName } from '@/enumerations/Icon.enum';
 import { sharedAttributes } from 'src/components/icon/Icon';
 import { useContainerOffsets } from '@/hooks/useContainerOffsets';
 import { Default as Default_98f9a884be463e0a12213c7e328a0762b2348f8b } from '@/components/media-section/MediaSection.dev';
-import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from '@/components/ui/navigation-menu';
 import { Default as Default_baa9f9ad92261321a3b6e2412b7ce62fbe646851 } from '@/components/logo/Logo.dev';
-import { Default as Default_dd8cffb76cbf0b6ccba4ee879226c778aecea76f } from '@/components/footer-navigation-callout/FooterNavigationCallout.dev';
 import { EditableImageButton } from 'components/button-component/ButtonComponent';
 import { cn as cn_b4c06b3218abd6b3fb46a1f6d67407cec902c758 } from 'lib/utils';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -153,10 +155,27 @@ const importMap = [
       { name: 'useId', value: useId },
       { name: 'useContext', value: useContext },
       { name: 'createContext', value: createContext },
-      { name: 'Fragment', value: Fragment },
       { name: 'useMemo', value: useMemo },
       { name: 'default', value: React },
       { name: '*', value: React_7214d18997ee864dd178de7b3a8430f6783e8b89 },
+    ]
+  },
+  {
+    module: 'src/components/ui/Navigation',
+    exports: [
+      { name: 'Navigation', value: Navigation },
+    ]
+  },
+  {
+    module: 'src/components/ui/Hero',
+    exports: [
+      { name: 'Hero', value: Hero },
+    ]
+  },
+  {
+    module: 'src/components/ui/Footer',
+    exports: [
+      { name: 'Footer', value: Footer },
     ]
   },
   {
@@ -435,7 +454,6 @@ const importMap = [
     exports: [
       { name: 'Sheet', value: Sheet },
       { name: 'SheetContent', value: SheetContent },
-      { name: 'SheetTrigger', value: SheetTrigger },
     ]
   },
   {
@@ -499,6 +517,18 @@ const importMap = [
     module: '@radix-ui/react-popover',
     exports: [
       { name: '*', value: PopoverPrimitive },
+    ]
+  },
+  {
+    module: 'next/link',
+    exports: [
+      { name: 'default', value: Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 },
+    ]
+  },
+  {
+    module: 'src/components/ui/Logo',
+    exports: [
+      { name: 'Logo', value: Logo },
     ]
   },
   {
@@ -727,12 +757,6 @@ const importMap = [
     ]
   },
   {
-    module: 'next/link',
-    exports: [
-      { name: 'default', value: NextLink },
-    ]
-  },
-  {
     module: '@radix-ui/react-icons',
     exports: [
       { name: 'ChevronDownIcon', value: ChevronDownIcon },
@@ -889,23 +913,9 @@ const importMap = [
     ]
   },
   {
-    module: '@/components/ui/navigation-menu',
-    exports: [
-      { name: 'NavigationMenu', value: NavigationMenu },
-      { name: 'NavigationMenuItem', value: NavigationMenuItem },
-      { name: 'NavigationMenuList', value: NavigationMenuList },
-    ]
-  },
-  {
     module: '@/components/logo/Logo.dev',
     exports: [
       { name: 'Default', value: Default_baa9f9ad92261321a3b6e2412b7ce62fbe646851 },
-    ]
-  },
-  {
-    module: '@/components/footer-navigation-callout/FooterNavigationCallout.dev',
-    exports: [
-      { name: 'Default', value: Default_dd8cffb76cbf0b6ccba4ee879226c778aecea76f },
     ]
   },
   {
