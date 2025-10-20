@@ -165,5 +165,3 @@ export const Default: React.FC<DlinkCarouselProps> = (props) => {
 
   return <NoDataFallback componentName="D-Link Carousel" />;
 };
-
-

@@ -4,6 +4,700 @@
 
 The D-Link project is a Sitecore Content SDK application built with Next.js, featuring a comprehensive component library for building modern web experiences. This project showcases D-Link's networking and technology products with a focus on home, business, and industry solutions.
 
+## D-Link Component Library
+
+The D-Link project includes **25 custom components** built specifically for networking and technology product showcases. All components follow Sitecore Content SDK patterns and use TypeScript for type safety.
+
+### Core Layout Components
+
+#### Header Component
+**File:** `src/components/dlink/header.tsx`
+**Purpose:** Main navigation header with logo, menu items, and mobile responsiveness.
+
+**Props:**
+```typescript
+interface HeaderProps {
+  fields?: {
+    logo?: ImageField;
+    navigation?: NavigationItem[];
+    showSearch?: Field<boolean>;
+    showCart?: Field<boolean>;
+    showAccount?: Field<boolean>;
+  };
+}
+```
+
+**Features:**
+- Responsive mobile menu
+- Dropdown navigation support
+- Search, cart, and account icons
+- D-Link branding integration
+
+#### Footer Component
+**File:** `src/components/dlink/footer.tsx`
+**Purpose:** Site-wide footer with links, social media, and copyright information.
+
+**Props:**
+```typescript
+interface FooterProps {
+  fields?: {
+    logo?: ImageField;
+    columns?: FooterColumn[];
+    socialLinks?: SocialLink[];
+    copyrightText?: Field<string>;
+    bottomLinks?: FooterLink[];
+  };
+}
+```
+
+**Features:**
+- Multi-column layout
+- Social media integration
+- Copyright information
+- Bottom navigation links
+
+### Hero & Banner Components
+
+#### Hero Component
+**File:** `src/components/dlink/hero.tsx`
+**Purpose:** Full-width hero section with background image, heading, and CTA.
+
+**Props:**
+```typescript
+interface HeroProps {
+  fields?: {
+    heading?: Field<string>;
+    subheading?: Field<string>;
+    description?: RichTextField;
+    backgroundImage?: ImageField;
+    ctaLink?: LinkField;
+  };
+}
+```
+
+**Features:**
+- Full-width background image support
+- Overlay text with proper contrast
+- Call-to-action button
+- Responsive typography
+
+#### Category Hero Component
+**File:** `src/components/dlink/category-hero.tsx`
+**Purpose:** Category-specific hero with background image and category information.
+
+#### Category Page Hero Component
+**File:** `src/components/dlink/category-page-hero.tsx`
+**Purpose:** Enhanced hero for category pages with additional metadata.
+
+### Product Components
+
+#### Product Grid Component
+**File:** `src/components/dlink/product-grid.tsx`
+**Purpose:** Grid layout for displaying multiple products with images and links.
+
+**Props:**
+```typescript
+type ProductGridProps = ComponentProps & {
+  fields?: {
+    title: Field<string>;
+    products: Product[];
+  };
+};
+```
+
+**Sample Data:**
+```typescript
+const productGridData = {
+  fields: {
+    title: { value: "IP Surveillance Products" },
+    products: [
+      {
+        fields: {
+          name: { value: "8 Megapixel H.265 Outdoor Dome Camera" },
+          model: { value: "DCS-4618EK" },
+          image: {
+            value: {
+              src: "/placeholder.svg?height=300&width=300",
+              alt: "DCS-4618EK",
+            },
+          },
+          link: { value: "/products/dcs-4618ek" },
+        },
+      },
+      {
+        fields: {
+          name: { value: "8-Port PoE Gigabit Ethernet Surveillance Switch" },
+          model: { value: "DSS-200G-10MP" },
+          image: {
+            value: {
+              src: "/placeholder.svg?height=300&width=300",
+              alt: "DSS-200G-10MP",
+            },
+          },
+          link: { value: "/products/dss-200g-10mp" },
+        },
+      },
+      {
+        fields: {
+          name: { value: "8-Port PoE Gigabit Ethernet Surveillance Switch" },
+          model: { value: "DSS-200G-10MPP" },
+          image: {
+            value: {
+              src: "/placeholder.svg?height=300&width=300",
+              alt: "DSS-200G-10MPP",
+            },
+          },
+          link: { value: "/products/dss-200g-10mpp" },
+        },
+      },
+      {
+        fields: {
+          name: { value: "Fast Ethernet PoE Unmanaged Surveillance Switch" },
+          model: { value: "DSS-100E-9P" },
+          image: {
+            value: {
+              src: "/placeholder.svg?height=300&width=300",
+              alt: "DSS-100E-9P",
+            },
+          },
+          link: { value: "/products/dss-100e-9p" },
+        },
+      },
+      {
+        fields: {
+          name: { value: "Smart+ Managed Gigabit Switches" },
+          model: { value: "DGS-1210 Series" },
+          image: {
+            value: {
+              src: "/placeholder.svg?height=300&width=300",
+              alt: "DGS-1210",
+            },
+          },
+          link: { value: "/products/dgs-1210" },
+        },
+      },
+      {
+        fields: {
+          name: { value: "D-ViewCam Surveillance Software" },
+          model: { value: "DCS-100" },
+          image: {
+            value: {
+              src: "/placeholder.svg?height=300&width=300",
+              alt: "DCS-100",
+            },
+          },
+          link: { value: "/products/dcs-100" },
+        },
+      },
+    ],
+  },
+};
+```
+
+**Features:**
+- Responsive grid layout (1-3 columns)
+- Product image hover effects
+- Model number display
+- Direct product links
+
+#### Product Showcase Component
+**File:** `src/components/dlink/product-showcase.tsx`
+**Purpose:** Featured product display with enhanced styling and descriptions.
+
+**Props:**
+```typescript
+interface ProductShowcaseProps {
+  fields?: {
+    sectionHeading?: Field<string>;
+    products?: ProductCard[];
+  };
+};
+```
+
+**Sample Data:**
+```typescript
+const productShowcaseData = {
+  fields: {
+    sectionHeading: { value: "Explore Our Products" },
+    products: [
+      {
+        heading: { value: "Mesh Wi-Fi System & Wi-Fi Routers" },
+        description: { value: "Blazing speeds with maximum coverage." },
+        image: {
+          value: {
+            src: "/mesh-wifi-router-system.jpg",
+            alt: "Mesh Wi-Fi",
+          },
+        },
+        link: { value: { href: "/products/wifi", text: "Learn More" } },
+      },
+      {
+        heading: { value: "Wi-Fi Cameras" },
+        description: { value: "Watch over your home, from anywhere." },
+        image: {
+          value: {
+            src: "/wifi-security-camera.jpg",
+            alt: "Wi-Fi Cameras",
+          },
+        },
+        link: { value: { href: "/products/cameras", text: "Learn More" } },
+      },
+      {
+        heading: { value: "Nuclias" },
+        description: { value: "Business network management, refreshed." },
+        image: {
+          value: {
+            src: "/cloud-network-management.jpg",
+            alt: "Nuclias",
+          },
+        },
+        link: { value: { href: "/for-business/nuclias", text: "Learn More" } },
+      },
+    ],
+  },
+};
+```
+
+**Features:**
+- Card-based layout with shadows
+- Image hover effects
+- Rich text descriptions
+- Call-to-action buttons
+
+#### Product Selector Component
+**File:** `src/components/dlink/product-selector.tsx`
+**Purpose:** Interactive product filtering tool with categories and search functionality.
+
+**Props:**
+```typescript
+interface ProductSelectorProps {
+  fields?: {
+    sectionTitle: Field<string>;
+    filterCategories: FilterCategory[];
+    products: Product[];
+  };
+}
+```
+
+**Sample Data:**
+```typescript
+const productSelectorData = {
+  sectionTitle: { value: "Product Selector Tool" },
+  filterCategories: [
+    {
+      fields: {
+        categoryName: { value: "Wireless standard" },
+        options: [{ fields: { label: { value: "802.11ax Wi-Fi 6" }, value: { value: "wifi6" } } }],
+      },
+    },
+    {
+      fields: {
+        categoryName: { value: "Advanced features" },
+        options: [
+          { fields: { label: { value: "AI Assistant" }, value: { value: "ai-assistant" } } },
+          { fields: { label: { value: "AI Mesh Optimiser" }, value: { value: "ai-mesh" } } },
+          { fields: { label: { value: "AI Parental Control" }, value: { value: "parental-control" } } },
+          { fields: { label: { value: "AI Traffic Optimiser" }, value: { value: "traffic-optimiser" } } },
+          { fields: { label: { value: "AI Wi-Fi Optimiser" }, value: { value: "wifi-optimiser" } } },
+          { fields: { label: { value: "MU-MIMO" }, value: { value: "mu-mimo" } } },
+          { fields: { label: { value: "Seamless Wi-Fi network" }, value: { value: "seamless" } } },
+          { fields: { label: { value: "SmartBeam" }, value: { value: "smartbeam" } } },
+          { fields: { label: { value: "SmartConnect band optimisation" }, value: { value: "smartconnect" } } },
+          { fields: { label: { value: "Wi-Fi Mesh support" }, value: { value: "mesh" } } },
+        ],
+      },
+    },
+  ],
+  products: [
+    {
+      fields: {
+        name: { value: "5G Wi-Fi 6 Mobile Hotspot" },
+        model: { value: "DWR-2101" },
+        image: { value: { src: "/dwr-2101-5g-mobile-hotspot.jpg", alt: "DWR-2101" } },
+        link: { value: { href: "/products/dwr-2101" } },
+        features: [],
+      },
+    },
+    {
+      fields: {
+        name: { value: "5G/LTE Outdoor CPE" },
+        model: { value: "DWP-1010" },
+        image: { value: { src: "/dwp-1010-outdoor-5g-cpe.jpg", alt: "DWP-1010" } },
+        link: { value: { href: "/products/dwp-1010" } },
+        features: [],
+      },
+    },
+    {
+      fields: {
+        name: { value: "5G NR AX3000 Wi-Fi 6 Router" },
+        model: { value: "G530" },
+        image: { value: { src: "/g530-5g-router.jpg", alt: "G530" } },
+        link: { value: { href: "/products/g530" } },
+        features: [],
+      },
+    },
+    {
+      fields: {
+        name: { value: "AX1500 4G CAT6 Smart Router" },
+        model: { value: "G416" },
+        image: { value: { src: "/g416-4g-router.jpg", alt: "G416" } },
+        link: { value: { href: "/products/g416" } },
+        features: [],
+      },
+    },
+    {
+      fields: {
+        name: { value: "AX1500 4G Smart Router" },
+        model: { value: "G415" },
+        image: { value: { src: "/g415-4g-router.jpg", alt: "G415" } },
+        link: { value: { href: "/products/g415" } },
+        features: [],
+      },
+    },
+    {
+      fields: {
+        name: { value: "5G NR AX1800 Wi-Fi 6 Mobile Hotspot" },
+        model: { value: "F518" },
+        image: { value: { src: "/f518-5g-mobile-hotspot.jpg", alt: "F518" } },
+        link: { value: { href: "/products/f518" } },
+        features: [],
+      },
+    },
+  ],
+};
+```
+
+**Features:**
+- Dynamic filtering by categories
+- Real-time product updates
+- Sticky sidebar filters
+- Show more/less functionality
+- Product count display
+
+#### Product Detail Header Component
+**File:** `src/components/dlink/product-detail-header.tsx`
+**Purpose:** Detailed product information header with specifications and features.
+
+#### Product Detail Hero Component
+**File:** `src/components/dlink/product-detail-hero.tsx`
+**Purpose:** Hero section for individual product pages with image gallery.
+
+### Comparison & Specification Components
+
+#### Comparison Table Component
+**File:** `src/components/dlink/comparison-table.tsx`
+**Purpose:** Side-by-side product comparison with specifications.
+
+**Props:**
+```typescript
+type ComparisonTableProps = ComponentProps & {
+  fields?: {
+    title: Field<string>;
+    products: ComparisonProduct[];
+    specLabels: Field<string>[];
+  };
+}
+```
+
+**Sample Data:**
+```typescript
+const comparisonTableData = {
+  fields: {
+    title: { value: "DSS-200G Series Comparison" },
+    specLabels: [
+      { value: "Port Count" },
+      { value: "Dimension" },
+      { value: "Surge Protection" },
+      { value: "PoE Power Budget" },
+      { value: "PoE Standard" },
+      { value: "Smart Fan" },
+    ],
+    products: [
+      {
+        fields: {
+          model: { value: "DSS-200G-10MP" },
+          image: {
+            value: {
+              src: "/placeholder.svg?height=150&width=150",
+              alt: "DSS-200G-10MP",
+            },
+          },
+          link: { value: "/products/dss-200g-10mp" },
+          specs: {
+            "Port Count": { value: "8×GE PoE + 2×GE SFP" },
+            Dimension: { value: '11"' },
+            "Surge Protection": { value: "6KV Full port & Power Supply" },
+            "PoE Power Budget": { value: "130 W" },
+            "PoE Standard": { value: "IEEE 802.3af, 802.3at" },
+            "Smart Fan": { value: "Fanless" },
+          },
+        },
+      },
+      {
+        fields: {
+          model: { value: "DSS-200G-10MPP" },
+          image: {
+            value: {
+              src: "/placeholder.svg?height=150&width=150",
+              alt: "DSS-200G-10MPP",
+            },
+          },
+          link: { value: "/products/dss-200g-10mpp" },
+          specs: {
+            "Port Count": { value: "8×GE PoE + 2×GE SFP" },
+            Dimension: { value: '11"' },
+            "Surge Protection": { value: "6KV Full port & Power Supply" },
+            "PoE Power Budget": { value: "242 W" },
+            "PoE Standard": { value: "IEEE 802.3af, 802.3at, 802.3bt" },
+            "Smart Fan": { value: "1" },
+          },
+        },
+      },
+      {
+        fields: {
+          model: { value: "DSS-200G-28MP" },
+          image: {
+            value: {
+              src: "/placeholder.svg?height=150&width=150",
+              alt: "DSS-200G-28MP",
+            },
+          },
+          link: { value: "/products/dss-200g-28mp" },
+          specs: {
+            "Port Count": { value: "24×GE PoE + 4×GE Combo" },
+            Dimension: { value: '19"' },
+            "Surge Protection": { value: "6KV Full port & Power Supply" },
+            "PoE Power Budget": { value: "370 W" },
+            "PoE Standard": { value: "IEEE 802.3af, 802.3at" },
+            "Smart Fan": { value: "2" },
+          },
+        },
+      },
+      {
+        fields: {
+          model: { value: "DSS-200G-28MPP" },
+          image: {
+            value: {
+              src: "/placeholder.svg?height=150&width=150",
+              alt: "DSS-200G-28MPP",
+            },
+          },
+          link: { value: "/products/dss-200g-28mpp" },
+          specs: {
+            "Port Count": { value: "24×GE PoE + 4×GE Combo" },
+            Dimension: { value: '19"' },
+            "Surge Protection": { value: "6KV Full port & Power Supply" },
+            "PoE Power Budget": { value: "518 W" },
+            "PoE Standard": { value: "IEEE 802.3af, 802.3at, 802.3bt" },
+            "Smart Fan": { value: "2" },
+          },
+        },
+      },
+    ],
+  },
+};
+```
+
+**Features:**
+- Responsive table layout
+- Product images in headers
+- Hover effects on rows
+- Direct product links
+
+#### Specifications Table Component
+**File:** `src/components/dlink/specifications-table.tsx`
+**Purpose:** Detailed technical specifications in a clean table format.
+
+**Props:**
+```typescript
+type SpecificationsTableProps = ComponentProps & {
+  fields?: {
+    title: Field<string>;
+    specifications: Specification[];
+  };
+}
+```
+
+**Sample Data:**
+```typescript
+const specificationsData = {
+  fields: {
+    title: { value: "Technical Specifications" },
+    specifications: [
+      {
+        fields: {
+          label: { value: "Model" },
+          value: { value: "DSS-200G-10MP" },
+        },
+      },
+      {
+        fields: {
+          label: { value: "Total Ports" },
+          value: { value: "10 (8× 10/100/1000BASE-T PoE + 2× Gigabit SFP)" },
+        },
+      },
+      {
+        fields: {
+          label: { value: "PoE Budget" },
+          value: { value: "130W" },
+        },
+      },
+      {
+        fields: {
+          label: { value: "PoE Standard" },
+          value: { value: "IEEE 802.3af (15.4W), IEEE 802.3at (30W)" },
+        },
+      },
+      {
+        fields: {
+          label: { value: "Switching Capacity" },
+          value: { value: "20 Gbps" },
+        },
+      },
+      {
+        fields: {
+          label: { value: "Forwarding Rate" },
+          value: { value: "14.88 Mpps" },
+        },
+      },
+      {
+        fields: {
+          label: { value: "Surge Protection" },
+          value: { value: "6kV on all PoE ports and power supply" },
+        },
+      },
+      {
+        fields: {
+          label: { value: "Operating Temperature" },
+          value: { value: "0°C to 50°C (32°F to 122°F)" },
+        },
+      },
+      {
+        fields: {
+          label: { value: "Dimensions" },
+          value: { value: "280 × 180 × 44 mm (11.02 × 7.09 × 1.73 inches)" },
+        },
+      },
+      {
+        fields: {
+          label: { value: "Weight" },
+          value: { value: "1.5 kg (3.31 lbs)" },
+        },
+      },
+    ],
+  },
+};
+```
+
+**Features:**
+- Clean two-column layout
+- Alternating row colors
+- Responsive design
+- Easy-to-scan format
+
+#### Specifications Section Component
+**File:** `src/components/dlink/specifications-section.tsx`
+**Purpose:** Categorized specifications with collapsible sections.
+
+### Content & Feature Components
+
+#### Content Block Component
+**File:** `src/components/dlink/content-block.tsx`
+**Purpose:** Flexible content section with image/video and text layout options.
+
+#### Content Section with Image Component
+**File:** `src/components/dlink/content-section-with-image.tsx`
+**Purpose:** Content section with configurable image positioning.
+
+#### Feature List Component
+**File:** `src/components/dlink/feature-list.tsx`
+**Purpose:** Bulleted list of features with checkmark icons.
+
+#### Feature Section Component
+**File:** `src/components/dlink/feature-section.tsx`
+**Purpose:** Feature showcase with image and text content.
+
+#### Tech Features Component
+**File:** `src/components/dlink/tech-features.tsx`
+**Purpose:** Technology features display with icons and descriptions.
+
+#### Use Case Grid Component
+**File:** `src/components/dlink/use-case-grid.tsx`
+**Purpose:** Grid layout for displaying use cases and applications.
+
+### Navigation & Utility Components
+
+#### Breadcrumb Component
+**File:** `src/components/dlink/breadcrumb.tsx`
+**Purpose:** Navigation breadcrumb with chevron separators.
+
+#### Jump Links Component
+**File:** `src/components/dlink/jump-links.tsx`
+**Purpose:** Sticky navigation for page sections with smooth scrolling.
+
+#### Carousel Component
+**File:** `src/components/dlink/carousel.tsx`
+**Purpose:** Image/video carousel with navigation controls and autoplay.
+
+#### D-Link Carousel Component
+**File:** `src/components/dlink/DlinkCarousel.tsx`
+**Purpose:** Enhanced carousel component with D-Link-specific styling.
+
+### News & Information Components
+
+#### News Section Component
+**File:** `src/components/dlink/news-section.tsx`
+**Purpose:** News articles display with images, dates, and excerpts.
+
+#### Product Overview Section Component
+**File:** `src/components/dlink/product-overview-section.tsx`
+**Purpose:** Product overview with multiple content blocks.
+
+#### Example Component
+**File:** `src/components/dlink/example.tsx`
+**Purpose:** Template component demonstrating Sitecore integration patterns.
+
+### Component Usage Patterns
+
+#### Standard Export Pattern
+All components follow the `export const Default: React.FC<ComponentProps>` pattern:
+
+```typescript
+export const Default: React.FC<ComponentProps> = (props) => {
+  const { fields } = props;
+  
+  if (fields) {
+    return (
+      // Component JSX
+    );
+  }
+  
+  return <NoDataFallback componentName="Component Name" />;
+};
+```
+
+#### Field Handling
+Components use Sitecore Content SDK components directly:
+
+```typescript
+import { Text, RichText, Image, Link, type Field, type ImageField, type LinkField, type RichTextField } from '@sitecore-content-sdk/nextjs';
+
+// Usage examples
+<Text field={fields.title} tag="h1" className="text-2xl font-bold" />
+<RichText field={fields.description} className="prose" />
+<Image field={fields.image} className="w-full h-auto" />
+<Link field={fields.ctaLink} className="btn btn-primary" />
+```
+
+#### Error Handling
+All components include `NoDataFallback` for graceful error handling when fields are missing.
+
+#### D-Link Branding
+Components use D-Link's official color scheme:
+- **Primary**: `#0051ff` (D-Link Blue)
+- **Accent**: `#ffd700` (D-Link Gold)
+- **Hover States**: `#0047e6` (Primary Hover), `#e6c200` (Accent Hover)
+
 ## Technology Stack
 
 ### Core Technologies

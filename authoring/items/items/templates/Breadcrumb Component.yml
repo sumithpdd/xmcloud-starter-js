@@ -1,0 +1,49 @@
+# Breadcrumb Component Template
+# Template ID: {D1E2F3G4-H5I6-7890-JKLM-NOP1234567890}
+# Template Name: Breadcrumb Component
+# Base Template: Standard Template
+# Insert Options: Breadcrumb Component
+
+Template: Breadcrumb Component
+  ID: {D1E2F3G4-H5I6-7890-JKLM-NOP1234567890}
+  Name: Breadcrumb Component
+  Base Template: Standard Template
+  Insert Options: Breadcrumb Component
+  Icon: /sitecore/shell/themes/standard/images/16x16/breadcrumb.png
+  Description: Breadcrumb navigation component for D-Link site navigation
+
+Fields:
+  - Field: Items
+    ID: {D1E2F3G4-H5I6-7890-JKLM-NOP1234567891}
+    Type: Treelist
+    Section: Breadcrumb Items
+    Sort Order: 10
+    Required: Yes
+    Source: query:./*[@@templatename='Breadcrumb Item']
+    Help Text: Select breadcrumb items for navigation
+
+# Breadcrumb Item Template
+Template: Breadcrumb Item
+  ID: {E1F2G3H4-I5J6-7890-KLMN-OPQ1234567890}
+  Name: Breadcrumb Item
+  Base Template: Standard Template
+  Insert Options: Breadcrumb Item
+  Icon: /sitecore/shell/themes/standard/images/16x16/breadcrumb-item.png
+  Description: Individual breadcrumb item for navigation
+
+Breadcrumb Item Fields:
+  - Field: Title
+    ID: {E1F2G3H4-I5J6-7890-KLMN-OPQ1234567891}
+    Type: Single-Line Text
+    Section: Content
+    Sort Order: 10
+    Required: Yes
+    Help Text: Display text for the breadcrumb item
+
+  - Field: Link
+    ID: {E1F2G3H4-I5J6-7890-KLMN-OPQ1234567892}
+    Type: General Link
+    Section: Navigation
+    Sort Order: 20
+    Required: Yes
+    Help Text: Link destination for the breadcrumb item

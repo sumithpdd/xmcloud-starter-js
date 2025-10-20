@@ -1,0 +1,30 @@
+# Breadcrumb Item Template
+# Template ID: {E1F2G3H4-I5J6-7890-KLMN-OPQ1234567890}
+# Template Name: Breadcrumb Item
+# Base Template: Standard Template
+# Insert Options: Breadcrumb Item
+
+Template: Breadcrumb Item
+  ID: {E1F2G3H4-I5J6-7890-KLMN-OPQ1234567890}
+  Name: Breadcrumb Item
+  Base Template: Standard Template
+  Insert Options: Breadcrumb Item
+  Icon: /sitecore/shell/themes/standard/images/16x16/breadcrumb-item.png
+  Description: Individual breadcrumb item for navigation
+
+Fields:
+  - Field: Title
+    ID: {E1F2G3H4-I5J6-7890-KLMN-OPQ1234567891}
+    Type: Single-Line Text
+    Section: Content
+    Sort Order: 10
+    Required: Yes
+    Help Text: Display text for the breadcrumb item
+
+  - Field: Link
+    ID: {E1F2G3H4-I5J6-7890-KLMN-OPQ1234567892}
+    Type: General Link
+    Section: Navigation
+    Sort Order: 20
+    Required: Yes
+    Help Text: Link destination for the breadcrumb item

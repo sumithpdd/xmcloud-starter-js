@@ -4,8 +4,32 @@ import { Form } from '@sitecore-content-sdk/nextjs';
 // end of built-in components
 
 // Components imported from the app itself
-import * as Header from 'src/components/Header';
-import * as Footer from 'src/components/Footer';
+// D-Link Components (replacing existing ones)
+import * as Header from 'src/components/dlink/header';
+import * as Footer from 'src/components/dlink/footer';
+import * as Hero from 'src/components/dlink/hero';
+import * as Breadcrumb from 'src/components/dlink/breadcrumb';
+import * as ContentBlock from 'src/components/dlink/content-block';
+import * as ProductGrid from 'src/components/dlink/product-grid';
+import * as DlinkCarousel from 'src/components/dlink/DlinkCarousel';
+import * as CategoryHero from 'src/components/dlink/category-hero';
+import * as CategoryPageHero from 'src/components/dlink/category-page-hero';
+import * as ComparisonTable from 'src/components/dlink/comparison-table';
+import * as ContentSectionWithImage from 'src/components/dlink/content-section-with-image';
+import * as FeatureList from 'src/components/dlink/feature-list';
+import * as FeatureSection from 'src/components/dlink/feature-section';
+import * as JumpLinks from 'src/components/dlink/jump-links';
+import * as NewsSection from 'src/components/dlink/news-section';
+import * as ProductDetailHeader from 'src/components/dlink/product-detail-header';
+import * as ProductDetailHero from 'src/components/dlink/product-detail-hero';
+import * as ProductOverviewSection from 'src/components/dlink/product-overview-section';
+import * as ProductSelector from 'src/components/dlink/product-selector';
+import * as ProductShowcase from 'src/components/dlink/product-showcase';
+import * as SpecificationsSection from 'src/components/dlink/specifications-section';
+import * as SpecificationsTable from 'src/components/dlink/specifications-table';
+import * as TechFeatures from 'src/components/dlink/tech-features';
+import * as UseCaseGrid from 'src/components/dlink/use-case-grid';
+import * as Example from 'src/components/dlink/example';
 import * as VideoPlayerdev from 'src/components/video/VideoPlayer.dev';
 import * as VideoModaldev from 'src/components/video/VideoModal.dev';
 import * as Video from 'src/components/video/Video';
@@ -52,7 +76,6 @@ import * as carousel from 'src/components/ui/carousel';
 import * as card from 'src/components/ui/card';
 import * as calendar from 'src/components/ui/calendar';
 import * as button from 'src/components/ui/button';
-import * as breadcrumb from 'src/components/ui/breadcrumb';
 import * as badge from 'src/components/ui/badge';
 import * as avatar from 'src/components/ui/avatar';
 import * as aspectratio from 'src/components/ui/aspect-ratio';
@@ -80,7 +103,7 @@ import * as PageContent from 'src/components/sxa/PageContent';
 import * as Navigation from 'src/components/sxa/Navigation';
 import * as LinkList from 'src/components/sxa/LinkList';
 import * as Image from 'src/components/sxa/Image';
-import * as ContentBlock from 'src/components/sxa/ContentBlock';
+import * as SxaContentBlock from 'src/components/sxa/ContentBlock';
 import * as Container from 'src/components/sxa/Container';
 import * as ColumnSplitter from 'src/components/sxa/ColumnSplitter';
 import * as SubscriptionBanner from 'src/components/subscription-banner/SubscriptionBanner';
@@ -141,7 +164,6 @@ import * as arrowuprightdev from 'src/components/icon/svg/arrow-up-right.dev';
 import * as arrowrightdev from 'src/components/icon/svg/arrow-right.dev';
 import * as arrowleftdev from 'src/components/icon/svg/arrow-left.dev';
 import * as HeroST from 'src/components/hero/HeroST';
-import * as Hero from 'src/components/hero/Hero';
 import * as heroprops from 'src/components/hero/hero.props';
 import * as GlobalHeader from 'src/components/global-header/GlobalHeader';
 import * as globalheaderprops from 'src/components/global-header/global-header.props';
@@ -186,6 +208,29 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Form', Form],
   ['Header', Header],
   ['Footer', Footer],
+  ['Hero', Hero],
+  ['Breadcrumb', Breadcrumb],
+  ['ContentBlock', ContentBlock],
+  ['ProductGrid', ProductGrid],
+  ['DlinkCarousel', DlinkCarousel],
+  ['CategoryHero', CategoryHero],
+  ['CategoryPageHero', CategoryPageHero],
+  ['ComparisonTable', ComparisonTable],
+  ['ContentSectionWithImage', ContentSectionWithImage],
+  ['FeatureList', FeatureList],
+  ['FeatureSection', FeatureSection],
+  ['JumpLinks', JumpLinks],
+  ['NewsSection', NewsSection],
+  ['ProductDetailHeader', ProductDetailHeader],
+  ['ProductDetailHero', ProductDetailHero],
+  ['ProductOverviewSection', ProductOverviewSection],
+  ['ProductSelector', ProductSelector],
+  ['ProductShowcase', ProductShowcase],
+  ['SpecificationsSection', SpecificationsSection],
+  ['SpecificationsTable', SpecificationsTable],
+  ['TechFeatures', TechFeatures],
+  ['UseCaseGrid', UseCaseGrid],
+  ['Example', Example],
   ['VideoPlayerdev', VideoPlayerdev],
   ['VideoModaldev', VideoModaldev],
   ['Video', Video],
@@ -232,7 +277,6 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['card', card],
   ['calendar', calendar],
   ['button', button],
-  ['breadcrumb', breadcrumb],
   ['badge', badge],
   ['avatar', avatar],
   ['aspectratio', aspectratio],
@@ -260,7 +304,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Navigation', Navigation],
   ['LinkList', LinkList],
   ['Image', Image],
-  ['ContentBlock', ContentBlock],
+  ['SxaContentBlock', SxaContentBlock],
   ['Container', Container],
   ['ColumnSplitter', ColumnSplitter],
   ['SubscriptionBanner', SubscriptionBanner],
@@ -321,7 +365,6 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['arrowrightdev', arrowrightdev],
   ['arrowleftdev', arrowleftdev],
   ['HeroST', HeroST],
-  ['Hero', Hero],
   ['heroprops', heroprops],
   ['GlobalHeader', GlobalHeader],
   ['globalheaderprops', globalheaderprops],
