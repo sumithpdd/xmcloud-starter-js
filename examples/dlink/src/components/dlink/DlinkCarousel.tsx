@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, JSX } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Text, RichText, Image, Link, type Field, type ImageField, type LinkField, type RichTextField } from '@sitecore-content-sdk/nextjs';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -26,7 +26,7 @@ type DlinkCarouselFields = {
 
 type DlinkCarouselProps = ComponentProps & DlinkCarouselFields;
 
-export const Default: React.FC<DlinkCarouselProps> = (props) => {
+export const Default = (props: DlinkCarouselProps): JSX.Element => {
   const { fields } = props;
 
   if (fields) {
