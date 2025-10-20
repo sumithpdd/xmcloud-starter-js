@@ -4,6 +4,8 @@ import React, { useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Text, RichText, Image, Link, type Field, type ImageField, type LinkField, type RichTextField } from '@sitecore-content-sdk/nextjs';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { NoDataFallback } from '@/utils/NoDataFallback';
+import { ComponentProps } from '@/lib/component-props';
 
 interface CarouselSlide {
   heading?: Field<string>;
@@ -14,68 +16,77 @@ interface CarouselSlide {
   videoUrl?: Field<string>;
 }
 
-interface DlinkCarouselProps {
-  fields: {
+type DlinkCarouselFields = {
+  fields?: {
     slides?: CarouselSlide[];
     autoplay?: Field<boolean>;
     autoplayDelay?: Field<number>;
   };
-}
+};
 
-export default function DlinkCarousel({ fields }: DlinkCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+type DlinkCarouselProps = ComponentProps & DlinkCarouselFields;
 
-  const scrollPrev = useCallback(() => {
-    emblaApi?.scrollPrev();
-  }, [emblaApi]);
+export const Default: React.FC<DlinkCarouselProps> = (props) => {
+  const { fields } = props;
 
-  const scrollNext = useCallback(() => {
-    emblaApi?.scrollNext();
-  }, [emblaApi]);
+  if (fields) {
+    const { slides, autoplay, autoplayDelay } = fields;
+    const carouselSlides = slides || [];
+    
+    if (carouselSlides.length === 0) {
+      return <NoDataFallback componentName="D-Link Carousel" />;
+    }
 
-  const scrollTo = useCallback(
-    (index: number) => {
-      emblaApi?.scrollTo(index);
-    },
-    [emblaApi]
-  );
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+    const scrollPrev = useCallback(() => {
+      emblaApi?.scrollPrev();
+    }, [emblaApi]);
 
-  useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on('select', onSelect);
-    return () => {
-      emblaApi.off('select', onSelect);
-    };
-  }, [emblaApi, onSelect]);
+    const scrollNext = useCallback(() => {
+      emblaApi?.scrollNext();
+    }, [emblaApi]);
 
-  // Autoplay functionality
-  useEffect(() => {
-    const autoplay = fields?.autoplay?.value;
-    if (!emblaApi || !autoplay) return;
+    const scrollTo = useCallback(
+      (index: number) => {
+        emblaApi?.scrollTo(index);
+      },
+      [emblaApi]
+    );
 
-    const delay = fields?.autoplayDelay?.value || 5000;
-    const interval = setInterval(() => {
-      emblaApi.scrollNext();
-    }, delay);
+    const onSelect = useCallback(() => {
+      if (!emblaApi) return;
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    }, [emblaApi]);
 
-    return () => clearInterval(interval);
-  }, [emblaApi, fields?.autoplay, fields?.autoplayDelay]);
+    useEffect(() => {
+      if (!emblaApi) return;
+      onSelect();
+      emblaApi.on('select', onSelect);
+      return () => {
+        emblaApi.off('select', onSelect);
+      };
+    }, [emblaApi, onSelect]);
 
-  const slides = fields?.slides || [];
-  if (slides.length === 0) return null;
+    // Autoplay functionality
+    useEffect(() => {
+      const autoplayValue = autoplay?.value;
+      if (!emblaApi || !autoplayValue) return;
+
+      const delay = autoplayDelay?.value || 5000;
+      const interval = setInterval(() => {
+        emblaApi.scrollNext();
+      }, delay);
+
+      return () => clearInterval(interval);
+    }, [emblaApi, autoplay, autoplayDelay]);
 
   return (
     <div className="relative w-full">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
-          {slides.map((slide, index) => (
+          {carouselSlides.map((slide, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
               <div className="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
                 {slide.videoUrl?.value ? (
@@ -117,7 +128,7 @@ export default function DlinkCarousel({ fields }: DlinkCarouselProps) {
         </div>
       </div>
 
-      {slides.length > 1 && (
+      {carouselSlides.length > 1 && (
         <>
           <button
             onClick={scrollPrev}
@@ -136,9 +147,9 @@ export default function DlinkCarousel({ fields }: DlinkCarouselProps) {
         </>
       )}
 
-      {slides.length > 1 && (
+      {carouselSlides.length > 1 && (
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {slides.map((_, index) => (
+          {carouselSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => scrollTo(index)}
@@ -150,6 +161,9 @@ export default function DlinkCarousel({ fields }: DlinkCarouselProps) {
       )}
     </div>
   );
-}
+  }
+
+  return <NoDataFallback componentName="D-Link Carousel" />;
+};
 
 
