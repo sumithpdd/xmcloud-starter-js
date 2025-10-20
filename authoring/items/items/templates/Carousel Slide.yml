@@ -1,0 +1,62 @@
+# Carousel Slide Template
+# Template ID: {C1B2C3D4-E5F6-7890-ABCD-EF1234567890}
+# Template Name: Carousel Slide
+# Base Template: Standard Template
+# Insert Options: Carousel Slide
+
+Template: Carousel Slide
+  ID: {C1B2C3D4-E5F6-7890-ABCD-EF1234567890}
+  Name: Carousel Slide
+  Base Template: Standard Template
+  Insert Options: Carousel Slide
+  Icon: /sitecore/shell/themes/standard/images/16x16/slide.png
+  Description: Individual slide for carousel component
+
+Fields:
+  - Field: Heading
+    ID: {C1B2C3D4-E5F6-7890-ABCD-EF1234567891}
+    Type: Single-Line Text
+    Section: Content
+    Sort Order: 10
+    Required: Yes
+    Help Text: Main heading for the slide
+
+  - Field: Subheading
+    ID: {C1B2C3D4-E5F6-7890-ABCD-EF1234567892}
+    Type: Single-Line Text
+    Section: Content
+    Sort Order: 20
+    Required: No
+    Help Text: Secondary heading for the slide
+
+  - Field: Description
+    ID: {C1B2C3D4-E5F6-7890-ABCD-EF1234567893}
+    Type: Rich Text
+    Section: Content
+    Sort Order: 30
+    Required: No
+    Help Text: Detailed description or content for the slide
+
+  - Field: Background Image
+    ID: {C1B2C3D4-E5F6-7890-ABCD-EF1234567894}
+    Type: Image
+    Section: Media
+    Sort Order: 40
+    Required: No
+    Help Text: Background image for the slide
+
+  - Field: Video URL
+    ID: {C1B2C3D4-E5F6-7890-ABCD-EF1234567895}
+    Type: Single-Line Text
+    Section: Media
+    Sort Order: 50
+    Required: No
+    Help Text: URL for background video (overrides background image)
+
+  - Field: CTA Link
+    ID: {C1B2C3D4-E5F6-7890-ABCD-EF1234567896}
+    Type: General Link
+    Section: Call to Action
+    Sort Order: 60
+    Required: No
+    Help Text: Call-to-action link for the slide
