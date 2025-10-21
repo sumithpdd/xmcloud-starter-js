@@ -45,42 +45,135 @@ export const Default: React.FC<ProductSelectorComponentProps> = (props) => {
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
   const [showAllFilters, setShowAllFilters] = useState<Record<string, boolean>>({});
 
-  if (fields) {
-    const filterCategories = fields.filterCategories || [];
-    const products = fields.products || [];
+  // Dummy data fallback
+  const productSelectorData = {
+    sectionTitle: { value: "Product Selector Tool" },
+    filterCategories: [
+      {
+        fields: {
+          categoryName: { value: "Wireless standard" },
+          options: [{ fields: { label: { value: "802.11ax Wi-Fi 6" }, value: { value: "wifi6" } } }],
+        },
+      },
+      {
+        fields: {
+          categoryName: { value: "Advanced features" },
+          options: [
+            { fields: { label: { value: "AI Assistant" }, value: { value: "ai-assistant" } } },
+            { fields: { label: { value: "AI Mesh Optimiser" }, value: { value: "ai-mesh" } } },
+            { fields: { label: { value: "AI Parental Control" }, value: { value: "parental-control" } } },
+            { fields: { label: { value: "AI Traffic Optimiser" }, value: { value: "traffic-optimiser" } } },
+            { fields: { label: { value: "AI Wi-Fi Optimiser" }, value: { value: "wifi-optimiser" } } },
+            { fields: { label: { value: "MU-MIMO" }, value: { value: "mu-mimo" } } },
+            { fields: { label: { value: "Seamless Wi-Fi network" }, value: { value: "seamless" } } },
+            { fields: { label: { value: "SmartBeam" }, value: { value: "smartbeam" } } },
+            { fields: { label: { value: "SmartConnect band optimisation" }, value: { value: "smartconnect" } } },
+            { fields: { label: { value: "Wi-Fi Mesh support" }, value: { value: "mesh" } } },
+          ],
+        },
+      },
+    ],
+    products: [
+      {
+        fields: {
+          name: { value: "5G Wi-Fi 6 Mobile Hotspot" },
+          model: { value: "DWR-2101" },
+          image: { value: { src: "/dwr-2101-5g-mobile-hotspot.jpg", alt: "DWR-2101" } },
+          link: { value: { href: "/products/dwr-2101" } },
+          features: [],
+        },
+      },
+      {
+        fields: {
+          name: { value: "5G/LTE Outdoor CPE" },
+          model: { value: "DWP-1010" },
+          image: { value: { src: "/dwp-1010-outdoor-5g-cpe.jpg", alt: "DWP-1010" } },
+          link: { value: { href: "/products/dwp-1010" } },
+          features: [],
+        },
+      },
+      {
+        fields: {
+          name: { value: "5G NR AX3000 Wi-Fi 6 Router" },
+          model: { value: "G530" },
+          image: { value: { src: "/g530-5g-router.jpg", alt: "G530" } },
+          link: { value: { href: "/products/g530" } },
+          features: [],
+        },
+      },
+      {
+        fields: {
+          name: { value: "AX1500 4G CAT6 Smart Router" },
+          model: { value: "G416" },
+          image: { value: { src: "/g416-4g-router.jpg", alt: "G416" } },
+          link: { value: { href: "/products/g416" } },
+          features: [],
+        },
+      },
+      {
+        fields: {
+          name: { value: "AX1500 4G Smart Router" },
+          model: { value: "G415" },
+          image: { value: { src: "/g415-4g-router.jpg", alt: "G415" } },
+          link: { value: { href: "/products/g415" } },
+          features: [],
+        },
+      },
+      {
+        fields: {
+          name: { value: "5G NR AX1800 Wi-Fi 6 Mobile Hotspot" },
+          model: { value: "F518" },
+          image: { value: { src: "/f518-5g-mobile-hotspot.jpg", alt: "F518" } },
+          link: { value: { href: "/products/f518" } },
+          features: [],
+        },
+      },
+    ],
+  };
 
-    if (products.length === 0) {
-      return <NoDataFallback componentName="Product Selector" />;
-    }
+  // Use Sitecore data if available, otherwise use dummy data
+  const data = fields || productSelectorData;
+  const filterCategories = data.filterCategories || [];
+  const products = data.products || [];
+  
+  // Helper function to get field value (handles both Sitecore and dummy data)
+  const getFieldValue = (field: any) => {
+    if (!field) return '';
+    return field.value || field;
+  };
 
-    const toggleFilter = (category: string, value: string) => {
-      setSelectedFilters((prev) => {
-        const current = prev[category] || [];
-        const updated = current.includes(value) ? current.filter((v) => v !== value) : [...current, value];
-        return { ...prev, [category]: updated };
-      });
-    };
+  if (products.length === 0) {
+    return <NoDataFallback componentName="Product Selector" />;
+  }
 
-    const toggleShowAll = (category: string) => {
-      setShowAllFilters((prev) => ({ ...prev, [category]: !prev[category] }));
-    };
+  const toggleFilter = (category: string, value: string) => {
+    setSelectedFilters((prev) => {
+      const current = prev[category] || [];
+      const updated = current.includes(value) ? current.filter((v) => v !== value) : [...current, value];
+      return { ...prev, [category]: updated };
+    });
+  };
 
-    const filteredProducts = products.filter((product) => {
-      return Object.entries(selectedFilters).every(([, values]) => {
-        if (values.length === 0) return true;
-        return values.some((value) => {
-          const productFeatures = product.fields.features?.map(f => f?.value).filter(Boolean) || [];
-          return productFeatures.some((feature) => feature?.toLowerCase().includes(value.toLowerCase()));
-        });
+  const toggleShowAll = (category: string) => {
+    setShowAllFilters((prev) => ({ ...prev, [category]: !prev[category] }));
+  };
+
+  const filteredProducts = products.filter((product) => {
+    return Object.entries(selectedFilters).every(([, values]) => {
+      if (values.length === 0) return true;
+      return values.some((value) => {
+        const productFeatures = product.fields.features?.map(f => f?.value).filter(Boolean) || [];
+        return productFeatures.some((feature) => feature?.toLowerCase().includes(value.toLowerCase()));
       });
     });
+  });
 
-    return (
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {fields.sectionTitle && (
-            <Text field={fields.sectionTitle} tag="h2" className="text-3xl font-bold text-gray-900 mb-8 text-center" />
-          )}
+  return (
+    <section className="py-16 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          {getFieldValue(data.sectionTitle) || "Product Selector Tool"}
+        </h2>
 
           <div className="grid lg:grid-cols-4 gap-8">
             {/* Filters Sidebar */}
@@ -96,7 +189,9 @@ export const Default: React.FC<ProductSelectorComponentProps> = (props) => {
 
                   return (
                     <div key={categoryIndex} className="mb-6">
-                      <Text field={category.fields.categoryName} tag="h4" className="text-sm font-medium text-gray-700 mb-3" />
+                      <h4 className="text-sm font-medium text-gray-700 mb-3">
+                        {getFieldValue(category.fields.categoryName)}
+                      </h4>
                       
                       <div className="space-y-2">
                         {displayOptions.map((option, optionIndex) => {
@@ -111,7 +206,9 @@ export const Default: React.FC<ProductSelectorComponentProps> = (props) => {
                                 onChange={() => toggleFilter(categoryName, optionValue)}
                                 className="rounded border-gray-300 text-primary focus:ring-primary"
                               />
-                              <Text field={option.fields.label} tag="span" className="ml-2 text-sm text-gray-600" />
+                              <span className="ml-2 text-sm text-gray-600">
+                                {getFieldValue(option.fields.label)}
+                              </span>
                             </label>
                           );
                         })}
@@ -157,10 +254,14 @@ export const Default: React.FC<ProductSelectorComponentProps> = (props) => {
 
                     <div className="p-6">
                       {product.fields.model && (
-                        <Text field={product.fields.model} tag="p" className="text-sm font-semibold text-primary mb-2" />
+                        <p className="text-sm font-semibold text-primary mb-2">
+                          {getFieldValue(product.fields.model)}
+                        </p>
                       )}
                       {product.fields.name && (
-                        <Text field={product.fields.name} tag="h3" className="text-lg font-semibold text-gray-900 mb-3" />
+                        <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                          {getFieldValue(product.fields.name)}
+                        </h3>
                       )}
                       
                       {product.fields.features && product.fields.features.length > 0 && (
@@ -182,7 +283,4 @@ export const Default: React.FC<ProductSelectorComponentProps> = (props) => {
         </div>
       </section>
     );
-  }
-
-  return <NoDataFallback componentName="Product Selector" />;
 };

@@ -25,72 +25,78 @@ export const Default: React.FC<JumpLinksComponentProps> = (props) => {
   const { fields } = props;
   const [activeSection, setActiveSection] = useState("");
 
-  if (fields) {
-    const items = fields.items || [];
+  // Dummy data fallback
+  const jumpLinksData = {
+    items: [
+      { fields: { title: { value: "Overview" }, anchor: { value: "overview" } } },
+      { fields: { title: { value: "Specification" }, anchor: { value: "specification" } } },
+    ],
+  };
 
-    if (items.length === 0) {
-      return <NoDataFallback componentName="Jump Links" />;
-    }
+  // Use Sitecore data if available, otherwise use dummy data
+  const data = fields || jumpLinksData;
+  const items = data.items || [];
 
-    useEffect(() => {
-      const handleScroll = () => {
-        const sections = items.map((item) => item.fields.anchor?.value).filter(Boolean);
+  if (items.length === 0) {
+    return <NoDataFallback componentName="Jump Links" />;
+  }
 
-        for (const section of sections) {
-          const element = document.getElementById(section);
-          if (element) {
-            const rect = element.getBoundingClientRect();
-            if (rect.top <= 100 && rect.bottom >= 100) {
-              setActiveSection(section);
-              break;
-            }
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = items.map((item) => item.fields.anchor?.value).filter(Boolean);
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
           }
         }
-      };
-
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, [items]);
-
-    const scrollToSection = (anchor: string) => {
-      const element = document.getElementById(anchor);
-      if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
       }
     };
 
-    return (
-      <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <nav className="flex gap-8 overflow-x-auto py-4">
-            {items.map((item, index) => {
-              const anchor = item.fields.anchor?.value;
-              const isActive = activeSection === anchor;
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [items]);
 
-              return (
-                <button
-                  key={index}
-                  onClick={() => anchor && scrollToSection(anchor)}
-                  className={`whitespace-nowrap text-sm font-medium transition-colors pb-2 border-b-2 ${
-                    isActive ? "text-primary border-primary" : "text-gray-600 border-transparent hover:text-primary"
-                  }`}
-                >
-                  <Text field={item.fields.title} />
-                </button>
-              );
-            })}
-          </nav>
-        </div>
+  const scrollToSection = (anchor: string) => {
+    const element = document.getElementById(anchor);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  return (
+    <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <nav className="flex gap-8 overflow-x-auto py-4">
+          {items.map((item, index) => {
+            const anchor = item.fields.anchor?.value;
+            const isActive = activeSection === anchor;
+
+            return (
+              <button
+                key={index}
+                onClick={() => anchor && scrollToSection(anchor)}
+                className={`whitespace-nowrap text-sm font-medium transition-colors pb-2 border-b-2 ${
+                  isActive ? "text-primary border-primary" : "text-gray-600 border-transparent hover:text-primary"
+                }`}
+              >
+                <Text field={item.fields.title} />
+              </button>
+            );
+          })}
+        </nav>
       </div>
-    );
-  }
-
-  return <NoDataFallback componentName="Jump Links" />;
+    </div>
+  );
 };

@@ -22,43 +22,66 @@ type BreadcrumbProps = ComponentProps & BreadcrumbFields;
 export const Default: React.FC<BreadcrumbProps> = (props) => {
   const { fields } = props;
 
-  if (fields) {
-    const { items } = fields;
-    const breadcrumbItems = items || [];
-
-    if (breadcrumbItems.length === 0) {
-      return <NoDataFallback componentName="Breadcrumb" />;
+  // Dummy breadcrumb data fallback
+  const breadcrumbData = {
+    fields: {
+      items: [
+        {
+          fields: {
+            title: { value: "Home" },
+            link: { value: { href: "/", text: "Home" } }
+          }
+        },
+        {
+          fields: {
+            title: { value: "Products" },
+            link: { value: { href: "/products", text: "Products" } }
+          }
+        },
+        {
+          fields: {
+            title: { value: "Wi-Fi Routers" },
+            link: { value: { href: "/products/wifi-routers", text: "Wi-Fi Routers" } }
+          }
+        }
+      ]
     }
+  };
 
-    return (
-      <nav className="bg-gray-100 py-3 px-4 md:px-8" aria-label="Breadcrumb">
-        <ol className="flex items-center gap-2 text-sm">
-          {breadcrumbItems.map((item, index) => {
-            const isLast = index === breadcrumbItems.length - 1;
+  // Use Sitecore data if available, otherwise use dummy data
+  const data = fields || breadcrumbData.fields;
+  const breadcrumbItems = data.items || [];
 
-            return (
-              <li key={index} className="flex items-center gap-2">
-                {!isLast ? (
-                  <>
-                    <Link 
-                      field={item.fields.link} 
-                      className="text-primary hover:text-primary-hover hover:underline"
-                    />
-                    <ChevronRight className="w-4 h-4 text-gray-400" />
-                  </>
-                ) : (
-                  <Text 
-                    field={item.fields.title} 
-                    className="text-gray-600 font-medium"
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ol>
-      </nav>
-    );
+  if (breadcrumbItems.length === 0) {
+    return <NoDataFallback componentName="Breadcrumb" />;
   }
 
-  return <NoDataFallback componentName="Breadcrumb" />;
+  return (
+    <nav className="bg-gray-100 py-3 px-4 md:px-8" aria-label="Breadcrumb">
+      <ol className="flex items-center gap-2 text-sm">
+        {breadcrumbItems.map((item, index) => {
+          const isLast = index === breadcrumbItems.length - 1;
+
+          return (
+            <li key={index} className="flex items-center gap-2">
+              {!isLast ? (
+                <>
+                  <Link 
+                    field={item.fields.link} 
+                    className="text-primary hover:text-primary-hover hover:underline"
+                  />
+                  <ChevronRight className="w-4 h-4 text-gray-400" />
+                </>
+              ) : (
+                <Text 
+                  field={item.fields.title} 
+                  className="text-gray-600 font-medium"
+                />
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
 };

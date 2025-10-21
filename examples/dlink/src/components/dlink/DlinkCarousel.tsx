@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, JSX } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { Text, RichText, Image, Link, type Field, type ImageField, type LinkField, type RichTextField } from '@sitecore-content-sdk/nextjs';
+import { Text, RichText, Image, Link, type Field, type ImageField, type LinkField, type RichTextField, TextField } from '@sitecore-content-sdk/nextjs';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { ComponentProps } from '@/lib/component-props';
@@ -13,12 +13,12 @@ interface CarouselSlide {
   name: string;
   displayName: string;
   fields: {
-    heading?: Field<string>;
-    subheading?: Field<string>;
+    heading?: TextField;
+    subheading?: TextField;
     description?: RichTextField;
     backgroundImage?: ImageField;
     ctaLink?: LinkField;
-    videoUrl?: Field<string>;
+    videoUrl?: TextField;
   };
 }
 
@@ -99,7 +99,7 @@ export const Default = (props: DlinkCarouselProps): JSX.Element => {
                 {slide.fields.videoUrl?.value ? (
                   <div className="absolute inset-0 z-0">
                     <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                      <source src={slide.fields.videoUrl.value} type="video/mp4" />
+                      <source src={slide.fields.videoUrl.value as string} type="video/mp4" />
                     </video>
                     <div className="absolute inset-0 bg-black/40" />
                   </div>
