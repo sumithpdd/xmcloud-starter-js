@@ -15,7 +15,7 @@ import { Default } from '@/components/icon/Icon';
 import { extractVideoId } from '@/utils/video';
 import { FocusTrap } from 'focus-trap-react';
 import { motion, AnimatePresence, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { X, PanelLeft, Check, ChevronDown, ChevronUp, GripVertical, Circle, ChevronLeft, ChevronRight, MoreHorizontal, Dot, Search, ArrowLeft, ArrowRight, Moon, Sun, Play, Pause, Menu, Share2, Facebook, Linkedin, Twitter, Link as Link_6b289e2de0a07a8bed65fcf19e83723e986797b2, Mail } from 'lucide-react';
+import { X, PanelLeft, Check, ChevronDown, ChevronUp, GripVertical, Circle, ChevronLeft, ChevronRight, MoreHorizontal, Dot, Search, ArrowLeft, ArrowRight, Moon, Sun, Play, Pause, Menu, Share2, Calendar, ShoppingCart, User, Facebook, Twitter, Instagram, Linkedin, Youtube, Link as Link_6b289e2de0a07a8bed65fcf19e83723e986797b2, Mail } from 'lucide-react';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { preventScroll, allowScroll } from '@/utils/bodyClass';
 import { Portal } from '@/components/portal/portal.dev';
@@ -240,9 +240,14 @@ const importMap = [
       { name: 'Pause', value: Pause },
       { name: 'Menu', value: Menu },
       { name: 'Share2', value: Share2 },
+      { name: 'Calendar', value: Calendar },
+      { name: 'ShoppingCart', value: ShoppingCart },
+      { name: 'User', value: User },
       { name: 'Facebook', value: Facebook },
-      { name: 'Linkedin', value: Linkedin },
       { name: 'Twitter', value: Twitter },
+      { name: 'Instagram', value: Instagram },
+      { name: 'Linkedin', value: Linkedin },
+      { name: 'Youtube', value: Youtube },
       { name: 'Link', value: Link_6b289e2de0a07a8bed65fcf19e83723e986797b2 },
       { name: 'Mail', value: Mail },
     ]

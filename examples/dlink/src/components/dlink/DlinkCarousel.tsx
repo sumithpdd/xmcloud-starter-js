@@ -8,12 +8,18 @@ import { NoDataFallback } from '@/utils/NoDataFallback';
 import { ComponentProps } from '@/lib/component-props';
 
 interface CarouselSlide {
-  heading?: Field<string>;
-  subheading?: Field<string>;
-  description?: RichTextField;
-  backgroundImage?: ImageField;
-  ctaLink?: LinkField;
-  videoUrl?: Field<string>;
+  id: string;
+  url: string;
+  name: string;
+  displayName: string;
+  fields: {
+    heading?: Field<string>;
+    subheading?: Field<string>;
+    description?: RichTextField;
+    backgroundImage?: ImageField;
+    ctaLink?: LinkField;
+    videoUrl?: Field<string>;
+  };
 }
 
 type DlinkCarouselFields = {
@@ -31,6 +37,7 @@ export const Default = (props: DlinkCarouselProps): JSX.Element => {
 
   if (fields) {
     const { slides, autoplay, autoplayDelay } = fields;
+    
     const carouselSlides = slides || [];
     
     if (carouselSlides.length === 0) {
@@ -85,47 +92,57 @@ export const Default = (props: DlinkCarouselProps): JSX.Element => {
   return (
     <div className="relative w-full">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
-          {carouselSlides.map((slide, index) => (
-            <div key={index} className="flex-[0_0_100%] min-w-0">
+         <div className="flex">
+           {carouselSlides.map((slide, index) => (
+             <div key={index} className="flex-[0_0_100%] min-w-0">
               <div className="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
-                {slide.videoUrl?.value ? (
+                {slide.fields.videoUrl?.value ? (
                   <div className="absolute inset-0 z-0">
                     <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                      <source src={slide.videoUrl.value} type="video/mp4" />
+                      <source src={slide.fields.videoUrl.value} type="video/mp4" />
                     </video>
                     <div className="absolute inset-0 bg-black/40" />
                   </div>
-                ) : slide.backgroundImage ? (
+                ) : slide.fields.backgroundImage ? (
                   <div className="absolute inset-0 z-0">
-                    <Image field={slide.backgroundImage} className="w-full h-full object-cover" />
+                    <Image field={slide.fields.backgroundImage} className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/40" />
                   </div>
                 ) : (
                   <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary to-blue-600" />
                 )}
 
-                <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
-                  {slide.heading?.value && (
-                    <Text field={slide.heading} tag="h1" className="text-4xl md:text-6xl font-bold mb-4 text-balance" />
-                  )}
-                  {slide.subheading?.value && (
-                    <Text field={slide.subheading} tag="h2" className="text-xl md:text-3xl font-semibold mb-6" />
-                  )}
-                  {slide.description?.value && (
-                    <RichText field={slide.description} className="text-base md:text-xl mb-8 max-w-2xl mx-auto" />
-                  )}
-                  {slide.ctaLink?.value && (
-                    <Link
-                      field={slide.ctaLink}
-                      className="inline-block px-8 py-4 bg-accent text-black text-lg font-semibold rounded-md hover:bg-accent-hover transition-colors"
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+                 <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
+                   {slide.fields.heading?.value ? (
+                     <Text field={slide.fields.heading} tag="h1" className="text-4xl md:text-6xl font-bold mb-4 text-balance" />
+                   ) : (
+                     <h1 className="text-4xl md:text-6xl font-bold mb-4 text-balance">D-Link Networking Solutions</h1>
+                   )}
+                   {slide.fields.subheading?.value ? (
+                     <Text field={slide.fields.subheading} tag="h2" className="text-xl md:text-3xl font-semibold mb-6" />
+                   ) : (
+                     <h2 className="text-xl md:text-3xl font-semibold mb-6">Connect with Confidence</h2>
+                   )}
+                   {slide.fields.description?.value ? (
+                     <RichText field={slide.fields.description} className="text-base md:text-xl mb-8 max-w-2xl mx-auto" />
+                   ) : (
+                     <p className="text-base md:text-xl mb-8 max-w-2xl mx-auto">Discover our range of networking products designed for home, business, and industry applications.</p>
+                   )}
+                   {slide.fields.ctaLink?.value ? (
+                     <Link
+                       field={slide.fields.ctaLink}
+                       className="inline-block px-8 py-4 bg-accent text-black text-lg font-semibold rounded-md hover:bg-accent-hover transition-colors"
+                     />
+                   ) : (
+                     <a href="/products" className="inline-block px-8 py-4 bg-accent text-black text-lg font-semibold rounded-md hover:bg-accent-hover transition-colors">
+                       Explore Products
+                     </a>
+                   )}
+                 </div>
+               </div>
+             </div>
+           ))}
+         </div>
       </div>
 
       {carouselSlides.length > 1 && (
