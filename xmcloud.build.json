@@ -45,8 +45,8 @@
       "buildCommand": "build",
       "runCommand": "next:start"
     }, 
-    "dlink": {
-      "path": "./examples/dlink",
+    "colt": {
+      "path": "./examples/colt",
       "nodeVersion": "22.11.0",
       "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
       "enabled": true,
