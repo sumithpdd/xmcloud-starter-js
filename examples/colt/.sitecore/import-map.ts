@@ -131,6 +131,7 @@ import { pageView } from '@sitecore-cloudsdk/events/browser';
 import config from 'sitecore.config';
 import { getContainerPlaceholderProps, isContainerPlaceholderEmpty } from '@/components/container/container.util';
 import LocationCard from 'src/components/colt/location-card';
+import Autoplay from 'embla-carousel-autoplay';
 import ArticleCard from 'src/components/colt/article-card';
 import { IconPosition } from '@/enumerations/IconPosition.enum';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
@@ -993,6 +994,12 @@ const importMap = [
     module: 'src/components/colt/location-card',
     exports: [
       { name: 'default', value: LocationCard },
+    ]
+  },
+  {
+    module: 'embla-carousel-autoplay',
+    exports: [
+      { name: 'default', value: Autoplay },
     ]
   },
   {

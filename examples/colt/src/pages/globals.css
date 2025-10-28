@@ -1,3 +1,6 @@
+/* Inter Font from Google Fonts - Must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @import '../assets/styles/globals.css';
 @import 'tailwindcss';
 
@@ -75,4 +78,58 @@
 }
 @utility indent {
     @apply px-8 @md:px-16;
+}
+
+/* Colt DCS Custom Button Styles */
+@layer utilities {
+    .btn-colt-primary {
+        @apply bg-[#00BFA5] hover:bg-[#00A890] text-white px-8 py-3 rounded font-medium transition-colors duration-200;
+    }
+    
+    .btn-colt-primary:active {
+        @apply bg-[#009882];
+    }
+    
+    .btn-colt-cta {
+        @apply bg-[#6B46C1] hover:bg-[#5A3BA8] text-white px-6 py-2 rounded font-medium transition-colors duration-200;
+    }
+    
+    .btn-colt-cta:active {
+        @apply bg-[#4D2F94];
+    }
+    
+    .btn-colt-secondary {
+        @apply bg-white hover:bg-gray-50 text-[#00BFA5] border-2 border-[#00BFA5] px-8 py-3 rounded font-medium transition-colors duration-200;
+    }
+    
+    .btn-colt-outline {
+        @apply bg-transparent hover:bg-gray-50 text-[#00BFA5] border-2 border-[#00BFA5] px-8 py-3 rounded font-medium transition-colors duration-200;
+    }
+}
+
+@layer components {
+    /* Colt DCS Brand Colors as Utility Classes */
+    .bg-colt-teal {
+        background-color: #00BFA5;
+    }
+    
+    .bg-colt-teal-hover:hover {
+        background-color: #00A890;
+    }
+    
+    .text-colt-teal {
+        color: #00BFA5;
+    }
+    
+    .bg-colt-purple {
+        background-color: #6B46C1;
+    }
+    
+    .bg-colt-purple-hover:hover {
+        background-color: #5A3BA8;
+    }
+    
+    .text-colt-purple {
+        color: #6B46C1;
+    }
 }
