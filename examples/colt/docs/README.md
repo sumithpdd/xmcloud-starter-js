@@ -31,6 +31,8 @@ Welcome to the Colt documentation! This guide helps developers understand the Co
 - **[Component Documentation](./components/)** - All components
   - [Component Index](./components/README.md)
   - [Hero](./components/hero.md)
+  - [Carousel (Hero)](./components/carousel.md)
+  - [Header](./components/header.md)
   - [Multi Promo](./components/multi-promo.md)
   - [Page Header](./components/page-header.md)
   - [Accordion Block](./components/accordion-block.md)

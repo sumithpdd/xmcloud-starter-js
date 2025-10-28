@@ -32,10 +32,13 @@ This reference lists the custom components under `src/components/colt/` and the 
 
 ## Header (`colt/header.tsx`)
 Fields:
-- `logo?: ImageField`
+- `logo?: ImageField` (Recommended: `/-/media/Project/colt/imgi_1_colt-logo-white`)
 - `ctaText?: Field<string>`
 - `ctaLink?: LinkField`
 - `navigationItems?: Array<{ id: string; fields: { title: Field<string>; link?: LinkField } }>`
+- `languages?: Array<{ code: string; name: string; flagUrl?: string }>`
+
+See [Header Documentation](../header.md) for detailed usage examples.
 
 ## Footer (`colt/footer.tsx`)
 Fields:
@@ -101,9 +104,18 @@ Fields:
 - `link?: LinkField`
 
 ## Carousel (`colt/carousel.tsx`)
-Fields (typical):
-- `heading?: Field<string>`
-- `items?: Array<{ image?: ImageField; title?: Field<string>; description?: Field<string>; link?: LinkField }>`
+Fields:
+- `data?: { datasource?: { children?: { results?: CarouselSlide[] } } }`
+
+CarouselSlide fields:
+- `title?: Field<string>`
+- `description?: Field<string>` (RichText supported)
+- `image?: ImageField`
+- `ctaLink?: LinkField`
+- `logo1?: ImageField`
+- `logo2?: ImageField`
+
+See [Carousel Documentation](../carousel.md) for detailed usage examples.
 
 ## SolutionsCarousel (`colt/solutions-carousel.tsx`)
 Fields:

@@ -9,7 +9,7 @@ import {
 } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from '@/lib/component-props';
 import type { JSX } from 'react/jsx-runtime';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 type NavigationItem = {
@@ -20,17 +20,54 @@ type NavigationItem = {
   };
 };
 
+type LanguageOption = {
+  code: string;
+  name: string;
+  flagUrl?: string;
+};
+
 type HeaderProps = ComponentProps & {
   fields: {
     logo?: ImageField;
     ctaText?: Field<string>;
     ctaLink?: LinkField;
     navigationItems?: NavigationItem[];
+    languages?: LanguageOption[];
   };
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const languageRef = useRef<HTMLDivElement>(null);
+  
+  // Default languages based on Colt DCS website
+  const defaultLanguages: LanguageOption[] = [
+    { code: 'en-GB', name: 'English', flagUrl: 'https://flagcdn.com/w40/gb.png' },
+    { code: 'jp', name: 'Japanese', flagUrl: 'https://flagcdn.com/w40/jp.png' },
+    { code: 'de', name: 'German', flagUrl: 'https://flagcdn.com/w40/de.png' },
+    { code: 'fr', name: 'French', flagUrl: 'https://flagcdn.com/w40/fr.png' },
+  ];
+  
+  const languages = props.fields?.languages || defaultLanguages;
+  const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
+
+  // Close language dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (languageRef.current && !languageRef.current.contains(event.target as Node)) {
+        setIsLanguageOpen(false);
+      }
+    };
+
+    if (isLanguageOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isLanguageOpen]);
 
   return (
     <header className="sticky top-0 z-50 bg-[#00BFA5] shadow-sm">
@@ -40,12 +77,12 @@ const Header = (props: HeaderProps): JSX.Element => {
           <div className="flex items-center">
             <a href="/" className="flex items-center">
               {props.fields?.logo ? (
-                <Image field={props.fields.logo} className="h-8" />
+                <Image field={props.fields.logo} className="h-[40px] w-[122px]" />
               ) : (
                 <img
-                  src="https://www.coltdatacentres.net/-/media/Images/logos/colt-logos/colt-logo-white.svg?rev=d15c0ffcfd0449c693d235e8fe3091da"
+                  src="/-/media/Project/colt/imgi_1_colt-logo-white"
                   alt="Colt Data Centre Services"
-                  className="h-8"
+                  className="h-[40px] w-[122px]"
                 />
               )}
             </a>
@@ -216,22 +253,51 @@ const Header = (props: HeaderProps): JSX.Element => {
               Careers
             </Link>
 
-            <div className="flex items-center gap-2 text-sm">
-              <img src="/placeholder.svg?height=16&width=24" alt="UK Flag" className="w-6 h-4" />
-              <span className="text-white">English</span>
-              <svg
-                className="w-4 h-4 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="relative" ref={languageRef}>
+              <button
+                onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                className="flex items-center gap-2 text-sm text-white hover:text-white/80 transition-colors"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
+                {selectedLanguage.flagUrl && (
+                  <img src={selectedLanguage.flagUrl} alt={selectedLanguage.name} className="w-6 h-4" />
+                )}
+                <span>{selectedLanguage.name}</span>
+                <svg
+                  className={`w-4 h-4 text-white transition-transform ${isLanguageOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              
+              {isLanguageOpen && (
+                <div className="absolute right-0 mt-2 bg-white rounded shadow-lg min-w-[160px] py-2 z-50">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        setSelectedLanguage(lang);
+                        setIsLanguageOpen(false);
+                      }}
+                      className={`w-full flex items-center gap-2 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${
+                        selectedLanguage.code === lang.code ? 'bg-gray-50' : ''
+                      }`}
+                    >
+                      {lang.flagUrl && (
+                        <img src={lang.flagUrl} alt={lang.name} className="w-6 h-4" />
+                      )}
+                      <span className="text-sm text-gray-800">{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {props.fields?.ctaText && props.fields?.ctaLink ? (
@@ -410,26 +476,51 @@ const Header = (props: HeaderProps): JSX.Element => {
                   Careers
                 </Link>
 
-                <div className="flex items-center gap-2">
-                  <img
-                    src="/placeholder.svg?height=16&width=24"
-                    alt="UK Flag"
-                    className="w-6 h-4"
-                  />
-                  <span className="text-white">English</span>
-                  <svg
-                    className="w-4 h-4 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                <div className="relative">
+                  <button
+                    onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                    className="flex items-center gap-2 text-white hover:text-white/80 transition-colors w-full"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+                    {selectedLanguage.flagUrl && (
+                      <img src={selectedLanguage.flagUrl} alt={selectedLanguage.name} className="w-6 h-4" />
+                    )}
+                    <span>{selectedLanguage.name}</span>
+                    <svg
+                      className={`w-4 h-4 text-white transition-transform ml-auto ${isLanguageOpen ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  
+                  {isLanguageOpen && (
+                    <div className="mt-2 bg-white rounded shadow-lg min-w-[160px] py-2 z-50">
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => {
+                            setSelectedLanguage(lang);
+                            setIsLanguageOpen(false);
+                          }}
+                          className={`w-full flex items-center gap-2 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${
+                            selectedLanguage.code === lang.code ? 'bg-gray-50' : ''
+                          }`}
+                        >
+                          {lang.flagUrl && (
+                            <img src={lang.flagUrl} alt={lang.name} className="w-6 h-4" />
+                          )}
+                          <span className="text-sm text-gray-800">{lang.name}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {props.fields?.ctaText && props.fields?.ctaLink ? (
