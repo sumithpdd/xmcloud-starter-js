@@ -68,7 +68,8 @@ const FeaturesGrid = (props: FeaturesGridProps): JSX.Element => {
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {features.map((feature: Feature | (typeof defaultFeatures)[0], index: number) => {
-            const title = typeof feature.title === 'object' ? feature.title : { value: feature.title };
+            const title =
+              typeof feature.title === 'object' ? feature.title : { value: feature.title };
             const description =
               typeof feature.description === 'object'
                 ? feature.description

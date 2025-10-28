@@ -28,6 +28,7 @@ type ArticleListProps = ComponentProps & {
 
 const ArticleList = (props: ArticleListProps): JSX.Element => {
   const { heading, subheading, articles } = props.fields;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { fields: _, ...restProps } = props;
 
   const displayArticles = articles && articles.length > 0 ? articles : [];
@@ -53,7 +54,11 @@ const ArticleList = (props: ArticleListProps): JSX.Element => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayArticles.length > 0 ? (
             displayArticles.map((article, index) => (
-              <ArticleCard key={article.id || `article-${index}`} {...restProps} fields={article.fields || {}} />
+              <ArticleCard
+                key={article.id || `article-${index}`}
+                {...restProps}
+                fields={article.fields || {}}
+              />
             ))
           ) : (
             <p className="col-span-full text-center text-gray-500">No articles available</p>

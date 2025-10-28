@@ -1,10 +1,6 @@
 'use client';
 import type { JSX } from 'react/jsx-runtime';
-import type { 
-  TextField,
-  ImageField,
-  LinkField,
-} from '@sitecore-content-sdk/nextjs';
+import type { TextField, ImageField, LinkField } from '@sitecore-content-sdk/nextjs';
 import useEmblaCarousel from 'embla-carousel-react';
 import type { ComponentProps } from '@/lib/component-props';
 interface SolutionCard {
@@ -74,11 +70,21 @@ export const SolutionsCarousel = (props: SolutionsCarouselProps): JSX.Element =>
           <div className="flex gap-6">
             {cards.map((card: SolutionCard | (typeof defaultCards)[0], index: number) => {
               const hasFields = 'fields' in card;
-              const image = hasFields ? (card as SolutionCard).fields.image?.value?.src : (card as typeof defaultCards[0]).image;
-              const title = hasFields ? (card as SolutionCard).fields.title?.value : (card as typeof defaultCards[0]).title;
-              const description = hasFields ? (card as SolutionCard).fields.description?.value : (card as typeof defaultCards[0]).description;
-              const ctaLink = hasFields ? (card as SolutionCard).fields.ctaLink?.value?.href : (card as typeof defaultCards[0]).ctaLink;
-              const ctaText = hasFields ? (card as SolutionCard).fields.ctaText?.value : (card as typeof defaultCards[0]).ctaText;
+              const image = hasFields
+                ? (card as SolutionCard).fields.image?.value?.src
+                : (card as (typeof defaultCards)[0]).image;
+              const title = hasFields
+                ? (card as SolutionCard).fields.title?.value
+                : (card as (typeof defaultCards)[0]).title;
+              const description = hasFields
+                ? (card as SolutionCard).fields.description?.value
+                : (card as (typeof defaultCards)[0]).description;
+              const ctaLink = hasFields
+                ? (card as SolutionCard).fields.ctaLink?.value?.href
+                : (card as (typeof defaultCards)[0]).ctaLink;
+              const ctaText = hasFields
+                ? (card as SolutionCard).fields.ctaText?.value
+                : (card as (typeof defaultCards)[0]).ctaText;
 
               return (
                 <div
@@ -87,7 +93,11 @@ export const SolutionsCarousel = (props: SolutionsCarouselProps): JSX.Element =>
                 >
                   <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
                     <div className="relative h-48 overflow-hidden">
-                      <img src={image || ''} alt={String(title)} className="w-full h-full object-cover" />
+                      <img
+                        src={image || ''}
+                        alt={String(title)}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div className="p-6 flex flex-col flex-grow">
                       <h3 className="text-xl font-bold mb-3 text-gray-900">{title}</h3>
@@ -96,20 +106,20 @@ export const SolutionsCarousel = (props: SolutionsCarouselProps): JSX.Element =>
                         href={ctaLink}
                         className="inline-flex items-center text-[#00BFA5] hover:text-[#009688] font-semibold transition-colors"
                       >
-                        {ctaText}
-                      <svg
-                        className="w-5 h-5 ml-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
+                          {ctaText}
+                        <svg
+                          className="w-5 h-5 ml-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
                     </a>
                     </div>
                   </div>
