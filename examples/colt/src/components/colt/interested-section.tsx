@@ -1,20 +1,24 @@
-import type {  TextField, LinkField } from "@sitecore-content-sdk/nextjs"
-import type { JSX } from "react/jsx-runtime"
-import type { ComponentProps } from "@/lib/component-props"
+import type {
+  TextField,
+  LinkField,
+} from '@sitecore-content-sdk/nextjs';
+import type { JSX } from 'react/jsx-runtime';
+import type { ComponentProps } from '@/lib/component-props';
 type InterestedSectionProps = ComponentProps & {
   fields?: {
-    title?: TextField
-    description?: TextField
-    buttonText?: TextField
-    buttonLink?: LinkField
-  }
-}
+    title?: TextField;
+    description?: TextField;
+    buttonText?: TextField;
+    buttonLink?: LinkField;
+  };
+};
 
 export const InterestedSection = (props: InterestedSectionProps): JSX.Element => {
-  const title = props.fields?.title?.value || "Interested to know more about our data centres?"
-  const description = props.fields?.description?.value || "Get in touch with our team to discuss your requirements"
-  const buttonText = props.fields?.buttonText?.value || "Contact us"
-  const buttonLink = props.fields?.buttonLink?.value?.href || "/contact"
+  const title = props.fields?.title?.value || 'Interested to know more about our data centres?';
+  const description =
+    props.fields?.description?.value || 'Get in touch with our team to discuss your requirements';
+  const buttonText = props.fields?.buttonText?.value || 'Contact us';
+  const buttonLink = props.fields?.buttonLink?.value?.href || '/contact';
 
   return (
     <section className="bg-gray-100 py-16 px-4">
@@ -29,7 +33,7 @@ export const InterestedSection = (props: InterestedSectionProps): JSX.Element =>
         </a>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default InterestedSection
+export default InterestedSection;

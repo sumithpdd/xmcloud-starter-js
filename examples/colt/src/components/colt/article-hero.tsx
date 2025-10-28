@@ -1,16 +1,20 @@
-import { Image, type ImageField, type Field, Text } from "@sitecore-content-sdk/nextjs"
-import type { ComponentProps } from "@/lib/component-props"
-import type { JSX } from "react/jsx-runtime"
-
+import {
+  Image,
+  type ImageField,
+  type Field,
+  Text,
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from '@/lib/component-props';
+import type { JSX } from 'react/jsx-runtime';
 
 type ArticleHeroProps = ComponentProps & {
   fields: {
-    title?: Field<string>
-    category?: Field<string>
-    date?: Field<string>
-    image?: ImageField
-  }
-}
+    title?: Field<string>;
+    category?: Field<string>;
+    date?: Field<string>;
+    image?: ImageField;
+  };
+};
 
 const ArticleHero = (props: ArticleHeroProps): JSX.Element => {
   return (
@@ -55,7 +59,7 @@ const ArticleHero = (props: ArticleHeroProps): JSX.Element => {
         )}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ArticleHero
+export default ArticleHero;

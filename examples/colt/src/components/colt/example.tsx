@@ -4,15 +4,15 @@ import {
   Image,
   type ImageField,
   type Field,
-  } from "@sitecore-content-sdk/nextjs"
-  import type { ComponentProps } from "@/lib/component-props"
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from '@/lib/component-props';
 type ExampleProps = ComponentProps & {
   fields: {
-    heading: Field<string>
-    content: Field<string>
-    image: ImageField
-  }
-}
+    heading: Field<string>;
+    content: Field<string>;
+    image: ImageField;
+  };
+};
 
 const Example = (props: ExampleProps): JSX.Element => {
   return (
@@ -31,7 +31,7 @@ const Example = (props: ExampleProps): JSX.Element => {
 
       {props.fields?.image && <Image field={props.fields.image} className="rounded-lg shadow-lg" />}
     </div>
-  )
-}
+  );
+};
 
-export default Example
+export default Example;

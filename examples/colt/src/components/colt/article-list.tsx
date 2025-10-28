@@ -1,35 +1,40 @@
-"use client"
+'use client';
 
-import { Text, type Field, type ImageField, type LinkField } from "@sitecore-content-sdk/nextjs"
-import type { ComponentProps } from "@/lib/component-props"
-import ArticleCard from "./article-card"
-import type { JSX } from "react/jsx-runtime"
+import {
+  Text,
+  type Field,
+  type ImageField,
+  type LinkField,
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from '@/lib/component-props';
+import ArticleCard from './article-card';
+import type { JSX } from 'react/jsx-runtime';
 
 type Article = {
-  id?: string
+  id?: string;
   fields?: {
-    image?: ImageField
-    category?: Field<string>
-    title?: Field<string>
-    excerpt?: Field<string>
-    date?: Field<string>
-    readTime?: Field<string>
-    link?: LinkField
-  }
-}
+    image?: ImageField;
+    category?: Field<string>;
+    title?: Field<string>;
+    excerpt?: Field<string>;
+    date?: Field<string>;
+    readTime?: Field<string>;
+    link?: LinkField;
+  };
+};
 
 type ArticleListProps = ComponentProps & {
   fields: {
-    heading?: Field<string>
-    subheading?: Field<string>
-    articles?: Article[]
-  }
-}
+    heading?: Field<string>;
+    subheading?: Field<string>;
+    articles?: Article[];
+  };
+};
 
 const ArticleList = (props: ArticleListProps): JSX.Element => {
-  const { heading, subheading, articles } = props.fields
+  const { heading, subheading, articles } = props.fields;
 
-  const displayArticles = articles && articles.length > 0 ? articles : []
+  const displayArticles = articles && articles.length > 0 ? articles : [];
 
   return (
     <section className="py-16 bg-gray-50">
@@ -52,8 +57,8 @@ const ArticleList = (props: ArticleListProps): JSX.Element => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayArticles.length > 0 ? (
             displayArticles.map((article, index) => {
-              const articleFields = article.fields || article
-              return <ArticleCard key={article.id || `article-${index}`} fields={articleFields} />
+              const articleFields = article.fields || article;
+              return <ArticleCard key={article.id || `article-${index}`} fields={articleFields} />;
             })
           ) : (
             <p className="col-span-full text-center text-gray-500">No articles available</p>
@@ -61,7 +66,7 @@ const ArticleList = (props: ArticleListProps): JSX.Element => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ArticleList
+export default ArticleList;

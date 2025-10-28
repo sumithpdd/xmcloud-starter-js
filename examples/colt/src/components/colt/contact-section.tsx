@@ -1,41 +1,41 @@
-"use client"
+'use client';
 
-import type React from "react"
-import { useState } from "react"
-import type { JSX } from "react/jsx-runtime"
-import type { Field } from "@sitecore-content-sdk/nextjs"
-import type { ComponentProps } from "@/lib/component-props"
+import type React from 'react';
+import { useState } from 'react';
+import type { JSX } from 'react/jsx-runtime';
+import type { Field } from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from '@/lib/component-props';
 
 interface ContactSectionProps extends ComponentProps {
   fields?: {
-    title?: Field<string>
-    description?: Field<string>
-    submitText?: Field<string>
-  }
+    title?: Field<string>;
+    description?: Field<string>;
+    submitText?: Field<string>;
+  };
 }
 
 export const ContactSection = (props: ContactSectionProps): JSX.Element => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    phone: "",
-    subject: "",
-    message: "",
-  })
+    name: '',
+    email: '',
+    company: '',
+    phone: '',
+    subject: '',
+    message: '',
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("[v0] Form submitted:", formData)
+    e.preventDefault();
+    console.log('[v0] Form submitted:', formData);
     // Handle form submission
-  }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   return (
     <section className="py-16 bg-gray-50">
@@ -43,10 +43,11 @@ export const ContactSection = (props: ContactSectionProps): JSX.Element => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              {props.fields?.title?.value || "Contact us"}
+              {props.fields?.title?.value || 'Contact us'}
             </h2>
             <p className="text-lg text-gray-600">
-              {props.fields?.description?.value || "Fill out the form below and our team will get back to you shortly."}
+              {props.fields?.description?.value ||
+                'Fill out the form below and our team will get back to you shortly.'}
             </p>
           </div>
 
@@ -151,13 +152,13 @@ export const ContactSection = (props: ContactSectionProps): JSX.Element => {
               type="submit"
               className="w-full bg-[#6B46C1] hover:bg-[#5A3BA8] text-white font-semibold py-4 px-8 rounded-lg transition-colors"
             >
-              {props.fields?.submitText?.value || "Send Message"}
+              {props.fields?.submitText?.value || 'Send Message'}
             </button>
           </form>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ContactSection
+export default ContactSection;

@@ -1,66 +1,75 @@
-"use client"
+'use client';
 
-import React, { useCallback, useEffect, useState } from "react"
-import useEmblaCarousel from "embla-carousel-react"
-import Autoplay from "embla-carousel-autoplay"
-import { Text, RichText, Image, type Field, type ImageField, type LinkField } from "@sitecore-content-sdk/nextjs"
-import type { ComponentProps } from "@/lib/component-props"
+import React, { useCallback, useEffect, useState } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import {
+  Text,
+  RichText,
+  Image,
+  type Field,
+  type ImageField,
+  type LinkField,
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from '@/lib/component-props';
 
 type CarouselSlideFields = {
-  title?: Field<string>
-  description?: Field<string>
-  image?: ImageField
-  ctaLink?: LinkField
-  logo1?: ImageField
-  logo2?: ImageField
-}
+  title?: Field<string>;
+  description?: Field<string>;
+  image?: ImageField;
+  ctaLink?: LinkField;
+  logo1?: ImageField;
+  logo2?: ImageField;
+};
 
 type CarouselSlide = {
-  id?: string
-  fields?: CarouselSlideFields
-}
+  id?: string;
+  fields?: CarouselSlideFields;
+};
 
 type CarouselProps = ComponentProps & {
   fields: {
     data?: {
       datasource?: {
         children?: {
-          results: CarouselSlide[]
-        }
-      }
-    }
-  }
-}
+          results: CarouselSlide[];
+        };
+      };
+    };
+  };
+};
 
 const Carousel = (props: CarouselProps): React.JSX.Element => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000, stopOnInteraction: false })])
-  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+    Autoplay({ delay: 5000, stopOnInteraction: false }),
+  ]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi])
+  const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
 
   const onSelect = useCallback(() => {
-    if (!emblaApi) return
-    setSelectedIndex(emblaApi.selectedScrollSnap())
-  }, [emblaApi])
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
   useEffect(() => {
-    if (!emblaApi) return
-    onSelect()
-    emblaApi.on("select", onSelect)
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
     return () => {
-      emblaApi.off("select", onSelect)
-    }
-  }, [emblaApi, onSelect])
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi, onSelect]);
 
   // Get slides from Sitecore datasource
-  const slides = props.fields?.data?.datasource?.children?.results ?? []
+  const slides = props.fields?.data?.datasource?.children?.results ?? [];
 
   return (
     <section className="relative bg-gray-50">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {slides.map((slideData: CarouselSlide, index: number) => {
-            const fields = slideData.fields
+            const fields = slideData.fields;
 
             return (
               <div key={slideData.id || index} className="flex-[0_0_100%] min-w-0">
@@ -85,8 +94,18 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
                           className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center transition-colors"
                           aria-label="Previous slide"
                         >
-                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                          <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M15 19l-7-7 7-7"
+                            />
                           </svg>
                         </button>
                         <button
@@ -94,8 +113,18 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
                           className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center transition-colors"
                           aria-label="Next slide"
                         >
-                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
                           </svg>
                         </button>
                       </div>
@@ -117,10 +146,10 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
                       {/* CTA Button */}
                       {fields?.ctaLink && (
                         <a
-                          href={fields.ctaLink.value?.href || "#"}
+                          href={fields.ctaLink.value?.href || '#'}
                           className="inline-block bg-[#00BFA5] hover:bg-[#00A890] text-white px-8 py-3 rounded transition-colors"
                         >
-                          {fields.ctaLink.value?.text || "Learn more"}
+                          {fields.ctaLink.value?.text || 'Learn more'}
                         </a>
                       )}
 
@@ -143,7 +172,7 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
                   </div>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
@@ -155,14 +184,14 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
             key={index}
             onClick={() => scrollTo(index)}
             className={`w-3 h-3 rounded-full transition-all ${
-              index === selectedIndex ? "bg-white w-8" : "bg-white/50"
+              index === selectedIndex ? 'bg-white w-8' : 'bg-white/50'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Carousel
+export default Carousel;

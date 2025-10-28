@@ -5,20 +5,20 @@ import {
   Image,
   type ImageField,
   type Field,
-  type LinkField, 
-} from "@sitecore-content-sdk/nextjs"
-import type { ComponentProps } from "@/lib/component-props"
+  type LinkField,
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from '@/lib/component-props';
 type LocationDetailsProps = ComponentProps & {
   fields: {
-    title: Field<string>
-    description: Field<string>
-    mainImage: ImageField
-    detailImage: ImageField
-    content: Field<string>
-    ctaText: Field<string>
-    ctaLink: LinkField
-  }
-}
+    title: Field<string>;
+    description: Field<string>;
+    mainImage: ImageField;
+    detailImage: ImageField;
+    content: Field<string>;
+    ctaText: Field<string>;
+    ctaLink: LinkField;
+  };
+};
 
 const LocationDetails = (props: LocationDetailsProps): JSX.Element => {
   return (
@@ -52,16 +52,16 @@ const LocationDetails = (props: LocationDetailsProps): JSX.Element => {
             ) : (
               <div className="space-y-4">
                 <p className="text-gray-700">
-                  Colt London North Data Centre, located in Welwyn Garden City, supports both large enterprise and cloud
-                  customers and is designed to a Colt tier 3 specification.
+                  Colt London North Data Centre, located in Welwyn Garden City, supports both large
+                  enterprise and cloud customers and is designed to a Colt tier 3 specification.
                 </p>
                 <p className="text-gray-700">
                   Supplying 35MW of IT power, this site has a gross technical area of 21,339 m².
                 </p>
                 <p className="text-gray-700">
-                  Originally designed for demanding large enterprise and financial service institutions, Colt London
-                  North Data Centre has been further developed and is now home to cloud service providers and
-                  organisations that require scalable capacity.
+                  Originally designed for demanding large enterprise and financial service
+                  institutions, Colt London North Data Centre has been further developed and is now
+                  home to cloud service providers and organisations that require scalable capacity.
                 </p>
               </div>
             )}
@@ -98,10 +98,12 @@ const LocationDetails = (props: LocationDetailsProps): JSX.Element => {
         <div className="bg-gray-50 p-8 rounded-lg">
           <div className="flex flex-col md:flex-row gap-8 items-center justify-between">
             <div>
-              <h3 className="text-2xl font-bold mb-2">Colt London North Data Centre Specification Sheet</h3>
+              <h3 className="text-2xl font-bold mb-2">
+                Colt London North Data Centre Specification Sheet
+              </h3>
               <p className="text-gray-600">
-                Download the Colt London North Data Centre specification sheet for more information, as we explore the
-                features and benefits of selecting this data centre.
+                Download the Colt London North Data Centre specification sheet for more information,
+                as we explore the features and benefits of selecting this data centre.
               </p>
             </div>
 
@@ -120,7 +122,7 @@ const LocationDetails = (props: LocationDetailsProps): JSX.Element => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default LocationDetails
+export default LocationDetails;

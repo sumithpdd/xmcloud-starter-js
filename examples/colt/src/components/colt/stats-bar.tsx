@@ -1,29 +1,36 @@
-import { Text, type Field } from "@sitecore-content-sdk/nextjs"
-import type { ComponentProps } from "@/lib/component-props"
-import type { JSX } from "react/jsx-runtime"
+import {
+  Text,
+  type Field,
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from '@/lib/component-props';
+import type { JSX } from 'react/jsx-runtime';
 
 type Stat = {
-  value: Field<string>
-  label: Field<string>
-  suffix: Field<string>
-}
+  value: Field<string>;
+  label: Field<string>;
+  suffix: Field<string>;
+};
 
 type StatsBarProps = ComponentProps & {
   fields: {
-    stats?: Stat[]
-    backgroundColor?: Field<string>
-  }
-}
+    stats?: Stat[];
+    backgroundColor?: Field<string>;
+  };
+};
 
 const StatsBar = (props: StatsBarProps): JSX.Element => {
   const defaultStats = [
-    { value: { value: "0" }, label: { value: "of IT Power" }, suffix: { value: "MW" } },
-    { value: { value: "0" }, label: { value: "Gross Site Area" }, suffix: { value: "m²" } },
-    { value: { value: "Colt tier 0" }, label: { value: "Resilient Infrastructure" }, suffix: { value: "" } },
-  ]
+    { value: { value: '0' }, label: { value: 'of IT Power' }, suffix: { value: 'MW' } },
+    { value: { value: '0' }, label: { value: 'Gross Site Area' }, suffix: { value: 'm²' } },
+    {
+      value: { value: 'Colt tier 0' },
+      label: { value: 'Resilient Infrastructure' },
+      suffix: { value: '' },
+    },
+  ];
 
-  const stats = props.fields?.stats?.length > 0 ? props.fields.stats : defaultStats
-  const bgColor = props.fields?.backgroundColor?.value || "[#00BFA5]"
+  const stats = props.fields?.stats?.length > 0 ? props.fields.stats : defaultStats;
+  const bgColor = props.fields?.backgroundColor?.value || '[#00BFA5]';
 
   return (
     <section className={`py-12 bg-${bgColor}`}>
@@ -56,7 +63,7 @@ const StatsBar = (props: StatsBarProps): JSX.Element => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default StatsBar
+export default StatsBar;

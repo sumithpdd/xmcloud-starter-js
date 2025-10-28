@@ -1,29 +1,35 @@
-import type { JSX } from "react/jsx-runtime"
-import type {  TextField, LinkField } from "@sitecore-content-sdk/nextjs"
-import type { ComponentProps } from "@/lib/component-props"
+import type { JSX } from 'react/jsx-runtime';
+import type {
+  TextField,
+  LinkField,
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from '@/lib/component-props';
 interface CtaSectionProps extends ComponentProps {
   fields?: {
-    title?: TextField
-    description?: TextField
-    ctaText?: TextField
-    ctaLink?: LinkField
-    backgroundImage?: TextField
-  }
+    title?: TextField;
+    description?: TextField;
+    ctaText?: TextField;
+    ctaLink?: LinkField;
+    backgroundImage?: TextField;
+  };
 }
 
 export const CtaSection = (props: CtaSectionProps): JSX.Element => {
-  const title = props.fields?.title?.value || "Interested to know more about our data centres?"
+  const title = props.fields?.title?.value || 'Interested to know more about our data centres?';
   const description =
     props.fields?.description?.value ||
-    "Get in touch with our team to discuss your requirements and find the perfect solution for your business."
-  const ctaText = props.fields?.ctaText?.value || "Contact us"
-  const ctaLink = props.fields?.ctaLink?.value?.href || "/contact"
+    'Get in touch with our team to discuss your requirements and find the perfect solution for your business.';
+  const ctaText = props.fields?.ctaText?.value || 'Contact us';
+  const ctaLink = props.fields?.ctaLink?.value?.href || '/contact';
   const backgroundImage =
     props.fields?.backgroundImage?.value ||
-    "https://www.coltdatacentres.net/-/media/Images/cta-backgrounds/cta-data-centre.jpg"
+    'https://www.coltdatacentres.net/-/media/Images/cta-backgrounds/cta-data-centre.jpg';
 
   return (
-    <section className="relative py-24 bg-cover bg-center" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <section
+      className="relative py-24 bg-cover bg-center"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="absolute inset-0 bg-gradient-to-r from-[#00BFA5]/90 to-[#6B46C1]/90"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center text-white">
@@ -38,7 +44,7 @@ export const CtaSection = (props: CtaSectionProps): JSX.Element => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default CtaSection
+export default CtaSection;

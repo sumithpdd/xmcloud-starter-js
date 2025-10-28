@@ -1,31 +1,35 @@
-"use client"
+'use client';
 
-import { Image, Text, RichText,  } from "@sitecore-content-sdk/nextjs"
-import type { JSX } from "react/jsx-runtime"
-import type { ComponentProps } from "@/lib/component-props"
+import {
+  Image,
+  Text,
+  RichText,
+} from '@sitecore-content-sdk/nextjs';
+import type { JSX } from 'react/jsx-runtime';
+import type { ComponentProps } from '@/lib/component-props';
 type LocationDetailProps = ComponentProps & {
   fields: {
-    heroImage?: { value: { src: string; alt?: string } }
-    city?: { value: string }
-    country?: { value: string }
-    address?: { value: string }
-    capacity?: { value: string }
-    status?: { value: string }
-    description?: { value: string }
+    heroImage?: { value: { src: string; alt?: string } };
+    city?: { value: string };
+    country?: { value: string };
+    address?: { value: string };
+    capacity?: { value: string };
+    status?: { value: string };
+    description?: { value: string };
     specifications?: Array<{
-      label?: { value: string }
-      value?: { value: string }
-    }>
+      label?: { value: string };
+      value?: { value: string };
+    }>;
     features?: Array<{
-      icon?: { value: string }
-      title?: { value: string }
-      description?: { value: string }
-    }>
-    certifications?: Array<{ value: string }>
-    contactEmail?: { value: string }
-    contactPhone?: { value: string }
-  }
-}
+      icon?: { value: string };
+      title?: { value: string };
+      description?: { value: string };
+    }>;
+    certifications?: Array<{ value: string }>;
+    contactEmail?: { value: string };
+    contactPhone?: { value: string };
+  };
+};
 
 const LocationDetail = (props: LocationDetailProps): JSX.Element => {
   const {
@@ -41,7 +45,7 @@ const LocationDetail = (props: LocationDetailProps): JSX.Element => {
     certifications,
     contactEmail,
     contactPhone,
-  } = props.fields
+  } = props.fields;
 
   return (
     <div className="bg-white">
@@ -50,7 +54,11 @@ const LocationDetail = (props: LocationDetailProps): JSX.Element => {
         {heroImage?.value?.src ? (
           <Image field={heroImage} className="w-full h-full object-cover" />
         ) : (
-          <img src="/modern-data-center-cityscape.jpg" alt="Data Centre" className="w-full h-full object-cover" />
+          <img
+            src="/modern-data-center-cityscape.jpg"
+            alt="Data Centre"
+            className="w-full h-full object-cover"
+          />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
 
@@ -60,7 +68,7 @@ const LocationDetail = (props: LocationDetailProps): JSX.Element => {
             <div className="flex items-end justify-between">
               <div className="text-white">
                 <h1 className="text-5xl font-bold mb-2">
-                  {city?.value ? <Text field={city} /> : "City"}
+                  {city?.value ? <Text field={city} /> : 'City'}
                   {country?.value && (
                     <span className="text-3xl font-normal ml-4">
                       <Text field={country} />
@@ -76,11 +84,11 @@ const LocationDetail = (props: LocationDetailProps): JSX.Element => {
               {status?.value && (
                 <span
                   className={`px-4 py-2 rounded text-sm font-medium ${
-                    status.value === "Operational"
-                      ? "bg-green-500 text-white"
-                      : status.value === "In Development"
-                        ? "bg-blue-500 text-white"
-                        : "bg-gray-500 text-white"
+                    status.value === 'Operational'
+                      ? 'bg-green-500 text-white'
+                      : status.value === 'In Development'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-500 text-white'
                   }`}
                 >
                   <Text field={status} />
@@ -115,8 +123,18 @@ const LocationDetail = (props: LocationDetailProps): JSX.Element => {
                     <div key={index} className="flex gap-4">
                       <div className="flex-shrink-0">
                         <div className="w-12 h-12 rounded-lg bg-[#00BFA5]/10 flex items-center justify-center">
-                          <svg className="w-6 h-6 text-[#00BFA5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          <svg
+                            className="w-6 h-6 text-[#00BFA5]"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
                           </svg>
                         </div>
                       </div>
@@ -178,7 +196,11 @@ const LocationDetail = (props: LocationDetailProps): JSX.Element => {
                 <ul className="space-y-2">
                   {certifications.map((cert, index) => (
                     <li key={index} className="flex items-center gap-2 text-gray-700">
-                      <svg className="w-5 h-5 text-[#00BFA5]" fill="currentColor" viewBox="0 0 20 20">
+                      <svg
+                        className="w-5 h-5 text-[#00BFA5]"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
                         <path
                           fillRule="evenodd"
                           d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -195,10 +217,15 @@ const LocationDetail = (props: LocationDetailProps): JSX.Element => {
             {/* Contact */}
             <div className="bg-[#00BFA5] text-white rounded-lg p-6">
               <h3 className="text-xl font-bold mb-4">Get in Touch</h3>
-              <p className="mb-4">Interested in this location? Contact our team for more information.</p>
+              <p className="mb-4">
+                Interested in this location? Contact our team for more information.
+              </p>
               <div className="space-y-3">
                 {contactEmail?.value && (
-                  <a href={`mailto:${contactEmail.value}`} className="flex items-center gap-2 hover:underline">
+                  <a
+                    href={`mailto:${contactEmail.value}`}
+                    className="flex items-center gap-2 hover:underline"
+                  >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
@@ -211,7 +238,10 @@ const LocationDetail = (props: LocationDetailProps): JSX.Element => {
                   </a>
                 )}
                 {contactPhone?.value && (
-                  <a href={`tel:${contactPhone.value}`} className="flex items-center gap-2 hover:underline">
+                  <a
+                    href={`tel:${contactPhone.value}`}
+                    className="flex items-center gap-2 hover:underline"
+                  >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
@@ -229,7 +259,7 @@ const LocationDetail = (props: LocationDetailProps): JSX.Element => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LocationDetail
+export default LocationDetail;

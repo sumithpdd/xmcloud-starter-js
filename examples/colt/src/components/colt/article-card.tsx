@@ -1,23 +1,29 @@
-"use client"
+'use client';
 
-import { Image, Text, type ImageField, type Field, type LinkField } from "@sitecore-content-sdk/nextjs"
-import type { ComponentProps } from "@/lib/component-props"
-import React from "react"
+import {
+  Image,
+  Text,
+  type ImageField,
+  type Field,
+  type LinkField,
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from '@/lib/component-props';
+import React from 'react';
 
 type ArticleCardProps = ComponentProps & {
   fields: {
-    image?: ImageField
-    category?: Field<string>
-    title?: Field<string>
-    excerpt?: Field<string>
-    date?: Field<string>
-    readTime?: Field<string>
-    link?: LinkField
-  }
-}
+    image?: ImageField;
+    category?: Field<string>;
+    title?: Field<string>;
+    excerpt?: Field<string>;
+    date?: Field<string>;
+    readTime?: Field<string>;
+    link?: LinkField;
+  };
+};
 
 const ArticleCard = (props: ArticleCardProps): React.JSX.Element => {
-  const { image, category, title, excerpt, date, readTime, link } = props.fields
+  const { image, category, title, excerpt, date, readTime, link } = props.fields;
 
   return (
     <article className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
@@ -65,17 +71,17 @@ const ArticleCard = (props: ArticleCardProps): React.JSX.Element => {
 
         {/* Title */}
         <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#00BFA5] transition-colors">
-          {title ? <Text field={title} /> : "Article Title"}
+          {title ? <Text field={title} /> : 'Article Title'}
         </h3>
 
         {/* Excerpt */}
         <p className="text-gray-600 mb-4 line-clamp-3">
-          {excerpt ? <Text field={excerpt} /> : "Article excerpt goes here..."}
+          {excerpt ? <Text field={excerpt} /> : 'Article excerpt goes here...'}
         </p>
 
         {/* Read More Link */}
         <a
-          href={link?.value?.href || "#"}
+          href={link?.value?.href || '#'}
           className="inline-flex items-center text-[#00BFA5] font-medium hover:text-[#00A890] transition-colors"
         >
           Read more
@@ -85,7 +91,7 @@ const ArticleCard = (props: ArticleCardProps): React.JSX.Element => {
         </a>
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default ArticleCard
+export default ArticleCard;

@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import {
   Text,
@@ -6,30 +6,30 @@ import {
   type ImageField,
   type Field,
   type LinkField,
-} from "@sitecore-content-sdk/nextjs"
-import type { ComponentProps } from "@/lib/component-props"
-import type { JSX } from "react/jsx-runtime"
-import { useState } from "react"
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from '@/lib/component-props';
+import type { JSX } from 'react/jsx-runtime';
+import { useState } from 'react';
 
 type NavigationItem = {
-  id: string
+  id: string;
   fields: {
-    title: Field<string>
-    link?: LinkField
-  }
-}
+    title: Field<string>;
+    link?: LinkField;
+  };
+};
 
 type HeaderProps = ComponentProps & {
   fields: {
-    logo?: ImageField
-    ctaText?: Field<string>
-    ctaLink?: LinkField
-    navigationItems?: NavigationItem[]
-  }
-}
+    logo?: ImageField;
+    ctaText?: Field<string>;
+    ctaLink?: LinkField;
+    navigationItems?: NavigationItem[];
+  };
+};
 
 const Header = (props: HeaderProps): JSX.Element => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-[#00BFA5] shadow-sm">
@@ -61,15 +61,35 @@ const Header = (props: HeaderProps): JSX.Element => {
                       className="flex items-center gap-1 text-white hover:text-white/80 transition-colors"
                     >
                       <Text field={item.fields.title} />
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
                       </svg>
                     </a>
                   ) : (
                     <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors">
                       <Text field={item.fields.title} />
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
                       </svg>
                     </button>
                   )}
@@ -81,7 +101,12 @@ const Header = (props: HeaderProps): JSX.Element => {
                   <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors">
                     Data Centres
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -90,7 +115,12 @@ const Header = (props: HeaderProps): JSX.Element => {
                   <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors">
                     Developments
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -99,7 +129,12 @@ const Header = (props: HeaderProps): JSX.Element => {
                   <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors">
                     Solutions
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -108,7 +143,12 @@ const Header = (props: HeaderProps): JSX.Element => {
                   <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors">
                     Sustainability
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -117,7 +157,12 @@ const Header = (props: HeaderProps): JSX.Element => {
                   <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors">
                     About
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -126,7 +171,12 @@ const Header = (props: HeaderProps): JSX.Element => {
                   <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors">
                     Media Room
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -135,7 +185,12 @@ const Header = (props: HeaderProps): JSX.Element => {
                   <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors">
                     Contact
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -163,14 +218,24 @@ const Header = (props: HeaderProps): JSX.Element => {
             <div className="flex items-center gap-2 text-sm">
               <img src="/placeholder.svg?height=16&width=24" alt="UK Flag" className="w-6 h-4" />
               <span className="text-white">English</span>
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <svg
+                className="w-4 h-4 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
 
             {props.fields?.ctaText && props.fields?.ctaLink ? (
               <a
-                href={props.fields.ctaLink.value?.href || "/contact"}
+                href={props.fields.ctaLink.value?.href || '/contact'}
                 className="bg-[#6B46C1] hover:bg-[#5A3BA8] text-white px-6 py-2 rounded transition-colors"
               >
                 <Text field={props.fields.ctaText} />
@@ -190,11 +255,21 @@ const Header = (props: HeaderProps): JSX.Element => {
           >
             {isMobileMenuOpen ? (
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             ) : (
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             )}
           </button>
@@ -213,15 +288,35 @@ const Header = (props: HeaderProps): JSX.Element => {
                         className="flex items-center justify-between text-white hover:text-white/80 transition-colors py-2"
                       >
                         <Text field={item.fields.title} />
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
                         </svg>
                       </a>
                     ) : (
                       <button className="flex items-center justify-between w-full text-white hover:text-white/80 transition-colors py-2">
                         <Text field={item.fields.title} />
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
                         </svg>
                       </button>
                     )}
@@ -232,43 +327,78 @@ const Header = (props: HeaderProps): JSX.Element => {
                   <button className="flex items-center justify-between text-white hover:text-white/80 transition-colors py-2">
                     Data Centres
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
                     </svg>
                   </button>
                   <button className="flex items-center justify-between text-white hover:text-white/80 transition-colors py-2">
                     Developments
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
                     </svg>
                   </button>
                   <button className="flex items-center justify-between text-white hover:text-white/80 transition-colors py-2">
                     Solutions
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
                     </svg>
                   </button>
                   <button className="flex items-center justify-between text-white hover:text-white/80 transition-colors py-2">
                     Sustainability
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
                     </svg>
                   </button>
                   <button className="flex items-center justify-between text-white hover:text-white/80 transition-colors py-2">
                     About
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
                     </svg>
                   </button>
                   <button className="flex items-center justify-between text-white hover:text-white/80 transition-colors py-2">
                     Media Room
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
                     </svg>
                   </button>
                   <button className="flex items-center justify-between text-white hover:text-white/80 transition-colors py-2">
                     Contact
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
                     </svg>
                   </button>
                 </>
@@ -280,16 +410,30 @@ const Header = (props: HeaderProps): JSX.Element => {
                 </a>
 
                 <div className="flex items-center gap-2">
-                  <img src="/placeholder.svg?height=16&width=24" alt="UK Flag" className="w-6 h-4" />
+                  <img
+                    src="/placeholder.svg?height=16&width=24"
+                    alt="UK Flag"
+                    className="w-6 h-4"
+                  />
                   <span className="text-white">English</span>
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className="w-4 h-4 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </div>
 
                 {props.fields?.ctaText && props.fields?.ctaLink ? (
                   <a
-                    href={props.fields.ctaLink.value?.href || "/contact"}
+                    href={props.fields.ctaLink.value?.href || '/contact'}
                     className="bg-[#6B46C1] hover:bg-[#5A3BA8] text-white px-6 py-2 rounded transition-colors text-center"
                   >
                     <Text field={props.fields.ctaText} />
@@ -305,7 +449,7 @@ const Header = (props: HeaderProps): JSX.Element => {
         )}
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

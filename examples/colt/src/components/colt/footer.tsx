@@ -1,13 +1,18 @@
-import { Text, Image, type ImageField, type Field } from "@sitecore-content-sdk/nextjs"
-import type { ComponentProps } from "@/lib/component-props"
-import type { JSX } from "react/jsx-runtime"
+import {
+  Text,
+  Image,
+  type ImageField,
+  type Field,
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from '@/lib/component-props';
+import type { JSX } from 'react/jsx-runtime';
 
 type FooterProps = ComponentProps & {
   fields: {
-    logo?: ImageField
-    copyrightText?: Field<string>
-  }
-}
+    logo?: ImageField;
+    copyrightText?: Field<string>;
+  };
+};
 
 const Footer = (props: FooterProps): JSX.Element => {
   return (
@@ -27,7 +32,8 @@ const Footer = (props: FooterProps): JSX.Element => {
             )}
             <p className="text-sm text-gray-400 mb-4">Data Centre Services</p>
             <p className="text-sm text-gray-400">
-              Secure, resilient, well-connected infrastructure for global hyperscalers and large enterprises.
+              Secure, resilient, well-connected infrastructure for global hyperscalers and large
+              enterprises.
             </p>
           </div>
 
@@ -171,7 +177,7 @@ const Footer = (props: FooterProps): JSX.Element => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
