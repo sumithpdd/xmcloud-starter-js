@@ -3,44 +3,34 @@
 import React, { useCallback, useEffect, useState } from "react"
 import useEmblaCarousel from "embla-carousel-react"
 import Autoplay from "embla-carousel-autoplay"
-import { Text, RichText, Image } from "@sitecore-content-sdk/nextjs"
+import { Text, RichText, Image, type Field, type ImageField, type LinkField } from "@sitecore-content-sdk/nextjs"
 import type { ComponentProps } from "@/lib/component-props"
 
-type StringField = { value: string }
-type ImageValue = { src: string; alt?: string }
-type ImageFieldLike = { value: ImageValue }
-
 type CarouselSlideFields = {
-  title?: StringField | string
-  description?: StringField | string
-  image?: ImageFieldLike | string
-  ctaText?: StringField | string
-  ctaLink?: { value: { href: string } } | string
-  logos?: Array<ImageFieldLike | string>
+  title?: Field<string>
+  description?: Field<string>
+  image?: ImageField
+  ctaLink?: LinkField
+  logo1?: ImageField
+  logo2?: ImageField
 }
 
-type CarouselSlide =
-  | {
-      id?: string
-      fields?: CarouselSlideFields
-    }
-  | CarouselSlideFields
+type CarouselSlide = {
+  id?: string
+  fields?: CarouselSlideFields
+}
 
 type CarouselProps = ComponentProps & {
   fields: {
-    heading?: StringField
-    slides: CarouselSlide[]
+    data?: {
+      datasource?: {
+        children?: {
+          results: CarouselSlide[]
+        }
+      }
+    }
   }
 }
-
-const isStringField = (val: unknown): val is StringField =>
-  typeof val === "object" && val !== null && "value" in (val as Record<string, unknown>)
-
-const isImageField = (val: unknown): val is ImageFieldLike =>
-  typeof val === "object" && val !== null && "value" in (val as Record<string, unknown>)
-
-const isLinkField = (val: unknown): val is { value: { href: string } } =>
-  typeof val === "object" && val !== null && "value" in (val as Record<string, unknown>)
 
 const Carousel = (props: CarouselProps): React.JSX.Element => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000, stopOnInteraction: false })])
@@ -62,74 +52,25 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
     }
   }, [emblaApi, onSelect])
 
-  // Default slides if no Sitecore data
-  const defaultSlides: CarouselSlideFields[] = [
-    {
-      title: "Colt DCS and ESR announce Joint Venture",
-      description:
-        "Joint venture to develop the first phase of a 130MW hyperscale data centre site in Minoh City, Osaka, Japan.",
-      image: "/osaka-japan-cityscape-data-center.jpg",
-      ctaText: "Learn more",
-      ctaLink: "#",
-      logos: ["/colt-logo.jpg", "/esr-logo.jpg"],
-    },
-    {
-      title: "Sustainable Data Centre Solutions",
-      description:
-        "Net Zero emissions from our operations by 2045. Leading the industry in environmental responsibility.",
-      image: "/sustainable-green-data-center.jpg",
-      ctaText: "Discover more",
-      ctaLink: "#",
-      logos: [],
-    },
-    {
-      title: "Global Data Centre Network",
-      description:
-        "13 Operational data centres and 19 in Development across 11 cities in the UK, Europe, and the APAC region.",
-      image: "/global-network-data-centers.jpg",
-      ctaText: "View locations",
-      ctaLink: "#",
-      logos: [],
-    },
-  ]
-
-  const slides = props.fields?.slides?.length > 0 ? props.fields.slides : defaultSlides
-
-  const getSlideFields = (slide: CarouselSlide): CarouselSlideFields => {
-    return "fields" in slide && slide.fields ? slide.fields : (slide as CarouselSlideFields)
-  }
+  // Get slides from Sitecore datasource
+  const slides = props.fields?.data?.datasource?.children?.results ?? []
 
   return (
     <section className="relative bg-gray-50">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {slides.map((slideData: CarouselSlide, index: number) => {
-            const slide = getSlideFields(slideData)
-
-            const titleText = isStringField(slide.title) ? slide.title.value : (slide.title as string | undefined)
-            const descValue = isStringField(slide.description)
-              ? slide.description.value
-              : (slide.description as string | undefined)
-            const imageField = isImageField(slide.image) ? slide.image : undefined
-            const imageSrc = imageField?.value?.src || (typeof slide.image === "string" ? slide.image : undefined)
-            const linkHref = isLinkField(slide.ctaLink)
-              ? slide.ctaLink.value.href
-              : typeof slide.ctaLink === "string"
-                ? slide.ctaLink
-                : undefined
-            const ctaText = isStringField(slide.ctaText)
-              ? slide.ctaText.value
-              : (slide.ctaText as string | undefined)
+            const fields = slideData.fields
 
             return (
-              <div key={index} className="flex-[0_0_100%] min-w-0">
+              <div key={slideData.id || index} className="flex-[0_0_100%] min-w-0">
                 <div className="relative h-[600px] flex items-center">
                   {/* Background Image */}
                   <div className="absolute inset-0">
-                    {imageField ? (
-                      <Image field={imageField} className="w-full h-full object-cover" />
+                    {fields?.image ? (
+                      <Image field={fields.image} className="w-full h-full object-cover" />
                     ) : (
-                      <img src={imageSrc || "/placeholder.svg"} alt={`Slide ${index + 1}`} className="w-full h-full object-cover" />
+                      <div className="w-full h-full bg-gray-400"></div>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
                   </div>
@@ -160,45 +101,42 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
                       </div>
 
                       {/* Title */}
-                      {isStringField(slide.title) ? (
+                      {fields?.title && (
                         <h2 className="text-5xl font-bold mb-6">
-                          <Text field={slide.title} />
+                          <Text field={fields.title} />
                         </h2>
-                      ) : (
-                        <h2 className="text-5xl font-bold mb-6">{titleText}</h2>
                       )}
 
                       {/* Description */}
-                      {isStringField(slide.description) ? (
+                      {fields?.description && (
                         <div className="text-xl mb-8">
-                          <RichText field={slide.description} />
+                          <RichText field={fields.description} />
                         </div>
-                      ) : (
-                        <p className="text-xl mb-8">{descValue}</p>
                       )}
 
                       {/* CTA Button */}
-                      {(ctaText || linkHref) && (
+                      {fields?.ctaLink && (
                         <a
-                          href={linkHref || "#"}
+                          href={fields.ctaLink.value?.href || "#"}
                           className="inline-block bg-[#00BFA5] hover:bg-[#00A890] text-white px-8 py-3 rounded transition-colors"
                         >
-                          {ctaText || "Learn more"}
+                          {fields.ctaLink.value?.text || "Learn more"}
                         </a>
                       )}
 
                       {/* Partner Logos */}
-                      {slide.logos && slide.logos.length > 0 && (
+                      {(fields?.logo1 || fields?.logo2) && (
                         <div className="flex gap-6 mt-12">
-                          {slide.logos.map((logo: ImageFieldLike | string, logoIndex: number) => (
-                            <div key={logoIndex} className="bg-white/90 backdrop-blur-sm p-4 rounded">
-                              {isImageField(logo) ? (
-                                <Image field={logo} className="h-12" />
-                              ) : (
-                                <img src={typeof logo === "string" ? logo : "/placeholder.svg"} alt={`Partner ${logoIndex + 1}`} className="h-12" />
-                              )}
+                          {fields.logo1 && (
+                            <div className="bg-white/90 backdrop-blur-sm p-4 rounded">
+                              <Image field={fields.logo1} className="h-12" />
                             </div>
-                          ))}
+                          )}
+                          {fields.logo2 && (
+                            <div className="bg-white/90 backdrop-blur-sm p-4 rounded">
+                              <Image field={fields.logo2} className="h-12" />
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
