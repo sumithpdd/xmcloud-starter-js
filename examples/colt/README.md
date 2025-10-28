@@ -1,53 +1,148 @@
-# Solterra & Co. - Demo Site (NextJS) - kit-nextjs-article-starter
+# Colt - XM Cloud Demo Site (NextJS)
 
 ## Overview
-Solterra & Co. is a polished, editorial-style template great for lifestyle brands, with a homepage, subpage, navigation, and footer. This demo site is built to showcase XM Cloud capabilities using the Content SDK.
+Colt is a modern, component-rich Next.js application built with Sitecore XM Cloud and the Sitecore Content SDK. This demo site showcases enterprise-grade components, advanced site architecture, and seamless integration with Sitecore's headless CMS capabilities.
 
-## Developer Expectations:
-* Tailwind-based styling (Shadcn)
-* Personalized homepage via URL parameters
-* Modular components for reuse
-* Localization support for English (en) and Canadian English (en-CA)
+## Key Features
 
-## Preconditions
-1. You have deployed your XM Cloud environment already. If not follow this link: [Deploy a Project and Environment](https://doc.sitecore.com/xmc/en/developers/xm-cloud/deploy-a-project-and-environment.html)
+- 🎨 **Tailwind CSS** - Modern utility-first styling with Shadcn UI components
+- 🧩 **40+ Custom Components** - Modular, reusable components for enterprise websites
+- 🔄 **Sitecore Content SDK** - Seamless integration with Sitecore XM Cloud
+- 🌐 **JSS Architecture** - Follows Sitecore JSS (JavaScript Services) patterns
+- 📱 **Responsive Design** - Mobile-first approach with container queries
+- 🎭 **Dark Mode** - Built-in theme switching support
+- ⚡ **Next.js 15** - Latest features with App Router and Server Components support
+- 🎬 **Animations** - Smooth transitions powered by Framer Motion
+- ♿ **Accessibility** - WCAG compliant with ARIA support
 
-## Build and run site locally
+## Documentation
+
+📖 **For detailed documentation, see the [docs folder](./docs/):**
+- [Getting Started Guide](./docs/getting-started.md) - Quick start for developers
+- [Component Documentation](./docs/components/) - Complete component reference
+- [Sitecore JSS Architecture](./docs/sitecore-jss-architecture.md) - Understanding the JSS structure
+- [Data Structures](./docs/data-structures.md) - Component data structure guide
+
+## Quick Start
+
+### Prerequisites
+1. You have deployed your XM Cloud environment already. If not, follow this link: [Deploy a Project and Environment](https://doc.sitecore.com/xmc/en/developers/xm-cloud/deploy-a-project-and-environment.html)
+2. Node.js 18+ installed
+3. npm or yarn package manager
+
+### Build and Run Locally
+
 1. Clone the repository (if not yet done) 
-    ```git clone https://github.com/Sitecore/xmcloud-starter-js```
-2. Starting from the root of the repository navigate to site app folder
-    ```cd examples\kit-nextjs-article-starter\```
-3. Copy the environment file ```.env.remote.example```
-4. Rename the copied file to ```.env.local```
-5. Edit ```.env.local``` and provide a value for ```SITECORE_EDGE_CONTEXT_ID```, ```NEXT_PUBLIC_DEFAULT_SITE_NAME```, ```NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID```, ```SITECORE_EDITING_SECRET```. (More info: [Environment variables in XM Cloud](https://doc.sitecore.com/xmc/en/developers/xm-cloud/get-the-environment-variables-for-a-site.html))
+    ```bash
+    git clone https://github.com/Sitecore/xmcloud-starter-js
+    ```
 
-6. Install dependencies:
-   from ```kit-nextjs-article-starter``` run ```npm install```
-7. Run the site locally: 
-    ```npm run dev```
-8. Access the site:
-Visit http://localhost:3000 in your browser.
+2. Navigate to the colt project folder
+    ```bash
+    cd examples/colt
+    ```
 
-## Add Editing host to XM Cloud
-If you have not enabled the split deployment feature your edting hosts are automatically created based on the xmcloud.build.json if enabled is set to true. The following steps are not required. Only if you have enabled the split deployment feature, continue with the next steps.
+3. Copy the environment file
+    ```bash
+    cp .env.remote.example .env.local
+    ```
 
-1. Go to Sitecore Cloud Portal https://portal.sitecorecloud.io
-2. Open XM Cloud Deploy
-3. Select Project that has been deployed
-4. Switch to tab "Editing Hosts"
-5. Click "Add editing host"
-6. Provide Editing host name  ```kit-nextjs-article-starter``` as per xmcloud.build.json
-7. Check if the link to authoring environment is set correctly (should be by default)
-8.  Check if the source code provider is set correctly (should be by default)
-9. Check if the GitHub Account is set correctly (should be by default)
-10. Check if repository is set correctly (should be by default)
-11. Check if Branch is set correctly (should be by default)
-12. Set the Auto deploy option (recommended)
-13. No custom environment variables are required
-14. Click "Save"
-15. On the new new editing host click the ... and hit "Build and deploy"
+4. Edit `.env.local` and provide values for:
+   - `SITECORE_EDGE_CONTEXT_ID`
+   - `NEXT_PUBLIC_DEFAULT_SITE_NAME`
+   - `NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID`
+   - `SITECORE_EDITING_SECRET`
+   
+   More info: [Environment variables in XM Cloud](https://doc.sitecore.com/xmc/en/developers/xm-cloud/get-the-environment-variables-for-a-site.html)
 
-Additional Info: You do not have to create rendering host items in XM Cloud as those are created automatically for you when creating a rendering host. Mapping of sites using site templates to editing hosts is also done automatically.
+5. Install dependencies
+    ```bash
+    npm install
+    ```
 
+6. Run the development server
+    ```bash
+    npm run dev
+    ```
 
-[Documentation](https://doc.sitecore.com/xmc/en/developers/content-sdk/sitecore-content-sdk-for-xm-cloud.html)
+7. Access the site at http://localhost:3000
+
+## Project Structure
+
+```
+colt/
+├── src/
+│   ├── components/         # React components (40+ components)
+│   │   ├── accordion-block/
+│   │   ├── hero/
+│   │   ├── multi-promo/
+│   │   └── ... (see docs for full list)
+│   ├── lib/                # Utility libraries
+│   ├── pages/              # Next.js pages
+│   ├── hooks/              # Custom React hooks
+│   ├── types/              # TypeScript type definitions
+│   └── utils/              # Helper utilities
+├── docs/                   # Documentation
+├── public/                 # Static assets
+└── .sitecore/             # Generated Sitecore files
+```
+
+## Available Components
+
+The application includes 40+ custom components organized by functionality:
+
+### Layout Components
+- Hero, Page Header, Container (multiple variations)
+- Global Header, Global Footer
+- Secondary Navigation
+
+### Content Components
+- Article Header, Article Listing
+- Rich Text Block, Text Banner
+- Promo Block, Multi Promo
+- Promo Animated, Promo Tabs
+
+### Interactive Components
+- Accordion Block, Testimonial Carousel
+- Logo Tabs, Vertical Image Accordion
+- Floating Dock, Subscription Banner
+
+### Media Components
+- Image, Video, Media Section
+- Background Thumbnail
+- Animated Section
+
+[View complete component list](./docs/components/)
+
+## Development Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix linting issues
+- `npm run prettier` - Format code with Prettier
+
+## Tech Stack
+
+- **Framework**: Next.js 15.3.2
+- **UI Library**: React 19.1.0
+- **Styling**: Tailwind CSS 4.1.11
+- **UI Components**: Shadcn UI, Radix UI
+- **CMS**: Sitecore XM Cloud
+- **Animations**: Framer Motion
+- **Icons**: Lucide React, Font Awesome
+- **Forms**: React Hook Form, Zod
+- **State Management**: React Context
+- **Localization**: next-localization
+
+## Resources
+
+- [Sitecore Content SDK Documentation](https://doc.sitecore.com/xmc/en/developers/content-sdk/sitecore-content-sdk-for-xm-cloud.html)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Sitecore XM Cloud](https://www.sitecore.com/products/xm-cloud)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+
+## License
+
+This project is licensed under the Apache-2.0 License.
