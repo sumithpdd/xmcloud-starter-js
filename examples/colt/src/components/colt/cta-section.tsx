@@ -1,8 +1,5 @@
 import type { JSX } from 'react/jsx-runtime';
-import type {
-  TextField,
-  LinkField,
-} from '@sitecore-content-sdk/nextjs';
+import type { TextField, LinkField } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from '@/lib/component-props';
 interface CtaSectionProps extends ComponentProps {
   fields?: {

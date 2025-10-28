@@ -1,10 +1,4 @@
-import {
-  Text,
-  RichText,
-  Image,
-  type ImageField,
-  type Field,
-} from '@sitecore-content-sdk/nextjs';
+import { Text, RichText, Image, type ImageField, type Field } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from '@/lib/component-props';
 import type { JSX as ReactJSX } from 'react/jsx-runtime';
 

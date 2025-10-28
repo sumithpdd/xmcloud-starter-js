@@ -1,9 +1,5 @@
 'use client';
-import type {
-  ImageField,
-  Field,
-  LinkField,
-} from '@sitecore-content-sdk/nextjs';
+import type { ImageField, Field, LinkField } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from '@/lib/component-props';
 import useEmblaCarousel from 'embla-carousel-react';
 import type { JSX } from 'react/jsx-runtime';

@@ -1,10 +1,6 @@
 'use client';
 
-import {
-  Image,
-  Text,
-  RichText,
-} from '@sitecore-content-sdk/nextjs';
+import { Image, Text, RichText } from '@sitecore-content-sdk/nextjs';
 import type { JSX } from 'react/jsx-runtime';
 import type { ComponentProps } from '@/lib/component-props';
 type LocationDetailProps = ComponentProps & {

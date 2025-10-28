@@ -1,11 +1,7 @@
-import {
-  Text,
-  RichText,
-  Image,
-  type ImageField,
-  type Field,
-} from '@sitecore-content-sdk/nextjs';
+import { Text, RichText, Image, type ImageField, type Field } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from '@/lib/component-props';
+import React from 'react';
+
 type ArticleContentProps = ComponentProps & {
   fields: {
     content: Field<string>;
@@ -16,7 +12,7 @@ type ArticleContentProps = ComponentProps & {
   };
 };
 
-const ArticleContent = (props: ArticleContentProps): JSX.Element => {
+const ArticleContent = (props: ArticleContentProps): React.JSX.Element => {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-4xl mx-auto px-4">

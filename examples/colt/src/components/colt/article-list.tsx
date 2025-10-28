@@ -1,11 +1,6 @@
 'use client';
 
-import {
-  Text,
-  type Field,
-  type ImageField,
-  type LinkField,
-} from '@sitecore-content-sdk/nextjs';
+import { Text, type Field, type ImageField, type LinkField } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from '@/lib/component-props';
 import ArticleCard from './article-card';
 import type { JSX } from 'react/jsx-runtime';
