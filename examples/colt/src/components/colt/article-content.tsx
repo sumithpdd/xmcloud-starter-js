@@ -24,16 +24,16 @@ const ArticleContent = (props: ArticleContentProps): React.JSX.Element => {
         ) : (
           <div className="prose prose-lg max-w-none mb-12">
             <p className="text-lg leading-relaxed text-gray-700">
-              ESR, an Asia-Pacific (&quot;APAC&quot;) focused real asset owner and manager, and Colt Data
-              Centre Services (&quot;Colt DCS&quot;), a global provider of hyperscale, AI and large enterprise
-              data centre solutions, have entered into a joint venture to develop the first phase of
-              a 130 MW hyperscale data centre site in Minoh City, Osaka, Japan.
+              ESR, an Asia-Pacific (&quot;APAC&quot;) focused real asset owner and manager, and Colt Data Centre
+              Services (&quot;Colt DCS&quot;), a global provider of hyperscale, AI and large enterprise data centre
+              solutions, have entered into a joint venture to develop the first phase of a 130 MW hyperscale
+              data centre site in Minoh City, Osaka, Japan.
             </p>
             <p className="text-lg leading-relaxed text-gray-700 mt-4">
-              The first phase, comprising 65 MW, will be designed and built by the ESR–Colt DCS
-              joint venture and operated by Colt DCS. Strategically located in APAC&apos;s second largest
-              data centre market, the campus will support Japan&apos;s accelerating public cloud
-              adoption, digital transformation, and artificial intelligence (&quot;AI&quot;) solutions.
+              The first phase, comprising 65 MW, will be designed and built by the ESR–Colt DCS joint venture
+              and operated by Colt DCS. Strategically located in APAC&apos;s second largest data centre
+              market, the campus will support Japan&apos;s accelerating public cloud adoption, digital
+              transformation, and artificial intelligence (&quot;AI&quot;) solutions.
             </p>
             <p className="text-lg leading-relaxed text-gray-700 mt-4">
               Site preparation work is already underway, with initial data centre building
@@ -67,10 +67,10 @@ const ArticleContent = (props: ArticleContentProps): React.JSX.Element => {
                   </blockquote>
                 ) : (
                   <blockquote className="text-lg text-gray-700 mb-4 italic">
-                    &quot;Colt DCS has built a strong track record of delivering world-class data centres
-                    for our hyperscale customers in Japan. The joint venture with ESR will allow us
-                    to accelerate our expansion in Japan, enabling us to support the expansion plans
-                    for our global cloud customers and the emerging AI sector.&quot;
+                    &quot;Colt DCS has built a strong track record of delivering world-class data centres for our
+                    hyperscale customers in Japan. The joint venture with ESR will allow us to accelerate
+                    our expansion in Japan, enabling us to support the expansion plans for our global cloud
+                    customers and the emerging AI sector.&quot;
                   </blockquote>
                 )}
 

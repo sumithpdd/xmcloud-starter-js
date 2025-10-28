@@ -67,40 +67,41 @@ const FeaturesGrid = (props: FeaturesGridProps): JSX.Element => {
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {features.map((feature: Feature, index: number) => (
-            <div key={index} className="text-center">
-              {/* Icon */}
-              <div className="mb-6 flex justify-center">
-                {feature.icon && typeof feature.icon === 'object' && feature.icon?.value?.src ? (
-                  <div className="w-20 h-20 rounded-full bg-[#00BFA5] flex items-center justify-center">
-                    <Image field={feature.icon} className="w-10 h-10" />
-                  </div>
-                ) : (
-                  <div className="w-20 h-20 rounded-full bg-[#00BFA5] flex items-center justify-center text-4xl">
-                    {feature.icon}
-                  </div>
-                )}
-              </div>
+          {features.map((feature: Feature | (typeof defaultFeatures)[0], index: number) => {
+            const title = typeof feature.title === 'object' ? feature.title : { value: feature.title };
+            const description =
+              typeof feature.description === 'object'
+                ? feature.description
+                : { value: feature.description };
+            const isStringIcon = typeof feature.icon === 'string';
 
-              {/* Title */}
-              {feature.title?.value ? (
-                <h3 className="text-xl font-bold mb-4">
-                  <Text field={feature.title} />
-                </h3>
-              ) : (
-                <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-              )}
-
-              {/* Description */}
-              {feature.description?.value ? (
-                <div className="text-gray-600">
-                  <RichText field={feature.description} />
+            return (
+              <div key={index} className="text-center">
+                {/* Icon */}
+                <div className="mb-6 flex justify-center">
+                  {!isStringIcon && typeof feature.icon === 'object' && feature.icon?.value?.src ? (
+                    <div className="w-20 h-20 rounded-full bg-[#00BFA5] flex items-center justify-center">
+                      <Image field={feature.icon} className="w-10 h-10" />
+                    </div>
+                  ) : (
+                    <div className="w-20 h-20 rounded-full bg-[#00BFA5] flex items-center justify-center text-4xl">
+                      {feature.icon as string}
+                    </div>
+                  )}
                 </div>
-              ) : (
-                <p className="text-gray-600">{feature.description}</p>
-              )}
-            </div>
-          ))}
+
+                {/* Title */}
+                <h3 className="text-xl font-bold mb-4">
+                  <Text field={title} />
+                </h3>
+
+                {/* Description */}
+                <div className="text-gray-600">
+                  <RichText field={description} />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

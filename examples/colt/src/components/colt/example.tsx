@@ -1,5 +1,6 @@
 import { Text, RichText, Image, type ImageField, type Field } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from '@/lib/component-props';
+import type { JSX } from 'react/jsx-runtime';
 type ExampleProps = ComponentProps & {
   fields: {
     heading: Field<string>;

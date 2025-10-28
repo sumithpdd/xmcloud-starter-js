@@ -137,7 +137,7 @@ const LocationList = (props: LocationListProps): JSX.Element => {
   // Filter by region if specified
   const filteredLocations = filterByRegion?.value
     ? displayLocations.filter((loc) => {
-        const locFields = 'fields' in loc && loc.fields ? loc.fields : loc;
+        const locFields = loc.fields || {};
         return locFields.region?.value === filterByRegion.value;
       })
     : displayLocations;
@@ -145,7 +145,7 @@ const LocationList = (props: LocationListProps): JSX.Element => {
   // Group locations by region
   const locationsByRegion = filteredLocations.reduce(
     (acc, location) => {
-      const locFields = 'fields' in location && location.fields ? location.fields : location;
+      const locFields = location.fields || {};
       const region = locFields.region?.value || 'Other';
       if (!acc[region]) {
         acc[region] = [];
@@ -178,11 +178,9 @@ const LocationList = (props: LocationListProps): JSX.Element => {
           <div key={region} className="mb-12">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">{region}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {regionLocations.map((location, index) => {
-                const locationFields =
-                  'fields' in location && location.fields ? location.fields : location;
-                return <LocationCard key={location.id || index} fields={locationFields} />;
-              })}
+              {regionLocations.map((location, index) => (
+                <LocationCard {...props} key={location.id || index} fields={location.fields || {}} />
+              ))}
             </div>
           </div>
         ))}

@@ -1,13 +1,12 @@
 'use client';
 import type { JSX } from 'react/jsx-runtime';
-import type {
-  ComponentProps,
+import type { 
   TextField,
   ImageField,
   LinkField,
 } from '@sitecore-content-sdk/nextjs';
 import useEmblaCarousel from 'embla-carousel-react';
-
+import type { ComponentProps } from '@/lib/component-props';
 interface SolutionCard {
   fields: {
     image: ImageField;
@@ -73,31 +72,31 @@ export const SolutionsCarousel = (props: SolutionsCarouselProps): JSX.Element =>
 
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-6">
-            {cards.map((card: SolutionCard | typeof defaultCards[0], index: number) => (
-              <div
-                key={index}
-                className="flex-[0_0_100%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0"
-              >
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={card.fields?.image?.value?.src || card.image}
-                      alt={card.fields?.title?.value || card.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold mb-3 text-gray-900">
-                      {card.fields?.title?.value || card.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 flex-grow">
-                      {card.fields?.description?.value || card.description}
-                    </p>
-                    <a
-                      href={card.fields?.ctaLink?.value?.href || card.ctaLink}
-                      className="inline-flex items-center text-[#00BFA5] hover:text-[#009688] font-semibold transition-colors"
-                    >
-                      {card.fields?.ctaText?.value || card.ctaText}
+            {cards.map((card: SolutionCard | (typeof defaultCards)[0], index: number) => {
+              const hasFields = 'fields' in card;
+              const image = hasFields ? (card as SolutionCard).fields.image?.value?.src : (card as typeof defaultCards[0]).image;
+              const title = hasFields ? (card as SolutionCard).fields.title?.value : (card as typeof defaultCards[0]).title;
+              const description = hasFields ? (card as SolutionCard).fields.description?.value : (card as typeof defaultCards[0]).description;
+              const ctaLink = hasFields ? (card as SolutionCard).fields.ctaLink?.value?.href : (card as typeof defaultCards[0]).ctaLink;
+              const ctaText = hasFields ? (card as SolutionCard).fields.ctaText?.value : (card as typeof defaultCards[0]).ctaText;
+
+              return (
+                <div
+                  key={index}
+                  className="flex-[0_0_100%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0"
+                >
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
+                    <div className="relative h-48 overflow-hidden">
+                      <img src={image || ''} alt={String(title)} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <h3 className="text-xl font-bold mb-3 text-gray-900">{title}</h3>
+                      <p className="text-gray-600 mb-4 flex-grow">{description}</p>
+                      <a
+                        href={ctaLink}
+                        className="inline-flex items-center text-[#00BFA5] hover:text-[#009688] font-semibold transition-colors"
+                      >
+                        {ctaText}
                       <svg
                         className="w-5 h-5 ml-2"
                         fill="none"
@@ -112,10 +111,11 @@ export const SolutionsCarousel = (props: SolutionsCarouselProps): JSX.Element =>
                         />
                       </svg>
                     </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

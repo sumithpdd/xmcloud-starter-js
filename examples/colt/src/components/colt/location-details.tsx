@@ -7,6 +7,7 @@ import {
   type Field,
   type LinkField,
 } from '@sitecore-content-sdk/nextjs';
+import type { JSX } from 'react/jsx-runtime';
 import type { ComponentProps } from '@/lib/component-props';
 type LocationDetailsProps = ComponentProps & {
   fields: {
