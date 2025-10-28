@@ -26,7 +26,8 @@ const StatsBar = (props: StatsBarProps): JSX.Element => {
     },
   ];
 
-  const stats = (props.fields?.stats?.length ?? 0) > 0 ? props.fields.stats ?? defaultStats : defaultStats;
+  const stats =
+    (props.fields?.stats?.length ?? 0) > 0 ? (props.fields.stats ?? defaultStats) : defaultStats;
   const bgColor = props.fields?.backgroundColor?.value || '[#00BFA5]';
 
   return (
@@ -53,7 +54,9 @@ const StatsBar = (props: StatsBarProps): JSX.Element => {
                   <Text field={stat.label} />
                 </div>
               ) : (
-                <div className="text-lg">{typeof stat.label === 'object' ? (stat.label as { value: string }).value : ''}</div>
+                <div className="text-lg">
+                  {typeof stat.label === 'object' ? (stat.label as { value: string }).value : ''}
+                </div>
               )}
             </div>
           ))}
