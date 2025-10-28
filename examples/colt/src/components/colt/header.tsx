@@ -40,7 +40,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const languageRef = useRef<HTMLDivElement>(null);
-  
+
   // Default languages based on Colt DCS website
   const defaultLanguages: LanguageOption[] = [
     { code: 'en-GB', name: 'English', flagUrl: 'https://flagcdn.com/w40/gb.png' },
@@ -48,7 +48,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     { code: 'de', name: 'German', flagUrl: 'https://flagcdn.com/w40/de.png' },
     { code: 'fr', name: 'French', flagUrl: 'https://flagcdn.com/w40/fr.png' },
   ];
-  
+
   const languages = props.fields?.languages || defaultLanguages;
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
 
@@ -259,7 +259,11 @@ const Header = (props: HeaderProps): JSX.Element => {
                 className="flex items-center gap-2 text-sm text-white hover:text-white/80 transition-colors"
               >
                 {selectedLanguage.flagUrl && (
-                  <img src={selectedLanguage.flagUrl} alt={selectedLanguage.name} className="w-6 h-4" />
+                  <img
+                    src={selectedLanguage.flagUrl}
+                    alt={selectedLanguage.name}
+                    className="w-6 h-4"
+                  />
                 )}
                 <span>{selectedLanguage.name}</span>
                 <svg
@@ -276,7 +280,7 @@ const Header = (props: HeaderProps): JSX.Element => {
                   />
                 </svg>
               </button>
-              
+
               {isLanguageOpen && (
                 <div className="absolute right-0 mt-2 bg-white rounded shadow-lg min-w-[160px] py-2 z-50">
                   {languages.map((lang) => (
@@ -482,7 +486,11 @@ const Header = (props: HeaderProps): JSX.Element => {
                     className="flex items-center gap-2 text-white hover:text-white/80 transition-colors w-full"
                   >
                     {selectedLanguage.flagUrl && (
-                      <img src={selectedLanguage.flagUrl} alt={selectedLanguage.name} className="w-6 h-4" />
+                      <img
+                        src={selectedLanguage.flagUrl}
+                        alt={selectedLanguage.name}
+                        className="w-6 h-4"
+                      />
                     )}
                     <span>{selectedLanguage.name}</span>
                     <svg
@@ -499,7 +507,7 @@ const Header = (props: HeaderProps): JSX.Element => {
                       />
                     </svg>
                   </button>
-                  
+
                   {isLanguageOpen && (
                     <div className="mt-2 bg-white rounded shadow-lg min-w-[160px] py-2 z-50">
                       {languages.map((lang) => (
