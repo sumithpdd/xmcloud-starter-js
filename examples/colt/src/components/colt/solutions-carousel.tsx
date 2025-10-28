@@ -73,7 +73,7 @@ export const SolutionsCarousel = (props: SolutionsCarouselProps): JSX.Element =>
 
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-6">
-            {cards.map((card: any, index: number) => (
+            {cards.map((card: SolutionCard | typeof defaultCards[0], index: number) => (
               <div
                 key={index}
                 className="flex-[0_0_100%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0"

@@ -10,6 +10,7 @@ import {
 import type { ComponentProps } from '@/lib/component-props';
 import type { JSX } from 'react/jsx-runtime';
 import { useState } from 'react';
+import Link from 'next/link';
 
 type NavigationItem = {
   id: string;
@@ -211,9 +212,9 @@ const Header = (props: HeaderProps): JSX.Element => {
               </svg>
             </button>
 
-            <a href="/careers" className="text-sm text-white hover:text-white/80">
+            <Link href="/careers" className="text-sm text-white hover:text-white/80">
               Careers
-            </a>
+            </Link>
 
             <div className="flex items-center gap-2 text-sm">
               <img src="/placeholder.svg?height=16&width=24" alt="UK Flag" className="w-6 h-4" />
@@ -405,9 +406,9 @@ const Header = (props: HeaderProps): JSX.Element => {
               )}
 
               <div className="border-t border-white/20 pt-4 mt-2 flex flex-col gap-4">
-                <a href="/careers" className="text-white hover:text-white/80 py-2">
+                <Link href="/careers" className="text-white hover:text-white/80 py-2">
                   Careers
-                </a>
+                </Link>
 
                 <div className="flex items-center gap-2">
                   <img

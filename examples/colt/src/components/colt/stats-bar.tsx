@@ -33,7 +33,7 @@ const StatsBar = (props: StatsBarProps): JSX.Element => {
     <section className={`py-12 bg-${bgColor}`}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 text-center text-white">
-          {stats.map((stat: any, index: number) => (
+          {stats.map((stat: Stat | typeof defaultStats[0], index: number) => (
             <div key={index}>
               <div className="text-5xl font-bold mb-2">
                 {stat.value?.value ? (
