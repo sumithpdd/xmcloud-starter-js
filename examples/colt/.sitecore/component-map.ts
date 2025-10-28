@@ -65,6 +65,16 @@ import * as TextBanner from 'components/text-banner/TextBanner';
 import * as TopicListing from 'components/topic-listing/TopicListing';
 import * as VerticalImageAccordion from 'components/vertical-image-accordion/VerticalImageAccordion';
 import * as Video from 'components/video/Video';
+import * as ArticleCard from 'components/colt/article-card';
+import * as ArticleContent from 'components/colt/article-content';
+import * as ArticleDetail from 'components/colt/article-detail';
+import * as CtaSection from 'components/colt/cta-section';
+import * as FeaturesGrid from 'components/colt/features-grid';
+import * as InterestedSection from 'components/colt/interested-section';
+import * as LocationCard from 'components/colt/location-card';
+import * as LocationDetails from 'components/colt/location-details';
+import * as LocationList from 'components/colt/location-list';
+import * as Carousel from 'components/colt/carousel';
 
 // Components must be registered with to match the string key with component name in Sitecore
 export const componentMap = new Map<string, NextjsContentSdkComponent>([
@@ -133,6 +143,16 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['TopicListing', TopicListing],
   ['VerticalImageAccordion', VerticalImageAccordion],
   ['Video', Video],
+  ['ArticleCard', ArticleCard],
+  ['ArticleContent', ArticleContent],
+  ['ArticleDetail', ArticleDetail],
+  ['CtaSection', CtaSection],
+  ['FeaturesGrid', FeaturesGrid],
+  ['InterestedSection', InterestedSection],
+  ['LocationCard', LocationCard],
+  ['LocationDetails', LocationDetails],
+  ['LocationList', LocationList],
+  ['Carousel', Carousel],
 ]);
 
 export default componentMap;
