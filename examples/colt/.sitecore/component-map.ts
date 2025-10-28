@@ -43,8 +43,8 @@ import * as ContainerFullWidth from 'components/container/container-full-width/C
 import * as CtaBanner from 'components/cta-banner/CtaBanner';
 import * as FooterNavigationCallout from 'components/footer-navigation-callout/FooterNavigationCallout.dev';
 import * as FooterNavigationColumn from 'components/global-footer/FooterNavigationColumn';
-import * as GlobalFooter from 'components/global-footer/GlobalFooter';
-import * as GlobalHeader from 'components/global-header/GlobalHeader';
+import * as GlobalFooter from 'components/colt/footer';
+import * as GlobalHeader from 'components/colt/header';
 import * as Hero from 'components/hero/Hero';
 import * as Icon from 'components/icon/Icon';
 import * as ImageBlock from 'components/image/ImageBlock';
