@@ -106,7 +106,7 @@ export const SolutionsCarousel = (props: SolutionsCarouselProps): JSX.Element =>
                         href={ctaLink}
                         className="inline-flex items-center text-[#00BFA5] hover:text-[#009688] font-semibold transition-colors"
                       >
-                          {ctaText}
+                        {ctaText}
                         <svg
                           className="w-5 h-5 ml-2"
                           fill="none"
@@ -120,7 +120,7 @@ export const SolutionsCarousel = (props: SolutionsCarouselProps): JSX.Element =>
                             d="M9 5l7 7-7 7"
                           />
                         </svg>
-                    </a>
+                      </a>
                     </div>
                   </div>
                 </div>
