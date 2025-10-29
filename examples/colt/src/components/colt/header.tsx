@@ -80,7 +80,7 @@ const Header = (props: HeaderProps): JSX.Element => {
                 <Image field={props.fields.logo} className="h-[40px] w-[122px]" />
               ) : (
                 <img
-                  src="/-/media/Project/colt/imgi_1_colt-logo-white"
+                  src="https://www.coltdatacentres.net/-/media/Images/logos/colt-logos/colt-logo-white.svg?rev=d15c0ffcfd0449c693d235e8fe3091da"
                   alt="Colt Data Centre Services"
                   className="h-[40px] w-[122px]"
                 />

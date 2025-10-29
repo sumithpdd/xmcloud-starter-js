@@ -59,15 +59,21 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
           <div className="mr-8">
             {pageEditing ? (
               <Image field={logo?.jsonValue} className="h-10 w-auto" />
+            ) : logo?.jsonValue?.value ? (
+              <Link
+                href="/"
+                className="flex w-[164px] items-stretch space-x-2 [&_.image-container]:w-full"
+              >
+                <Logo logo={logo?.jsonValue} className="w-full" />
+              </Link>
             ) : (
-              logo?.jsonValue?.value && (
-                <Link
-                  href="/"
-                  className="flex w-[164px] items-stretch space-x-2 [&_.image-container]:w-full"
-                >
-                  <Logo logo={logo?.jsonValue} className="w-full" />
-                </Link>
-              )
+              <Link href="/" className="flex items-center">
+                <img
+                  src="https://www.coltdatacentres.net/-/media/Images/logos/colt-logos/colt-logo-white.svg?rev=d15c0ffcfd0449c693d235e8fe3091da"
+                  alt="Colt Data Centre Services"
+                  className="h-10 w-auto"
+                />
+              </Link>
             )}
           </div>
           {/* Desktop Navigation */}
