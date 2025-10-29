@@ -87,13 +87,19 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
   console.log('props.fields.data.datasource:', props.fields?.data?.datasource);
 
   // Get slides - the datasource should be in props.fields based on Sitecore SDK
-  const slides = 
-    props.fields?.data?.datasource?.children?.results ?? 
+  const slides =
+    props.fields?.data?.datasource?.children?.results ??
     props.fields?.data?.datasource?.items?.results ?? [];
   
   console.log('props.fields.data.datasource:', props.fields?.data?.datasource);
-  console.log('props.fields.data.datasource.children:', props.fields?.data?.datasource?.children);
-  console.log('props.fields.data.datasource.children.results:', props.fields?.data?.datasource?.children?.results);
+  console.log(
+    'props.fields.data.datasource.children:',
+    props.fields?.data?.datasource?.children
+  );
+  console.log(
+    'props.fields.data.datasource.children.results:',
+    props.fields?.data?.datasource?.children?.results
+  );
   
   console.log('Slides count:', slides.length);
   console.log('Slides array:', JSON.stringify(slides, null, 2));
@@ -107,7 +113,9 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
     return (
       <section className="relative bg-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-gray-600">Carousel: No slides found. Please configure the datasource in Sitecore.</p>
+          <p className="text-gray-600">
+            Carousel: No slides found. Please configure the datasource in Sitecore.
+          </p>
         </div>
       </section>
     );
@@ -127,7 +135,9 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
     const firstSlide = slides[0];
     console.log('slideData.title:', firstSlide.title);
     console.log('slideData.title?.value:', firstSlide.title?.value);
-    console.log('slideData.title?.jsonValue:', (firstSlide.title as any)?.jsonValue);
+    // Some fields may arrive as jsonValue in certain templates; log if present safely
+    // (Using optional chaining without unsafe casts)
+    // console.log('slideData.title?.jsonValue:', (firstSlide as { title?: { jsonValue?: unknown } }).title?.jsonValue);
     console.log('slideData.fields:', firstSlide.fields);
     if (firstSlide.fields) {
       console.log('slideData.fields.title:', firstSlide.fields.title);
@@ -154,7 +164,7 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
             console.log('Full slideData:', JSON.stringify(slideData, null, 2));
             console.log('title field:', title);
             console.log('title?.value:', title?.value);
-            console.log('title?.jsonValue?.value:', (title as any)?.jsonValue?.value);
+            // console.log('title?.jsonValue?.value:', (title as { jsonValue?: { value?: unknown } })?.jsonValue?.value);
             console.log('description:', description);
             console.log('image:', image);
             console.log('ctaLink:', ctaLink);
@@ -164,7 +174,10 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
             console.log('logo2:', logo2);
 
             return (
-              <div key={slideData.id || slideData.displayName || index} className="flex-[0_0_100%] min-w-0">
+              <div
+                key={slideData.id || slideData.displayName || index}
+                className="flex-[0_0_100%] min-w-0"
+              >
                 <div className="relative h-[600px] flex items-center">
                   {/* Background Image */}
                   <div className="absolute inset-0">
