@@ -13,7 +13,6 @@ import {
   withDatasourceCheck,
 } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from '@/lib/component-props';
- 
 
 type CarouselSlide = {
   id?: string;
@@ -89,21 +88,18 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
   // Get slides - the datasource should be in props.fields based on Sitecore SDK
   const slides =
     props.fields?.data?.datasource?.children?.results ??
-    props.fields?.data?.datasource?.items?.results ?? [];
-  
+    props.fields?.data?.datasource?.items?.results ??
+    [];
+
   console.log('props.fields.data.datasource:', props.fields?.data?.datasource);
-  console.log(
-    'props.fields.data.datasource.children:',
-    props.fields?.data?.datasource?.children
-  );
+  console.log('props.fields.data.datasource.children:', props.fields?.data?.datasource?.children);
   console.log(
     'props.fields.data.datasource.children.results:',
     props.fields?.data?.datasource?.children?.results
   );
-  
+
   console.log('Slides count:', slides.length);
   console.log('Slides array:', JSON.stringify(slides, null, 2));
-  
   // If no slides, show a message (especially useful for debugging)
   if (slides.length === 0) {
     console.warn('⚠️ No carousel slides found. Check that:');
@@ -120,7 +116,7 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
       </section>
     );
   }
-  
+
   if (slides.length > 0) {
     console.log('First slide:', JSON.stringify(slides[0], null, 2));
     console.log('First slide keys:', Object.keys(slides[0] || {}));
@@ -128,7 +124,7 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
     console.log('First slide description:', slides[0].description);
     console.log('First slide image:', slides[0].image);
   }
-  
+
   // Check alternative field paths
   if (slides.length > 0) {
     console.log('=== Checking Field Access Patterns ===');
@@ -143,7 +139,7 @@ const Carousel = (props: CarouselProps): React.JSX.Element => {
       console.log('slideData.fields.title:', firstSlide.fields.title);
     }
   }
-  
+
   console.log('=== CAROUSEL DEBUG END ===');
 
   return (
