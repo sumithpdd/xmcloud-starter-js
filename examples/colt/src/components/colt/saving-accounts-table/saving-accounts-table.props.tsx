@@ -43,4 +43,3 @@ export type SavingsAccountItemProps = {
     jsonValue: LinkField;
   };
 };
-

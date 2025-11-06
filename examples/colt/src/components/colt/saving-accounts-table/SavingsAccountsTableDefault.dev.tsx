@@ -162,11 +162,7 @@ export const SavingsAccountsTableDefault: React.FC<SavingsAccountsTableProps> = 
               />
             )}
             {description?.jsonValue && (
-              <Text
-                tag="p"
-                field={description.jsonValue}
-                className="text-lg text-gray-700"
-              />
+              <Text tag="p" field={description.jsonValue} className="text-lg text-gray-700" />
             )}
           </div>
         )}
@@ -176,19 +172,15 @@ export const SavingsAccountsTableDefault: React.FC<SavingsAccountsTableProps> = 
             <thead>
               <tr className="bg-gray-800 text-white">
                 <th className="py-4 px-6 text-left font-semibold">Account Name</th>
-                <th className="py-4 px-6 text-left font-semibold">
-                  AER/tax-free p.a. Fixed*
-                </th>
-                <th className="py-4 px-6 text-left font-semibold">
-                  Gross/tax-free p.a.**
-                </th>
+                <th className="py-4 px-6 text-left font-semibold">AER/tax-free p.a. Fixed*</th>
+                <th className="py-4 px-6 text-left font-semibold">Gross/tax-free p.a.**</th>
                 <th className="py-4 px-6 text-left font-semibold">How to Apply</th>
                 <th className="py-4 px-6 text-left font-semibold"></th>
               </tr>
             </thead>
             <tbody>
               {displayItems.map((item: SavingsAccountItemProps, index: number) => (
-                <SavingsAccountRow key={index} item={item} index={index} />
+                <SavingsAccountRow key={index} item={item} />
               ))}
             </tbody>
           </table>
@@ -204,4 +196,3 @@ export const SavingsAccountsTableDefault: React.FC<SavingsAccountsTableProps> = 
 
   return <NoDataFallback componentName="Savings Accounts Table" />;
 };
-

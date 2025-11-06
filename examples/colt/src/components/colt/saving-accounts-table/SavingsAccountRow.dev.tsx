@@ -5,10 +5,9 @@ import { Button } from '@/components/ui/button';
 
 export interface SavingsAccountRowProps {
   item: SavingsAccountItemProps;
-  index: number;
 }
 
-export const SavingsAccountRow: React.FC<SavingsAccountRowProps> = ({ item, index }) => {
+export const SavingsAccountRow: React.FC<SavingsAccountRowProps> = ({ item }) => {
   const { accountName, aerRate, annualRate, monthlyRate, applicationMethods, viewLink } = item;
 
   return (
@@ -55,4 +54,3 @@ export const SavingsAccountRow: React.FC<SavingsAccountRowProps> = ({ item, inde
     </tr>
   );
 };
-
