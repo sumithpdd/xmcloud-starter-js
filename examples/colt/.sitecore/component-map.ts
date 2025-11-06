@@ -75,6 +75,7 @@ import * as LocationCard from 'components/colt/location-card';
 import * as LocationDetails from 'components/colt/location-details';
 import * as LocationList from 'components/colt/location-list';
 import * as Carousel from 'components/colt/carousel';
+import * as SavingAccountsTable from 'components/colt/saving-accounts-table/SavingAccountsTable';
 
 // Components must be registered with to match the string key with component name in Sitecore
 export const componentMap = new Map<string, NextjsContentSdkComponent>([
@@ -153,6 +154,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['LocationDetails', LocationDetails],
   ['LocationList', LocationList],
   ['Carousel', Carousel],
+  ['SavingAccountsTable', SavingAccountsTable],
 ]);
 
 export default componentMap;
