@@ -10,10 +10,11 @@ export interface SavingAccountsTableParams {
 /**
  * Model used for Sitecore Component integration
  */
-export type SavingsAccountsTableProps = ComponentProps & SavingsAccountsTableFields & {
-  params?: SavingAccountsTableParams;
-  isPageEditing?: boolean;
-};
+export type SavingsAccountsTableProps = ComponentProps &
+  SavingsAccountsTableFields & {
+    params?: SavingAccountsTableParams;
+    isPageEditing?: boolean;
+  };
 
 export interface SavingsAccountsTableFields {
   fields: {
