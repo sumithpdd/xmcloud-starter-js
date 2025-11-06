@@ -10,4 +10,3 @@ export const Default: React.FC<SavingsAccountsTableProps> = (props) => {
 
   return <SavingsAccountsTableDefault {...props} isPageEditing={isPageEditing} />;
 };
-
