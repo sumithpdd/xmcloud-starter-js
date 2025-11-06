@@ -74,13 +74,7 @@ const accordionItems = children?.results ?? [];
 
 ## XM Cloud connection
 
-**Current XM Cloud Instance:**
-- **Organization:** Sales Engineers 12 (`org_BMSdm6mLMr270Wnk`)
-- **Project ID:** `6owLXpDvzI4hC2o6si3WF0`
-- **Environment ID:** `51BbcgtiENXLk0Y1AlZb31`
-- **Developer Settings:** [View in XM Cloud Deploy](https://deploy.sitecorecloud.io/projects/6owLXpDvzI4hC2o6si3WF0/environments/51BbcgtiENXLk0Y1AlZb31/developer-settings?organization=org_BMSdm6mLMr270Wnk)
-
-Configuration comes from `sitecore.config.ts` and environment variables. Check the Developer Settings link above or your `.env.local` file for Edge URL and Context ID.
+Configuration comes from `sitecore.config.ts` and environment variables. Check your `.env.local` file or hosting environment variables for Edge URL and Context ID.
 
 ## Quick tips
 

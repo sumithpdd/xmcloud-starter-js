@@ -1,17 +1,25 @@
 import React from 'react';
 import { Text } from '@sitecore-content-sdk/nextjs';
 import { cn } from '@/lib/utils';
-import { SavingsAccountsTableProps, SavingsAccountItemProps } from './saving-accounts-table.props';
+import {
+  SavingsAccountsTableProps,
+  SavingsAccountItemProps,
+  SavingAccountsTableParams,
+} from './saving-accounts-table.props';
 import { SavingsAccountRow } from './SavingsAccountRow.dev';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 
 export const SavingsAccountsTableDefault: React.FC<SavingsAccountsTableProps> = (props) => {
-  const { fields } = props;
+  const { fields, params } = props;
 
   const { title, description, children } = fields?.data?.datasource || {};
   const accountItems = children?.results ?? [];
 
-  // Dummy data for demonstration (remove when connecting to Sitecore)
+  // Check if useDummyValue is set (defaults to true if not set or explicitly true)
+  // This is a checkbox field from Sitecore, so it's a boolean
+  const useDummyValue = (params as SavingAccountsTableParams)?.useDummyValue !== false;
+
+  // Dummy data for demonstration
   const dummyData: SavingsAccountItemProps[] = [
     {
       accountName: {
@@ -140,8 +148,8 @@ export const SavingsAccountsTableDefault: React.FC<SavingsAccountsTableProps> = 
     },
   ];
 
-  // Use dummy data if no Sitecore data available
-  const displayItems = accountItems.length > 0 ? accountItems : dummyData;
+  // Use dummy data if useDummyValue is true, otherwise use Sitecore data
+  const displayItems = useDummyValue ? dummyData : accountItems;
 
   if (fields || displayItems.length > 0) {
     return (

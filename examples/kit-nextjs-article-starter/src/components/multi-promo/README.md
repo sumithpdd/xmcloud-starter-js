@@ -52,13 +52,7 @@ From `multi-promo.props.tsx`:
 ## XM Cloud connection
 This example reads configuration from `sitecore.config.ts` and environment variables (context ID, Edge URL, site name, etc.). Ensure your `.env` or hosting env provides these values so content resolves.
 
-**Current XM Cloud Instance:**
-- **Organization:** Sales Engineers 12 (`org_BMSdm6mLMr270Wnk`)
-- **Project ID:** `6owLXpDvzI4hC2o6si3WF0`
-- **Environment ID:** `51BbcgtiENXLk0Y1AlZb31`
-- **Developer Settings:** [View in XM Cloud Deploy](https://deploy.sitecorecloud.io/projects/6owLXpDvzI4hC2o6si3WF0/environments/51BbcgtiENXLk0Y1AlZb31/developer-settings?organization=org_BMSdm6mLMr270Wnk)
-
-To find your Edge URL and Context ID, check the environment variables in the Developer Settings link above or in your `.env.local` file.
+To find your Edge URL and Context ID, check the environment variables in your XM Cloud Deploy environment settings or in your `.env.local` file.
 
 ## Quick tips
 - If nothing shows: check the rendering’s datasource and confirm child items exist and are published.

@@ -1,13 +1,19 @@
 import type { Field, LinkField } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from '@/lib/component-props';
 
+export interface SavingAccountsTableParams {
+  useDummyValue?: boolean; // Checkbox field from Sitecore (defaults to true)
+  styles?: string;
+  [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+}
+
 /**
  * Model used for Sitecore Component integration
  */
-export type SavingsAccountsTableProps = ComponentProps &
-  SavingsAccountsTableFields & {
-    isPageEditing?: boolean;
-  };
+export type SavingsAccountsTableProps = ComponentProps & SavingsAccountsTableFields & {
+  params?: SavingAccountsTableParams;
+  isPageEditing?: boolean;
+};
 
 export interface SavingsAccountsTableFields {
   fields: {
