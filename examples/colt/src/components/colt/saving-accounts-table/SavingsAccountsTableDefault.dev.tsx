@@ -156,9 +156,7 @@ export const SavingsAccountsTableDefault: React.FC<SavingsAccountsTableProps> = 
       <div
         data-component="SavingsAccountsTable"
         data-class-change
-        className={cn('mx-auto my-8 max-w-screen-xl', {
-          [props.params?.styles]: props?.params?.styles,
-        })}
+        className={cn('mx-auto my-8 max-w-screen-xl', props.params?.styles)}
       >
         {(title?.jsonValue || description?.jsonValue) && (
           <div className="mb-8">
