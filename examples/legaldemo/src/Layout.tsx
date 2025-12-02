@@ -6,19 +6,22 @@ import Head from 'next/head';
 import { Placeholder, Page, Field, DesignLibrary, ImageField } from '@sitecore-content-sdk/nextjs';
 import Scripts from 'src/Scripts';
 import SitecoreStyles from 'components/content-sdk/SitecoreStyles';
-import { Figtree } from 'next/font/google';
+import { Playfair_Display, Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider/theme-provider.dev';
 import { VideoProvider } from './contexts/VideoContext';
 
-const heading = Figtree({
-  weight: ['400', '500'],
+// Heading font - serif similar to PMN Caecilia (Clyde & Co uses PMN Caecilia W02)
+const heading = Playfair_Display({
+  weight: ['400', '500', '600', '700', '800', '900'],
   variable: '--font-heading',
   subsets: ['latin', 'latin-ext'],
   display: 'swap',
+  style: ['normal', 'italic'],
 });
 
-const body = Figtree({
-  weight: ['400', '500'],
+// Body font - clean sans-serif (Clyde & Co uses system fonts)
+const body = Inter({
+  weight: ['400', '500', '600', '700'],
   variable: '--font-body',
   subsets: ['latin', 'latin-ext'],
   display: 'swap',
@@ -92,8 +95,8 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
                     {route && <Placeholder name="headless-header" rendering={route} />}
                   </div>
                 </header>
-                <main>
-                  <div id="content" className="antialiased">
+                <main className="bg-white">
+                  <div id="content" className="antialiased text-[#212529]">
                     {route && <Placeholder name="headless-main" rendering={route} />}
                   </div>
                 </main>

@@ -36,10 +36,26 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-[#212529];
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
+    font-family: var(--font-family-body);
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    color: #212529;
+  }
+  
+  a {
+    color: #00677F;
+  }
+  
+  a:hover {
+    color: #005267;
   }
 }
 

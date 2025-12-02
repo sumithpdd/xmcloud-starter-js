@@ -52,20 +52,28 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
         animate={{ opacity: visible ? 1 : 0 }}
         transition={{ duration: 0.2 }}
         className={cn(
-          'bg-background @container sticky top-0 z-50 flex h-[96px] w-full items-center justify-center border-b'
+          'bg-white @container sticky top-0 z-50 flex h-[96px] w-full items-center justify-center border-b border-gray-200 shadow-sm'
         )}
       >
         <div className="@xl:px-8 mx-auto flex h-16 w-full max-w-screen-xl items-center px-4">
           <div className="mr-8">
             {pageEditing ? (
-              <Image field={logo?.jsonValue} className="h-10 w-auto" />
+              <Image field={logo?.jsonValue} className="h-8 w-auto md:h-10" />
             ) : (
-              logo?.jsonValue?.value && (
+              logo?.jsonValue?.value ? (
                 <Link
                   href="/"
-                  className="flex w-[164px] items-stretch space-x-2 [&_.image-container]:w-full"
+                  className="flex items-center [&_.image-container]:w-full"
                 >
-                  <Logo logo={logo?.jsonValue} className="w-full" />
+                  <Logo logo={logo?.jsonValue} className="h-8 w-auto md:h-10" />
+                </Link>
+              ) : (
+                <Link href="/" className="flex items-center">
+                  <img 
+                    src="/logo--dark.svg" 
+                    alt="Clyde & Co" 
+                    className="h-8 w-auto md:h-10"
+                  />
                 </Link>
               )
             )}
