@@ -68,22 +68,18 @@ A full-width, responsive carousel component designed for hero sections. Supports
 
 ### Products Section Component
 
-Displays a grid of product offerings with titles, descriptions, and call-to-action links.
+Displays a grid of product offerings with titles, descriptions, and call-to-action links. Designed for showcasing services, products, or offerings in a clean, card-based layout.
 
 **Features:**
-- Responsive 2-column grid layout
-- Product cards with hover effects
+- Responsive 2-column grid layout (mobile stacks to single column)
+- Product cards with hover effects and transitions
+- Section title and subtitle support
 - Customizable CTA text and links
-- Fallback content for disconnected mode
+- Full Sitecore XM Cloud integration
+- Editing mode support
+- Fallback default content for disconnected mode
 
-**Sitecore Fields:**
-- `Title` (Single-Line Text) - Section heading
-- `Subtitle` (Rich Text) - Section description
-- `Children` (Treelist) - Product items with:
-  - `Title` (Single-Line Text)
-  - `Description` (Rich Text)
-  - `Link` (General Link)
-  - `CtaText` (Single-Line Text)
+**Documentation:** See [Products Section Component Documentation](./docs/components/products-section.md) for detailed setup instructions, Sitecore field requirements, and usage examples.
 
 ### Insights Section Component
 
@@ -120,25 +116,18 @@ A simple text section with highlighted key phrases, perfect for homepage introdu
 
 ### Risk Areas Section Component
 
-Displays a grid of risk area cards with images, titles, descriptions, and links.
+Displays a grid of risk category cards with images, titles, descriptions, and links. Includes a section header with title, intro text, and a call-to-action button, followed by a responsive grid of risk area cards.
 
 **Features:**
-- Responsive 3-column grid
-- Risk area cards with images
-- Introductory text section
-- Call-to-action button
-- Hover effects
+- Responsive grid layout (1 column mobile, 2 columns tablet, 3 columns desktop)
+- Risk area cards with images and hover effects
+- Section header with title, intro text, and CTA button
+- Image hover effects with scale animation
+- Full Sitecore XM Cloud integration
+- Editing mode support
+- Fallback default content for disconnected mode
 
-**Sitecore Fields:**
-- `Title` (Single-Line Text) - Section heading
-- `IntroText` (Rich Text) - Introduction paragraph
-- `CtaText` (Single-Line Text) - Button text
-- `CtaLink` (General Link) - Button link
-- `Children` (Treelist) - Risk area items with:
-  - `Title` (Single-Line Text)
-  - `Description` (Rich Text)
-  - `Image` (Image)
-  - `Link` (General Link) or `Url` (Single-Line Text)
+**Documentation:** See [Risk Areas Section Component Documentation](./docs/components/risk-areas-section.md) for detailed setup instructions, Sitecore field requirements, and usage examples.
 
 ### Article Hero Component
 
@@ -181,11 +170,17 @@ Displays article content sections with table of contents navigation.
 
 Detailed documentation for all custom components is available in the [docs/components](./docs/components/) directory:
 
+### Quick Reference
+
+- [Components Reference Table](./docs/components/components-reference-table.md) - Comprehensive table with all component details, fields, and setup requirements
+
+### Component Documentation
+
 - [Hero Carousel](./docs/components/hero-carousel.md) - Full-width carousel component
 - [Products Section](./docs/components/products-section.md) - Product offerings grid
+- [Risk Areas Section](./docs/components/risk-areas-section.md) - Risk category cards with images and CTA button
 - [Insights Section](./docs/components/insights-section.md) - Article/insight grid
 - [Intro Section](./docs/components/intro-section.md) - Homepage introduction text
-- [Risk Areas Section](./docs/components/risk-areas-section.md) - Risk category cards
 - [Article Hero](./docs/components/article-hero.md) - Article page hero section
 - [Article Content](./docs/components/article-content.md) - Article content with TOC
 
@@ -193,11 +188,18 @@ Detailed documentation for all custom components is available in the [docs/compo
 
 For step-by-step instructions on setting up components in Sitecore XM Cloud, see the [Sitecore Setup Guide](./docs/sitecore-setup.md). This guide includes:
 
-- Template creation instructions
-- Field configuration
-- Content item setup
-- Component registration
-- Troubleshooting tips
+- Template creation instructions for all components
+- Field configuration and requirements
+- Content item setup and structure
+- Component registration and verification
+- Troubleshooting tips and best practices
+
+### Component Registration
+
+Components can be registered automatically or manually:
+
+- **Automatic Registration**: Components are automatically registered during the build process. See the [Component Registration Guide](./docs/component-registration-guide.md) for details.
+- **Manual Registration**: To register only specific components and exclude unwanted ones, see the [Manual Component Map Setup Guide](./docs/manual-component-map-setup.md).
 
 ## Additional Resources
 

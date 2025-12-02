@@ -32,4 +32,3 @@ export interface RiskAreasSectionProps extends ComponentProps {
   params: RiskAreasSectionParams;
   fields: RiskAreasSectionFields;
 }
-

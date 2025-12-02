@@ -65,6 +65,16 @@ import * as TextBanner from 'components/text-banner/TextBanner';
 import * as TopicListing from 'components/topic-listing/TopicListing';
 import * as VerticalImageAccordion from 'components/vertical-image-accordion/VerticalImageAccordion';
 import * as Video from 'components/video/Video';
+// Newly created components
+import * as HeroCarousel from 'components/hero-carousel/HeroCarousel';
+import * as ProductsSection from 'components/products-section/ProductsSection';
+import * as RiskAreasSection from 'components/risk-areas-section/RiskAreasSection';
+
+// Other available components
+import * as ArticleContent from 'components/article-content/ArticleContent';
+import * as ArticleHero from 'components/article-hero/ArticleHero';
+import * as InsightsSection from 'components/insights-section/InsightsSection';
+import * as IntroSection from 'components/intro-section/IntroSection';
 
 // Components must be registered with to match the string key with component name in Sitecore
 export const componentMap = new Map<string, NextjsContentSdkComponent>([
@@ -133,6 +143,13 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['TopicListing', TopicListing],
   ['VerticalImageAccordion', VerticalImageAccordion],
   ['Video', Video],
+  ['hero-carousel', HeroCarousel],
+  ['products-section', ProductsSection],
+  ['risk-areas-section', RiskAreasSection],
+  ['article-content', ArticleContent],
+  ['article-hero', ArticleHero],
+  ['insights-section', InsightsSection],
+  ['intro-section', IntroSection],
 ]);
 
 export default componentMap;

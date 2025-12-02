@@ -213,4 +213,286 @@ After setting up the Hero Carousel:
 
 For detailed component documentation, see [Hero Carousel Component Documentation](./components/hero-carousel.md).
 
+## Products Section Component Setup
+
+### Step 1: Create Templates
+
+#### Products Section Template
+
+1. Navigate to **Sitecore → Content → Templates**
+2. Create a new template: `/sitecore/templates/Project/LegalDemo/ProductsSection`
+3. Base template: `/sitecore/templates/System/Standard template` (or your custom base component template)
+
+4. **Add the following fields:**
+
+   | Field Name | Field Type | Section | Required | Description |
+   |------------|------------|---------|----------|-------------|
+   | `Title` | Single-Line Text | Data | No | Section heading (H2) |
+   | `Subtitle` | Rich Text | Data | No | Section description/introduction |
+
+#### Product Item Template
+
+1. Navigate to **Sitecore → Content → Templates**
+2. Create a new template: `/sitecore/templates/Project/LegalDemo/ProductItem`
+3. Base template: `/sitecore/templates/System/Standard template` (or your custom base component template)
+
+4. **Add the following fields:**
+
+   | Field Name | Field Type | Section | Required | Description |
+   |------------|------------|---------|----------|-------------|
+   | `Title` | Single-Line Text | Data | Yes | Product name/title |
+   | `Description` | Rich Text | Data | No | Product description |
+   | `Link` | General Link | Data | No | Call-to-action link to product page |
+   | `CTA Text` | Single-Line Text | Data | No | Custom text for CTA link (defaults to "Learn more") |
+
+### Step 2: Create Rendering
+
+1. Navigate to **Sitecore → Layout → Renderings**
+2. Create a new rendering: `/sitecore/layout/Renderings/Project/LegalDemo/ProductsSection`
+3. **Configure rendering:**
+   - **Name**: Products Section
+   - **Controller**: (leave empty for Next.js)
+   - **Controller Action**: (leave empty)
+   - **View**: (leave empty)
+   - **Datasource Template**: Select `ProductsSection` template
+   - **Datasource Location**: `/sitecore/content/LegalDemo/Components/ProductsSections`
+   - **Placeholder**: `headless-main`
+
+### Step 3: Register Component
+
+The component should be automatically registered when you run:
+```bash
+npm run sitecore-tools:generate-map
+```
+
+Or it will be generated during build. Verify it exists in `.sitecore/component-map.ts`.
+
+### Step 4: Create Content Items
+
+1. Navigate to **Sitecore → Content → LegalDemo → Components**
+2. Create a folder: `ProductsSections` (if it doesn't exist)
+3. Create a new item:
+   - **Template**: `ProductsSection`
+   - **Name**: `Homepage Products Section`
+   - **Location**: `/sitecore/content/LegalDemo/Components/ProductsSections`
+
+4. **Fill in section fields:**
+   - **Title**: `Our Products`
+   - **Subtitle**: `Discover our range of services and solutions`
+
+5. **Create product child items** under the Products Section item:
+   - Right-click the Products Section item → Insert → Product Item
+   - **Product 1:**
+     - Name: `Disputes Funding`
+     - Title: `Disputes Funding`
+     - Description: `The smart choice for organisations to turn cases into cash flow`
+     - Link: `/en/expertise/products/disputes-funding`
+     - CTA Text: `Discover more`
+   
+   - **Product 2:**
+     - Name: `Climate Change Quarterly`
+     - Title: `Climate Change Quarterly`
+     - Description: `Key updates on global climate litigation and regulations`
+     - Link: `/en/expertise/products/climate-change-quarterly`
+     - CTA Text: `Find out more`
+
+### Step 5: Add Component to Page
+
+1. Navigate to your page in **Experience Editor** or **Content Editor**
+2. Select the `headless-main` placeholder
+3. Click **Add Component** or use the component insertion button
+4. Select **Products Section**
+5. **Assign datasource**: Select `Homepage Products Section` (created in Step 4)
+
+For detailed component documentation, see [Products Section Component Documentation](./components/products-section.md).
+
+## Risk Areas Section Component Setup
+
+### Step 1: Create Templates
+
+#### Risk Areas Section Template
+
+1. Navigate to **Sitecore → Content → Templates**
+2. Create a new template: `/sitecore/templates/Project/LegalDemo/RiskAreasSection`
+3. Base template: `/sitecore/templates/System/Standard template` (or your custom base component template)
+
+4. **Add the following fields:**
+
+   | Field Name | Field Type | Section | Required | Description |
+   |------------|------------|---------|----------|-------------|
+   | `Title` | Single-Line Text | Data | No | Section heading (H2) |
+   | `Intro Text` | Rich Text | Data | No | Introduction/description text for the section |
+   | `CTA Text` | Single-Line Text | Data | No | Text for the call-to-action button |
+   | `CTA Link` | General Link | Data | No | Link for the call-to-action button |
+
+#### Risk Area Item Template
+
+1. Navigate to **Sitecore → Content → Templates**
+2. Create a new template: `/sitecore/templates/Project/LegalDemo/RiskAreaItem`
+3. Base template: `/sitecore/templates/System/Standard template` (or your custom base component template)
+
+4. **Add the following fields:**
+
+   | Field Name | Field Type | Section | Required | Description |
+   |------------|------------|---------|----------|-------------|
+   | `Title` | Single-Line Text | Data | Yes | Risk area name/title |
+   | `Description` | Rich Text | Data | No | Risk area description |
+   | `Image` | Image | Data | No | Featured image for the risk area card (recommended 4:3 aspect ratio) |
+   | `Link` | General Link | Data | No | Link to risk area detail page |
+   | `URL` | Single-Line Text | Data | No | Alternative URL field (fallback if Link not set) |
+
+### Step 2: Create Rendering
+
+1. Navigate to **Sitecore → Layout → Renderings**
+2. Create a new rendering: `/sitecore/layout/Renderings/Project/LegalDemo/RiskAreasSection`
+3. **Configure rendering:**
+   - **Name**: Risk Areas Section
+   - **Controller**: (leave empty for Next.js)
+   - **Controller Action**: (leave empty)
+   - **View**: (leave empty)
+   - **Datasource Template**: Select `RiskAreasSection` template
+   - **Datasource Location**: `/sitecore/content/LegalDemo/Components/RiskAreasSections`
+   - **Placeholder**: `headless-main`
+
+### Step 3: Register Component
+
+The component should be automatically registered when you run:
+```bash
+npm run sitecore-tools:generate-map
+```
+
+Or it will be generated during build. Verify it exists in `.sitecore/component-map.ts`.
+
+### Step 4: Create Content Items
+
+1. Navigate to **Sitecore → Content → LegalDemo → Components**
+2. Create a folder: `RiskAreasSections` (if it doesn't exist)
+3. Create a new item:
+   - **Template**: `RiskAreasSection`
+   - **Name**: `Homepage Risk Areas Section`
+   - **Location**: `/sitecore/content/LegalDemo/Components/RiskAreasSections`
+
+4. **Fill in section fields:**
+   - **Title**: `Risk Areas`
+   - **Intro Text**: `Explore our comprehensive risk analysis across six key areas that impact businesses globally`
+   - **CTA Text**: `View all six risks`
+   - **CTA Link**: `/en/insights/risk-areas`
+
+5. **Create risk area child items** under the Risk Areas Section item:
+   - Right-click the Risk Areas Section item → Insert → Risk Area Item
+   - **Risk Area 1:**
+     - Name: `Economic Insights`
+     - Title: `Economic Insights`
+     - Description: `Risks arising from changes and uncertainties in the global economy`
+     - Image: Upload/select an image (4:3 aspect ratio recommended)
+     - Link: `/en/insights/risk-area/economic-insights`
+   
+   - **Risk Area 2:**
+     - Name: `People Dynamics`
+     - Title: `People Dynamics`
+     - Description: `Steering the complexities of people management in business`
+     - Image: Upload/select an image
+     - Link: `/en/insights/risk-area/people-dynamics`
+   
+   - **Risk Area 3:**
+     - Name: `Tech & AI Evolution`
+     - Title: `Tech & AI Evolution`
+     - Description: `Navigating the ever-evolving world of technology & data`
+     - Image: Upload/select an image
+     - Link: `/en/insights/risk-area/tech-ai-evolution`
+   
+   - **Risk Area 4:**
+     - Name: `Geopolitical Outlook`
+     - Title: `Geopolitical Outlook`
+     - Description: `Addressing the consequences of a volatile geopolitical environment`
+     - Image: Upload/select an image
+     - Link: `/en/insights/risk-area/geopolitical-outlook`
+   
+   - **Risk Area 5:**
+     - Name: `Regulatory Movement`
+     - Title: `Regulatory Movement`
+     - Description: `Charting differing international regulatory regimes and compliance`
+     - Image: Upload/select an image
+     - Link: `/en/insights/risk-area/regulatory-movement`
+   
+   - **Risk Area 6:**
+     - Name: `Climate Change`
+     - Title: `Climate Change`
+     - Description: `Risks and liabilities arising from climate change and environmental issues`
+     - Image: Upload/select an image
+     - Link: `/en/insights/risk-area/climate-change`
+
+### Step 5: Add Component to Page
+
+1. Navigate to your page in **Experience Editor** or **Content Editor**
+2. Select the `headless-main` placeholder
+3. Click **Add Component** or use the component insertion button
+4. Select **Risk Areas Section**
+5. **Assign datasource**: Select `Homepage Risk Areas Section` (created in Step 4)
+
+### Step 6: Image Optimization Tips
+
+1. **Aspect Ratio**: Use 4:3 aspect ratio for consistent card heights (e.g., 800x600px, 1200x900px)
+2. **Format**: Use WebP format when possible for better performance
+3. **Size**: Optimize images before uploading (compress, resize to appropriate dimensions)
+4. **Alt Text**: Always provide descriptive alt text for accessibility
+
+For detailed component documentation, see [Risk Areas Section Component Documentation](./components/risk-areas-section.md).
+
+## Component Registration Verification
+
+After creating components, verify they are registered:
+
+1. **Check component map file**: Open `.sitecore/component-map.ts` (if accessible)
+2. **Run generation command**:
+   ```bash
+   npm run sitecore-tools:generate-map
+   ```
+3. **Verify in build output**: Check that components appear in build logs
+4. **Test in Experience Editor**: Components should appear in the component picker
+
+## General Component Setup Checklist
+
+For any new component, follow this checklist:
+
+- [ ] Create component template in Sitecore
+- [ ] Create child item template (if needed)
+- [ ] Add all required fields to templates
+- [ ] Create rendering in Sitecore
+- [ ] Configure datasource template and location
+- [ ] Register component (auto-generated via build)
+- [ ] Create content items with proper structure
+- [ ] Test component in Experience Editor
+- [ ] Verify component displays correctly on frontend
+- [ ] Test responsive behavior
+- [ ] Verify accessibility features
+- [ ] Publish content items
+
+## Field Reference Summary
+
+### Products Section Fields
+
+| Field Name | Sitecore Field Type | GraphQL Field Name | Notes |
+|------------|---------------------|-------------------|-------|
+| Title | Single-Line Text | `title` | Section heading |
+| Subtitle | Rich Text | `subtitle` | Section description |
+| Product Title | Single-Line Text | `title` | Required for products |
+| Product Description | Rich Text | `description` | Product description |
+| Product Link | General Link | `link` | CTA link |
+| Product CTA Text | Single-Line Text | `ctaText` | Custom CTA text |
+
+### Risk Areas Section Fields
+
+| Field Name | Sitecore Field Type | GraphQL Field Name | Notes |
+|------------|---------------------|-------------------|-------|
+| Title | Single-Line Text | `title` | Section heading |
+| Intro Text | Rich Text | `introText` | Introduction text |
+| CTA Text | Single-Line Text | `ctaText` | Button text |
+| CTA Link | General Link | `ctaLink` | Button link |
+| Risk Area Title | Single-Line Text | `title` | Required for risk areas |
+| Risk Area Description | Rich Text | `description` | Risk area description |
+| Risk Area Image | Image | `image` | Featured image (4:3 ratio) |
+| Risk Area Link | General Link | `link` | Detail page link |
+| Risk Area URL | Single-Line Text | `url` | Alternative URL field |
+
 
