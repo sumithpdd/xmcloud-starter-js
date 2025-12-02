@@ -135,14 +135,14 @@ export const Default: React.FC<HeroCarouselProps> = ({ fields, params }) => {
                       )}
                       {(link?.jsonValue?.value?.href || isPageEditing) && (
                         <div className="pt-4">
-                          {isPageEditing ? (
+                          {isPageEditing && link?.jsonValue ? (
                             <Button
                               variant="default"
                               asChild
                               size="lg"
                               className="bg-white text-[#141414] hover:bg-white/95 font-medium px-8 py-4 rounded-none border-0"
                             >
-                              <SitecoreLink field={link?.jsonValue} />
+                              <SitecoreLink field={link.jsonValue} />
                             </Button>
                           ) : (
                             link?.jsonValue?.value?.href && (

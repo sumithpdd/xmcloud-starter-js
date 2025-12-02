@@ -11,7 +11,7 @@ import {
 } from '@sitecore-content-sdk/nextjs';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
-import type { RiskAreasSectionProps } from './risk-areas-section.props';
+import type { RiskAreasSectionProps, RiskAreaItem } from './risk-areas-section.props';
 
 export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => {
   const { title, introText, ctaText, ctaLink, children } = fields?.data?.datasource ?? {};
@@ -19,13 +19,14 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
   const { page } = useSitecore();
   const isPageEditing = page.mode.isEditing;
 
-  const defaultRiskAreas = [
+  const defaultRiskAreas: RiskAreaItem[] = [
     {
       title: { jsonValue: { value: 'Economic Insights' } },
       description: {
         jsonValue: { value: 'Risks arising from changes and uncertainties in the global economy' },
       },
       url: '/insights/risk-area/economic-insights',
+      image: undefined,
     },
     {
       title: { jsonValue: { value: 'People Dynamics' } },
@@ -33,6 +34,7 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
         jsonValue: { value: 'Steering the complexities of people management in business' },
       },
       url: '/insights/risk-area/people-dynamics',
+      image: undefined,
     },
     {
       title: { jsonValue: { value: 'Tech & AI Evolution' } },
@@ -40,6 +42,7 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
         jsonValue: { value: 'Navigating the ever-evolving world of technology & data' },
       },
       url: '/insights/risk-area/tech-ai-evolution',
+      image: undefined,
     },
     {
       title: { jsonValue: { value: 'Geopolitical Outlook' } },
@@ -49,6 +52,7 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
         },
       },
       url: '/insights/risk-area/geopolitical-outlook',
+      image: undefined,
     },
     {
       title: { jsonValue: { value: 'Regulatory Movement' } },
@@ -58,6 +62,7 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
         },
       },
       url: '/insights/risk-area/regulatory-movement',
+      image: undefined,
     },
     {
       title: { jsonValue: { value: 'Climate Change' } },
@@ -67,6 +72,7 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
         },
       },
       url: '/insights/risk-area/climate-change',
+      image: undefined,
     },
   ];
 
