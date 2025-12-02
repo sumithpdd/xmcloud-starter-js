@@ -6,8 +6,6 @@ import type { IntroSectionProps } from './intro-section.props';
 
 export const Default: React.FC<IntroSectionProps> = ({ fields, params }) => {
   const { heading } = fields?.data?.datasource ?? {};
-  const { page } = useSitecore();
-  const isPageEditing = page.mode.isEditing;
 
   const defaultHeading = {
     jsonValue: {
@@ -37,5 +35,4 @@ export const Default: React.FC<IntroSectionProps> = ({ fields, params }) => {
     </section>
   );
 };
-
 

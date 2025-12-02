@@ -19,4 +19,3 @@ export interface IntroSectionProps extends ComponentProps {
   fields: IntroSectionFields;
 }
 
-

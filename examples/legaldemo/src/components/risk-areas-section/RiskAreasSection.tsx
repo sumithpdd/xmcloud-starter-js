@@ -180,4 +180,3 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
     </section>
   );
 };
-

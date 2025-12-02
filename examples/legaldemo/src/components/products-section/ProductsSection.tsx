@@ -106,4 +106,3 @@ export const Default: React.FC<ProductsSectionProps> = ({ fields, params }) => {
     </section>
   );
 };
-

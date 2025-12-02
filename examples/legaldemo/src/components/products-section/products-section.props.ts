@@ -30,4 +30,3 @@ export interface ProductsSectionProps extends ComponentProps {
   params: ProductsSectionParams;
   fields: ProductsSectionFields;
 }
-
