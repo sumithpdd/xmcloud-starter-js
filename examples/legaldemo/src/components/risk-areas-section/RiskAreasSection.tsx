@@ -2,7 +2,13 @@ import type React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
-import { Text, RichText, Image, Link as SitecoreLink, useSitecore } from '@sitecore-content-sdk/nextjs';
+import {
+  Text,
+  RichText,
+  Image,
+  Link as SitecoreLink,
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import type { RiskAreasSectionProps } from './risk-areas-section.props';
@@ -94,12 +100,22 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
             {ctaLink && (
               <div className="mt-6">
                 {isPageEditing ? (
-                  <Button variant="default" size="lg" asChild className="bg-[#00677F] hover:bg-[#005267] text-white rounded-none">
+                  <Button
+                    variant="default"
+                    size="lg"
+                    asChild
+                    className="bg-[#00677F] hover:bg-[#005267] text-white rounded-none"
+                  >
                     <SitecoreLink field={ctaLink.jsonValue} />
                   </Button>
                 ) : (
                   ctaLink.jsonValue?.value?.href && (
-                    <Button variant="default" size="lg" asChild className="bg-[#00677F] hover:bg-[#005267] text-white rounded-none">
+                    <Button
+                      variant="default"
+                      size="lg"
+                      asChild
+                      className="bg-[#00677F] hover:bg-[#005267] text-white rounded-none"
+                    >
                       <Link href={ctaLink.jsonValue.value.href}>
                         {ctaText?.jsonValue?.value || 'View all six risks'}
                         <ChevronRight className="ml-2 h-5 w-5" />

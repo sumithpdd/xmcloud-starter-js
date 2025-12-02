@@ -181,3 +181,4 @@ The site uses Tailwind's default breakpoints:
 - [Playfair Display Font](https://fonts.google.com/specimen/Playfair+Display)
 - [Inter Font](https://fonts.google.com/specimen/Inter)
 
+

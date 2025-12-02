@@ -213,3 +213,4 @@ After setting up the Hero Carousel:
 
 For detailed component documentation, see [Hero Carousel Component Documentation](./components/hero-carousel.md).
 
+

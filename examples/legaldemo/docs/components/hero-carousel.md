@@ -275,3 +275,4 @@ For issues or questions:
 2. Review Sitecore XM Cloud documentation
 3. Check component code comments in `HeroCarousel.tsx`
 
+
