@@ -6,9 +6,14 @@ This directory contains detailed documentation for custom components used in the
 
 ### Hero Components
 - [Hero Carousel](./hero-carousel.md) - Full-width carousel component for hero sections
+- [Article Hero](./article-hero.md) - Hero section for article/report pages
 
-### Coming Soon
-- Additional component documentation will be added here as components are created or updated.
+### Content Sections
+- [Products Section](./products-section.md) - Product offerings grid
+- [Insights Section](./insights-section.md) - Article/insight grid
+- [Intro Section](./intro-section.md) - Homepage introduction text
+- [Risk Areas Section](./risk-areas-section.md) - Risk category cards
+- [Article Content](./article-content.md) - Article content with table of contents
 
 ## Component Documentation Structure
 

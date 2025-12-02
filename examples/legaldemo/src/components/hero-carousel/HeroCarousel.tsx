@@ -1,5 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Text, RichText, Image, Link as SitecoreLink, useSitecore } from '@sitecore-content-sdk/nextjs';
+import {
+  Text,
+  RichText,
+  Image,
+  Link as SitecoreLink,
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
@@ -130,9 +136,9 @@ export const Default: React.FC<HeroCarouselProps> = ({ fields, params }) => {
                       {(link?.jsonValue?.value?.href || isPageEditing) && (
                         <div className="pt-4">
                           {isPageEditing ? (
-                            <Button 
-                              variant="default" 
-                              asChild 
+                            <Button
+                              variant="default"
+                              asChild
                               size="lg"
                               className="bg-white text-[#141414] hover:bg-white/95 font-medium px-8 py-4 rounded-none border-0"
                             >
@@ -140,9 +146,9 @@ export const Default: React.FC<HeroCarouselProps> = ({ fields, params }) => {
                             </Button>
                           ) : (
                             link?.jsonValue?.value?.href && (
-                              <Button 
-                                variant="default" 
-                                asChild 
+                              <Button
+                                variant="default"
+                                asChild
                                 size="lg"
                                 className="bg-white text-[#141414] hover:bg-white/95 font-medium px-8 py-4 rounded-none border-0"
                               >

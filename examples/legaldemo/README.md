@@ -51,6 +51,8 @@ Additional Info: You do not have to create rendering host items in XM Cloud as t
 
 ## Components
 
+This project includes a comprehensive set of components designed for legal firm websites, styled to match the Clyde & Co design system.
+
 ### Hero Carousel Component
 
 A full-width, responsive carousel component designed for hero sections. Supports multiple slides with images, titles, subtitles, descriptions, and call-to-action links.
@@ -64,19 +66,128 @@ A full-width, responsive carousel component designed for hero sections. Supports
 
 **Documentation:** See [Hero Carousel Component Documentation](./docs/components/hero-carousel.md) for detailed setup instructions, Sitecore field requirements, and usage examples.
 
-**Quick Setup:**
-1. Create a `HeroCarousel` template in Sitecore
-2. Create a `HeroCarouselSlide` template with fields: Title, Subtitle, Description, Image, Link, Background Color
-3. Add the component to your page placeholder (`headless-main`)
-4. Create child slide items under the datasource
+### Products Section Component
 
-For complete setup instructions and field requirements, see the [component documentation](./docs/components/hero-carousel.md).
+Displays a grid of product offerings with titles, descriptions, and call-to-action links.
+
+**Features:**
+- Responsive 2-column grid layout
+- Product cards with hover effects
+- Customizable CTA text and links
+- Fallback content for disconnected mode
+
+**Sitecore Fields:**
+- `Title` (Single-Line Text) - Section heading
+- `Subtitle` (Rich Text) - Section description
+- `Children` (Treelist) - Product items with:
+  - `Title` (Single-Line Text)
+  - `Description` (Rich Text)
+  - `Link` (General Link)
+  - `CtaText` (Single-Line Text)
+
+### Insights Section Component
+
+Displays a grid of insight articles with images, categories, titles, and dates.
+
+**Features:**
+- Responsive 3-column grid (2 columns on tablet, 3 on desktop)
+- Article cards with images
+- Category and subcategory support
+- Date display
+- Hover effects
+
+**Sitecore Fields:**
+- `Title` (Single-Line Text) - Section heading
+- `Children` (Treelist) - Insight items with:
+  - `Category` (Single-Line Text)
+  - `SubCategory` (Single-Line Text, optional)
+  - `Title` (Single-Line Text)
+  - `Date` (Single-Line Text)
+  - `Image` (Image)
+  - `Url` (Single-Line Text) - Link URL
+
+### Intro Section Component
+
+A simple text section with highlighted key phrases, perfect for homepage introductions.
+
+**Features:**
+- Large heading text
+- Rich text support with HTML spans for highlighting
+- Max-width container for readability
+
+**Sitecore Fields:**
+- `Heading` (Rich Text) - Main heading text (supports HTML spans with `text-[#00677F]` class for highlighting)
+
+### Risk Areas Section Component
+
+Displays a grid of risk area cards with images, titles, descriptions, and links.
+
+**Features:**
+- Responsive 3-column grid
+- Risk area cards with images
+- Introductory text section
+- Call-to-action button
+- Hover effects
+
+**Sitecore Fields:**
+- `Title` (Single-Line Text) - Section heading
+- `IntroText` (Rich Text) - Introduction paragraph
+- `CtaText` (Single-Line Text) - Button text
+- `CtaLink` (General Link) - Button link
+- `Children` (Treelist) - Risk area items with:
+  - `Title` (Single-Line Text)
+  - `Description` (Rich Text)
+  - `Image` (Image)
+  - `Link` (General Link) or `Url` (Single-Line Text)
+
+### Article Hero Component
+
+A hero section for article/report pages with background image, title, subtitle, category, date, and location.
+
+**Features:**
+- Full-width hero with background image
+- Gradient overlay
+- Decorative element
+- Category badge
+- Date and location display
+
+**Sitecore Fields:**
+- `Category` (Single-Line Text) - Article category
+- `Title` (Single-Line Text) - Article title
+- `Subtitle` (Single-Line Text) - Article subtitle
+- `Date` (Single-Line Text) - Publication date
+- `Location` (Single-Line Text) - Article location
+- `BackgroundImage` (Image) - Hero background image
+
+### Article Content Component
+
+Displays article content sections with table of contents navigation.
+
+**Features:**
+- Table of contents with anchor links
+- Multiple content sections
+- Download button support
+- Rich text content
+
+**Sitecore Fields:**
+- `DownloadButtonText` (Single-Line Text) - Download button text
+- `DownloadButtonLink` (General Link) - Download button link
+- `Children` (Treelist) - Content sections with:
+  - `Title` (Single-Line Text) - Section heading
+  - `Content` (Rich Text) - Section content
+  - `Id` (Single-Line Text) - Anchor ID (optional)
 
 ## Component Documentation
 
 Detailed documentation for all custom components is available in the [docs/components](./docs/components/) directory:
 
 - [Hero Carousel](./docs/components/hero-carousel.md) - Full-width carousel component
+- [Products Section](./docs/components/products-section.md) - Product offerings grid
+- [Insights Section](./docs/components/insights-section.md) - Article/insight grid
+- [Intro Section](./docs/components/intro-section.md) - Homepage introduction text
+- [Risk Areas Section](./docs/components/risk-areas-section.md) - Risk category cards
+- [Article Hero](./docs/components/article-hero.md) - Article page hero section
+- [Article Content](./docs/components/article-content.md) - Article content with TOC
 
 ## Sitecore Setup Guide
 

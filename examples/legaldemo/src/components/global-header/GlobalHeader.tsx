@@ -59,23 +59,14 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
           <div className="mr-8">
             {pageEditing ? (
               <Image field={logo?.jsonValue} className="h-8 w-auto md:h-10" />
+            ) : logo?.jsonValue?.value ? (
+              <Link href="/" className="flex items-center [&_.image-container]:w-full">
+                <Logo logo={logo?.jsonValue} className="h-8 w-auto md:h-10" />
+              </Link>
             ) : (
-              logo?.jsonValue?.value ? (
-                <Link
-                  href="/"
-                  className="flex items-center [&_.image-container]:w-full"
-                >
-                  <Logo logo={logo?.jsonValue} className="h-8 w-auto md:h-10" />
-                </Link>
-              ) : (
-                <Link href="/" className="flex items-center">
-                  <img 
-                    src="/logo--dark.svg" 
-                    alt="Clyde & Co" 
-                    className="h-8 w-auto md:h-10"
-                  />
-                </Link>
-              )
+              <Link href="/" className="flex items-center">
+                <img src="/logo--dark.svg" alt="Clyde & Co" className="h-8 w-auto md:h-10" />
+              </Link>
             )}
           </div>
           {/* Desktop Navigation */}
