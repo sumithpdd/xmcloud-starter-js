@@ -28,4 +28,3 @@ export interface ArticleContentProps extends ComponentProps {
   params: ArticleContentParams;
   fields: ArticleContentFields;
 }
-

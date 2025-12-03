@@ -1,5 +1,5 @@
 import type React from 'react';
-import { RichText, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { RichText } from '@sitecore-content-sdk/nextjs';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import type { IntroSectionProps } from './intro-section.props';
@@ -35,4 +35,3 @@ export const Default: React.FC<IntroSectionProps> = ({ fields, params }) => {
     </section>
   );
 };
-

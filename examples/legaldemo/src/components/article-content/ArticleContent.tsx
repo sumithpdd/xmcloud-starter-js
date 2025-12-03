@@ -93,4 +93,3 @@ export const Default: React.FC<ArticleContentProps> = ({ fields, params }) => {
     </div>
   );
 };
-

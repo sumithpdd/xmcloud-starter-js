@@ -106,4 +106,3 @@ export const Default: React.FC<ArticleHeroProps> = ({ fields, params }) => {
     </div>
   );
 };
-

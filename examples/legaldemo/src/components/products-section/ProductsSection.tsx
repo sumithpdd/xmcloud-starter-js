@@ -4,7 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import { Text, RichText, Link as SitecoreLink, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
-import type { ProductsSectionProps } from './products-section.props';
+import type { ProductsSectionProps, ProductItem } from './products-section.props';
 
 export const Default: React.FC<ProductsSectionProps> = ({ fields, params }) => {
   const { title, subtitle, children } = fields?.data?.datasource ?? {};
@@ -12,7 +12,7 @@ export const Default: React.FC<ProductsSectionProps> = ({ fields, params }) => {
   const { page } = useSitecore();
   const isPageEditing = page.mode.isEditing;
 
-  const defaultProducts = [
+  const defaultProducts: ProductItem[] = [
     {
       title: { jsonValue: { value: 'Disputes Funding' } },
       description: {
@@ -22,6 +22,7 @@ export const Default: React.FC<ProductsSectionProps> = ({ fields, params }) => {
       },
       url: '/expertise/products/disputes-funding',
       ctaText: { jsonValue: { value: 'Discover more' } },
+      link: undefined,
     },
     {
       title: { jsonValue: { value: 'Climate Change Quarterly' } },
@@ -30,6 +31,7 @@ export const Default: React.FC<ProductsSectionProps> = ({ fields, params }) => {
       },
       url: '/expertise/products/climate-change-quarterly',
       ctaText: { jsonValue: { value: 'Find out more' } },
+      link: undefined,
     },
   ];
 

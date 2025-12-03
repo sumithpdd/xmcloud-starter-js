@@ -30,5 +30,3 @@ export interface InsightsSectionProps extends ComponentProps {
   params: InsightsSectionParams;
   fields: InsightsSectionFields;
 }
-
-

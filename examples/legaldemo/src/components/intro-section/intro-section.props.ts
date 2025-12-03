@@ -18,4 +18,3 @@ export interface IntroSectionProps extends ComponentProps {
   params: IntroSectionParams;
   fields: IntroSectionFields;
 }
-
