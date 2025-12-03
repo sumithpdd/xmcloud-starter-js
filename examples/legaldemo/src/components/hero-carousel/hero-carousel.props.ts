@@ -33,4 +33,3 @@ export interface HeroCarouselProps extends ComponentProps {
   params: HeroCarouselParams;
   fields: HeroCarouselFields;
 }
-

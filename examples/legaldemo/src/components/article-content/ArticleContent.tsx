@@ -18,10 +18,7 @@ export const Default: React.FC<ArticleContentProps> = ({ fields, params }) => {
   }
 
   return (
-    <div
-      data-component="ArticleContent"
-      className={cn('py-16 md:py-24 bg-white', params?.styles)}
-    >
+    <div data-component="ArticleContent" className={cn('py-16 md:py-24 bg-white', params?.styles)}>
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="max-w-4xl">
           {/* Table of Contents */}
@@ -96,5 +93,4 @@ export const Default: React.FC<ArticleContentProps> = ({ fields, params }) => {
     </div>
   );
 };
-
 

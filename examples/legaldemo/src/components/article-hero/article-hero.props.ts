@@ -24,4 +24,3 @@ export interface ArticleHeroProps extends ComponentProps {
   fields: ArticleHeroFields;
 }
 
-

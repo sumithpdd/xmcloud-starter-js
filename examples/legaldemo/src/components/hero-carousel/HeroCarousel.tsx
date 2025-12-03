@@ -203,4 +203,3 @@ export const Default: React.FC<HeroCarouselProps> = ({ fields, params }) => {
     </section>
   );
 };
-

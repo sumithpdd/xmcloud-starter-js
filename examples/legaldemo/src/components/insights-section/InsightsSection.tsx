@@ -135,4 +135,3 @@ export const Default: React.FC<InsightsSectionProps> = ({ fields, params }) => {
   );
 };
 
-
