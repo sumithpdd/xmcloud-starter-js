@@ -6,10 +6,10 @@ The Hero Carousel component is a full-width, responsive carousel designed for he
 
 ## Component Location
 
-- **Path**: `src/components/hero-carousel/`
+- **Path**: `src/components/HeroCarousel/`
 - **Files**:
   - `HeroCarousel.tsx` - Main component implementation
-  - `hero-carousel.props.ts` - TypeScript interfaces and prop definitions
+  - `HeroCarousel.props.ts` - TypeScript interfaces and prop definitions
 
 ## Features
 

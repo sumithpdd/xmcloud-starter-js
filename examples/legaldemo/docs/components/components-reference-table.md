@@ -6,7 +6,7 @@ This document provides a comprehensive reference table for all newly created com
 
 | Component Name | Component Path | Template Name | Child Template | Placeholder | Documentation |
 |----------------|----------------|---------------|----------------|-------------|--------------|
-| Hero Carousel | `src/components/hero-carousel/HeroCarousel.tsx` | `HeroCarousel` | `HeroCarouselSlide` | `headless-main` | [Hero Carousel](./hero-carousel.md) |
+| Hero Carousel | `src/components/HeroCarousel/HeroCarousel.tsx` | `HeroCarousel` | `HeroCarouselSlide` | `headless-main` | [Hero Carousel](./HeroCarousel.md) |
 | Products Section | `src/components/products-section/ProductsSection.tsx` | `ProductsSection` | `ProductItem` | `headless-main` | [Products Section](./products-section.md) |
 | Risk Areas Section | `src/components/risk-areas-section/RiskAreasSection.tsx` | `RiskAreasSection` | `RiskAreaItem` | `headless-main` | [Risk Areas Section](./risk-areas-section.md) |
 
@@ -17,8 +17,8 @@ This document provides a comprehensive reference table for all newly created com
 | Property | Value |
 |----------|-------|
 | **Component Name** | Hero Carousel |
-| **File Path** | `src/components/hero-carousel/HeroCarousel.tsx` |
-| **Props File** | `src/components/hero-carousel/hero-carousel.props.ts` |
+| **File Path** | `src/components/HeroCarousel/HeroCarousel.tsx` |
+| **Props File** | `src/components/HeroCarousel/HeroCarousel.props.ts` |
 | **Export Name** | `Default` |
 | **Template Name** | `HeroCarousel` |
 | **Child Template** | `HeroCarouselSlide` |
@@ -219,6 +219,6 @@ For detailed setup instructions, see the [Sitecore Setup Guide](../sitecore-setu
 - [Components README](./README.md) - Overview of all components
 - [Sitecore Setup Guide](../sitecore-setup.md) - Step-by-step setup instructions
 - [Component Registration Guide](../component-registration-guide.md) - Registration details
-- [Hero Carousel Documentation](./hero-carousel.md) - Detailed Hero Carousel docs
+- [Hero Carousel Documentation](./HeroCarousel.md) - Detailed Hero Carousel docs
 - [Products Section Documentation](./products-section.md) - Detailed Products Section docs
 - [Risk Areas Section Documentation](./risk-areas-section.md) - Detailed Risk Areas Section docs

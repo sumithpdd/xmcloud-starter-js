@@ -6,7 +6,7 @@ This document lists all components in the Legal Demo that export `Default` and c
 
 These are the three components that were recently created and documented:
 
-1. **Hero Carousel** - `src/components/hero-carousel/HeroCarousel.tsx`
+1. **Hero Carousel** - `src/components/HeroCarousel/HeroCarousel.tsx`
 2. **Products Section** - `src/components/products-section/ProductsSection.tsx`
 3. **Risk Areas Section** - `src/components/risk-areas-section/RiskAreasSection.tsx`
 
@@ -88,7 +88,7 @@ If you want to add all available components to your manual component map:
 
 ```typescript
 // Newly created components
-import * as HeroCarousel from 'components/hero-carousel/HeroCarousel';
+import * as HeroCarousel from 'components/HeroCarousel/HeroCarousel';
 import * as ProductsSection from 'components/products-section/ProductsSection';
 import * as RiskAreasSection from 'components/risk-areas-section/RiskAreasSection';
 

@@ -9,7 +9,7 @@ import {
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
-import { HeroCarouselProps } from './hero-carousel.props';
+import { HeroCarouselProps } from './HeroCarousel.props';
 import {
   Carousel,
   CarouselContent,

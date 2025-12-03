@@ -66,7 +66,7 @@ import * as TopicListing from 'components/topic-listing/TopicListing';
 import * as VerticalImageAccordion from 'components/vertical-image-accordion/VerticalImageAccordion';
 import * as Video from 'components/video/Video';
 // Newly created components
-import * as HeroCarousel from 'components/hero-carousel/HeroCarousel';
+import * as HeroCarousel from 'components/HeroCarousel/HeroCarousel';
 import * as ProductsSection from 'components/products-section/ProductsSection';
 import * as RiskAreasSection from 'components/risk-areas-section/RiskAreasSection';
 
@@ -143,7 +143,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['TopicListing', TopicListing],
   ['VerticalImageAccordion', VerticalImageAccordion],
   ['Video', Video],
-  ['hero-carousel', HeroCarousel],
+  ['HeroCarousel', HeroCarousel],
   ['products-section', ProductsSection],
   ['risk-areas-section', RiskAreasSection],
   ['article-content', ArticleContent],

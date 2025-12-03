@@ -8,7 +8,7 @@ The following table provides a quick reference for the newly created components:
 
 | Component Name | File Path | Template Name | Child Template | Key Features | Documentation |
 |----------------|-----------|---------------|----------------|-------------|--------------|
-| **Hero Carousel** | `src/components/hero-carousel/HeroCarousel.tsx` | `HeroCarousel` | `HeroCarouselSlide` | Multiple slides, autoplay, navigation arrows, dots, slide counter | [Hero Carousel](./hero-carousel.md) |
+| **Hero Carousel** | `src/components/HeroCarousel/HeroCarousel.tsx` | `HeroCarousel` | `HeroCarouselSlide` | Multiple slides, autoplay, navigation arrows, dots, slide counter | [Hero Carousel](./HeroCarousel.md) |
 | **Products Section** | `src/components/products-section/ProductsSection.tsx` | `ProductsSection` | `ProductItem` | 2-column grid, product cards, CTA links, hover effects | [Products Section](./products-section.md) |
 | **Risk Areas Section** | `src/components/risk-areas-section/RiskAreasSection.tsx` | `RiskAreasSection` | `RiskAreaItem` | 3-column grid, image cards, section header with CTA button, image hover effects | [Risk Areas Section](./risk-areas-section.md) |
 
@@ -38,7 +38,7 @@ The following table provides a quick reference for the newly created components:
 ## Available Components
 
 ### Hero Components
-- [Hero Carousel](./hero-carousel.md) - Full-width carousel component for hero sections
+- [Hero Carousel](./HeroCarousel.md) - Full-width carousel component for hero sections
 - [Article Hero](./article-hero.md) - Hero section for article/report pages
 
 ### Content Sections

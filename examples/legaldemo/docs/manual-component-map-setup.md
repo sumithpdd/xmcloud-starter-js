@@ -6,7 +6,7 @@ This guide explains how to manually add the new components to the component map 
 
 **Add these imports** (around line 68):
 ```typescript
-import * as HeroCarousel from 'components/hero-carousel/HeroCarousel';
+import * as HeroCarousel from 'components/HeroCarousel/HeroCarousel';
 import * as ProductsSection from 'components/products-section/ProductsSection';
 import * as RiskAreasSection from 'components/risk-areas-section/RiskAreasSection';
 ```
@@ -36,7 +36,7 @@ Add the following imports and entries to your existing `.sitecore/component-map.
 Add these import statements with your other component imports:
 
 ```typescript
-import * as HeroCarousel from 'components/hero-carousel/HeroCarousel';
+import * as HeroCarousel from 'components/HeroCarousel/HeroCarousel';
 import * as ProductsSection from 'components/products-section/ProductsSection';
 import * as RiskAreasSection from 'components/risk-areas-section/RiskAreasSection';
 ```
@@ -57,7 +57,7 @@ Your component map file should have imports like:
 
 ```typescript
 // ... other imports ...
-import * as HeroCarousel from 'components/hero-carousel/HeroCarousel';
+import * as HeroCarousel from 'components/HeroCarousel/HeroCarousel';
 import * as ProductsSection from 'components/products-section/ProductsSection';
 import * as RiskAreasSection from 'components/risk-areas-section/RiskAreasSection';
 ```
@@ -85,7 +85,7 @@ And in the components array/object:
 1. **Locate the import section** (around line 68 or where other component imports are)
 2. **Add the three import statements**:
    ```typescript
-   import * as HeroCarousel from 'components/hero-carousel/HeroCarousel';
+   import * as HeroCarousel from 'components/HeroCarousel/HeroCarousel';
    import * as ProductsSection from 'components/products-section/ProductsSection';
    import * as RiskAreasSection from 'components/risk-areas-section/RiskAreasSection';
    ```
@@ -154,9 +154,9 @@ Add the entry to the components array:
 ## Component Details
 
 ### Hero Carousel
-- **Folder**: `src/components/hero-carousel/`
+- **Folder**: `src/components/HeroCarousel/`
 - **File**: `HeroCarousel.tsx`
-- **Key**: `'hero-carousel'`
+- **Key**: `'hero-carousel'` (component key remains kebab-case for Sitecore compatibility)
 - **Template**: `HeroCarousel`
 
 ### Products Section

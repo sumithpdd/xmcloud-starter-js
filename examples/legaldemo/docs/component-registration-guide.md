@@ -76,7 +76,7 @@ src/components/
 The following components have been recently added and should be automatically registered:
 
 ### 1. Hero Carousel
-- **Path**: `src/components/hero-carousel/HeroCarousel.tsx`
+- **Path**: `src/components/HeroCarousel/HeroCarousel.tsx`
 - **Export**: `Default`
 - **Template**: `HeroCarousel`
 - **Child Template**: `HeroCarouselSlide`
@@ -223,7 +223,7 @@ If you need to register only specific components and exclude unwanted ones, see 
 - [Manual Component Map Setup Guide](./manual-component-map-setup.md) - Manual registration instructions
 - [Sitecore Setup Guide](./sitecore-setup.md) - Step-by-step component setup
 - [Component Documentation](./components/README.md) - Detailed component docs
-- [Hero Carousel Documentation](./components/hero-carousel.md)
+- [Hero Carousel Documentation](./components/HeroCarousel.md)
 - [Products Section Documentation](./components/products-section.md)
 - [Risk Areas Section Documentation](./components/risk-areas-section.md)
 

@@ -211,7 +211,7 @@ After setting up the Hero Carousel:
 4. **Test responsive behavior** on mobile, tablet, and desktop
 5. **Configure additional carousels** for other pages as needed
 
-For detailed component documentation, see [Hero Carousel Component Documentation](./components/hero-carousel.md).
+For detailed component documentation, see [Hero Carousel Component Documentation](./components/HeroCarousel.md).
 
 ## Products Section Component Setup
 
