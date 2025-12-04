@@ -14,8 +14,13 @@ export const Default: React.FC<HeroCarouselSlideProps> = (props) => {
   const { page } = useSitecore();
   const isPageEditing = page.mode.isEditing;
 
-  const { Title, Subtitle, Description, Image: ImageField, Link: LinkField, BackgroundColor } =
-    fields?.data?.item || {};
+  const {
+    Title,
+    Subtitle,
+    Description,
+    Image: ImageField,
+    Link: LinkField,
+  } = fields?.data?.item || {};
 
   return (
     <div className="relative flex min-h-[70vh] w-full items-center overflow-hidden bg-white">

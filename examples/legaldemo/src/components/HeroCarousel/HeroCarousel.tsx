@@ -95,7 +95,8 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
         Subtitle: { jsonValue: { value: 'Reports' } },
         Description: {
           jsonValue: {
-            value: 'Research-led report capturing cross-sector perspectives from 400+ global leaders on risks and opportunities in the coming years',
+            value:
+              'Research-led report capturing cross-sector perspectives from 400+ global leaders on risks and opportunities in the coming years',
           },
         },
         Link: {
