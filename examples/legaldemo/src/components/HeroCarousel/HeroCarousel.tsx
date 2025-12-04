@@ -113,9 +113,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
 
   // Use datasource slides if available, otherwise use defaults
   const slides: HeroCarouselSlide[] =
-    slidesFromDatasource && slidesFromDatasource.length > 0
-      ? slidesFromDatasource
-      : defaultSlides;
+    slidesFromDatasource && slidesFromDatasource.length > 0 ? slidesFromDatasource : defaultSlides;
 
   useEffect(() => {
     if (!api) {
@@ -189,10 +187,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
               | { jsonValue: ImageField }
               | ImageField
               | undefined;
-            const slideLink = slideFields.Link as
-              | { jsonValue: LinkField }
-              | LinkField
-              | undefined;
+            const slideLink = slideFields.Link as { jsonValue: LinkField } | LinkField | undefined;
             const BackgroundColor = slideFields.BackgroundColor as
               | { jsonValue: Field<string> }
               | Field<string>

@@ -1,4 +1,10 @@
-import { Text, RichText, Image, Link as SitecoreLink, useSitecore } from '@sitecore-content-sdk/nextjs';
+import {
+  Text,
+  RichText,
+  Image,
+  Link as SitecoreLink,
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { HeroCarouselSlideProps } from './HeroCarouselSlide.props';
@@ -8,18 +14,18 @@ export const Default: React.FC<HeroCarouselSlideProps> = (props) => {
   const { page } = useSitecore();
   const isPageEditing = page.mode.isEditing;
 
-  const { Title, Subtitle, Description, Image, Link, BackgroundColor } = fields?.data?.item || {};
-  const bgColor = BackgroundColor?.jsonValue?.value || 'bg-white';
+  const { Title, Subtitle, Description, Image: ImageField, Link: LinkField, BackgroundColor } =
+    fields?.data?.item || {};
 
   return (
     <div className="relative flex min-h-[70vh] w-full items-center overflow-hidden bg-white">
       {/* Background Image */}
-      {(Image?.jsonValue?.value?.src || isPageEditing) && (
+      {(ImageField?.jsonValue?.value?.src || isPageEditing) && (
         <div className="absolute inset-0 z-0">
           <Image
-            field={Image?.jsonValue}
+            field={ImageField?.jsonValue}
             className="h-full w-full object-cover"
-            alt={Image?.jsonValue?.value?.alt || ''}
+            alt={ImageField?.jsonValue?.value?.alt || ''}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/75 to-transparent" />
         </div>
@@ -48,27 +54,27 @@ export const Default: React.FC<HeroCarouselSlideProps> = (props) => {
               className="prose max-w-xl text-base leading-[1.5] text-[#212529] md:text-lg lg:text-xl prose-p:mb-4 prose-p:mt-0 prose-headings:text-[#212529] prose-p:text-[#212529]"
             />
           )}
-          {(Link?.jsonValue?.value?.href || isPageEditing) && (
+          {(LinkField?.jsonValue?.value?.href || isPageEditing) && (
             <div className="pt-4">
-              {isPageEditing && Link?.jsonValue ? (
+              {isPageEditing && LinkField?.jsonValue ? (
                 <Button
                   variant="default"
                   asChild
                   size="lg"
                   className="bg-[#00677F] text-white hover:bg-[#005267] font-medium px-8 py-4 rounded-none border-0"
                 >
-                  <SitecoreLink field={Link.jsonValue} />
+                  <SitecoreLink field={LinkField.jsonValue} />
                 </Button>
               ) : (
-                Link?.jsonValue?.value?.href && (
+                LinkField?.jsonValue?.value?.href && (
                   <Button
                     variant="default"
                     asChild
                     size="lg"
                     className="bg-[#00677F] text-white hover:bg-[#005267] font-medium px-8 py-4 rounded-none border-0"
                   >
-                    <Link href={Link.jsonValue.value.href}>
-                      {Link.jsonValue.value.text || 'Learn More'}
+                    <Link href={LinkField.jsonValue.value.href}>
+                      {LinkField.jsonValue.value.text || 'Learn More'}
                     </Link>
                   </Button>
                 )
