@@ -6,6 +6,7 @@ import {
   Link as SitecoreLink,
   useSitecore,
 } from '@sitecore-content-sdk/nextjs';
+import type { Field, LinkField, ImageField } from '@sitecore-content-sdk/nextjs';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
@@ -54,7 +55,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
         Subtitle: { jsonValue: { value: 'Expertise' } },
         Description: {
           jsonValue: {
-            value: 'Navigate the risks shaping tomorrow\'s insurance landscape',
+            value: "Navigate the risks shaping tomorrow's insurance landscape",
           },
         },
         Link: {
@@ -112,7 +113,9 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
 
   // Use datasource slides if available, otherwise use defaults
   const slides: HeroCarouselSlide[] =
-    slidesFromDatasource && slidesFromDatasource.length > 0 ? slidesFromDatasource : defaultSlides;
+    slidesFromDatasource && slidesFromDatasource.length > 0
+      ? slidesFromDatasource
+      : defaultSlides;
 
   useEffect(() => {
     if (!api) {
@@ -170,20 +173,70 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
           {slides.map((slide, index) => {
             // Multilist reference fields have fields with direct .value access (like ArticleListing)
             const slideFields = slide?.fields || {};
-            const Title = slideFields.Title as any;
-            const Subtitle = slideFields.Subtitle as any;
-            const Description = slideFields.Description as any;
-            const slideImage = slideFields.Image as any;
-            const slideLink = slideFields.Link as any;
-            const BackgroundColor = slideFields.BackgroundColor as any;
-            
+            const Title = slideFields.Title as
+              | { jsonValue: Field<string> }
+              | Field<string>
+              | undefined;
+            const Subtitle = slideFields.Subtitle as
+              | { jsonValue: Field<string> }
+              | Field<string>
+              | undefined;
+            const Description = slideFields.Description as
+              | { jsonValue: Field<string> }
+              | Field<string>
+              | undefined;
+            const slideImage = slideFields.Image as
+              | { jsonValue: ImageField }
+              | ImageField
+              | undefined;
+            const slideLink = slideFields.Link as
+              | { jsonValue: LinkField }
+              | LinkField
+              | undefined;
+            const BackgroundColor = slideFields.BackgroundColor as
+              | { jsonValue: Field<string> }
+              | Field<string>
+              | undefined;
+
+            // Helper functions to safely access values from both patterns
+            const getStringField = (
+              field: { jsonValue: Field<string> } | Field<string> | undefined
+            ): Field<string> | undefined => {
+              if (!field) return undefined;
+              if ('jsonValue' in field) return field.jsonValue;
+              return field;
+            };
+
+            const getImageField = (
+              field: { jsonValue: ImageField } | ImageField | undefined
+            ): ImageField | undefined => {
+              if (!field) return undefined;
+              if ('jsonValue' in field) return field.jsonValue;
+              return field;
+            };
+
+            const getLinkField = (
+              field: { jsonValue: LinkField } | LinkField | undefined
+            ): LinkField | undefined => {
+              if (!field) return undefined;
+              if ('jsonValue' in field) return field.jsonValue;
+              return field;
+            };
+
             // Multilist fields use direct .value access (not .jsonValue.value)
-            const bgColor = BackgroundColor?.value || BackgroundColor?.jsonValue?.value || 'bg-white';
-            const hasTitle = Title?.value || Title?.jsonValue?.value;
-            const hasSubtitle = Subtitle?.value || Subtitle?.jsonValue?.value;
-            const hasDescription = Description?.value || Description?.jsonValue?.value;
-            const hasImage = slideImage?.value?.src || slideImage?.jsonValue?.value?.src;
-            const hasLink = slideLink?.value?.href || slideLink?.jsonValue?.value?.href;
+            const titleField = getStringField(Title);
+            const subtitleField = getStringField(Subtitle);
+            const descriptionField = getStringField(Description);
+            const backgroundColorField = getStringField(BackgroundColor);
+            const imageField = getImageField(slideImage);
+            const linkField = getLinkField(slideLink);
+
+            const bgColor = backgroundColorField?.value || 'bg-white';
+            const hasTitle = titleField?.value;
+            const hasSubtitle = subtitleField?.value;
+            const hasDescription = descriptionField?.value;
+            const hasImage = imageField?.value?.src;
+            const hasLink = linkField?.value?.href;
 
             return (
               <CarouselItem key={index} className="pl-0">
@@ -194,12 +247,12 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
                   )}
                 >
                   {/* Background Image */}
-                  {(hasImage || isPageEditing) && (
+                  {(hasImage || isPageEditing) && imageField && (
                     <div className="absolute inset-0 z-0">
                       <Image
-                        field={slideImage?.jsonValue || slideImage}
+                        field={imageField}
                         className="h-full w-full object-cover"
-                        alt={slideImage?.value?.alt || slideImage?.jsonValue?.value?.alt || ''}
+                        alt={imageField?.value?.alt || ''}
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/75 to-transparent" />
                     </div>
@@ -208,47 +261,47 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
                   {/* Content - Left Aligned */}
                   <div className="relative z-10 mx-auto w-full max-w-screen-xl px-4 py-16 md:px-8 lg:px-12">
                     <div className="max-w-2xl space-y-6 text-left">
-                      {(hasSubtitle || isPageEditing) && (
+                      {(hasSubtitle || isPageEditing) && subtitleField && (
                         <Text
                           tag="p"
-                          field={Subtitle?.jsonValue || Subtitle}
+                          field={subtitleField}
                           className="text-xs font-medium uppercase tracking-[0.15em] text-[#00677F] md:text-sm mb-2"
                         />
                       )}
-                      {(hasTitle || isPageEditing) && (
+                      {(hasTitle || isPageEditing) && titleField && (
                         <Text
                           tag="h1"
-                          field={Title?.jsonValue || Title}
+                          field={titleField}
                           className="font-heading text-4xl font-normal leading-[1.32] tracking-[0.81px] text-[#212529] md:text-5xl lg:text-6xl xl:text-7xl mb-4"
                         />
                       )}
-                      {(hasDescription || isPageEditing) && (
+                      {(hasDescription || isPageEditing) && descriptionField && (
                         <RichText
-                          field={Description?.jsonValue || Description}
+                          field={descriptionField}
                           className="prose max-w-xl text-base leading-[1.5] text-[#212529] md:text-lg lg:text-xl prose-p:mb-4 prose-p:mt-0 prose-headings:text-[#212529] prose-p:text-[#212529]"
                         />
                       )}
-                      {(hasLink || isPageEditing) && (
+                      {(hasLink || isPageEditing) && linkField && (
                         <div className="pt-4">
-                          {isPageEditing && (slideLink?.jsonValue || slideLink) ? (
+                          {isPageEditing ? (
                             <Button
                               variant="default"
                               asChild
                               size="lg"
                               className="bg-[#00677F] text-white hover:bg-[#005267] font-medium px-8 py-4 rounded-none border-0"
                             >
-                              <SitecoreLink field={slideLink.jsonValue || slideLink} />
+                              <SitecoreLink field={linkField} />
                             </Button>
                           ) : (
-                            (slideLink?.value?.href || slideLink?.jsonValue?.value?.href) && (
+                            linkField?.value?.href && (
                               <Button
                                 variant="default"
                                 asChild
                                 size="lg"
                                 className="bg-[#00677F] text-white hover:bg-[#005267] font-medium px-8 py-4 rounded-none border-0"
                               >
-                                <Link href={slideLink?.value?.href || slideLink?.jsonValue?.value?.href}>
-                                  {slideLink?.value?.text || slideLink?.jsonValue?.value?.text || 'Learn More'}
+                                <Link href={linkField.value.href}>
+                                  {linkField.value.text || 'Learn More'}
                                 </Link>
                               </Button>
                             )
@@ -281,7 +334,9 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
               onClick={() => scrollTo(index)}
               className={cn(
                 'h-1.5 rounded-full transition-all duration-300',
-                current === index ? 'w-8 bg-[#00677F]' : 'w-1.5 bg-[#00677F]/40 hover:bg-[#00677F]/60'
+                current === index
+                  ? 'w-8 bg-[#00677F]'
+                  : 'w-1.5 bg-[#00677F]/40 hover:bg-[#00677F]/60'
               )}
               aria-label={`Go to slide ${index + 1}`}
             />
