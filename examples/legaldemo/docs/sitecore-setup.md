@@ -36,12 +36,63 @@ This guide provides step-by-step instructions for setting up components in Sitec
 2. Create a new rendering: `/sitecore/layout/Renderings/Project/LegalDemo/HeroCarousel`
 3. **Configure rendering:**
    - **Name**: Hero Carousel
+   - **ComponentName**: `hero-carousel` ⚠️ **IMPORTANT: Must be kebab-case to match component map**
    - **Controller**: (leave empty for Next.js)
    - **Controller Action**: (leave empty)
    - **View**: (leave empty)
    - **Datasource Template**: Select `HeroCarousel` template
    - **Datasource Location**: `/sitecore/content/LegalDemo/Components/HeroCarousels`
    - **Placeholder**: `headless-main`
+   - **Rendering Contents Resolver**: Set to `/sitecore/system/Modules/Layout Service/Rendering Contents Resolvers/Datasource Item Children Resolver` (see Step 2a below)
+
+#### Step 2a: Configure Children Fetching (Choose One Method)
+
+**Option A: Use Rendering Contents Resolver (Recommended - No GraphQL)**
+
+1. In the rendering properties, find the **Rendering Contents Resolver** field
+2. Set it to: `/sitecore/system/Modules/Layout Service/Rendering Contents Resolvers/Datasource Item Children Resolver`
+3. This automatically includes all children of the datasource item
+4. **Save the rendering**
+
+**Option B: Add ComponentQuery GraphQL Query**
+
+**Important**: If you prefer full control or need to filter children by template, add this GraphQL query to the `ComponentQuery` field:
+
+```graphql
+query HeroCarousel($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    ... on HeroCarousel {
+      id
+    }
+    children {
+      results {
+        ... on HeroCarouselSlide {
+          title: Title {
+            jsonValue
+          }
+          subtitle: Subtitle {
+            jsonValue
+          }
+          description: Description {
+            jsonValue
+          }
+          image: Image {
+            jsonValue
+          }
+          link: Link {
+            jsonValue
+          }
+          backgroundColor: BackgroundColor {
+            jsonValue
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Note**: Adjust field names (`Title`, `Subtitle`, etc.) to match your exact Sitecore template field names. For detailed instructions, see [Hero Carousel GraphQL Setup Guide](./hero-carousel-graphql-setup.md).
 
 ### Step 3: Register Component
 

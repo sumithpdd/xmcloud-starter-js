@@ -39,6 +39,11 @@ const nextConfig = {
         hostname: 'xmc-*.**',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: '*.sitecoresandbox.cloud',
+        port: '',
+      },
     ],
   },
 
