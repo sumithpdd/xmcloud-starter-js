@@ -6,14 +6,14 @@ This document outlines the CIPFA branding colors and assets used throughout the 
 ## Brand Colors
 
 ### Primary Colors
-- **Primary Blue**: `#003366` (rgb(0, 51, 102))
+- **Primary Blue**: `#007BFF` (rgb(0, 123, 255))
   - Used for: Primary buttons, links, accents, navigation elements
-- **Primary Hover**: `#002850` (rgb(0, 40, 80))
+- **Primary Hover**: `#0066CC` (rgb(0, 102, 204))
   - Used for: Hover states on buttons and links
 
 ### Neutral Colors
 - **Background**: `#FFFFFF` (White)
-- **Foreground/Text**: `#212529` (Dark Gray)
+- **Foreground/Text**: `#312C62` (Purple - matches CIPFA website)
 - **Secondary**: `#F8F9FA` (Light Gray)
 - **Muted**: `#6C757D` (Medium Gray)
 
@@ -22,18 +22,19 @@ This document outlines the CIPFA branding colors and assets used throughout the 
 ### CSS Variables
 All brand colors are defined in `src/assets/styles/globals.css`:
 ```css
---color-primary: rgb(0, 51, 102);
+--color-primary: rgb(0, 123, 255);
 --color-primary-foreground: rgb(255, 255, 255);
---color-primary-hover: rgb(0, 40, 80);
---color-accent: rgb(0, 51, 102);
---color-ring: rgb(0, 51, 102);
+--color-primary-hover: rgb(0, 102, 204);
+--color-accent: rgb(0, 123, 255);
+--color-ring: rgb(0, 123, 255);
 ```
 
 ### Tailwind Classes
 Use Tailwind's color utilities with the brand colors:
-- `bg-[#003366]` - Primary background
-- `text-[#003366]` - Primary text color
-- `hover:bg-[#002850]` - Hover state
+- `bg-[#007BFF]` - Primary background (buttons, links)
+- `text-[#007BFF]` - Primary text color (links)
+- `text-[#312C62]` - Body text color (purple)
+- `hover:bg-[#0066CC]` - Hover state
 
 ## Logo
 
@@ -82,9 +83,10 @@ The following components have been updated with CIPFA branding:
 
 ## Migration Notes
 
-### Old Colors (Clyde & Co)
-- Primary: `#00677F` → **CIPFA**: `#003366`
-- Hover: `#005267` → **CIPFA**: `#002850`
+### Color Migration
+- **Text Color**: `#212529` → **CIPFA**: `#312C62` (Purple)
+- **Link/Button Color**: `#003366` → **CIPFA**: `#007BFF` (Blue)
+- **Hover Color**: `#002850` → **CIPFA**: `#0066CC` (Darker Blue)
 
 All color references have been systematically updated throughout the codebase.
 

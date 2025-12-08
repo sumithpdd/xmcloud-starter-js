@@ -96,7 +96,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
                   </div>
                 </header>
                 <main className="bg-white">
-                  <div id="content" className="antialiased text-[#212529]">
+                  <div id="content" className="antialiased text-[#312C62]">
                     {route && <Placeholder name="headless-main" rendering={route} />}
                   </div>
                 </main>

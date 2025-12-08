@@ -249,7 +249,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
   }
 
   return (
-    <section className="relative w-full overflow-hidden bg-white text-[#212529]">
+    <section className="relative w-full overflow-hidden bg-white text-[#312C62]">
       <Carousel
         setApi={setApi}
         opts={{
@@ -351,20 +351,20 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
                         <Text
                           tag="p"
                           field={subtitleField}
-                          className="text-xs font-medium uppercase tracking-[0.15em] text-[#003366] md:text-sm mb-2"
+                          className="text-xs font-medium uppercase tracking-[0.15em] text-[#007BFF] md:text-sm mb-2"
                         />
                       )}
                       {(hasTitle || isPageEditing) && titleField && (
                         <Text
                           tag="h1"
                           field={titleField}
-                          className="font-heading text-4xl font-normal leading-[1.32] tracking-[0.81px] text-[#212529] md:text-5xl lg:text-6xl xl:text-7xl mb-4"
+                          className="font-heading text-4xl font-normal leading-[1.32] tracking-[0.81px] text-[#312C62] md:text-5xl lg:text-6xl xl:text-7xl mb-4"
                         />
                       )}
                       {(hasDescription || isPageEditing) && descriptionField && (
                         <RichText
                           field={descriptionField}
-                          className="prose max-w-xl text-base leading-[1.5] text-[#212529] md:text-lg lg:text-xl prose-p:mb-4 prose-p:mt-0 prose-headings:text-[#212529] prose-p:text-[#212529]"
+                          className="prose max-w-xl text-base leading-[1.5] text-[#312C62] md:text-lg lg:text-xl prose-p:mb-4 prose-p:mt-0 prose-headings:text-[#312C62] prose-p:text-[#312C62]"
                         />
                       )}
                       {(hasLink || isPageEditing) && linkField && (
@@ -374,7 +374,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
                               variant="default"
                               asChild
                               size="lg"
-                              className="bg-[#003366] text-white hover:bg-[#002850] font-medium px-8 py-4 rounded-none border-0"
+                              className="bg-[#007BFF] text-white hover:bg-[#0066CC] font-medium px-8 py-4 rounded-none border-0"
                             >
                               <SitecoreLink field={linkField} />
                             </Button>
@@ -384,7 +384,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
                                 variant="default"
                                 asChild
                                 size="lg"
-                                className="bg-[#003366] text-white hover:bg-[#002850] font-medium px-8 py-4 rounded-none border-0"
+                                className="bg-[#007BFF] text-white hover:bg-[#0066CC] font-medium px-8 py-4 rounded-none border-0"
                               >
                                 <Link href={linkField.value.href}>
                                   {linkField.value.text || 'Learn More'}
@@ -405,8 +405,8 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
         {/* Navigation Arrows */}
         {showArrows && (
           <>
-            <CarouselPrevious className="left-6 border-[#003366]/30 bg-[#003366]/10 text-[#003366] hover:bg-[#003366]/20 hover:text-[#003366] md:left-8 backdrop-blur-sm" />
-            <CarouselNext className="right-6 border-[#003366]/30 bg-[#003366]/10 text-[#003366] hover:bg-[#003366]/20 hover:text-[#003366] md:right-8 backdrop-blur-sm" />
+            <CarouselPrevious className="left-6 border-[#007BFF]/30 bg-[#007BFF]/10 text-[#007BFF] hover:bg-[#007BFF]/20 hover:text-[#007BFF] md:left-8 backdrop-blur-sm" />
+            <CarouselNext className="right-6 border-[#007BFF]/30 bg-[#007BFF]/10 text-[#007BFF] hover:bg-[#007BFF]/20 hover:text-[#007BFF] md:right-8 backdrop-blur-sm" />
           </>
         )}
       </Carousel>
@@ -421,8 +421,8 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
               className={cn(
                 'h-1.5 rounded-full transition-all duration-300',
                 current === index
-                  ? 'w-8 bg-[#003366]'
-                  : 'w-1.5 bg-[#003366]/40 hover:bg-[#003366]/60'
+                  ? 'w-8 bg-[#007BFF]'
+                  : 'w-1.5 bg-[#007BFF]/40 hover:bg-[#007BFF]/60'
               )}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -432,7 +432,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
 
       {/* Slide Counter - Bottom Right */}
       {count > 1 && (
-        <div className="absolute bottom-6 right-6 z-20 text-xs font-medium text-[#003366]/70 md:bottom-8 md:right-8 md:text-sm">
+        <div className="absolute bottom-6 right-6 z-20 text-xs font-medium text-[#007BFF]/70 md:bottom-8 md:right-8 md:text-sm">
           {current + 1} / {count}
         </div>
       )}

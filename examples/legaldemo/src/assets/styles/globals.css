@@ -22,30 +22,30 @@
   --border-width-4: 0.25rem;
   --border-width-8: 0.5rem;
   --color-background: rgb(255, 255, 255);
-  --color-foreground: rgb(33, 37, 41);
+  --color-foreground: rgb(49, 44, 98);
   --color-card: rgb(255, 255, 255);
   --color-card-foreground: rgb(33, 37, 41);
   --color-popover: rgb(255, 255, 255);
   --color-popover-foreground: rgb(33, 37, 41);
-  /* CIPFA Brand Colors - Professional Blue */
-  --color-primary: rgb(0, 51, 102);
+  /* CIPFA Brand Colors - Purple and Blue */
+  --color-primary: rgb(0, 123, 255);
   --color-primary-foreground: rgb(255, 255, 255);
-  --color-primary-hover: rgb(0, 40, 80);
+  --color-primary-hover: rgb(0, 102, 204);
   --color-secondary: rgb(248, 249, 250);
   --color-secondary-foreground: rgb(33, 37, 41);
   --color-secondary-hover: rgb(233, 236, 239);
   --color-muted: rgb(248, 249, 250);
   --color-muted-foreground: rgb(108, 117, 125);
-  /* CIPFA Brand Colors - Professional Blue */
-  --color-accent: rgb(0, 51, 102);
+  /* CIPFA Brand Colors - Purple and Blue */
+  --color-accent: rgb(0, 123, 255);
   --color-accent-foreground: rgb(255, 255, 255);
   --color-destructive: hsl(0, 72%, 51%);
   --color-destructive-hover: hsl(0, 74%, 42%);
   --color-destructive-foreground: hsl(0, 0%, 100%);
   --color-border: rgb(233, 236, 239);
   --color-input: rgb(233, 236, 239);
-  /* CIPFA Brand Colors - Professional Blue */
-  --color-ring: rgb(0, 51, 102);
+  /* CIPFA Brand Colors - Purple and Blue */
+  --color-ring: rgb(0, 123, 255);
   --color-tertiary-foreground: hsl(0, 0%, 32%);
   --color-tertiary-hover: hsl(0, 0%, 96%, 0.8);
   --color-tertiary: hsl(0, 0%, 96%);

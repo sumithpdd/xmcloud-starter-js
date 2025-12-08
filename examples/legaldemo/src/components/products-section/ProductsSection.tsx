@@ -51,7 +51,7 @@ export const Default: React.FC<ProductsSectionProps> = ({ fields, params }) => {
           <Text
             tag="h2"
             field={title.jsonValue}
-            className="text-3xl md:text-4xl font-heading font-normal mb-4 text-[#212529]"
+            className="text-3xl md:text-4xl font-heading font-normal mb-4 text-[#312C62]"
           />
         )}
         {subtitle && (
@@ -75,7 +75,7 @@ export const Default: React.FC<ProductsSectionProps> = ({ fields, params }) => {
                   <Text
                     tag="h3"
                     field={product.title?.jsonValue}
-                    className="text-2xl font-heading font-normal mb-3 group-hover:text-[#003366] transition-colors text-[#212529]"
+                    className="text-2xl font-heading font-normal mb-3 group-hover:text-[#007BFF] transition-colors text-[#312C62]"
                   />
                 )}
                 {(product.description?.jsonValue?.value || isPageEditing) && (
@@ -85,7 +85,7 @@ export const Default: React.FC<ProductsSectionProps> = ({ fields, params }) => {
                   />
                 )}
                 {isPageEditing && product.link ? (
-                  <div className="text-[#003366] font-medium flex items-center gap-2">
+                  <div className="text-[#007BFF] font-medium flex items-center gap-2">
                     <SitecoreLink field={product.link.jsonValue} />
                     <ChevronRight className="h-4 w-4" />
                   </div>
@@ -93,7 +93,7 @@ export const Default: React.FC<ProductsSectionProps> = ({ fields, params }) => {
                   productUrl !== '#' && (
                     <Link
                       href={productUrl}
-                      className="text-[#003366] font-medium flex items-center gap-2 hover:text-[#002850] transition-colors"
+                      className="text-[#007BFF] font-medium flex items-center gap-2 hover:text-[#0066CC] transition-colors"
                     >
                       {ctaText}
                       <ChevronRight className="h-4 w-4" />

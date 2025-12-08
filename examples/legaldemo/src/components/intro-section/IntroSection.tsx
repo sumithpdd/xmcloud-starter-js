@@ -10,7 +10,7 @@ export const Default: React.FC<IntroSectionProps> = ({ fields, params }) => {
   const defaultHeading = {
     jsonValue: {
       value:
-        'Where there is opportunity, there is risk. <span class="text-[#003366]">As the business landscape constantly evolves,</span> you need a legal partner with an in-depth understanding <span class="text-[#003366]">of how to best address and navigate the risks you face.</span>',
+        'Where there is opportunity, there is risk. <span class="text-[#007BFF]">As the business landscape constantly evolves,</span> you need a legal partner with an in-depth understanding <span class="text-[#007BFF]">of how to best address and navigate the risks you face.</span>',
     },
   };
 
@@ -28,7 +28,7 @@ export const Default: React.FC<IntroSectionProps> = ({ fields, params }) => {
           <RichText
             tag="h2"
             field={heading?.jsonValue || defaultHeading.jsonValue}
-            className="text-3xl md:text-4xl lg:text-5xl font-heading font-normal leading-tight text-[#212529]"
+            className="text-3xl md:text-4xl lg:text-5xl font-heading font-normal leading-tight text-[#312C62]"
           />
         </div>
       </div>

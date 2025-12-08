@@ -21,13 +21,13 @@ export const Default: React.FC<HeadingTextProps> = ({ fields, params }) => {
             <Text
               tag="h2"
               field={heading?.jsonValue}
-              className="text-3xl md:text-4xl lg:text-5xl font-heading font-normal mb-6 text-[#212529]"
+              className="text-3xl md:text-4xl lg:text-5xl font-heading font-normal mb-6 text-[#312C62]"
             />
           )}
           {(text?.jsonValue?.value || isPageEditing) && (
             <RichText
               field={text?.jsonValue}
-              className="prose prose-lg max-w-none text-[#212529] leading-relaxed prose-p:mb-4 prose-p:mt-0"
+              className="prose prose-lg max-w-none text-[#312C62] leading-relaxed prose-p:mb-4 prose-p:mt-0"
             />
           )}
         </div>

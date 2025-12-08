@@ -7,13 +7,13 @@ This document provides the HTML content for the system upgrade notice that match
 Use this HTML in a **Rich Text Block** component:
 
 ```html
-<hr style="border: 1px solid #003366; margin: 24px 0;">
-<p style="color: #212529; font-size: 16px; line-height: 24px; margin-bottom: 16px;">We have completed the work on upgrading our systems to make it easier for you to access CIPFA's services. MyCIPFA, student registration and membership applications are now available. As our system is new, we will continue to monitor in case of any issues. If there are any issues accessing MyCIPFA, the links below are available as an alternative.</p>
-<p style="color: #212529; font-size: 16px; line-height: 24px; margin-bottom: 16px;">Students can access their classes and learning materials via <a href="https://www.cipfa.org/LMSLogin" style="color: #003366; text-decoration: none;">www.cipfa.org/LMSLogin</a>.</p>
-<p style="color: #212529; font-size: 16px; line-height: 24px; margin-bottom: 16px;"><a href="https://id.rogoserver.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Drogo-classic%26redirect_uri%3Dhttps%253A%252F%252Fcipfaexam.rogoserver.com%252Fsignin-oidc%26response_type%3Dcode%2520id_token%26scope%3Dopenid%2520profile%26state%3DOpenIdConnect.AuthenticationProperties%253DUbzc09V2T9v-mBiJ-fblRTulbQNr60eEHjW6hfQip1fLro2T_NISb5cOq5oSKIUFJ5mzzIv5y1XOs1I8lqxk5TO764NWmBMRFi_kjHjC0p1hh2y-e3tdq5zlecJn0KcTvudb0ysHPnjs-8WAAoPaVjbdsRH4aQnv0aug62kq_g3atkIQBKALpLKJAUsyiQRY0NGt2tJw2gofJr9R0kQxqVLrx3Ur7qTOXQgrWTPuaRc%26response_mode%3Dform_post%26nonce%3D638991642845836985.ZDAyNGNjYWEtYTg0Zi00MjI1LThmNTYtMDY3MWEwZjdiMWI1NmUwNmVkYjItYjY0MS00YzYyLWFlYTItZjFkYjUwMmZhMDM0%26collegeId%3D1467%26rogoReturnUrl%3D%252F%26post_logout_redirect_uri%3Dhttps%253A%252F%252Fcipfaexam.rogoserver.com%26x-client-SKU%3DID_NET472%26x-client-ver%3D8.14.0.0" target="_blank" rel="noopener noreferrer" style="color: #003366; text-decoration: none;">Take the specimen test, take the technical test or schedule CIPFA exams.</a></p>
-<p style="color: #212529; font-size: 16px; line-height: 24px; margin-bottom: 16px;">If you need support please contact CIPFA by phone <a href="tel:+442075435600" style="color: #003366; text-decoration: none;">+44 (0)20 7543 5600</a> or email <a href="mailto:hello@cipfa.org" style="color: #003366; text-decoration: none;">hello@cipfa.org</a>.</p>
-<p style="color: #212529; font-size: 16px; line-height: 24px; margin-bottom: 16px;">Thank you for your patience while we make these improvements and we apologise for any inconvenience caused.</p>
-<hr style="border: 1px solid #003366; margin: 24px 0;">
+<hr style="border: 1px solid #007BFF; margin: 24px 0;">
+<p style="color: #312C62; font-size: 16px; line-height: 24px; margin-bottom: 16px;">We have completed the work on upgrading our systems to make it easier for you to access CIPFA's services. MyCIPFA, student registration and membership applications are now available. As our system is new, we will continue to monitor in case of any issues. If there are any issues accessing MyCIPFA, the links below are available as an alternative.</p>
+<p style="color: #312C62; font-size: 16px; line-height: 24px; margin-bottom: 16px;">Students can access their classes and learning materials via <a href="https://www.cipfa.org/LMSLogin" style="color: #007BFF; text-decoration: none;">www.cipfa.org/LMSLogin</a>.</p>
+<p style="color: #312C62; font-size: 16px; line-height: 24px; margin-bottom: 16px;"><a href="https://id.rogoserver.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Drogo-classic%26redirect_uri%3Dhttps%253A%252F%252Fcipfaexam.rogoserver.com%252Fsignin-oidc%26response_type%3Dcode%2520id_token%26scope%3Dopenid%2520profile%26state%3DOpenIdConnect.AuthenticationProperties%253DUbzc09V2T9v-mBiJ-fblRTulbQNr60eEHjW6hfQip1fLro2T_NISb5cOq5oSKIUFJ5mzzIv5y1XOs1I8lqxk5TO764NWmBMRFi_kjHjC0p1hh2y-e3tdq5zlecJn0KcTvudb0ysHPnjs-8WAAoPaVjbdsRH4aQnv0aug62kq_g3atkIQBKALpLKJAUsyiQRY0NGt2tJw2gofJr9R0kQxqVLrx3Ur7qTOXQgrWTPuaRc%26response_mode%3Dform_post%26nonce%3D638991642845836985.ZDAyNGNjYWEtYTg0Zi00MjI1LThmNTYtMDY3MWEwZjdiMWI1NmUwNmVkYjItYjY0MS00YzYyLWFlYTItZjFkYjUwMmZhMDM0%26collegeId%3D1467%26rogoReturnUrl%3D%252F%26post_logout_redirect_uri%3Dhttps%253A%252F%252Fcipfaexam.rogoserver.com%26x-client-SKU%3DID_NET472%26x-client-ver%3D8.14.0.0" target="_blank" rel="noopener noreferrer" style="color: #007BFF; text-decoration: none;">Take the specimen test, take the technical test or schedule CIPFA exams.</a></p>
+<p style="color: #312C62; font-size: 16px; line-height: 24px; margin-bottom: 16px;">If you need support please contact CIPFA by phone <a href="tel:+442075435600" style="color: #007BFF; text-decoration: none;">+44 (0)20 7543 5600</a> or email <a href="mailto:hello@cipfa.org" style="color: #007BFF; text-decoration: none;">hello@cipfa.org</a>.</p>
+<p style="color: #312C62; font-size: 16px; line-height: 24px; margin-bottom: 16px;">Thank you for your patience while we make these improvements and we apologise for any inconvenience caused.</p>
+<hr style="border: 1px solid #007BFF; margin: 24px 0;">
 ```
 
 ## Simplified Version (Without Inline Styles)
@@ -21,21 +21,21 @@ Use this HTML in a **Rich Text Block** component:
 If your rich text editor strips inline styles, use this version with CSS classes (requires Tailwind CSS support):
 
 ```html
-<hr class="border-t border-[#003366] my-6">
-<p class="text-[#212529] text-base leading-6 mb-4">We have completed the work on upgrading our systems to make it easier for you to access CIPFA's services. MyCIPFA, student registration and membership applications are now available. As our system is new, we will continue to monitor in case of any issues. If there are any issues accessing MyCIPFA, the links below are available as an alternative.</p>
-<p class="text-[#212529] text-base leading-6 mb-4">Students can access their classes and learning materials via <a href="https://www.cipfa.org/LMSLogin" class="text-[#003366] no-underline hover:underline">www.cipfa.org/LMSLogin</a>.</p>
-<p class="text-[#212529] text-base leading-6 mb-4"><a href="https://id.rogoserver.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Drogo-classic%26redirect_uri%3Dhttps%253A%252F%252Fcipfaexam.rogoserver.com%252Fsignin-oidc%26response_type%3Dcode%2520id_token%26scope%3Dopenid%2520profile%26state%3DOpenIdConnect.AuthenticationProperties%253DUbzc09V2T9v-mBiJ-fblRTulbQNr60eEHjW6hfQip1fLro2T_NISb5cOq5oSKIUFJ5mzzIv5y1XOs1I8lqxk5TO764NWmBMRFi_kjHjC0p1hh2y-e3tdq5zlecJn0KcTvudb0ysHPnjs-8WAAoPaVjbdsRH4aQnv0aug62kq_g3atkIQBKALpLKJAUsyiQRY0NGt2tJw2gofJr9R0kQxqVLrx3Ur7qTOXQgrWTPuaRc%26response_mode%3Dform_post%26nonce%3D638991642845836985.ZDAyNGNjYWEtYTg0Zi00MjI1LThmNTYtMDY3MWEwZjdiMWI1NmUwNmVkYjItYjY0MS00YzYyLWFlYTItZjFkYjUwMmZhMDM0%26collegeId%3D1467%26rogoReturnUrl%3D%252F%26post_logout_redirect_uri%3Dhttps%253A%252F%252Fcipfaexam.rogoserver.com%26x-client-SKU%3DID_NET472%26x-client-ver%3D8.14.0.0" target="_blank" rel="noopener noreferrer" class="text-[#003366] no-underline hover:underline">Take the specimen test, take the technical test or schedule CIPFA exams.</a></p>
-<p class="text-[#212529] text-base leading-6 mb-4">If you need support please contact CIPFA by phone <a href="tel:+442075435600" class="text-[#003366] no-underline hover:underline">+44 (0)20 7543 5600</a> or email <a href="mailto:hello@cipfa.org" class="text-[#003366] no-underline hover:underline">hello@cipfa.org</a>.</p>
-<p class="text-[#212529] text-base leading-6 mb-4">Thank you for your patience while we make these improvements and we apologise for any inconvenience caused.</p>
-<hr class="border-t border-[#003366] my-6">
+<hr class="border-t border-[#007BFF] my-6">
+<p class="text-[#312C62] text-base leading-6 mb-4">We have completed the work on upgrading our systems to make it easier for you to access CIPFA's services. MyCIPFA, student registration and membership applications are now available. As our system is new, we will continue to monitor in case of any issues. If there are any issues accessing MyCIPFA, the links below are available as an alternative.</p>
+<p class="text-[#312C62] text-base leading-6 mb-4">Students can access their classes and learning materials via <a href="https://www.cipfa.org/LMSLogin" class="text-[#007BFF] no-underline hover:underline">www.cipfa.org/LMSLogin</a>.</p>
+<p class="text-[#312C62] text-base leading-6 mb-4"><a href="https://id.rogoserver.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Drogo-classic%26redirect_uri%3Dhttps%253A%252F%252Fcipfaexam.rogoserver.com%252Fsignin-oidc%26response_type%3Dcode%2520id_token%26scope%3Dopenid%2520profile%26state%3DOpenIdConnect.AuthenticationProperties%253DUbzc09V2T9v-mBiJ-fblRTulbQNr60eEHjW6hfQip1fLro2T_NISb5cOq5oSKIUFJ5mzzIv5y1XOs1I8lqxk5TO764NWmBMRFi_kjHjC0p1hh2y-e3tdq5zlecJn0KcTvudb0ysHPnjs-8WAAoPaVjbdsRH4aQnv0aug62kq_g3atkIQBKALpLKJAUsyiQRY0NGt2tJw2gofJr9R0kQxqVLrx3Ur7qTOXQgrWTPuaRc%26response_mode%3Dform_post%26nonce%3D638991642845836985.ZDAyNGNjYWEtYTg0Zi00MjI1LThmNTYtMDY3MWEwZjdiMWI1NmUwNmVkYjItYjY0MS00YzYyLWFlYTItZjFkYjUwMmZhMDM0%26collegeId%3D1467%26rogoReturnUrl%3D%252F%26post_logout_redirect_uri%3Dhttps%253A%252F%252Fcipfaexam.rogoserver.com%26x-client-SKU%3DID_NET472%26x-client-ver%3D8.14.0.0" target="_blank" rel="noopener noreferrer" class="text-[#007BFF] no-underline hover:underline">Take the specimen test, take the technical test or schedule CIPFA exams.</a></p>
+<p class="text-[#312C62] text-base leading-6 mb-4">If you need support please contact CIPFA by phone <a href="tel:+442075435600" class="text-[#007BFF] no-underline hover:underline">+44 (0)20 7543 5600</a> or email <a href="mailto:hello@cipfa.org" class="text-[#007BFF] no-underline hover:underline">hello@cipfa.org</a>.</p>
+<p class="text-[#312C62] text-base leading-6 mb-4">Thank you for your patience while we make these improvements and we apologise for any inconvenience caused.</p>
+<hr class="border-t border-[#007BFF] my-6">
 ```
 
 ## Color Reference
 
-- **Text Color**: `#212529` (Dark Gray - CIPFA standard text color)
-- **Link Color**: `#003366` (CIPFA Primary Blue)
-- **Link Hover**: `#002850` (CIPFA Primary Hover - applied via CSS)
-- **Separator**: `#003366` (CIPFA Primary Blue)
+- **Text Color**: `#312C62` (Purple - CIPFA standard text color)
+- **Link Color**: `#007BFF` (CIPFA Primary Blue)
+- **Link Hover**: `#0066CC` (CIPFA Primary Hover - applied via CSS)
+- **Separator**: `#007BFF` (CIPFA Primary Blue)
 
 ## Structure
 

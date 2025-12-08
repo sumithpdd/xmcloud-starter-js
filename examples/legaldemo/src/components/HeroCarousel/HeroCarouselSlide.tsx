@@ -43,20 +43,20 @@ export const Default: React.FC<HeroCarouselSlideProps> = (props) => {
             <Text
               tag="p"
               field={Subtitle?.jsonValue}
-              className="text-xs font-medium uppercase tracking-[0.15em] text-[#003366] md:text-sm mb-2"
+              className="text-xs font-medium uppercase tracking-[0.15em] text-[#007BFF] md:text-sm mb-2"
             />
           )}
           {(Title?.jsonValue?.value || isPageEditing) && (
             <Text
               tag="h1"
               field={Title?.jsonValue}
-              className="font-heading text-4xl font-normal leading-[1.32] tracking-[0.81px] text-[#212529] md:text-5xl lg:text-6xl xl:text-7xl mb-4"
+              className="font-heading text-4xl font-normal leading-[1.32] tracking-[0.81px] text-[#312C62] md:text-5xl lg:text-6xl xl:text-7xl mb-4"
             />
           )}
           {(Description?.jsonValue?.value || isPageEditing) && (
             <RichText
               field={Description?.jsonValue}
-              className="prose max-w-xl text-base leading-[1.5] text-[#212529] md:text-lg lg:text-xl prose-p:mb-4 prose-p:mt-0 prose-headings:text-[#212529] prose-p:text-[#212529]"
+              className="prose max-w-xl text-base leading-[1.5] text-[#312C62] md:text-lg lg:text-xl prose-p:mb-4 prose-p:mt-0 prose-headings:text-[#312C62] prose-p:text-[#312C62]"
             />
           )}
           {(LinkField?.jsonValue?.value?.href || isPageEditing) && (
@@ -66,7 +66,7 @@ export const Default: React.FC<HeroCarouselSlideProps> = (props) => {
                   variant="default"
                   asChild
                   size="lg"
-                  className="bg-[#003366] text-white hover:bg-[#002850] font-medium px-8 py-4 rounded-none border-0"
+                  className="bg-[#007BFF] text-white hover:bg-[#0066CC] font-medium px-8 py-4 rounded-none border-0"
                 >
                   <SitecoreLink field={LinkField.jsonValue} />
                 </Button>
@@ -76,7 +76,7 @@ export const Default: React.FC<HeroCarouselSlideProps> = (props) => {
                     variant="default"
                     asChild
                     size="lg"
-                    className="bg-[#003366] text-white hover:bg-[#002850] font-medium px-8 py-4 rounded-none border-0"
+                    className="bg-[#007BFF] text-white hover:bg-[#0066CC] font-medium px-8 py-4 rounded-none border-0"
                   >
                     <Link href={LinkField.jsonValue.value.href}>
                       {LinkField.jsonValue.value.text || 'Learn More'}

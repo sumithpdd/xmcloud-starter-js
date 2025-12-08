@@ -31,7 +31,7 @@ export const Default: React.FC<ArticleContentProps> = ({ fields, params }) => {
                     <li key={index}>
                       <a
                         href={`#${sectionId}`}
-                        className="text-[#003366] hover:underline text-sm font-medium"
+                        className="text-[#007BFF] hover:underline text-sm font-medium"
                       >
                         {section.title?.jsonValue?.value || `Section ${index + 1}`}
                       </a>
@@ -49,7 +49,7 @@ export const Default: React.FC<ArticleContentProps> = ({ fields, params }) => {
               return (
                 <section key={index} id={sectionId} className="scroll-mt-20">
                   {(section.title?.jsonValue?.value || isPageEditing) && (
-                    <h2 className="text-2xl md:text-3xl font-heading font-normal mb-6 text-[#212529]">
+                    <h2 className="text-2xl md:text-3xl font-heading font-normal mb-6 text-[#312C62]">
                       {section.title?.jsonValue?.value}
                     </h2>
                   )}
@@ -64,7 +64,7 @@ export const Default: React.FC<ArticleContentProps> = ({ fields, params }) => {
                         <Button
                           asChild
                           size="lg"
-                          className="bg-[#003366] hover:bg-[#002850] text-white rounded-none"
+                          className="bg-[#007BFF] hover:bg-[#0066CC] text-white rounded-none"
                         >
                           <SitecoreLink field={downloadButtonLink.jsonValue} />
                         </Button>
@@ -73,7 +73,7 @@ export const Default: React.FC<ArticleContentProps> = ({ fields, params }) => {
                           <Button
                             asChild
                             size="lg"
-                            className="bg-[#003366] hover:bg-[#002850] text-white rounded-none"
+                            className="bg-[#007BFF] hover:bg-[#0066CC] text-white rounded-none"
                           >
                             <Link href={downloadButtonLink.jsonValue.value.href}>
                               {downloadButtonText?.jsonValue?.value || 'Download'}

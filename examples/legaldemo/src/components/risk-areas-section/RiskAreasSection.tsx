@@ -93,14 +93,14 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
             <Text
               tag="h2"
               field={title.jsonValue}
-              className="text-3xl md:text-4xl font-heading font-normal mb-6 text-[#212529]"
+              className="text-3xl md:text-4xl font-heading font-normal mb-6 text-[#312C62]"
             />
           )}
           <div className="max-w-3xl">
             {(introText?.jsonValue?.value || isPageEditing) && (
               <RichText
                 field={introText?.jsonValue}
-                className="text-lg leading-relaxed mb-8 prose prose-lg max-w-none text-[#212529]"
+                className="text-lg leading-relaxed mb-8 prose prose-lg max-w-none text-[#312C62]"
               />
             )}
             {ctaLink && (
@@ -110,7 +110,7 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
                     variant="default"
                     size="lg"
                     asChild
-                    className="bg-[#003366] hover:bg-[#002850] text-white rounded-none"
+                    className="bg-[#007BFF] hover:bg-[#0066CC] text-white rounded-none"
                   >
                     <SitecoreLink field={ctaLink.jsonValue} />
                   </Button>
@@ -120,7 +120,7 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
                       variant="default"
                       size="lg"
                       asChild
-                      className="bg-[#003366] hover:bg-[#002850] text-white rounded-none"
+                      className="bg-[#007BFF] hover:bg-[#0066CC] text-white rounded-none"
                     >
                       <Link href={ctaLink.jsonValue.value.href}>
                         {ctaText?.jsonValue?.value || 'View all six risks'}
@@ -159,7 +159,7 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
                     <Text
                       tag="h3"
                       field={risk.title?.jsonValue}
-                      className="text-xl font-heading font-normal mb-2 group-hover:text-[#003366] transition-colors text-[#212529]"
+                      className="text-xl font-heading font-normal mb-2 group-hover:text-[#007BFF] transition-colors text-[#312C62]"
                     />
                   )}
                   {(risk.description?.jsonValue?.value || isPageEditing) && (
@@ -168,7 +168,7 @@ export const Default: React.FC<RiskAreasSectionProps> = ({ fields, params }) => 
                       className="text-[#6C757D] leading-relaxed prose prose-sm max-w-none"
                     />
                   )}
-                  <div className="mt-4 text-[#003366] font-medium flex items-center gap-2">
+                  <div className="mt-4 text-[#007BFF] font-medium flex items-center gap-2">
                     Find out more <ChevronRight className="h-4 w-4" />
                   </div>
                 </div>

@@ -112,9 +112,9 @@ We are committed to making a real difference to the world we live in.
 
 ## Brand Colors Reference
 
-- **Primary Blue**: `#003366`
-- **Primary Hover**: `#002850`
-- **Text**: `#212529`
+- **Primary Blue (Links/Buttons)**: `#007BFF`
+- **Primary Hover**: `#0066CC`
+- **Text Color**: `#312C62` (Purple)
 - **Background**: `#F8F9FA`
 - **White**: `#FFFFFF`
 
