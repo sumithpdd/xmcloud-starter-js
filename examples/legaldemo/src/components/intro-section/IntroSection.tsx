@@ -10,7 +10,7 @@ export const Default: React.FC<IntroSectionProps> = ({ fields, params }) => {
   const defaultHeading = {
     jsonValue: {
       value:
-        'Where there is opportunity, there is risk. <span class="text-[#00677F]">As the business landscape constantly evolves,</span> you need a legal partner with an in-depth understanding <span class="text-[#00677F]">of how to best address and navigate the risks you face.</span>',
+        'Where there is opportunity, there is risk. <span class="text-[#003366]">As the business landscape constantly evolves,</span> you need a legal partner with an in-depth understanding <span class="text-[#003366]">of how to best address and navigate the risks you face.</span>',
     },
   };
 

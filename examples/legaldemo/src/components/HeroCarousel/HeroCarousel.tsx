@@ -261,7 +261,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
                         <Text
                           tag="p"
                           field={subtitleField}
-                          className="text-xs font-medium uppercase tracking-[0.15em] text-[#00677F] md:text-sm mb-2"
+                          className="text-xs font-medium uppercase tracking-[0.15em] text-[#003366] md:text-sm mb-2"
                         />
                       )}
                       {(hasTitle || isPageEditing) && titleField && (
@@ -284,7 +284,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
                               variant="default"
                               asChild
                               size="lg"
-                              className="bg-[#00677F] text-white hover:bg-[#005267] font-medium px-8 py-4 rounded-none border-0"
+                              className="bg-[#003366] text-white hover:bg-[#002850] font-medium px-8 py-4 rounded-none border-0"
                             >
                               <SitecoreLink field={linkField} />
                             </Button>
@@ -294,7 +294,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
                                 variant="default"
                                 asChild
                                 size="lg"
-                                className="bg-[#00677F] text-white hover:bg-[#005267] font-medium px-8 py-4 rounded-none border-0"
+                                className="bg-[#003366] text-white hover:bg-[#002850] font-medium px-8 py-4 rounded-none border-0"
                               >
                                 <Link href={linkField.value.href}>
                                   {linkField.value.text || 'Learn More'}
@@ -315,8 +315,8 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
         {/* Navigation Arrows */}
         {showArrows && (
           <>
-            <CarouselPrevious className="left-6 border-[#00677F]/30 bg-[#00677F]/10 text-[#00677F] hover:bg-[#00677F]/20 hover:text-[#00677F] md:left-8 backdrop-blur-sm" />
-            <CarouselNext className="right-6 border-[#00677F]/30 bg-[#00677F]/10 text-[#00677F] hover:bg-[#00677F]/20 hover:text-[#00677F] md:right-8 backdrop-blur-sm" />
+            <CarouselPrevious className="left-6 border-[#003366]/30 bg-[#003366]/10 text-[#003366] hover:bg-[#003366]/20 hover:text-[#003366] md:left-8 backdrop-blur-sm" />
+            <CarouselNext className="right-6 border-[#003366]/30 bg-[#003366]/10 text-[#003366] hover:bg-[#003366]/20 hover:text-[#003366] md:right-8 backdrop-blur-sm" />
           </>
         )}
       </Carousel>
@@ -331,8 +331,8 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
               className={cn(
                 'h-1.5 rounded-full transition-all duration-300',
                 current === index
-                  ? 'w-8 bg-[#00677F]'
-                  : 'w-1.5 bg-[#00677F]/40 hover:bg-[#00677F]/60'
+                  ? 'w-8 bg-[#003366]'
+                  : 'w-1.5 bg-[#003366]/40 hover:bg-[#003366]/60'
               )}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -342,7 +342,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
 
       {/* Slide Counter - Bottom Right */}
       {count > 1 && (
-        <div className="absolute bottom-6 right-6 z-20 text-xs font-medium text-[#00677F]/70 md:bottom-8 md:right-8 md:text-sm">
+        <div className="absolute bottom-6 right-6 z-20 text-xs font-medium text-[#003366]/70 md:bottom-8 md:right-8 md:text-sm">
           {current + 1} / {count}
         </div>
       )}

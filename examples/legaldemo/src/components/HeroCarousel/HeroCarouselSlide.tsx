@@ -43,7 +43,7 @@ export const Default: React.FC<HeroCarouselSlideProps> = (props) => {
             <Text
               tag="p"
               field={Subtitle?.jsonValue}
-              className="text-xs font-medium uppercase tracking-[0.15em] text-[#00677F] md:text-sm mb-2"
+              className="text-xs font-medium uppercase tracking-[0.15em] text-[#003366] md:text-sm mb-2"
             />
           )}
           {(Title?.jsonValue?.value || isPageEditing) && (
@@ -66,7 +66,7 @@ export const Default: React.FC<HeroCarouselSlideProps> = (props) => {
                   variant="default"
                   asChild
                   size="lg"
-                  className="bg-[#00677F] text-white hover:bg-[#005267] font-medium px-8 py-4 rounded-none border-0"
+                  className="bg-[#003366] text-white hover:bg-[#002850] font-medium px-8 py-4 rounded-none border-0"
                 >
                   <SitecoreLink field={LinkField.jsonValue} />
                 </Button>
@@ -76,7 +76,7 @@ export const Default: React.FC<HeroCarouselSlideProps> = (props) => {
                     variant="default"
                     asChild
                     size="lg"
-                    className="bg-[#00677F] text-white hover:bg-[#005267] font-medium px-8 py-4 rounded-none border-0"
+                    className="bg-[#003366] text-white hover:bg-[#002850] font-medium px-8 py-4 rounded-none border-0"
                   >
                     <Link href={LinkField.jsonValue.value.href}>
                       {LinkField.jsonValue.value.text || 'Learn More'}

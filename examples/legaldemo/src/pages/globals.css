@@ -55,12 +55,13 @@
     color: #212529;
   }
 
+  /* CIPFA Brand Colors - Professional Blue */
   a {
-    color: #00677f;
+    color: #003366;
   }
 
   a:hover {
-    color: #005267;
+    color: #002850;
   }
 }
 

@@ -31,7 +31,7 @@ export const Default: React.FC<ArticleContentProps> = ({ fields, params }) => {
                     <li key={index}>
                       <a
                         href={`#${sectionId}`}
-                        className="text-[#00677F] hover:underline text-sm font-medium"
+                        className="text-[#003366] hover:underline text-sm font-medium"
                       >
                         {section.title?.jsonValue?.value || `Section ${index + 1}`}
                       </a>
@@ -64,7 +64,7 @@ export const Default: React.FC<ArticleContentProps> = ({ fields, params }) => {
                         <Button
                           asChild
                           size="lg"
-                          className="bg-[#00677F] hover:bg-[#005267] text-white rounded-none"
+                          className="bg-[#003366] hover:bg-[#002850] text-white rounded-none"
                         >
                           <SitecoreLink field={downloadButtonLink.jsonValue} />
                         </Button>
@@ -73,7 +73,7 @@ export const Default: React.FC<ArticleContentProps> = ({ fields, params }) => {
                           <Button
                             asChild
                             size="lg"
-                            className="bg-[#00677F] hover:bg-[#005267] text-white rounded-none"
+                            className="bg-[#003366] hover:bg-[#002850] text-white rounded-none"
                           >
                             <Link href={downloadButtonLink.jsonValue.value.href}>
                               {downloadButtonText?.jsonValue?.value || 'Download'}

@@ -100,7 +100,7 @@ export const Default: React.FC<InsightsSectionProps> = ({ fields, params }) => {
                       <Text
                         tag="div"
                         field={insight.category?.jsonValue}
-                        className="text-sm text-[#00677F] font-medium mb-2"
+                        className="text-sm text-[#003366] font-medium mb-2"
                       />
                     )}
                     {insight.subCategory && (
@@ -114,7 +114,7 @@ export const Default: React.FC<InsightsSectionProps> = ({ fields, params }) => {
                       <Text
                         tag="h3"
                         field={insight.title?.jsonValue}
-                        className="text-xl font-heading font-normal mb-3 group-hover:text-[#00677F] transition-colors leading-tight text-[#212529]"
+                        className="text-xl font-heading font-normal mb-3 group-hover:text-[#003366] transition-colors leading-tight text-[#212529]"
                       />
                     )}
                     {(insight.date?.jsonValue?.value || isPageEditing) && (

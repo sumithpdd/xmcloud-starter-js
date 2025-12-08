@@ -34,7 +34,7 @@ export const Default: React.FC<ArticleHeroProps> = ({ fields, params }) => {
       {/* Content Overlay */}
       <div className="relative h-full container mx-auto px-4 max-w-screen-xl flex flex-col justify-end pb-16">
         {/* Decorative Element */}
-        <div className="w-16 h-16 mb-6 bg-[#00677F]/80 rounded-none" />
+        <div className="w-16 h-16 mb-6 bg-[#003366]/80 rounded-none" />
 
         {(category?.jsonValue?.value || isPageEditing) && (
           <Text
