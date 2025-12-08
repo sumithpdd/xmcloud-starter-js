@@ -14,4 +14,7 @@ export interface SearchResult {
   url?: string;
   featured?: boolean;
   relevance?: number;
+  readTime?: string; // e.g., "6 minute read"
+  author?: string; // e.g., "By CIPFA Staff"
+  faqQuestion?: string; // For FAQ featured answers
 }

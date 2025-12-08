@@ -36,8 +36,10 @@ export const Default: React.FC = () => {
       const results = cipfaSearchData.filter(
         (item) =>
           item.title.toLowerCase().includes(queryLower) ||
+          item.faqQuestion?.toLowerCase().includes(queryLower) ||
           item.description?.toLowerCase().includes(queryLower) ||
-          item.categoryPath.some((cat) => cat.toLowerCase().includes(queryLower)),
+          item.categoryPath.some((cat) => cat.toLowerCase().includes(queryLower)) ||
+          item.tags?.some((tag) => tag.toLowerCase().includes(queryLower)),
       );
 
       // Sort results

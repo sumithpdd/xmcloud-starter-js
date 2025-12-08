@@ -19,9 +19,14 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   isSearching,
 }) => {
   // Find featured answer (if query matches a common question)
+  // Prioritize FAQ questions, then title, then description
   const featuredAnswer = results.find(
-    (result) => result.featured && result.description?.toLowerCase().includes(query.toLowerCase()),
-  );
+    (result) =>
+      result.featured &&
+      (result.faqQuestion?.toLowerCase().includes(query.toLowerCase()) ||
+        result.title.toLowerCase().includes(query.toLowerCase()) ||
+        result.description?.toLowerCase().includes(query.toLowerCase())),
+  ) || results.find((result) => result.featured && result.faqQuestion);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -48,7 +53,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
           <div className="flex items-start gap-4">
             <div className="flex-1">
               <h3 className="text-xl font-semibold text-[#312C62] mb-3">
-                Q: {featuredAnswer.title}
+                Q: {featuredAnswer.faqQuestion || featuredAnswer.title}
               </h3>
               {featuredAnswer.description && (
                 <p className="text-base text-gray-700 leading-relaxed">
@@ -122,12 +127,32 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
             >
               <div className="flex flex-col md:flex-row md:items-start gap-4">
                 <div className="flex-1">
-                  {/* Category Tag */}
-                  {result.category && (
-                    <span className="inline-block px-2 py-1 mb-2 text-xs font-medium text-gray-700 bg-gray-100 rounded">
-                      {result.category}
-                    </span>
-                  )}
+                  {/* Category Tag and Read Time */}
+                  <div className="flex items-center gap-3 mb-2">
+                    {result.category && (
+                      <span className="inline-block px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded">
+                        {result.category}
+                      </span>
+                    )}
+                    {result.readTime && (
+                      <div className="flex items-center gap-1 text-xs text-gray-500">
+                        <svg
+                          className="h-3 w-3"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>{result.readTime}</span>
+                      </div>
+                    )}
+                  </div>
 
                   {/* Title */}
                   <h3 className="text-xl font-semibold text-[#312C62] mb-2 hover:text-[#007BFF] cursor-pointer">
@@ -144,6 +169,9 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                   {result.description && (
                     <p className="text-base text-gray-700 mb-2 line-clamp-2">
                       {result.description}
+                      {result.author && (
+                        <span className="block mt-1 text-sm text-gray-600">{result.author}</span>
+                      )}
                     </p>
                   )}
 

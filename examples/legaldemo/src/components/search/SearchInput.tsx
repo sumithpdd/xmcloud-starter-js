@@ -79,7 +79,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
           </div>
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-500 hidden md:block">Powered by</span>
-            <span className="text-sm font-semibold text-[#312C62]">CIPFA Search</span>
+            <span className="text-sm font-semibold text-[#312C62]">Sitecore Search</span>
             <Button
               type="submit"
               className="bg-[#007BFF] hover:bg-[#0066CC] text-white px-6 h-12 rounded-md"
@@ -107,7 +107,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
           ))}
           <div className="px-4 py-2 bg-gray-50 border-t border-gray-200">
             <p className="text-xs text-gray-500 text-right">
-              Suggestions Powered by CIPFA Search
+              Suggestions Powered by Sitecore Search
             </p>
           </div>
         </div>
