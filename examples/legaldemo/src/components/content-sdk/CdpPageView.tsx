@@ -1,6 +1,5 @@
 import { CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { useEffect } from 'react';
-import { pageView } from '@sitecore-cloudsdk/events/browser';
 import config from 'sitecore.config';
 import { JSX } from 'react';
 
@@ -35,23 +34,51 @@ const CdpPageView = (): JSX.Element => {
       return;
     }
 
-    const language = route.itemLanguage || config.defaultLanguage;
-    const scope = config.personalize?.scope;
+    // Store route.itemId to ensure type narrowing works inside async function
+    const itemId = route.itemId;
+    if (!itemId) {
+      return;
+    }
 
-    const pageVariantId = CdpHelper.getPageVariantId(
-      route.itemId,
-      language,
-      context.variantId as string,
-      scope
-    );
-    // there can be cases where Events are not initialized which are expected to reject
-    pageView({
-      channel: 'WEB',
-      currency: 'USD',
-      page: route.name,
-      pageVariantId,
-      language,
-    }).catch((e) => console.debug(e));
+    // Dynamically import pageView after CloudSDK is initialized
+    // This ensures CloudSDK().addEvents().initialize() has been called first
+    const sendPageView = async () => {
+      try {
+        // Dynamic import to ensure CloudSDK is initialized first
+        const { pageView } = await import('@sitecore-cloudsdk/events/browser');
+
+        const language = route.itemLanguage || config.defaultLanguage;
+        // Ensure variantId is a string
+        const variantId: string =
+          typeof context.variantId === 'string' ? context.variantId : '';
+        // Scope can be undefined, so we pass it as-is (getPageVariantId accepts string | undefined)
+        const scope: string | undefined =
+          config.personalize?.scope && typeof config.personalize.scope === 'string'
+            ? config.personalize.scope
+            : undefined;
+
+        const pageVariantId = CdpHelper.getPageVariantId(itemId, language, variantId, scope);
+
+        // there can be cases where Events are not initialized which are expected to reject
+        pageView({
+          channel: 'WEB',
+          currency: 'USD',
+          page: route.name,
+          pageVariantId,
+          language,
+        }).catch((e) => console.debug(e));
+      } catch (error) {
+        // Silently handle errors if CloudSDK is not initialized
+        console.debug('CloudSDK Events not available:', error);
+      }
+    };
+
+    // Add a small delay to ensure CloudSDK initialization completes
+    const timer = setTimeout(() => {
+      sendPageView();
+    }, 200);
+
+    return () => clearTimeout(timer);
   }, [mode, route, context.variantId, siteName]);
 
   return <></>;
