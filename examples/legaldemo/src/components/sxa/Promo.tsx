@@ -70,21 +70,35 @@ export const WithText = (props: PromoProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
-      <div className={`component promo ${props.params.styles}`} id={id ? id : undefined}>
-        <div className="component-content">
-          <div className="field-promoicon">
-            <ContentSdkImage field={props.fields.PromoIcon} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <ContentSdkRichText className="promo-text" field={props.fields.PromoText} />
+      <div
+        className={`component promo flex flex-col h-full w-full ${props.params.styles}`}
+        id={id ? id : undefined}
+      >
+        <div className="component-content flex flex-col h-full">
+          {/* Text content first - heading and description */}
+          <div className="promo-text flex flex-col flex-1 mb-6">
+            <div className="field-promotext [&_p:first-child]:text-2xl [&_p:first-child]:md:text-3xl [&_p:first-child]:font-heading [&_p:first-child]:text-[#312C62] [&_p:first-child]:mb-4 [&_p:first-child]:font-normal">
+              <ContentSdkRichText field={props.fields.PromoText} />
+            </div>
+            <div className="field-promotext [&_p]:text-base [&_p]:text-gray-600 [&_p]:leading-relaxed [&_p]:mb-0">
+              <ContentSdkRichText field={props.fields.PromoText2} />
+            </div>
+            {/* Link if present */}
+            {props.fields.PromoLink && (
+              <div className="field-promolink mt-4">
+                <ContentSdkLink field={props.fields.PromoLink} />
               </div>
-            </div>
-            <div className="field-promotext">
-              <ContentSdkRichText className="promo-text" field={props.fields.PromoText2} />
-            </div>
+            )}
           </div>
+          {/* Image at the bottom */}
+          {props.fields.PromoIcon && (
+            <div className="field-promoicon w-full mt-auto">
+              <ContentSdkImage
+                field={props.fields.PromoIcon}
+                className="w-full h-auto object-cover rounded-lg"
+              />
+            </div>
+          )}
         </div>
       </div>
     );
