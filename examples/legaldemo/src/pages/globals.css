@@ -103,3 +103,68 @@
 @utility indent {
   @apply px-8 @md:px-16;
 }
+
+/* Promo component styling for side-by-side layout */
+.component.promo {
+  @apply w-full h-full;
+}
+
+.component.promo .component-content {
+  @apply flex flex-col h-full;
+}
+
+.component.promo .promo-text {
+  @apply flex flex-col flex-1;
+}
+
+.component.promo .field-promoicon {
+  @apply w-full mt-auto;
+}
+
+.component.promo .field-promoicon img {
+  @apply w-full h-auto object-cover;
+}
+
+/* Ensure column splitter displays promos side-by-side */
+.component.column-splitter {
+  @apply w-full;
+}
+
+.component.column-splitter .row {
+  @apply flex flex-col md:flex-row gap-4 md:gap-6 w-full;
+}
+
+/* Handle Bootstrap column classes */
+.component.column-splitter .col-6,
+.component.column-splitter [class*='col-6'] {
+  @apply w-full md:w-1/2 flex-shrink-0;
+}
+
+.component.column-splitter .col-6 .row,
+.component.column-splitter [class*='col-6'] .row {
+  @apply w-full;
+}
+
+/* Override col-lg-auto to maintain 50% width */
+.component.column-splitter .col-lg-auto {
+  @apply md:w-1/2;
+}
+
+/* Ensure promos inside columns take full width */
+.component.column-splitter .component.promo {
+  @apply w-full;
+}
+
+/* Promo text styling - first paragraph as heading */
+.component.promo .field-promotext p:first-child {
+  @apply text-2xl md:text-3xl font-heading text-[#312C62] mb-4 font-normal;
+}
+
+.component.promo .field-promotext p:not(:first-child) {
+  @apply text-base text-gray-600 leading-relaxed mb-0;
+}
+
+/* Promo link styling */
+.component.promo .field-promolink a {
+  @apply text-[#007BFF] hover:text-[#0066CC] underline;
+}
