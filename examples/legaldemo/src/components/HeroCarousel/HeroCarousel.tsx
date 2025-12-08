@@ -80,7 +80,7 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
     },
     {
       fields: {
-        Title: { jsonValue: { value: 'Developing tomorrow\'s public finance leaders' } },
+        Title: { jsonValue: { value: "Developing tomorrow's public finance leaders" } },
         Subtitle: { jsonValue: { value: 'Training' } },
         Description: {
           jsonValue: {
@@ -109,12 +109,14 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
     },
     {
       fields: {
-        Title: { jsonValue: { value: 'Create the next generation of counter fraud investigators' } },
+        Title: {
+          jsonValue: { value: 'Create the next generation of counter fraud investigators' },
+        },
         Subtitle: { jsonValue: { value: 'Qualifications' } },
         Description: {
           jsonValue: {
             value:
-              'Build expertise in governance, risk and counter fraud skills with CIPFA\'s professional qualifications.',
+              "Build expertise in governance, risk and counter fraud skills with CIPFA's professional qualifications.",
           },
         },
         Image: {

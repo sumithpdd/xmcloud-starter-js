@@ -18,4 +18,5 @@ export interface HeroCarouselSlideFields {
   };
 }
 
-export type HeroCarouselSlideProps = ComponentProps & HeroCarouselSlideFields;
+export type HeroCarouselSlideProps = ComponentProps &
+  HeroCarouselSlideFields;

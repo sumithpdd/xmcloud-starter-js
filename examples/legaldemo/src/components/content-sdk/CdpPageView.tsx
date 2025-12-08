@@ -50,8 +50,7 @@ const CdpPageView = (): JSX.Element => {
         const { pageView } = await import('@sitecore-cloudsdk/events/browser');
 
         // Ensure variantId is a string
-        const variantId: string =
-          typeof context.variantId === 'string' ? context.variantId : '';
+        const variantId: string = typeof context.variantId === 'string' ? context.variantId : '';
         // Scope can be undefined, so we pass it as-is (getPageVariantId accepts string | undefined)
         const scope: string | undefined =
           config.personalize?.scope && typeof config.personalize.scope === 'string'

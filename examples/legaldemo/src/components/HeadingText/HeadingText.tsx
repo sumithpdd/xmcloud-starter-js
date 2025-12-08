@@ -14,10 +14,7 @@ export const Default: React.FC<HeadingTextProps> = ({ fields, params }) => {
   }
 
   return (
-    <section
-      data-component="HeadingText"
-      className={cn('py-16 md:py-24 bg-white', params?.styles)}
-    >
+    <section data-component="HeadingText" className={cn('py-16 md:py-24 bg-white', params?.styles)}>
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="max-w-4xl">
           {(heading?.jsonValue?.value || isPageEditing) && (
