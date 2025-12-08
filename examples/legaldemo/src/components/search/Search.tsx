@@ -16,7 +16,7 @@ export const Default: React.FC = () => {
     if (!searchQuery.trim()) return [];
     const query = searchQuery.toLowerCase();
     return cipfaSuggestions.filter((suggestion) =>
-      suggestion.text.toLowerCase().includes(query),
+      suggestion.text.toLowerCase().includes(query)
     );
   }, [searchQuery]);
 
@@ -39,7 +39,7 @@ export const Default: React.FC = () => {
           item.faqQuestion?.toLowerCase().includes(queryLower) ||
           item.description?.toLowerCase().includes(queryLower) ||
           item.categoryPath.some((cat) => cat.toLowerCase().includes(queryLower)) ||
-          item.tags?.some((tag) => tag.toLowerCase().includes(queryLower)),
+          item.tags?.some((tag) => tag.toLowerCase().includes(queryLower))
       );
 
       // Sort results
@@ -69,7 +69,7 @@ export const Default: React.FC = () => {
       const sortedResults =
         newSort === 'date'
           ? [...searchResults].sort(
-              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
             )
           : [...searchResults].sort((a, b) => (b.relevance || 0) - (a.relevance || 0));
       setSearchResults(sortedResults);

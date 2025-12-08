@@ -296,7 +296,7 @@ export const cipfaSearchData: SearchResult[] = [
     author: 'By CIPFA Events Team',
   },
   {
-    title: 'Developing tomorrow\'s public finance leaders',
+    title: "Developing tomorrow's public finance leaders",
     description:
       'Supporting public finance professionals throughout their careers with world-class education and advisory services. Our training programmes help professionals add value to their teams and the organisations for which they work.',
     categoryPath: ['CIPFA', 'Services', 'Training'],
@@ -350,7 +350,7 @@ export const cipfaSearchData: SearchResult[] = [
   {
     title: 'Local Government Finance Model',
     description:
-      'CIPFA\'s Local Government Finance Model helps local authorities understand and manage their financial position. The model provides tools and guidance for budget planning, financial forecasting, and long-term financial sustainability.',
+      "CIPFA's Local Government Finance Model helps local authorities understand and manage their financial position. The model provides tools and guidance for budget planning, financial forecasting, and long-term financial sustainability.",
     categoryPath: ['CIPFA', 'Services', 'Financial Models'],
     date: '2024-07-20',
     category: 'Service',
@@ -428,7 +428,7 @@ export const cipfaSearchData: SearchResult[] = [
   {
     title: 'Public Finance Magazine',
     description:
-      'CIPFA\'s Public Finance Magazine provides in-depth analysis, news, and insights into public sector finance. Each issue covers key topics including local government finance, health finance, and public sector accounting standards.',
+      "CIPFA's Public Finance Magazine provides in-depth analysis, news, and insights into public sector finance. Each issue covers key topics including local government finance, health finance, and public sector accounting standards.",
     categoryPath: ['CIPFA', 'Services', 'Publications'],
     date: '2024-01-10',
     category: 'Publication',

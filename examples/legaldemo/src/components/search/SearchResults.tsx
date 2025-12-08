@@ -1,6 +1,5 @@
 import React from 'react';
 import { Globe, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import type { SearchResult } from './search.types';
 
 interface SearchResultsProps {
@@ -16,17 +15,17 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   query,
   sortBy,
   onSortChange,
-  isSearching,
 }) => {
   // Find featured answer (if query matches a common question)
   // Prioritize FAQ questions, then title, then description
-  const featuredAnswer = results.find(
-    (result) =>
-      result.featured &&
-      (result.faqQuestion?.toLowerCase().includes(query.toLowerCase()) ||
-        result.title.toLowerCase().includes(query.toLowerCase()) ||
-        result.description?.toLowerCase().includes(query.toLowerCase())),
-  ) || results.find((result) => result.featured && result.faqQuestion);
+  const featuredAnswer =
+    results.find(
+      (result) =>
+        result.featured &&
+        (result.faqQuestion?.toLowerCase().includes(query.toLowerCase()) ||
+          result.title.toLowerCase().includes(query.toLowerCase()) ||
+          result.description?.toLowerCase().includes(query.toLowerCase()))
+    ) || results.find((result) => result.featured && result.faqQuestion);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -108,9 +107,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
               }`}
             >
               Date
-              {sortBy === 'date' && (
-                <ArrowRight className="h-3 w-3 rotate-90" />
-              )}
+              {sortBy === 'date' && <ArrowRight className="h-3 w-3 rotate-90" />}
             </button>
           </div>
         </div>

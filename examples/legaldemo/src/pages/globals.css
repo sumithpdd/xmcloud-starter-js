@@ -107,22 +107,35 @@
 /* Promo component styling for side-by-side layout */
 .component.promo {
   @apply w-full h-full;
+  display: flex;
+  flex-direction: column;
 }
 
 .component.promo .component-content {
   @apply flex flex-col h-full;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .component.promo .promo-text {
   @apply flex flex-col flex-1;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
 }
 
 .component.promo .field-promoicon {
   @apply w-full mt-auto;
+  width: 100%;
+  margin-top: auto;
 }
 
 .component.promo .field-promoicon img {
   @apply w-full h-auto object-cover;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 /* Ensure column splitter displays promos side-by-side */
@@ -130,54 +143,82 @@
   @apply w-full;
 }
 
+/* Main row in column splitter - use flexbox */
 .component.column-splitter > .row,
 .component.column-splitter .row:first-child {
-  @apply flex flex-col md:flex-row gap-4 md:gap-6 w-full;
-}
-
-/* Handle Bootstrap column classes - force 50% width on desktop */
-.component.column-splitter .col-6,
-.component.column-splitter [class*='col-6'] {
-  @apply w-full;
+  display: flex !important;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
 }
 
 @media (min-width: 768px) {
-  .component.column-splitter .col-6,
-  .component.column-splitter [class*='col-6'] {
+  .component.column-splitter > .row,
+  .component.column-splitter .row:first-child {
+    flex-direction: row !important;
+    gap: 1.5rem;
+  }
+}
+
+/* Col-6 should be 50% width on desktop */
+.component.column-splitter .col-6 {
+  width: 100%;
+  flex: 0 0 100%;
+}
+
+@media (min-width: 768px) {
+  .component.column-splitter .col-6 {
     width: 50% !important;
     flex: 0 0 50% !important;
     max-width: 50% !important;
   }
 }
 
-.component.column-splitter .col-6 > .row,
-.component.column-splitter [class*='col-6'] > .row {
-  @apply w-full flex;
+/* Nested row inside col-6 - also use flexbox */
+.component.column-splitter .col-6 > .row {
+  display: flex !important;
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-/* Override col-lg-auto and col-lg-4 to maintain 50% width */
+/* Keep nested row as column on all screen sizes - promo should take full width */
 @media (min-width: 768px) {
-  .component.column-splitter .col-lg-auto,
-  .component.column-splitter .col-lg-4 {
-    width: 50% !important;
-    flex: 0 0 50% !important;
-    max-width: 50% !important;
+  .component.column-splitter .col-6 > .row {
+    flex-direction: column !important;
+    align-items: stretch;
   }
 }
 
-/* Override promo component column classes - force full width within its column */
-.component.column-splitter .component.promo,
-.component.column-splitter .component.promo.col-12,
-.component.column-splitter .component.promo[class*='col-'] {
-  @apply w-full max-w-full;
-  flex: 1 1 auto;
+/* Promo component - full width within its column container */
+.component.column-splitter .col-6 .component.promo,
+.component.column-splitter .col-6 .component.promo.col-12,
+.component.column-splitter .col-6 .component.promo.col-lg-4,
+.component.column-splitter .col-6 .row .component.promo {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 1 1 auto !important;
+  min-width: 0;
+}
+
+/* Override any Bootstrap column classes on promos */
+.component.column-splitter .col-6 .component.promo[class*='col-'],
+.component.column-splitter .col-6 .row .component.promo[class*='col-'] {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 1 1 auto !important;
+  min-width: 0;
+}
+
+/* Ensure col-6 containers don't shrink */
+.component.column-splitter .col-6 {
+  min-width: 0;
+  flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
-  .component.column-splitter .component.promo.col-lg-4 {
-    width: 100% !important;
-    flex: 1 1 auto !important;
-    max-width: 100% !important;
+  .component.column-splitter .col-6 {
+    flex-shrink: 0 !important;
   }
 }
 
