@@ -111,7 +111,6 @@ import client from 'lib/sitecore-client';
 import Image_5d8ce56058442d94361877e28c501c951a554a6a from 'next/image';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
-import { pageView } from '@sitecore-cloudsdk/events/browser';
 import config from 'sitecore.config';
 import { getContainerPlaceholderProps, isContainerPlaceholderEmpty } from '@/components/container/container.util';
 import { IconPosition } from '@/enumerations/IconPosition.enum';
@@ -835,12 +834,6 @@ const importMap = [
     module: 'next.config',
     exports: [
       { name: 'default', value: nextConfig },
-    ]
-  },
-  {
-    module: '@sitecore-cloudsdk/events/browser',
-    exports: [
-      { name: 'pageView', value: pageView },
     ]
   },
   {
