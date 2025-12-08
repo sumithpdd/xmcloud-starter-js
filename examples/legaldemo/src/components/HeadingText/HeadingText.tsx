@@ -17,36 +17,46 @@ export const Default: React.FC<HeadingTextProps> = ({ fields, params, rendering 
   // Try to get fields from datasource first, then fallback to rendering.fields
   const datasourceFields = fields?.data?.datasource;
   const renderingFields = rendering?.fields;
-  
+
   // Helper function to normalize field structure
   // Handles both { jsonValue: { value } } and { value } structures
-  const normalizeField = (field: any) => {
-    if (!field) return null;
-    
+  const normalizeField = (field: unknown) => {
+    if (!field || typeof field !== 'object') return null;
+
+    const fieldObj = field as Record<string, unknown>;
+
     // If it already has jsonValue, return as-is
-    if (field.jsonValue) {
-      return field;
+    if ('jsonValue' in fieldObj && fieldObj.jsonValue) {
+      const jsonValue = fieldObj.jsonValue as { value?: string };
+      if (jsonValue && typeof jsonValue.value === 'string') {
+        return {
+          jsonValue: {
+            value: jsonValue.value,
+          },
+        };
+      }
+      return fieldObj as { jsonValue: { value: string } };
     }
-    
+
     // If it has value directly, wrap it in jsonValue structure
-    if (field.value !== undefined) {
+    if ('value' in fieldObj && typeof fieldObj.value === 'string') {
       return {
         jsonValue: {
-          value: field.value,
+          value: fieldObj.value,
         },
       };
     }
-    
+
     return null;
   };
-  
+
   // Get fields from either datasource or rendering.fields
   const headingRaw = datasourceFields?.heading ?? renderingFields?.heading;
   const textRaw = datasourceFields?.text ?? renderingFields?.text;
-  
+
   // Normalize the field structures
-  const heading = normalizeField(headingRaw);
-  const text = normalizeField(textRaw);
+  const heading = normalizeField(headingRaw as unknown);
+  const text = normalizeField(textRaw as unknown);
 
   // Debug logging (remove in production)
   if (process.env.NODE_ENV === 'development') {
@@ -62,14 +72,22 @@ export const Default: React.FC<HeadingTextProps> = ({ fields, params, rendering 
         hasJsonValue: !!heading?.jsonValue,
         value: heading?.jsonValue?.value,
         fullField: heading,
-        source: datasourceFields?.heading ? 'datasource' : renderingFields?.heading ? 'rendering.fields' : 'none',
+        source: datasourceFields?.heading
+          ? 'datasource'
+          : renderingFields?.heading
+            ? 'rendering.fields'
+            : 'none',
       },
       text: {
         exists: !!text,
         hasJsonValue: !!text?.jsonValue,
         value: text?.jsonValue?.value,
         fullField: text,
-        source: datasourceFields?.text ? 'datasource' : renderingFields?.text ? 'rendering.fields' : 'none',
+        source: datasourceFields?.text
+          ? 'datasource'
+          : renderingFields?.text
+            ? 'rendering.fields'
+            : 'none',
       },
       isPageEditing,
       params,
