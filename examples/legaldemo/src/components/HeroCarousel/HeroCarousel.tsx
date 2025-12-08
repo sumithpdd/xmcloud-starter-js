@@ -47,63 +47,151 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
   const showArrows = params?.showArrows !== false;
 
   // Default slides for disconnected mode or when no slides are configured
-  // Based on Clyde & Co website content
+  // Based on CIPFA website content from https://www.cipfa.org/
   const defaultSlides: HeroCarouselSlide[] = [
     {
       fields: {
-        Title: { jsonValue: { value: 'Insurance Emerging Risk uncovered' } },
-        Subtitle: { jsonValue: { value: 'Expertise' } },
-        Description: {
-          jsonValue: {
-            value: "Navigate the risks shaping tomorrow's insurance landscape",
-          },
-        },
-        Link: {
-          jsonValue: {
-            value: {
-              href: '/insights/emerging-risks',
-              text: 'Discover more',
-            },
-          },
-        },
-        BackgroundColor: { jsonValue: { value: 'bg-white' } },
-      },
-    },
-    {
-      fields: {
-        Title: { jsonValue: { value: 'Risk Quarterly' } },
-        Subtitle: { jsonValue: { value: 'Insights' } },
-        Description: {
-          jsonValue: {
-            value: 'Leading voices delivering the latest insight',
-          },
-        },
-        Link: {
-          jsonValue: {
-            value: {
-              href: '/insights/risk-quarterly',
-              text: 'Read issue 4',
-            },
-          },
-        },
-        BackgroundColor: { jsonValue: { value: 'bg-white' } },
-      },
-    },
-    {
-      fields: {
-        Title: { jsonValue: { value: 'Corporate Risk Radar 2025' } },
-        Subtitle: { jsonValue: { value: 'Reports' } },
+        Title: { jsonValue: { value: 'Public Finance Live 15-16 July 2026' } },
+        Subtitle: { jsonValue: { value: 'Event' } },
         Description: {
           jsonValue: {
             value:
-              'Research-led report capturing cross-sector perspectives from 400+ global leaders on risks and opportunities in the coming years',
+              'Super early bird discount until 30 January 2026. Join us for the premier public finance event of the year.',
+          },
+        },
+        Image: {
+          jsonValue: {
+            value: {
+              src: 'https://www.cipfa.org/-/media/Images/Training/Conferences/PFL-2026-carousel.jpg',
+              alt: 'Public Finance Live 2026',
+            },
           },
         },
         Link: {
           jsonValue: {
             value: {
-              href: '/reports/corporate-risk-radar-2025',
-              text: 'Read the second edition',
+              href: '/events/public-finance-live-2026',
+              text: 'Read more',
+            },
+          },
+        },
+        BackgroundColor: { jsonValue: { value: 'bg-white' } },
+      },
+    },
+    {
+      fields: {
+        Title: { jsonValue: { value: 'Developing tomorrow\'s public finance leaders' } },
+        Subtitle: { jsonValue: { value: 'Training' } },
+        Description: {
+          jsonValue: {
+            value:
+              'Supporting public finance professionals throughout their careers with world-class education and advisory services.',
+          },
+        },
+        Image: {
+          jsonValue: {
+            value: {
+              src: 'https://www.cipfa.org/-/media/Images/Banner-images/cogs-hands-banner-917px-by-260px.jpg',
+              alt: 'Training and Development',
+            },
+          },
+        },
+        Link: {
+          jsonValue: {
+            value: {
+              href: '/training',
+              text: 'Read more',
+            },
+          },
+        },
+        BackgroundColor: { jsonValue: { value: 'bg-white' } },
+      },
+    },
+    {
+      fields: {
+        Title: { jsonValue: { value: 'Create the next generation of counter fraud investigators' } },
+        Subtitle: { jsonValue: { value: 'Qualifications' } },
+        Description: {
+          jsonValue: {
+            value:
+              'Build expertise in governance, risk and counter fraud skills with CIPFA\'s professional qualifications.',
+          },
+        },
+        Image: {
+          jsonValue: {
+            value: {
+              src: 'https://www.cipfa.org/-/media/Images/Banner-images/Homepage-carousel/Qualifications-banner-image.jpg',
+              alt: 'Professional Qualifications',
+            },
+          },
+        },
+        Link: {
+          jsonValue: {
+            value: {
+              href: '/qualifications',
+              text: 'Read more',
+            },
+          },
+        },
+        BackgroundColor: { jsonValue: { value: 'bg-white' } },
+      },
+    },
+    {
+      fields: {
+        Title: { jsonValue: { value: 'ICAEW CIPFA Public Sector Sustainability Certificate' } },
+        Subtitle: { jsonValue: { value: 'Certificate' } },
+        Description: {
+          jsonValue: {
+            value:
+              'Gain expertise in public sector sustainability and environmental financial management.',
+          },
+        },
+        Image: {
+          jsonValue: {
+            value: {
+              src: 'https://www.cipfa.org/-/media/Images/Banner-images/PAQ-banner-2024.jpg',
+              alt: 'Sustainability Certificate',
+            },
+          },
+        },
+        Link: {
+          jsonValue: {
+            value: {
+              href: '/qualifications/sustainability-certificate',
+              text: 'Read more',
+            },
+          },
+        },
+        BackgroundColor: { jsonValue: { value: 'bg-white' } },
+      },
+    },
+    {
+      fields: {
+        Title: {
+          jsonValue: {
+            value: 'Accelerated route to qualify for CPFA and ACA designation and dual membership',
+          },
+        },
+        Subtitle: { jsonValue: { value: 'Qualifications' } },
+        Description: {
+          jsonValue: {
+            value:
+              'Fast-track your career with our accelerated route to dual professional qualification and membership.',
+          },
+        },
+        Image: {
+          jsonValue: {
+            value: {
+              src: 'https://www.cipfa.org/-/media/Images/Banner-images/CFIA_banner_2024.jpg',
+              alt: 'Accelerated Route to Qualification',
+            },
+          },
+        },
+        Link: {
+          jsonValue: {
+            value: {
+              href: '/qualifications/accelerated-route',
+              text: 'Read more',
             },
           },
         },
@@ -254,9 +342,9 @@ export const Default: React.FC<HeroCarouselProps> = (props) => {
                     </div>
                   )}
 
-                  {/* Content - Left Aligned */}
+                  {/* Content - Centered */}
                   <div className="relative z-10 mx-auto w-full max-w-screen-xl px-4 py-16 md:px-8 lg:px-12">
-                    <div className="max-w-2xl space-y-6 text-left">
+                    <div className="mx-auto max-w-2xl space-y-6 text-center">
                       {(hasSubtitle || isPageEditing) && subtitleField && (
                         <Text
                           tag="p"

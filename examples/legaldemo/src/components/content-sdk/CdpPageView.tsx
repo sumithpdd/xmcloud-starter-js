@@ -34,11 +34,13 @@ const CdpPageView = (): JSX.Element => {
       return;
     }
 
-    // Store route.itemId to ensure type narrowing works inside async function
+    // Store route values to ensure type narrowing works inside async function
     const itemId = route.itemId;
     if (!itemId) {
       return;
     }
+    const routeName = route.name || '';
+    const routeLanguage = route.itemLanguage || config.defaultLanguage;
 
     // Dynamically import pageView after CloudSDK is initialized
     // This ensures CloudSDK().addEvents().initialize() has been called first
@@ -47,7 +49,6 @@ const CdpPageView = (): JSX.Element => {
         // Dynamic import to ensure CloudSDK is initialized first
         const { pageView } = await import('@sitecore-cloudsdk/events/browser');
 
-        const language = route.itemLanguage || config.defaultLanguage;
         // Ensure variantId is a string
         const variantId: string =
           typeof context.variantId === 'string' ? context.variantId : '';
@@ -57,15 +58,15 @@ const CdpPageView = (): JSX.Element => {
             ? config.personalize.scope
             : undefined;
 
-        const pageVariantId = CdpHelper.getPageVariantId(itemId, language, variantId, scope);
+        const pageVariantId = CdpHelper.getPageVariantId(itemId, routeLanguage, variantId, scope);
 
         // there can be cases where Events are not initialized which are expected to reject
         pageView({
           channel: 'WEB',
           currency: 'USD',
-          page: route.name,
+          page: routeName,
           pageVariantId,
-          language,
+          language: routeLanguage,
         }).catch((e) => console.debug(e));
       } catch (error) {
         // Silently handle errors if CloudSDK is not initialized

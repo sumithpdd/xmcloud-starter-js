@@ -44,6 +44,11 @@ const nextConfig = {
         hostname: '*.sitecoresandbox.cloud',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.cipfa.org',
+        port: '',
+      },
     ],
   },
 
