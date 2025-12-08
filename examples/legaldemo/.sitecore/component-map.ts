@@ -76,6 +76,7 @@ import * as ArticleHero from 'components/article-hero/ArticleHero';
 import * as InsightsSection from 'components/insights-section/InsightsSection';
 import * as IntroSection from 'components/intro-section/IntroSection';
 import * as HeadingText from 'components/HeadingText/HeadingText'
+import * as Search from 'components/search/Search';
 
 // Components must be registered with to match the string key with component name in Sitecore
 export const componentMap = new Map<string, NextjsContentSdkComponent>([
@@ -151,7 +152,8 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['article-hero', ArticleHero],
   ['insights-section', InsightsSection],
   ['intro-section', IntroSection],
-  ['HeadingText',HeadingText]
+  ['HeadingText',HeadingText],
+  ['Search',Search]
 ]);
 
 export default componentMap;
