@@ -139,8 +139,23 @@
 }
 
 /* Ensure column splitter displays promos side-by-side */
-.component.column-splitter {
+.component.column-splitter,
+.component.column-splitter.row {
   @apply w-full;
+  display: flex !important;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+@media (min-width: 768px) {
+  .component.column-splitter,
+  .component.column-splitter.row {
+    flex-direction: row !important;
+    gap: 1.5rem;
+    flex-wrap: nowrap;
+  }
 }
 
 /* Main row in column splitter - use flexbox */
@@ -150,6 +165,7 @@
   flex-direction: column;
   width: 100%;
   gap: 1rem;
+  flex-wrap: nowrap;
 }
 
 @media (min-width: 768px) {
@@ -157,34 +173,45 @@
   .component.column-splitter .row:first-child {
     flex-direction: row !important;
     gap: 1.5rem;
+    flex-wrap: nowrap;
   }
 }
 
-/* Col-6 should be 50% width on desktop */
-.component.column-splitter .col-6 {
-  width: 100%;
-  flex: 0 0 100%;
+/* Col-6 should be 50% width on desktop - override all Bootstrap classes */
+.component.column-splitter .col-6,
+.component.column-splitter [class*='col-6'] {
+  width: 100% !important;
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @media (min-width: 768px) {
-  .component.column-splitter .col-6 {
+  .component.column-splitter .col-6,
+  .component.column-splitter [class*='col-6'],
+  .component.column-splitter .col-lg-6 {
     width: 50% !important;
     flex: 0 0 50% !important;
     max-width: 50% !important;
   }
 }
 
-/* Nested row inside col-6 - also use flexbox */
-.component.column-splitter .col-6 > .row {
+/* Nested row inside col-6 - always column direction */
+.component.column-splitter .col-6 > .row,
+.component.column-splitter [class*='col-6'] > .row {
   display: flex !important;
-  width: 100%;
-  flex-direction: column;
+  width: 100% !important;
+  flex-direction: column !important;
   align-items: stretch;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 /* Keep nested row as column on all screen sizes - promo should take full width */
 @media (min-width: 768px) {
-  .component.column-splitter .col-6 > .row {
+  .component.column-splitter .col-6 > .row,
+  .component.column-splitter [class*='col-6'] > .row {
     flex-direction: column !important;
     align-items: stretch;
   }
@@ -210,25 +237,54 @@
   min-width: 0;
 }
 
-/* Ensure col-6 containers don't shrink */
-.component.column-splitter .col-6 {
+/* Ensure col-6 containers don't shrink and have proper spacing */
+.component.column-splitter .col-6,
+.component.column-splitter [class*='col-6'] {
   min-width: 0;
   flex-shrink: 0;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 @media (min-width: 768px) {
-  .component.column-splitter .col-6 {
+  .component.column-splitter .col-6,
+  .component.column-splitter [class*='col-6'] {
     flex-shrink: 0 !important;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 
-/* Promo text styling - first paragraph as heading */
-.component.promo .field-promotext p:first-child {
-  @apply text-2xl md:text-3xl font-heading text-[#312C62] mb-4 font-normal;
+/* Promo text styling - first field-promotext (title - larger size) */
+.component.promo .promo-text > .field-promotext:first-child p,
+.component.promo .promo-text > .field-promotext:first-child .ck-content p,
+.component.promo .field-promotext:first-of-type p {
+  font-size: 1.5rem !important;
+  line-height: 1.75rem !important;
+  font-weight: normal !important;
+  color: #312C62 !important;
+  margin-bottom: 1rem !important;
+  font-family: var(--font-family-heading) !important;
 }
 
-.component.promo .field-promotext p:not(:first-child) {
-  @apply text-base text-gray-600 leading-relaxed mb-0;
+@media (min-width: 768px) {
+  .component.promo .promo-text > .field-promotext:first-child p,
+  .component.promo .promo-text > .field-promotext:first-child .ck-content p,
+  .component.promo .field-promotext:first-of-type p {
+    font-size: 1.875rem !important;
+    line-height: 2.25rem !important;
+  }
+}
+
+/* Promo text styling - second field-promotext (description text - smaller size) */
+.component.promo .promo-text > .field-promotext:not(:first-child) p,
+.component.promo .promo-text > .field-promotext:not(:first-child) .ck-content p,
+.component.promo .field-promotext:not(:first-of-type) p {
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
+  color: #6b7280 !important;
+  margin-bottom: 0 !important;
+  font-weight: normal !important;
 }
 
 /* Promo link styling */
