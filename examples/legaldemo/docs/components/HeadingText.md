@@ -4,9 +4,9 @@ A simple component for displaying a heading and rich text content, perfect for i
 
 ## Component Details
 
-- **Component Name**: `heading-text`
-- **File Location**: `src/components/heading-text/HeadingText.tsx`
-- **Props Interface**: `src/components/heading-text/heading-text.props.ts`
+- **Component Name**: `HeadingText`
+- **File Location**: `src/components/HeadingText/HeadingText.tsx`
+- **Props Interface**: `src/components/HeadingText/HeadingText.props.ts`
 
 ## Sitecore Template Setup
 
@@ -27,7 +27,7 @@ Create a template with the following fields:
 The component should already be registered in `.sitecore/component-map.ts`:
 
 ```typescript
-'heading-text': {
+'HeadingText': {
   componentName: 'HeadingText',
   fields: {
     heading: { jsonValue: { value: '' } },

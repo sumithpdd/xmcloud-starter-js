@@ -2,7 +2,7 @@ import type React from 'react';
 import { Text, RichText, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
-import type { HeadingTextProps } from './heading-text.props';
+import type { HeadingTextProps } from './HeadingText.props';
 
 export const Default: React.FC<HeadingTextProps> = ({ fields, params }) => {
   const { heading, text } = fields?.data?.datasource ?? {};

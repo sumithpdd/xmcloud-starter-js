@@ -64,7 +64,7 @@ Use this HTML in a **Rich Text Block** component:
 
 ### Component Details
 
-- **Component Name**: `heading-text`
+- **Component Name**: `HeadingText`
 - **Template Fields**: `heading` (Single-Line Text), `text` (Rich Text)
 
 ### Content
