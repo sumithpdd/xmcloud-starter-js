@@ -15,9 +15,7 @@ export const Default: React.FC = () => {
   const filteredSuggestions = useMemo(() => {
     if (!searchQuery.trim()) return [];
     const query = searchQuery.toLowerCase();
-    return cipfaSuggestions.filter((suggestion) =>
-      suggestion.text.toLowerCase().includes(query)
-    );
+    return cipfaSuggestions.filter((suggestion) => suggestion.text.toLowerCase().includes(query));
   }, [searchQuery]);
 
   // Perform search
